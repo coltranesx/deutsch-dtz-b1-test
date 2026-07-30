@@ -39,12 +39,27 @@ const App = (() => {
 
   async function renderDashboard() {
     app.innerHTML = "";
+
+    const allData = await Promise.all(TEMALAR.map(loadTema));
+
+    const zayifCard = document.createElement("div");
+    zayifCard.className = "card zayif-konular-card";
+    zayifCard.innerHTML = `
+      <div style="font-size:1.5rem;">🎯</div>
+      <div>
+        <h3 style="margin:0 0 0.25rem;">Zayıf Konular Modu</h3>
+        <p style="margin:0;color:var(--text-muted);font-size:var(--text-sm);">Tema + Sprachhandlung + Gramer bazlı akıllı tekrar</p>
+      </div>
+    `;
+    zayifCard.addEventListener("click", () => openZayifKonular(allData));
+    app.appendChild(zayifCard);
+
     const h = document.createElement("h2");
     h.textContent = "Temalar";
     app.appendChild(h);
 
-    for (const entry of TEMALAR) {
-      const data = await loadTema(entry);
+    TEMALAR.forEach((entry, i) => {
+      const data = allData[i];
       const progress = Storage.getProgress(entry.id);
       const pct = Math.round((progress.completedSteps.length / stepCount()) * 100);
 
@@ -60,11 +75,15 @@ const App = (() => {
       `;
       card.addEventListener("click", () => openTema(entry, data));
       app.appendChild(card);
-    }
+    });
   }
 
   function openTema(entry, data) {
     TemaModu.start(app, data, renderDashboard);
+  }
+
+  function openZayifKonular(allData) {
+    ZayifKonularModu.start(app, allData, renderDashboard);
   }
 
   function init() {

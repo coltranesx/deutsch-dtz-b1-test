@@ -1,13 +1,24 @@
 const Storage = (() => {
   const NAMESPACE = "dtzB1Trainer";
 
+  const LEITNER_INTERVALS_MS = [
+    0,
+    1 * 24 * 60 * 60 * 1000,
+    3 * 24 * 60 * 60 * 1000,
+    7 * 24 * 60 * 60 * 1000,
+    14 * 24 * 60 * 60 * 1000,
+  ];
+  const LEITNER_MAX_BOX = LEITNER_INTERVALS_MS.length;
+
   function readAll() {
     const raw = localStorage.getItem(NAMESPACE);
-    if (!raw) return { answers: {}, progress: {} };
+    if (!raw) return { answers: {}, progress: {}, leitner: {} };
     try {
-      return JSON.parse(raw);
+      const data = JSON.parse(raw);
+      if (!data.leitner) data.leitner = {};
+      return data;
     } catch {
-      return { answers: {}, progress: {} };
+      return { answers: {}, progress: {}, leitner: {} };
     }
   }
 
@@ -56,6 +67,30 @@ const Storage = (() => {
     localStorage.setItem(`${NAMESPACE}:theme`, theme);
   }
 
+  function recordLeitnerResult(questionId, correct) {
+    const data = readAll();
+    const prev = data.leitner[questionId] ?? { box: 1, correctCount: 0, incorrectCount: 0 };
+    const box = correct ? Math.min(prev.box + 1, LEITNER_MAX_BOX) : 1;
+    data.leitner[questionId] = {
+      box,
+      dueAt: Date.now() + LEITNER_INTERVALS_MS[box - 1],
+      lastResult: correct ? "correct" : "incorrect",
+      lastReviewedAt: Date.now(),
+      correctCount: prev.correctCount + (correct ? 1 : 0),
+      incorrectCount: prev.incorrectCount + (correct ? 0 : 1),
+    };
+    writeAll(data);
+  }
+
+  function getLeitnerEntry(questionId) {
+    return readAll().leitner[questionId] ?? null;
+  }
+
+  function isLeitnerDue(questionId) {
+    const entry = getLeitnerEntry(questionId);
+    return !entry || entry.dueAt <= Date.now();
+  }
+
   return {
     saveAnswer,
     getAnswer,
@@ -64,5 +99,8 @@ const Storage = (() => {
     getProgress,
     getTheme,
     setTheme,
+    recordLeitnerResult,
+    getLeitnerEntry,
+    isLeitnerDue,
   };
 })();

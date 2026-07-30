@@ -125,57 +125,10 @@ const TemaModu = (() => {
     return wrap;
   }
 
-  function renderMultipleChoiceQuestion(tema, q, storeKey) {
-    const block = document.createElement("div");
-    block.className = "question-block";
-
-    const text = document.createElement("div");
-    text.className = "question-text";
-    text.textContent = q.soru;
-    block.appendChild(text);
-
-    const options = document.createElement("div");
-    options.className = "options";
-
-    const savedAnswer = Storage.getAnswer(tema.temaId, q.id);
-    const feedback = document.createElement("div");
-    feedback.className = "feedback";
-
-    q.secenekler.forEach((opt) => {
-      const label = document.createElement("label");
-      label.className = "option-label";
-      const radio = document.createElement("input");
-      radio.type = "radio";
-      radio.name = q.id;
-      radio.value = opt;
-      radio.checked = savedAnswer === opt;
-      radio.addEventListener("change", () => {
-        Storage.saveAnswer(tema.temaId, q.id, opt);
-        applyFeedback();
-      });
-      label.appendChild(radio);
-      label.appendChild(document.createTextNode(opt));
-      options.appendChild(label);
+  function renderGradedQuestion(tema, q) {
+    return SoruKart.renderMultipleChoice(tema.temaId, q, {
+      onAnswer: (correct) => Storage.recordLeitnerResult(q.id, correct),
     });
-
-    block.appendChild(options);
-    block.appendChild(feedback);
-
-    function applyFeedback() {
-      const current = Storage.getAnswer(tema.temaId, q.id);
-      [...options.children].forEach((label) => {
-        const val = label.querySelector("input").value;
-        label.classList.remove("correct", "incorrect");
-        if (current) {
-          if (val === q.dogruCevap) label.classList.add("correct");
-          else if (val === current) label.classList.add("incorrect");
-        }
-      });
-      feedback.textContent = current ? (q.aciklama ?? "") : "";
-    }
-
-    applyFeedback();
-    return block;
   }
 
   function renderGramer(tema) {
@@ -183,7 +136,7 @@ const TemaModu = (() => {
     const h = document.createElement("h2");
     h.textContent = "Gramer";
     wrap.appendChild(h);
-    tema.gramer.forEach((q) => wrap.appendChild(renderMultipleChoiceQuestion(tema, q)));
+    tema.gramer.forEach((q) => wrap.appendChild(renderGradedQuestion(tema, q)));
     return wrap;
   }
 
@@ -242,7 +195,7 @@ const TemaModu = (() => {
       wrap.appendChild(details);
     }
 
-    tema.hoeren.sorular.forEach((q) => wrap.appendChild(renderMultipleChoiceQuestion(tema, q)));
+    tema.hoeren.sorular.forEach((q) => wrap.appendChild(renderGradedQuestion(tema, q)));
     return wrap;
   }
 
@@ -376,7 +329,7 @@ const TemaModu = (() => {
       return wrap;
     }
 
-    allQuestions.forEach((q) => wrap.appendChild(renderMultipleChoiceQuestion(tema, q)));
+    allQuestions.forEach((q) => wrap.appendChild(renderGradedQuestion(tema, q)));
 
     const answered = allQuestions.filter((q) => Storage.getAnswer(tema.temaId, q.id) !== null);
     const correct = allQuestions.filter((q) => Storage.getAnswer(tema.temaId, q.id) === q.dogruCevap);
