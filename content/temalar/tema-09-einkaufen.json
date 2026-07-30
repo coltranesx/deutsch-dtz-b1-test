@@ -1,0 +1,101 @@
+{
+  "temaId": "tema-09-einkaufen",
+  "temaNo": 9,
+  "baslik": "Einkaufen",
+  "handlungsfeld": "Einkaufen",
+  "kaynakEslesmeleri": [],
+  "kelime": [
+    { "id": "t09-w001", "de": "der Kassierer / die Kassiererin", "tr": "kasiyer", "beispiel": "Die Kassiererin scannt die Ware an der Kasse.", "kategori": "Nomen", "zorlukSeviyesi": "leicht" },
+    { "id": "t09-w002", "de": "der Einkaufswagen", "tr": "alisveris arabasi", "beispiel": "Ich nehme einen Einkaufswagen fuer den grossen Einkauf.", "kategori": "Nomen", "zorlukSeviyesi": "leicht" },
+    { "id": "t09-w003", "de": "reduziert", "tr": "indirimli", "beispiel": "Die Preise sind diese Woche reduziert.", "kategori": "Adjektiv", "zorlukSeviyesi": "orta" },
+    { "id": "t09-w004", "de": "die Quittung", "tr": "fis", "beispiel": "Bitte geben Sie mir die Quittung.", "kategori": "Nomen", "zorlukSeviyesi": "orta" },
+    { "id": "t09-w005", "de": "umtauschen", "tr": "degistirmek (urun)", "beispiel": "Kann ich den Pullover umtauschen, er ist zu klein.", "kategori": "Verb", "zorlukSeviyesi": "schwer" }
+  ],
+  "gramer": [
+    {
+      "id": "t09-g001",
+      "konu": "Adjektiv.Komparation",
+      "sprachhandlung": ["Informationsaustausch"],
+      "soru": "Dieses Brot ist ___ als das andere.",
+      "secenekler": ["teurer", "teuer", "am teuersten", "teuerer"],
+      "dogruCevap": "teurer",
+      "aciklama": "Komparativ 'teuer -> teurer'; 'als' ile karsilastirma yapilir.",
+      "zorlukSeviyesi": "orta"
+    },
+    {
+      "id": "t09-g002",
+      "konu": "Nomen.Kasus.Akkusativ",
+      "sprachhandlung": ["Informationsaustausch"],
+      "soru": "Ich moechte ___ Apfel kaufen.",
+      "secenekler": ["der", "den", "dem", "des"],
+      "dogruCevap": "den",
+      "aciklama": "'kaufen' fiili Akkusativ ister; 'der Apfel' eril, Akkusativ'de 'den Apfel' olur.",
+      "zorlukSeviyesi": "orta"
+    },
+    {
+      "id": "t09-g003",
+      "konu": "Praeposition.modal",
+      "sprachhandlung": ["Informationsaustausch"],
+      "soru": "Ich bezahle ___ Karte.",
+      "secenekler": ["mit", "auf", "in", "zu"],
+      "dogruCevap": "mit",
+      "aciklama": "Odeme sekli belirtirken 'mit Karte/mit Bargeld bezahlen' kullanilir.",
+      "zorlukSeviyesi": "leicht"
+    }
+  ],
+  "lesen": {
+    "metin": "Herr Yildiz geht am Samstag einkaufen. Er braucht Obst, Gemuese und Brot fuer die ganze Woche. Im Supermarkt sieht er, dass die Aepfel heute reduziert sind. Er nimmt einen Einkaufswagen und legt viele Sachen hinein. An der Kasse bezahlt er mit Karte und bekommt eine Quittung.",
+    "sorular": [
+      { "id": "t09-l001", "soru": "Was braucht Herr Yildiz fuer die Woche?", "cevapTipi": "acikUclu" },
+      { "id": "t09-l002", "soru": "Wie bezahlt er an der Kasse?", "cevapTipi": "acikUclu" }
+    ]
+  },
+  "hoeren": {
+    "sesUrl": "assets/audio/t09-h001.mp3",
+    "sesKaynagi": "kayit",
+    "transkript": "Kundin: Entschuldigung, wo finde ich die Milchprodukte? Verkaeufer: Die Milchprodukte sind im Gang drei, direkt neben dem Kaese. Kundin: Vielen Dank! Und haben Sie auch glutenfreies Brot? Verkaeufer: Ja, das finden Sie im Regal daneben.",
+    "sorular": [
+      {
+        "id": "t09-h001",
+        "soru": "Wo sind die Milchprodukte?",
+        "secenekler": ["Gang eins", "Gang zwei", "Gang drei", "Gang vier"],
+        "dogruCevap": "Gang drei"
+      },
+      {
+        "id": "t09-h002",
+        "soru": "Wonach fragt die Kundin noch?",
+        "secenekler": ["Glutenfreies Brot", "Bio-Gemuese", "Frisches Obst", "Vegane Wurst"],
+        "dogruCevap": "Glutenfreies Brot"
+      }
+    ]
+  },
+  "schreiben": {
+    "gorev": "Sie haben online einen Pullover bestellt, aber er ist beschaedigt angekommen. Schreiben Sie eine E-Mail an den Kundenservice.",
+    "register": "halbformell",
+    "sprachhandlung": ["Handlungsregulierung", "Informationsaustausch"],
+    "leitpunkte": [
+      "Beschreiben Sie den Schaden",
+      "Schreiben Sie, wann die Bestellung angekommen ist",
+      "Sagen Sie, was Sie moechten (Umtausch oder Geld zurueck)",
+      "Fragen Sie, wie es weitergeht"
+    ],
+    "minKelime": 40,
+    "maxKelime": 80
+  },
+  "sprechen": {
+    "teil1FollowUp": { "frage": "Wo kaufen Sie meistens ein?", "sprachhandlung": ["Informationsaustausch"] },
+    "teil2": {
+      "fotoUrl": "assets/fotos/tema09-einkaufen.jpg",
+      "beschreibungsPrompt": "Was sehen Sie auf dem Foto?",
+      "vergleichsPrompt": "Wie kauft man in Ihrem Heimatland ein?",
+      "sprachhandlung": ["Informationsaustausch", "Umgang mit interkultureller Begegnung"]
+    },
+    "teil3": {
+      "szenario": "Sie und Ihr Partner planen eine Geburtstagsfeier. Einigen Sie sich, wer was einkauft.",
+      "sprachhandlung": ["Handlungsregulierung"],
+      "modus": "esli-veya-simule",
+      "cevapTipi": "yaziliCevap"
+    }
+  },
+  "miniTest": { "soruIdListesi": ["t09-g001", "t09-g002", "t09-h001", "t09-h002"] }
+}

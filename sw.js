@@ -1,4 +1,4 @@
-const CACHE_NAME = "dtz-b1-trainer-v1";
+const CACHE_NAME = "dtz-b1-trainer-v2";
 const APP_SHELL = [
   "./",
   "./index.html",
@@ -8,6 +8,8 @@ const APP_SHELL = [
   "./js/storage.js",
   "./js/study-modes/tema-modu.js",
   "./content/temalar/tema-01-wohnen.json",
+  "./content/temalar/tema-06-gesundheit.json",
+  "./content/temalar/tema-09-einkaufen.json",
 ];
 
 self.addEventListener("install", (event) => {

@@ -1,0 +1,101 @@
+{
+  "temaId": "tema-06-gesundheit",
+  "temaNo": 6,
+  "baslik": "Gesundheit",
+  "handlungsfeld": "Gesundheit",
+  "kaynakEslesmeleri": [],
+  "kelime": [
+    { "id": "t06-w001", "de": "der Termin", "tr": "randevu", "beispiel": "Ich brauche einen Termin beim Hausarzt.", "kategori": "Nomen", "zorlukSeviyesi": "leicht" },
+    { "id": "t06-w002", "de": "die Versicherungskarte", "tr": "sigorta karti", "beispiel": "Bitte zeigen Sie Ihre Versicherungskarte.", "kategori": "Nomen", "zorlukSeviyesi": "orta" },
+    { "id": "t06-w003", "de": "die Nebenwirkung", "tr": "yan etki", "beispiel": "Dieses Medikament kann Nebenwirkungen haben.", "kategori": "Nomen", "zorlukSeviyesi": "schwer" },
+    { "id": "t06-w004", "de": "sich krank melden", "tr": "hasta oldugunu bildirmek", "beispiel": "Ich muss mich heute krank melden.", "kategori": "Verb", "zorlukSeviyesi": "orta" },
+    { "id": "t06-w005", "de": "die Apotheke", "tr": "eczane", "beispiel": "Die Apotheke ist bis 20 Uhr geoeffnet.", "kategori": "Nomen", "zorlukSeviyesi": "leicht" }
+  ],
+  "gramer": [
+    {
+      "id": "t06-g001",
+      "konu": "Verb.Tempus.Perfekt",
+      "sprachhandlung": ["Informationsaustausch"],
+      "soru": "Ich ___ gestern beim Arzt gewesen.",
+      "secenekler": ["bin", "habe", "war", "hatte"],
+      "dogruCevap": "bin",
+      "aciklama": "'sein' fiili Perfekt'te kendi hilfsverb'i olarak kullanilir: 'ich bin gewesen'.",
+      "zorlukSeviyesi": "orta"
+    },
+    {
+      "id": "t06-g002",
+      "konu": "Nomen.Kasus.Dativ",
+      "sprachhandlung": ["Informationsaustausch"],
+      "soru": "Der Arzt gibt ___ Patientin ein Rezept.",
+      "secenekler": ["die", "der", "den", "dem"],
+      "dogruCevap": "der",
+      "aciklama": "'geben' fiili Dativ ister; 'die Patientin' disil, Dativ'de 'der Patientin' olur.",
+      "zorlukSeviyesi": "orta"
+    },
+    {
+      "id": "t06-g003",
+      "konu": "Satz.Nebensatz.weil-da",
+      "sprachhandlung": ["Realisierung von Gefuehlen/Haltungen/Meinungen"],
+      "soru": "Ich gehe zum Arzt, ___ ich Kopfschmerzen habe.",
+      "secenekler": ["weil", "obwohl", "damit", "bevor"],
+      "dogruCevap": "weil",
+      "aciklama": "Neden belirtmek icin 'weil' kullanilir; fiil cumle sonuna gider.",
+      "zorlukSeviyesi": "leicht"
+    }
+  ],
+  "lesen": {
+    "metin": "Frau Demir hat seit drei Tagen Fieber und Halsschmerzen. Sie ruft in der Arztpraxis an und bekommt einen Termin fuer den naechsten Morgen. Der Arzt untersucht sie und sagt, dass sie eine Erkaeltung hat. Er verschreibt ihr Medikamente und raet ihr, viel zu trinken und sich auszuruhen.",
+    "sorular": [
+      { "id": "t06-l001", "soru": "Wie lange hat Frau Demir schon Fieber?", "cevapTipi": "acikUclu" },
+      { "id": "t06-l002", "soru": "Was empfiehlt der Arzt?", "cevapTipi": "acikUclu" }
+    ]
+  },
+  "hoeren": {
+    "sesUrl": "assets/audio/t06-h001.mp3",
+    "sesKaynagi": "kayit",
+    "transkript": "Praxis Dr. Meier, guten Tag. Ich haette gerne einen Termin, mir geht es seit gestern nicht gut, ich habe Halsschmerzen und Fieber. Koennen Sie mich heute noch dazwischenschieben? Ja, kommen Sie um 15 Uhr, aber bringen Sie bitte Ihre Versicherungskarte mit.",
+    "sorular": [
+      {
+        "id": "t06-h001",
+        "soru": "Welche Beschwerden hat der Anrufer?",
+        "secenekler": ["Kopfschmerzen und Husten", "Halsschmerzen und Fieber", "Bauchschmerzen", "Ruecken schmerzen"],
+        "dogruCevap": "Halsschmerzen und Fieber"
+      },
+      {
+        "id": "t06-h002",
+        "soru": "Um wie viel Uhr ist der Termin?",
+        "secenekler": ["13 Uhr", "14 Uhr", "15 Uhr", "16 Uhr"],
+        "dogruCevap": "15 Uhr"
+      }
+    ]
+  },
+  "schreiben": {
+    "gorev": "Sie sind krank und koennen nicht zur Arbeit kommen. Schreiben Sie eine E-Mail an Ihren Chef.",
+    "register": "formell",
+    "sprachhandlung": ["Handlungsregulierung", "Informationsaustausch"],
+    "leitpunkte": [
+      "Sagen Sie, dass Sie krank sind",
+      "Schreiben Sie, seit wann Sie sich nicht gut fuehlen",
+      "Sagen Sie, ob Sie einen Arzttermin haben",
+      "Fragen Sie, ob es wichtige Aufgaben gibt, die vertreten werden muessen"
+    ],
+    "minKelime": 40,
+    "maxKelime": 80
+  },
+  "sprechen": {
+    "teil1FollowUp": { "frage": "Was machen Sie, wenn Sie krank sind?", "sprachhandlung": ["Informationsaustausch"] },
+    "teil2": {
+      "fotoUrl": "assets/fotos/tema06-gesundheit.jpg",
+      "beschreibungsPrompt": "Was sehen Sie auf dem Foto?",
+      "vergleichsPrompt": "Wie funktioniert das Gesundheitssystem in Ihrem Heimatland?",
+      "sprachhandlung": ["Informationsaustausch", "Umgang mit interkultureller Begegnung"]
+    },
+    "teil3": {
+      "szenario": "Sie und Ihr Partner muessen einen Arzttermin fuer ein Familienmitglied vereinbaren. Einigen Sie sich, wer anruft und wer mitgeht.",
+      "sprachhandlung": ["Handlungsregulierung"],
+      "modus": "esli-veya-simule",
+      "cevapTipi": "yaziliCevap"
+    }
+  },
+  "miniTest": { "soruIdListesi": ["t06-g001", "t06-g002", "t06-h001", "t06-h002"] }
+}

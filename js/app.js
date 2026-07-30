@@ -1,4 +1,8 @@
-const TEMALAR = [{ id: "tema-01-wohnen", file: "content/temalar/tema-01-wohnen.json" }];
+const TEMALAR = [
+  { id: "tema-01-wohnen", file: "content/temalar/tema-01-wohnen.json" },
+  { id: "tema-06-gesundheit", file: "content/temalar/tema-06-gesundheit.json" },
+  { id: "tema-09-einkaufen", file: "content/temalar/tema-09-einkaufen.json" },
+];
 
 const App = (() => {
   const app = document.getElementById("app");
