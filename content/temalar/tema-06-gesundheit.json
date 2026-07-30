@@ -53,7 +53,7 @@
   "hoeren": {
     "sesUrl": "assets/audio/t06-h001.mp3",
     "sesKaynagi": "kayit",
-    "transkript": "Praxis Dr. Meier, guten Tag. Ich haette gerne einen Termin, mir geht es seit gestern nicht gut, ich habe Halsschmerzen und Fieber. Koennen Sie mich heute noch dazwischenschieben? Ja, kommen Sie um 15 Uhr, aber bringen Sie bitte Ihre Versicherungskarte mit.",
+    "transkript": "Sprechstundenhilfe: Praxis Dr. Meier, guten Tag. Anrufer: Ich haette gerne einen Termin, mir geht es seit gestern nicht gut, ich habe Halsschmerzen und Fieber. Koennen Sie mich heute noch dazwischenschieben? Sprechstundenhilfe: Ja, kommen Sie um 15 Uhr, aber bringen Sie bitte Ihre Versicherungskarte mit.",
     "sorular": [
       {
         "id": "t06-h001",

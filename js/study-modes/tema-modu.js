@@ -222,15 +222,24 @@ const TemaModu = (() => {
     h.textContent = "Hoeren";
     wrap.appendChild(h);
 
-    const note = document.createElement("p");
-    note.className = "feedback";
-    note.textContent = "Ses kaydi v1.0'da henuz yok, asagidaki metni okuyarak sorulari cevaplayin.";
-    wrap.appendChild(note);
+    if (tema.hoeren.sesUrl) {
+      const audio = document.createElement("audio");
+      audio.controls = true;
+      audio.style.width = "100%";
+      audio.src = tema.hoeren.sesUrl;
+      wrap.appendChild(audio);
+    }
 
     if (tema.hoeren.transkript) {
+      const details = document.createElement("details");
+      details.style.marginTop = "0.75rem";
+      const summary = document.createElement("summary");
+      summary.textContent = "Transkript metnini goster";
+      details.appendChild(summary);
       const transcript = document.createElement("p");
       transcript.textContent = tema.hoeren.transkript;
-      wrap.appendChild(transcript);
+      details.appendChild(transcript);
+      wrap.appendChild(details);
     }
 
     tema.hoeren.sorular.forEach((q) => wrap.appendChild(renderMultipleChoiceQuestion(tema, q)));
