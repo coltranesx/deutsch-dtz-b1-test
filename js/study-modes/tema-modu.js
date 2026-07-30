@@ -175,35 +175,7 @@ const TemaModu = (() => {
     h.textContent = "Hören";
     wrap.appendChild(h);
 
-    const audioMissingNote = document.createElement("p");
-    audioMissingNote.className = "feedback";
-    audioMissingNote.textContent = "Bu tema için ses kaydı henüz hazır değil, aşağıdaki metni okuyarak soruları cevaplayın.";
-    audioMissingNote.style.display = "none";
-
-    if (tema.hoeren.sesUrl) {
-      const audio = document.createElement("audio");
-      audio.controls = true;
-      audio.style.width = "100%";
-      audio.addEventListener("error", () => {
-        audio.remove();
-        audioMissingNote.style.display = "block";
-      });
-      audio.src = tema.hoeren.sesUrl;
-      wrap.appendChild(audio);
-      wrap.appendChild(audioMissingNote);
-    }
-
-    if (tema.hoeren.transkript) {
-      const details = document.createElement("details");
-      details.style.marginTop = "0.75rem";
-      const summary = document.createElement("summary");
-      summary.textContent = "Transkript metnini göster";
-      details.appendChild(summary);
-      const transcript = document.createElement("p");
-      transcript.textContent = tema.hoeren.transkript;
-      details.appendChild(transcript);
-      wrap.appendChild(details);
-    }
+    wrap.appendChild(SoruKart.renderAudioContext(tema.hoeren.sesUrl, tema.hoeren.transkript));
 
     tema.hoeren.sorular.forEach((q) => wrap.appendChild(renderGradedQuestion(tema, q)));
     return wrap;

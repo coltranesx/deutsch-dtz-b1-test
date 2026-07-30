@@ -5,8 +5,16 @@ const ZayifKonularModu = (() => {
   function collectPool(temalar) {
     const pool = [];
     temalar.forEach((tema) => {
-      tema.gramer.forEach((q) => pool.push({ ...q, temaId: tema.temaId }));
-      tema.hoeren.sorular.forEach((q) => pool.push({ ...q, temaId: tema.temaId }));
+      tema.gramer.forEach((q) => pool.push({ ...q, temaId: tema.temaId, kaynak: "gramer" }));
+      tema.hoeren.sorular.forEach((q) =>
+        pool.push({
+          ...q,
+          temaId: tema.temaId,
+          kaynak: "hoeren",
+          sesUrl: tema.hoeren.sesUrl,
+          transkript: tema.hoeren.transkript,
+        })
+      );
     });
     return pool;
   }
@@ -95,6 +103,9 @@ const ZayifKonularModu = (() => {
     const card = document.createElement("div");
     card.className = "card";
     const q = session[index];
+    if (q.kaynak === "hoeren") {
+      card.appendChild(SoruKart.renderAudioContext(q.sesUrl, q.transkript));
+    }
     card.appendChild(
       SoruKart.renderMultipleChoice(q.temaId, q, {
         onAnswer: (correct) => {
@@ -121,7 +132,7 @@ const ZayifKonularModu = (() => {
 
   function renderEmpty(container, pool) {
     const note = document.createElement("p");
-    note.textContent = "Su an tekrar edilecek soru yok, hepsi guncel. Yeni sorular icin bir Tema tamamlayin.";
+    note.textContent = "Şu an tekrar edilecek soru yok, hepsi güncel. Yeni sorular için bir Tema tamamlayın.";
     container.appendChild(note);
     renderStatsBlock(container, pool);
   }

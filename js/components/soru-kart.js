@@ -16,6 +16,8 @@ const SoruKart = (() => {
     const feedback = document.createElement("div");
     feedback.className = "feedback";
 
+    let locked = false;
+
     q.secenekler.forEach((opt) => {
       const label = document.createElement("label");
       label.className = "option-label";
@@ -25,9 +27,14 @@ const SoruKart = (() => {
       radio.value = opt;
       radio.checked = savedAnswer === opt;
       radio.addEventListener("change", () => {
+        if (locked) return;
+        locked = true;
         Storage.saveAnswer(temaId, q.id, opt);
         onAnswer?.(opt === q.dogruCevap);
         applyFeedback();
+        [...optionsWrap.querySelectorAll("input")].forEach((input) => {
+          input.disabled = true;
+        });
       });
       label.appendChild(radio);
       label.appendChild(document.createTextNode(opt));
@@ -54,5 +61,42 @@ const SoruKart = (() => {
     return block;
   }
 
-  return { renderMultipleChoice };
+  function renderAudioContext(sesUrl, transkript) {
+    const wrap = document.createElement("div");
+    wrap.style.marginBottom = "1rem";
+
+    const missingNote = document.createElement("p");
+    missingNote.className = "feedback";
+    missingNote.textContent = "Bu soru için ses kaydı henüz hazır değil, aşağıdaki metni okuyarak cevaplayın.";
+    missingNote.style.display = "none";
+
+    if (sesUrl) {
+      const audio = document.createElement("audio");
+      audio.controls = true;
+      audio.style.width = "100%";
+      audio.addEventListener("error", () => {
+        audio.remove();
+        missingNote.style.display = "block";
+      });
+      audio.src = sesUrl;
+      wrap.appendChild(audio);
+      wrap.appendChild(missingNote);
+    }
+
+    if (transkript) {
+      const details = document.createElement("details");
+      details.style.marginTop = "0.75rem";
+      const summary = document.createElement("summary");
+      summary.textContent = "Transkript metnini göster";
+      details.appendChild(summary);
+      const p = document.createElement("p");
+      p.textContent = transkript;
+      details.appendChild(p);
+      wrap.appendChild(details);
+    }
+
+    return wrap;
+  }
+
+  return { renderMultipleChoice, renderAudioContext };
 })();
