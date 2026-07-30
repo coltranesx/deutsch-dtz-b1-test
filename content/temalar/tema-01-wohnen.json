@@ -1,0 +1,100 @@
+{
+  "temaId": "tema-01-wohnen",
+  "temaNo": 1,
+  "baslik": "Wohnen",
+  "handlungsfeld": "Wohnen",
+  "kaynakEslesmeleri": [{ "kitap": "Die neue Linie B1", "kapitel": 3, "sayfa": "42-48" }],
+  "kelime": [
+    { "id": "t01-w001", "de": "die Wohnung", "tr": "daire", "beispiel": "Ich suche eine 2-Zimmer-Wohnung.", "kategori": "Nomen", "zorlukSeviyesi": "orta" },
+    { "id": "t01-w002", "de": "der Vermieter", "tr": "ev sahibi", "beispiel": "Der Vermieter wohnt im Erdgeschoss.", "kategori": "Nomen", "zorlukSeviyesi": "orta" },
+    { "id": "t01-w003", "de": "die Miete", "tr": "kira", "beispiel": "Die Miete betraegt 650 Euro im Monat.", "kategori": "Nomen", "zorlukSeviyesi": "leicht" },
+    { "id": "t01-w004", "de": "kuendigen", "tr": "fesih etmek", "beispiel": "Ich moechte meinen Mietvertrag kuendigen.", "kategori": "Verb", "zorlukSeviyesi": "schwer" }
+  ],
+  "gramer": [
+    {
+      "id": "t01-g001",
+      "konu": "Praeposition.lokal",
+      "sprachhandlung": ["Informationsaustausch"],
+      "soru": "Die Wohnung ist ___ dritten Stock.",
+      "secenekler": ["im", "in", "am", "auf"],
+      "dogruCevap": "im",
+      "aciklama": "'im' = 'in dem'; kat bildirirken 'im dritten Stock' kullanilir.",
+      "zorlukSeviyesi": "orta"
+    },
+    {
+      "id": "t01-g002",
+      "konu": "Nomen.Kasus.Dativ",
+      "sprachhandlung": ["Informationsaustausch"],
+      "soru": "Ich schreibe ___ Vermieter eine E-Mail.",
+      "secenekler": ["der", "dem", "den", "des"],
+      "dogruCevap": "dem",
+      "aciklama": "'schreiben' fiili Dativ ister: 'dem Vermieter'.",
+      "zorlukSeviyesi": "orta"
+    },
+    {
+      "id": "t01-g003",
+      "konu": "Satz.Nebensatz.weil-da",
+      "sprachhandlung": ["Realisierung von Gefuehlen/Haltungen/Meinungen"],
+      "soru": "Ich suche eine neue Wohnung, ___ die Miete zu teuer ist.",
+      "secenekler": ["weil", "obwohl", "damit", "wenn"],
+      "dogruCevap": "weil",
+      "aciklama": "Neden belirtmek icin 'weil' kullanilir; fiil cumle sonuna gider.",
+      "zorlukSeviyesi": "leicht"
+    }
+  ],
+  "lesen": {
+    "metin": "Familie Keskin sucht eine neue Wohnung in Koeln. Sie brauchen drei Zimmer, weil sie zwei Kinder haben. Die Miete darf nicht mehr als 900 Euro kosten. Auf einer Wohnungsanzeige finden sie eine passende 3-Zimmer-Wohnung im zweiten Stock, mit Balkon und Kueche. Sie rufen den Vermieter an und vereinbaren einen Besichtigungstermin.",
+    "sorular": [
+      { "id": "t01-l001", "soru": "Warum sucht Familie Keskin eine neue Wohnung?", "cevapTipi": "acikUclu" },
+      { "id": "t01-l002", "soru": "Was machen sie, nachdem sie eine passende Anzeige gefunden haben?", "cevapTipi": "acikUclu" }
+    ]
+  },
+  "hoeren": {
+    "sesUrl": "assets/audio/t01-h001.mp3",
+    "sesKaynagi": "kayit",
+    "transkript": "Guten Tag, hier ist Frau Keskin. Ich rufe wegen der Wohnungsanzeige an. Ist die 3-Zimmer-Wohnung im zweiten Stock noch frei? Wir moechten sie gerne besichtigen, am liebsten am Samstagvormittag.",
+    "sorular": [
+      {
+        "id": "t01-h001",
+        "soru": "Wer ruft an?",
+        "secenekler": ["Der Vermieter", "Frau Keskin", "Der Nachbar", "Die Hausverwaltung"],
+        "dogruCevap": "Frau Keskin"
+      },
+      {
+        "id": "t01-h002",
+        "soru": "Wann moechte sie die Wohnung besichtigen?",
+        "secenekler": ["Freitagabend", "Samstagvormittag", "Sonntagnachmittag", "Montagmorgen"],
+        "dogruCevap": "Samstagvormittag"
+      }
+    ]
+  },
+  "schreiben": {
+    "gorev": "Ihre Wohnung hat einen Wasserschaden. Schreiben Sie eine E-Mail an den Vermieter.",
+    "register": "halbformell",
+    "sprachhandlung": ["Handlungsregulierung", "Informationsaustausch"],
+    "leitpunkte": [
+      "Beschreiben Sie das Problem",
+      "Schreiben Sie, wann es passiert ist",
+      "Sagen Sie, was Sie erwarten",
+      "Fragen Sie nach einem Terminvorschlag"
+    ],
+    "minKelime": 40,
+    "maxKelime": 80
+  },
+  "sprechen": {
+    "teil1FollowUp": { "frage": "Beschreiben Sie Ihre Wohnung.", "sprachhandlung": ["Informationsaustausch"] },
+    "teil2": {
+      "fotoUrl": "assets/fotos/tema01-wohnung.jpg",
+      "beschreibungsPrompt": "Was sehen Sie auf dem Foto?",
+      "vergleichsPrompt": "Wie wohnt man in Ihrem Heimatland?",
+      "sprachhandlung": ["Informationsaustausch", "Umgang mit interkultureller Begegnung"]
+    },
+    "teil3": {
+      "szenario": "Sie und Ihr Partner moechten zusammen eine Wohnung mieten. Einigen Sie sich, wer welche Aufgaben uebernimmt.",
+      "sprachhandlung": ["Handlungsregulierung"],
+      "modus": "esli-veya-simule",
+      "cevapTipi": "yaziliCevap"
+    }
+  },
+  "miniTest": { "soruIdListesi": ["t01-g001", "t01-g002", "t01-h001", "t01-h002"] }
+}

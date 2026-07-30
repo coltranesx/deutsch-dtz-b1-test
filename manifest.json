@@ -1,0 +1,10 @@
+{
+  "name": "DTZ B1 Trainer",
+  "short_name": "DTZ B1",
+  "description": "DTZ (Deutsch-Test fuer Zuwanderer) B1 sinavina hazirlik uygulamasi",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#f5f7fb",
+  "theme_color": "#1e3a8a",
+  "icons": []
+}
