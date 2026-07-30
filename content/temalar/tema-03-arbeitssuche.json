@@ -1,0 +1,101 @@
+{
+  "temaId": "tema-03-arbeitssuche",
+  "temaNo": 3,
+  "baslik": "Arbeitssuche",
+  "handlungsfeld": "Arbeitssuche",
+  "kaynakEslesmeleri": [],
+  "kelime": [
+    { "id": "t03-w001", "de": "die Stellenanzeige", "tr": "iş ilanı", "beispiel": "Ich habe eine interessante Stellenanzeige gefunden.", "kategori": "Nomen", "zorlukSeviyesi": "orta" },
+    { "id": "t03-w002", "de": "der Lebenslauf", "tr": "özgeçmiş", "beispiel": "Bitte schicken Sie mir Ihren Lebenslauf.", "kategori": "Nomen", "zorlukSeviyesi": "orta" },
+    { "id": "t03-w003", "de": "das Vorstellungsgespräch", "tr": "iş görüşmesi", "beispiel": "Das Vorstellungsgespräch ist am Freitag um 10 Uhr.", "kategori": "Nomen", "zorlukSeviyesi": "schwer" },
+    { "id": "t03-w004", "de": "sich bewerben", "tr": "başvurmak", "beispiel": "Ich möchte mich für diese Stelle bewerben.", "kategori": "Verb", "zorlukSeviyesi": "orta" },
+    { "id": "t03-w005", "de": "die Qualifikation", "tr": "nitelik / yeterlilik", "beispiel": "Welche Qualifikationen brauche ich für diesen Job?", "kategori": "Nomen", "zorlukSeviyesi": "schwer" }
+  ],
+  "gramer": [
+    {
+      "id": "t03-g001",
+      "konu": "Verb.Wortbildung",
+      "sprachhandlung": ["Informationsaustausch"],
+      "soru": "Ich möchte mich bei der Firma ___.",
+      "secenekler": ["vorstellen", "vorzustellen", "vorgestellt", "vorstellend"],
+      "dogruCevap": "vorstellen",
+      "aciklama": "'möchte' modal fiili sonrası infinitiv 'zu' almadan kullanılır: 'möchte vorstellen'.",
+      "zorlukSeviyesi": "orta"
+    },
+    {
+      "id": "t03-g002",
+      "konu": "Nomen.Kasus.Akkusativ",
+      "sprachhandlung": ["Informationsaustausch"],
+      "soru": "Ich schreibe ___ Lebenslauf neu.",
+      "secenekler": ["der", "den", "dem", "des"],
+      "dogruCevap": "den",
+      "aciklama": "'schreiben' fiili Akkusativ ister; 'der Lebenslauf' eril, Akkusativ'de 'den Lebenslauf' olur.",
+      "zorlukSeviyesi": "orta"
+    },
+    {
+      "id": "t03-g003",
+      "konu": "Präposition.temporal",
+      "sprachhandlung": ["Informationsaustausch"],
+      "soru": "Das Vorstellungsgespräch ist ___ Freitag.",
+      "secenekler": ["am", "im", "um", "an"],
+      "dogruCevap": "am",
+      "aciklama": "Gün belirtirken 'am' kullanılır: 'am Freitag'.",
+      "zorlukSeviyesi": "leicht"
+    }
+  ],
+  "lesen": {
+    "metin": "Frau Çelik sucht eine neue Stelle als Bürokauffrau. Sie hat schon drei Bewerbungen geschrieben, aber noch keine Antwort bekommen. Gestern hat sie eine Stellenanzeige gesehen, die perfekt zu ihrer Qualifikation passt. Sie möchte sich noch heute bewerben und ihren Lebenslauf aktualisieren.",
+    "sorular": [
+      { "id": "t03-l001", "soru": "Welche Stelle sucht Frau Çelik?", "cevapTipi": "acikUclu" },
+      { "id": "t03-l002", "soru": "Was möchte sie heute machen?", "cevapTipi": "acikUclu" }
+    ]
+  },
+  "hoeren": {
+    "sesUrl": "assets/audio/t03-h001.mp3",
+    "sesKaynagi": "kayit",
+    "transkript": "Personalchef: Guten Tag, erzählen Sie mir bitte etwas über Ihre Berufserfahrung. Bewerberin: Ich habe drei Jahre als Verkäuferin gearbeitet und spreche gut Deutsch und Englisch. Personalchef: Das klingt gut. Wann könnten Sie anfangen? Bewerberin: Ich könnte in zwei Wochen beginnen.",
+    "sorular": [
+      {
+        "id": "t03-h001",
+        "soru": "Wie lange hat die Bewerberin als Verkäuferin gearbeitet?",
+        "secenekler": ["Ein Jahr", "Zwei Jahre", "Drei Jahre", "Vier Jahre"],
+        "dogruCevap": "Drei Jahre"
+      },
+      {
+        "id": "t03-h002",
+        "soru": "Wann könnte sie anfangen?",
+        "secenekler": ["Sofort", "In einer Woche", "In zwei Wochen", "In einem Monat"],
+        "dogruCevap": "In zwei Wochen"
+      }
+    ]
+  },
+  "schreiben": {
+    "gorev": "Sie haben eine Stellenanzeige gesehen und möchten sich bewerben. Schreiben Sie eine Bewerbungs-E-Mail.",
+    "register": "halbformell",
+    "sprachhandlung": ["Informationsaustausch", "Handlungsregulierung"],
+    "leitpunkte": [
+      "Stellen Sie sich kurz vor",
+      "Sagen Sie, warum Sie sich für die Stelle interessieren",
+      "Nennen Sie Ihre wichtigste Qualifikation",
+      "Fragen Sie nach dem nächsten Schritt"
+    ],
+    "minKelime": 40,
+    "maxKelime": 80
+  },
+  "sprechen": {
+    "teil1FollowUp": { "frage": "Suchen Sie zurzeit eine neue Arbeit?", "sprachhandlung": ["Informationsaustausch"] },
+    "teil2": {
+      "fotoUrl": "assets/fotos/tema03-arbeitssuche.jpg",
+      "beschreibungsPrompt": "Was sehen Sie auf dem Foto?",
+      "vergleichsPrompt": "Wie sucht man in Ihrem Heimatland eine Arbeitsstelle?",
+      "sprachhandlung": ["Informationsaustausch", "Umgang mit interkultureller Begegnung"]
+    },
+    "teil3": {
+      "szenario": "Sie und ein Freund bereiten sich gemeinsam auf ein Vorstellungsgespräch vor. Einigen Sie sich, welche Fragen Sie üben wollen.",
+      "sprachhandlung": ["Handlungsregulierung"],
+      "modus": "eşli-veya-simule",
+      "cevapTipi": "yaziliCevap"
+    }
+  },
+  "miniTest": { "soruIdListesi": ["t03-g001", "t03-g002", "t03-h001", "t03-h002"] }
+}

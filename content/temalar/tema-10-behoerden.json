@@ -1,0 +1,101 @@
+{
+  "temaId": "tema-10-behoerden",
+  "temaNo": 10,
+  "baslik": "Ämter und Behörden",
+  "handlungsfeld": "Ämter und Behörden",
+  "kaynakEslesmeleri": [],
+  "kelime": [
+    { "id": "t10-w001", "de": "das Amt", "tr": "daire / kurum", "beispiel": "Ich muss heute zum Amt gehen.", "kategori": "Nomen", "zorlukSeviyesi": "leicht" },
+    { "id": "t10-w002", "de": "die Anmeldung", "tr": "kayıt (ikametgah vb.)", "beispiel": "Die Anmeldung beim Einwohnermeldeamt ist wichtig.", "kategori": "Nomen", "zorlukSeviyesi": "orta" },
+    { "id": "t10-w003", "de": "der Antrag", "tr": "başvuru", "beispiel": "Ich möchte einen Antrag auf Kindergeld stellen.", "kategori": "Nomen", "zorlukSeviyesi": "orta" },
+    { "id": "t10-w004", "de": "die Bescheinigung", "tr": "belge", "beispiel": "Ich brauche eine Bescheinigung von der Schule.", "kategori": "Nomen", "zorlukSeviyesi": "schwer" },
+    { "id": "t10-w005", "de": "zuständig", "tr": "yetkili / sorumlu", "beispiel": "Wer ist für meinen Fall zuständig?", "kategori": "Adjektiv", "zorlukSeviyesi": "schwer" }
+  ],
+  "gramer": [
+    {
+      "id": "t10-g001",
+      "konu": "Nomen.Kasus.Genitiv",
+      "sprachhandlung": ["Informationsaustausch"],
+      "soru": "Das ist die Aufgabe ___ Ausländerbehörde.",
+      "secenekler": ["die", "der", "den", "dem"],
+      "dogruCevap": "der",
+      "aciklama": "Dişil isimlerde Genitiv artikeli 'der' olur: 'der Ausländerbehörde'.",
+      "zorlukSeviyesi": "schwer"
+    },
+    {
+      "id": "t10-g002",
+      "konu": "Präposition.lokal",
+      "sprachhandlung": ["Handlungsregulierung"],
+      "soru": "Ich muss ___ Amt gehen.",
+      "secenekler": ["zum", "zur", "ins", "im"],
+      "dogruCevap": "zum",
+      "aciklama": "'zum' = 'zu dem'; nötr 'das Amt' Dativ'de 'dem Amt' olur, 'zu' ile 'zum'.",
+      "zorlukSeviyesi": "orta"
+    },
+    {
+      "id": "t10-g003",
+      "konu": "Verb.Modus.Passiv",
+      "sprachhandlung": ["Informationsaustausch"],
+      "soru": "Der Antrag ___ in zwei Wochen bearbeitet.",
+      "secenekler": ["wird", "wurde", "ist", "hat"],
+      "dogruCevap": "wird",
+      "aciklama": "Edilgen (Passiv) Präsens: 'werden' + Partizip II — 'wird bearbeitet'.",
+      "zorlukSeviyesi": "schwer"
+    }
+  ],
+  "lesen": {
+    "metin": "Herr Ivanov muss beim Einwohnermeldeamt seine neue Adresse anmelden. Dafür braucht er seinen Mietvertrag und seinen Ausweis. Er hat online einen Termin gemacht, weil das Amt sonst sehr voll ist. Nach der Anmeldung bekommt er eine Bescheinigung, die er für andere Behördengänge braucht.",
+    "sorular": [
+      { "id": "t10-l001", "soru": "Was muss Herr Ivanov beim Amt machen?", "cevapTipi": "acikUclu" },
+      { "id": "t10-l002", "soru": "Warum hat er online einen Termin gemacht?", "cevapTipi": "acikUclu" }
+    ]
+  },
+  "hoeren": {
+    "sesUrl": "assets/audio/t10-h001.mp3",
+    "sesKaynagi": "kayit",
+    "transkript": "Sachbearbeiterin: Guten Tag, haben Sie einen Termin? Bürger: Ja, um zehn Uhr. Ich möchte meinen Antrag auf Kindergeld abgeben. Sachbearbeiterin: Haben Sie alle Unterlagen dabei? Bürger: Ja, die Geburtsurkunde und meinen Ausweis.",
+    "sorular": [
+      {
+        "id": "t10-h001",
+        "soru": "Was möchte der Bürger abgeben?",
+        "secenekler": ["Einen Antrag auf Kindergeld", "Eine Anmeldung", "Eine Kündigung", "Eine Beschwerde"],
+        "dogruCevap": "Einen Antrag auf Kindergeld"
+      },
+      {
+        "id": "t10-h002",
+        "soru": "Welche Unterlagen hat er dabei?",
+        "secenekler": ["Nur den Ausweis", "Geburtsurkunde und Ausweis", "Nur die Geburtsurkunde", "Mietvertrag und Ausweis"],
+        "dogruCevap": "Geburtsurkunde und Ausweis"
+      }
+    ]
+  },
+  "schreiben": {
+    "gorev": "Sie haben vor drei Wochen einen Antrag gestellt und noch keine Antwort bekommen. Schreiben Sie eine E-Mail an das zuständige Amt.",
+    "register": "formell",
+    "sprachhandlung": ["Informationsaustausch", "Handlungsregulierung"],
+    "leitpunkte": [
+      "Erinnern Sie an Ihren Antrag",
+      "Schreiben Sie, wann Sie ihn gestellt haben",
+      "Fragen Sie nach dem aktuellen Stand",
+      "Fragen Sie, ob noch Unterlagen fehlen"
+    ],
+    "minKelime": 40,
+    "maxKelime": 80
+  },
+  "sprechen": {
+    "teil1FollowUp": { "frage": "Waren Sie schon einmal bei einem Amt in Deutschland?", "sprachhandlung": ["Informationsaustausch"] },
+    "teil2": {
+      "fotoUrl": "assets/fotos/tema10-behoerden.jpg",
+      "beschreibungsPrompt": "Was sehen Sie auf dem Foto?",
+      "vergleichsPrompt": "Wie funktionieren Behörden in Ihrem Heimatland?",
+      "sprachhandlung": ["Informationsaustausch", "Umgang mit interkultureller Begegnung", "Umgang mit der Migrationssituation/interkultureller Begegnung"]
+    },
+    "teil3": {
+      "szenario": "Sie und Ihr Partner müssen gemeinsam Unterlagen für einen Behördentermin vorbereiten. Einigen Sie sich, wer was mitbringt.",
+      "sprachhandlung": ["Handlungsregulierung"],
+      "modus": "eşli-veya-simule",
+      "cevapTipi": "yaziliCevap"
+    }
+  },
+  "miniTest": { "soruIdListesi": ["t10-g001", "t10-g002", "t10-h001", "t10-h002"] }
+}

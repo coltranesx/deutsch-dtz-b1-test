@@ -1,0 +1,101 @@
+{
+  "temaId": "tema-05-mobilitaet",
+  "temaNo": 5,
+  "baslik": "Mobilität",
+  "handlungsfeld": "Mobilität",
+  "kaynakEslesmeleri": [],
+  "kelime": [
+    { "id": "t05-w001", "de": "der Fahrplan", "tr": "sefer tarifesi", "beispiel": "Ich schaue im Fahrplan nach, wann der Bus kommt.", "kategori": "Nomen", "zorlukSeviyesi": "orta" },
+    { "id": "t05-w002", "de": "die Verspätung", "tr": "gecikme", "beispiel": "Der Zug hat heute 20 Minuten Verspätung.", "kategori": "Nomen", "zorlukSeviyesi": "orta" },
+    { "id": "t05-w003", "de": "umsteigen", "tr": "aktarma yapmak", "beispiel": "Sie müssen in Frankfurt umsteigen.", "kategori": "Verb", "zorlukSeviyesi": "schwer" },
+    { "id": "t05-w004", "de": "die Fahrkarte", "tr": "bilet", "beispiel": "Ich brauche eine Fahrkarte nach München.", "kategori": "Nomen", "zorlukSeviyesi": "leicht" },
+    { "id": "t05-w005", "de": "der Bahnsteig", "tr": "peron", "beispiel": "Der Zug fährt von Bahnsteig fünf ab.", "kategori": "Nomen", "zorlukSeviyesi": "orta" }
+  ],
+  "gramer": [
+    {
+      "id": "t05-g001",
+      "konu": "Verb.Wortbildung",
+      "sprachhandlung": ["Informationsaustausch"],
+      "soru": "Wo muss ich ___?",
+      "secenekler": ["umsteigen", "umzusteigen", "umgestiegen", "umsteige"],
+      "dogruCevap": "umsteigen",
+      "aciklama": "'müssen' modal fiili sonrası infinitiv 'zu' almadan kullanılır: 'muss umsteigen'.",
+      "zorlukSeviyesi": "orta"
+    },
+    {
+      "id": "t05-g002",
+      "konu": "Nomen.Kasus.Dativ",
+      "sprachhandlung": ["Informationsaustausch"],
+      "soru": "Der Zug fährt von ___ Bahnsteig fünf ab.",
+      "secenekler": ["der", "die", "das", "dem"],
+      "dogruCevap": "dem",
+      "aciklama": "'von' edatı Dativ ister; 'der Bahnsteig' eril, Dativ'de 'dem Bahnsteig' olur.",
+      "zorlukSeviyesi": "orta"
+    },
+    {
+      "id": "t05-g003",
+      "konu": "Satz.Nebensatz.weil-da",
+      "sprachhandlung": ["Informationsaustausch"],
+      "soru": "Ich nehme den Bus, ___ die Bahn heute Verspätung hat.",
+      "secenekler": ["weil", "obwohl", "damit", "bevor"],
+      "dogruCevap": "weil",
+      "aciklama": "Neden belirtmek için 'weil' kullanılır; fiil cümle sonuna gider.",
+      "zorlukSeviyesi": "leicht"
+    }
+  ],
+  "lesen": {
+    "metin": "Frau Krüger fährt jeden Tag mit dem Zug zur Arbeit. Heute hat der Zug 20 Minuten Verspätung, weil es auf der Strecke technische Probleme gibt. Sie muss deshalb in Köln umsteigen und einen anderen Zug nehmen. Zum Glück hat sie eine App, die ihr den aktuellen Fahrplan zeigt.",
+    "sorular": [
+      { "id": "t05-l001", "soru": "Warum hat der Zug heute Verspätung?", "cevapTipi": "acikUclu" },
+      { "id": "t05-l002", "soru": "Was macht Frau Krüger deshalb?", "cevapTipi": "acikUclu" }
+    ]
+  },
+  "hoeren": {
+    "sesUrl": "assets/audio/t05-h001.mp3",
+    "sesKaynagi": "kayit",
+    "transkript": "Durchsage: Der ICE nach Berlin fährt heute von Bahnsteig sieben ab, nicht von Bahnsteig drei. Fahrgast: Entschuldigung, muss ich für diesen Zug umsteigen? Bahnmitarbeiter: Nein, dieser Zug fährt direkt bis Berlin.",
+    "sorular": [
+      {
+        "id": "t05-h001",
+        "soru": "Von welchem Bahnsteig fährt der Zug ab?",
+        "secenekler": ["Bahnsteig drei", "Bahnsteig fünf", "Bahnsteig sieben", "Bahnsteig neun"],
+        "dogruCevap": "Bahnsteig sieben"
+      },
+      {
+        "id": "t05-h002",
+        "soru": "Muss der Fahrgast umsteigen?",
+        "secenekler": ["Ja, einmal", "Ja, zweimal", "Nein, der Zug fährt direkt", "Das ist nicht klar"],
+        "dogruCevap": "Nein, der Zug fährt direkt"
+      }
+    ]
+  },
+  "schreiben": {
+    "gorev": "Ihr Zug hatte gestern eine Stunde Verspätung und Sie haben einen wichtigen Termin verpasst. Schreiben Sie eine Beschwerde-E-Mail an die Bahngesellschaft.",
+    "register": "formell",
+    "sprachhandlung": ["Handlungsregulierung", "Realisierung von Gefühlen/Haltungen/Meinungen"],
+    "leitpunkte": [
+      "Beschreiben Sie, was passiert ist",
+      "Schreiben Sie, welchen Termin Sie verpasst haben",
+      "Sagen Sie, was Sie erwarten (z. B. Entschädigung)",
+      "Fragen Sie nach dem weiteren Vorgehen"
+    ],
+    "minKelime": 40,
+    "maxKelime": 80
+  },
+  "sprechen": {
+    "teil1FollowUp": { "frage": "Wie kommen Sie normalerweise zur Arbeit oder zum Deutschkurs?", "sprachhandlung": ["Informationsaustausch"] },
+    "teil2": {
+      "fotoUrl": "assets/fotos/tema05-mobilitaet.jpg",
+      "beschreibungsPrompt": "Was sehen Sie auf dem Foto?",
+      "vergleichsPrompt": "Wie ist der öffentliche Verkehr in Ihrem Heimatland?",
+      "sprachhandlung": ["Informationsaustausch", "Umgang mit interkultureller Begegnung"]
+    },
+    "teil3": {
+      "szenario": "Sie und Ihr Partner planen eine gemeinsame Reise mit dem Zug. Einigen Sie sich auf Reisetag und Verbindung.",
+      "sprachhandlung": ["Handlungsregulierung"],
+      "modus": "eşli-veya-simule",
+      "cevapTipi": "yaziliCevap"
+    }
+  },
+  "miniTest": { "soruIdListesi": ["t05-g001", "t05-g002", "t05-h001", "t05-h002"] }
+}

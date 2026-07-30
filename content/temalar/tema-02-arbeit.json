@@ -1,0 +1,101 @@
+{
+  "temaId": "tema-02-arbeit",
+  "temaNo": 2,
+  "baslik": "Arbeit",
+  "handlungsfeld": "Arbeit",
+  "kaynakEslesmeleri": [],
+  "kelime": [
+    { "id": "t02-w001", "de": "der Kollege / die Kollegin", "tr": "meslektaş", "beispiel": "Meine Kollegin hilft mir bei der neuen Aufgabe.", "kategori": "Nomen", "zorlukSeviyesi": "leicht" },
+    { "id": "t02-w002", "de": "die Überstunde", "tr": "fazla mesai", "beispiel": "Ich habe diese Woche viele Überstunden gemacht.", "kategori": "Nomen", "zorlukSeviyesi": "orta" },
+    { "id": "t02-w003", "de": "der/die Vorgesetzte", "tr": "amir", "beispiel": "Ich muss mit meiner Vorgesetzten sprechen.", "kategori": "Nomen", "zorlukSeviyesi": "orta" },
+    { "id": "t02-w004", "de": "die Beförderung", "tr": "terfi", "beispiel": "Nach zwei Jahren hat sie eine Beförderung bekommen.", "kategori": "Nomen", "zorlukSeviyesi": "schwer" },
+    { "id": "t02-w005", "de": "der Feierabend", "tr": "mesai bitişi", "beispiel": "Nach Feierabend gehe ich immer joggen.", "kategori": "Nomen", "zorlukSeviyesi": "leicht" }
+  ],
+  "gramer": [
+    {
+      "id": "t02-g001",
+      "konu": "Adjektiv.praedikativ",
+      "sprachhandlung": ["Realisierung von Gefühlen/Haltungen/Meinungen"],
+      "soru": "Die Arbeit ist heute besonders ___.",
+      "secenekler": ["anstrengend", "anstrengende", "anstrengender", "anstrengendes"],
+      "dogruCevap": "anstrengend",
+      "aciklama": "Yüklem konumundaki (praedikativ) sıfat çekim eki almaz: 'ist anstrengend'.",
+      "zorlukSeviyesi": "orta"
+    },
+    {
+      "id": "t02-g002",
+      "konu": "Nomen.Kasus.Genitiv",
+      "sprachhandlung": ["Informationsaustausch"],
+      "soru": "Das Büro ___ Chefs ist im dritten Stock.",
+      "secenekler": ["der", "des", "dem", "den"],
+      "dogruCevap": "des",
+      "aciklama": "Eril isimlerde Genitiv artikeli 'des' olur: 'des Chefs'.",
+      "zorlukSeviyesi": "orta"
+    },
+    {
+      "id": "t02-g003",
+      "konu": "Satz.Relativsatz",
+      "sprachhandlung": ["Informationsaustausch"],
+      "soru": "Der Kollege, ___ mir geholfen hat, ist sehr nett.",
+      "secenekler": ["der", "die", "das", "den"],
+      "dogruCevap": "der",
+      "aciklama": "'der Kollege' eril; ilgi cümlesinde özne olduğu için Nominativ 'der' kullanılır.",
+      "zorlukSeviyesi": "schwer"
+    }
+  ],
+  "lesen": {
+    "metin": "Herr Aydın arbeitet als Verkäufer in einem Elektronikgeschäft. Er beginnt um acht Uhr und macht um zwölf Uhr eine Mittagspause. Sein Chef hat ihm gesagt, dass er nächste Woche mehr Verantwortung bekommt. Herr Aydın freut sich über die neue Aufgabe, auch wenn sie mit mehr Stress verbunden ist.",
+    "sorular": [
+      { "id": "t02-l001", "soru": "Als was arbeitet Herr Aydın?", "cevapTipi": "acikUclu" },
+      { "id": "t02-l002", "soru": "Was hat der Chef ihm gesagt?", "cevapTipi": "acikUclu" }
+    ]
+  },
+  "hoeren": {
+    "sesUrl": "assets/audio/t02-h001.mp3",
+    "sesKaynagi": "kayit",
+    "transkript": "Kollegin: Kannst du mir helfen, das Meeting vorzubereiten? Kollege: Klar, wann soll es stattfinden? Kollegin: Am Donnerstag um zehn Uhr, im großen Besprechungsraum. Kollege: Gut, ich schicke gleich eine Einladung an das Team.",
+    "sorular": [
+      {
+        "id": "t02-h001",
+        "soru": "Wer soll dem Team eine Einladung schicken?",
+        "secenekler": ["Die Chefin", "Der Kollege", "Die Kollegin", "Der Kunde"],
+        "dogruCevap": "Der Kollege"
+      },
+      {
+        "id": "t02-h002",
+        "soru": "Wann findet das Meeting statt?",
+        "secenekler": ["Montag um zehn", "Donnerstag um zehn", "Donnerstag um zwölf", "Freitag um neun"],
+        "dogruCevap": "Donnerstag um zehn"
+      }
+    ]
+  },
+  "schreiben": {
+    "gorev": "Sie können morgen nicht pünktlich zur Arbeit kommen, weil Ihr Kind krank ist. Schreiben Sie eine E-Mail an Ihren Vorgesetzten.",
+    "register": "formell",
+    "sprachhandlung": ["Handlungsregulierung", "Informationsaustausch"],
+    "leitpunkte": [
+      "Sagen Sie, warum Sie später kommen",
+      "Schreiben Sie, wann Sie ungefähr da sein können",
+      "Fragen Sie, ob es ein Problem gibt",
+      "Bieten Sie an, die Zeit nachzuarbeiten"
+    ],
+    "minKelime": 40,
+    "maxKelime": 80
+  },
+  "sprechen": {
+    "teil1FollowUp": { "frage": "Was machen Sie beruflich?", "sprachhandlung": ["Informationsaustausch"] },
+    "teil2": {
+      "fotoUrl": "assets/fotos/tema02-arbeit.jpg",
+      "beschreibungsPrompt": "Was sehen Sie auf dem Foto?",
+      "vergleichsPrompt": "Wie ist die Arbeitskultur in Ihrem Heimatland?",
+      "sprachhandlung": ["Informationsaustausch", "Umgang mit interkultureller Begegnung"]
+    },
+    "teil3": {
+      "szenario": "Sie und ein Kollege müssen die Aufgaben für ein gemeinsames Projekt aufteilen. Einigen Sie sich, wer was macht.",
+      "sprachhandlung": ["Handlungsregulierung"],
+      "modus": "eşli-veya-simule",
+      "cevapTipi": "yaziliCevap"
+    }
+  },
+  "miniTest": { "soruIdListesi": ["t02-g001", "t02-g002", "t02-h001", "t02-h002"] }
+}

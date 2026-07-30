@@ -1,4 +1,4 @@
-const CACHE_NAME = "dtz-b1-trainer-v3";
+const CACHE_NAME = "dtz-b1-trainer-v4";
 const APP_SHELL = [
   "./",
   "./index.html",
@@ -10,8 +10,16 @@ const APP_SHELL = [
   "./js/study-modes/tema-modu.js",
   "./js/study-modes/zayif-konular-modu.js",
   "./content/temalar/tema-01-wohnen.json",
+  "./content/temalar/tema-02-arbeit.json",
+  "./content/temalar/tema-03-arbeitssuche.json",
+  "./content/temalar/tema-04-mediennutzung.json",
+  "./content/temalar/tema-05-mobilitaet.json",
   "./content/temalar/tema-06-gesundheit.json",
+  "./content/temalar/tema-07-ausbildung.json",
+  "./content/temalar/tema-08-kinderbetreuung.json",
   "./content/temalar/tema-09-einkaufen.json",
+  "./content/temalar/tema-10-behoerden.json",
+  "./content/temalar/tema-11-banken.json",
 ];
 
 self.addEventListener("install", (event) => {

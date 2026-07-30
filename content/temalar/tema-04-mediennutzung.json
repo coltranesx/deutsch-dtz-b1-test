@@ -1,0 +1,101 @@
+{
+  "temaId": "tema-04-mediennutzung",
+  "temaNo": 4,
+  "baslik": "Mediennutzung",
+  "handlungsfeld": "Mediennutzung",
+  "kaynakEslesmeleri": [],
+  "kelime": [
+    { "id": "t04-w001", "de": "die Nachrichten (Pl.)", "tr": "haberler", "beispiel": "Ich sehe jeden Abend die Nachrichten.", "kategori": "Nomen", "zorlukSeviyesi": "leicht" },
+    { "id": "t04-w002", "de": "das Passwort", "tr": "şifre", "beispiel": "Ich habe mein Passwort vergessen.", "kategori": "Nomen", "zorlukSeviyesi": "leicht" },
+    { "id": "t04-w003", "de": "herunterladen", "tr": "indirmek", "beispiel": "Kannst du mir die App herunterladen?", "kategori": "Verb", "zorlukSeviyesi": "orta" },
+    { "id": "t04-w004", "de": "die Werbung", "tr": "reklam", "beispiel": "Diese Werbung sehe ich ständig im Internet.", "kategori": "Nomen", "zorlukSeviyesi": "orta" },
+    { "id": "t04-w005", "de": "der Anhang", "tr": "ek (e-posta)", "beispiel": "Bitte öffnen Sie den Anhang in der E-Mail.", "kategori": "Nomen", "zorlukSeviyesi": "schwer" }
+  ],
+  "gramer": [
+    {
+      "id": "t04-g001",
+      "konu": "Verb.Wortbildung",
+      "sprachhandlung": ["Informationsaustausch"],
+      "soru": "Ich möchte die Datei jetzt ___.",
+      "secenekler": ["herunterladen", "herunterzuladen", "heruntergeladen", "herunterlade"],
+      "dogruCevap": "herunterladen",
+      "aciklama": "'möchte' modal fiili sonrası infinitiv 'zu' almadan kullanılır: 'möchte herunterladen'.",
+      "zorlukSeviyesi": "orta"
+    },
+    {
+      "id": "t04-g002",
+      "konu": "Artikelwörter/Pronomen.Indefinitpronomen",
+      "sprachhandlung": ["Realisierung von Gefühlen/Haltungen/Meinungen"],
+      "soru": "___ hat mir eine merkwürdige E-Mail geschickt.",
+      "secenekler": ["jemand", "niemand", "etwas", "alles"],
+      "dogruCevap": "jemand",
+      "aciklama": "Bilinmeyen bir kişiyi belirtirken 'jemand' (birisi) kullanılır.",
+      "zorlukSeviyesi": "orta"
+    },
+    {
+      "id": "t04-g003",
+      "konu": "Präposition.lokal",
+      "sprachhandlung": ["Informationsaustausch"],
+      "soru": "Ich informiere mich meistens ___ Internet.",
+      "secenekler": ["im", "in", "am", "ins"],
+      "dogruCevap": "im",
+      "aciklama": "'im' = 'in dem'; 'im Internet' kalıp bir ifadedir.",
+      "zorlukSeviyesi": "leicht"
+    }
+  ],
+  "lesen": {
+    "metin": "Herr Schulz liest jeden Morgen die Nachrichten auf seinem Handy. Er nutzt auch eine App, um Nachrichten aus seinem Heimatland zu lesen. Manchmal bekommt er E-Mails mit verdächtigen Anhängen und öffnet sie nicht. Seine Tochter hat ihm erklärt, wie er sein Passwort sicherer machen kann.",
+    "sorular": [
+      { "id": "t04-l001", "soru": "Was liest Herr Schulz jeden Morgen?", "cevapTipi": "acikUclu" },
+      { "id": "t04-l002", "soru": "Was hat seine Tochter ihm erklärt?", "cevapTipi": "acikUclu" }
+    ]
+  },
+  "hoeren": {
+    "sesUrl": "assets/audio/t04-h001.mp3",
+    "sesKaynagi": "kayit",
+    "transkript": "Sohn: Papa, kannst du mir helfen, die neue App herunterzuladen? Vater: Klar, wie heißt die App denn? Sohn: Sie heißt StudyHelfer und hilft mir beim Deutschlernen. Vater: Gut, gib mir dein Handy, ich lade sie gleich herunter.",
+    "sorular": [
+      {
+        "id": "t04-h001",
+        "soru": "Was möchte der Sohn herunterladen?",
+        "secenekler": ["Ein Spiel", "Eine Lern-App", "Eine Foto-App", "Eine Musik-App"],
+        "dogruCevap": "Eine Lern-App"
+      },
+      {
+        "id": "t04-h002",
+        "soru": "Wer hilft beim Herunterladen?",
+        "secenekler": ["Die Mutter", "Der Vater", "Der Lehrer", "Die Schwester"],
+        "dogruCevap": "Der Vater"
+      }
+    ]
+  },
+  "schreiben": {
+    "gorev": "Ihr Internet funktioniert seit zwei Tagen nicht richtig. Schreiben Sie eine E-Mail an den Kundenservice Ihres Internetanbieters.",
+    "register": "halbformell",
+    "sprachhandlung": ["Handlungsregulierung", "Informationsaustausch"],
+    "leitpunkte": [
+      "Beschreiben Sie das Problem",
+      "Schreiben Sie, seit wann es besteht",
+      "Sagen Sie, was Sie schon versucht haben",
+      "Fragen Sie, wann jemand vorbeikommen kann"
+    ],
+    "minKelime": 40,
+    "maxKelime": 80
+  },
+  "sprechen": {
+    "teil1FollowUp": { "frage": "Welche Medien nutzen Sie am häufigsten?", "sprachhandlung": ["Informationsaustausch"] },
+    "teil2": {
+      "fotoUrl": "assets/fotos/tema04-mediennutzung.jpg",
+      "beschreibungsPrompt": "Was sehen Sie auf dem Foto?",
+      "vergleichsPrompt": "Welche Medien sind in Ihrem Heimatland beliebt?",
+      "sprachhandlung": ["Informationsaustausch", "Umgang mit interkultureller Begegnung"]
+    },
+    "teil3": {
+      "szenario": "Sie und Ihr Partner möchten gemeinsam einen neuen Internetanbieter auswählen. Einigen Sie sich auf ein Angebot.",
+      "sprachhandlung": ["Handlungsregulierung"],
+      "modus": "eşli-veya-simule",
+      "cevapTipi": "yaziliCevap"
+    }
+  },
+  "miniTest": { "soruIdListesi": ["t04-g001", "t04-g002", "t04-h001", "t04-h002"] }
+}

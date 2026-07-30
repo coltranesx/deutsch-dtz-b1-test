@@ -1,0 +1,101 @@
+{
+  "temaId": "tema-08-kinderbetreuung",
+  "temaNo": 8,
+  "baslik": "Betreuung und Ausbildung der Kinder",
+  "handlungsfeld": "Betreuung und Ausbildung der Kinder / Unterricht",
+  "kaynakEslesmeleri": [],
+  "kelime": [
+    { "id": "t08-w001", "de": "der Kindergarten", "tr": "anaokulu", "beispiel": "Mein Sohn geht seit einem Jahr in den Kindergarten.", "kategori": "Nomen", "zorlukSeviyesi": "leicht" },
+    { "id": "t08-w002", "de": "die Hausaufgabe", "tr": "ev ödevi", "beispiel": "Meine Tochter macht gerade ihre Hausaufgaben.", "kategori": "Nomen", "zorlukSeviyesi": "leicht" },
+    { "id": "t08-w003", "de": "der Elternabend", "tr": "veli toplantısı", "beispiel": "Der Elternabend ist am Mittwoch um 18 Uhr.", "kategori": "Nomen", "zorlukSeviyesi": "orta" },
+    { "id": "t08-w004", "de": "betreuen", "tr": "bakmak / gözetmek", "beispiel": "Meine Nachbarin betreut mein Kind am Nachmittag.", "kategori": "Verb", "zorlukSeviyesi": "orta" },
+    { "id": "t08-w005", "de": "die Klassenlehrerin", "tr": "sınıf öğretmeni", "beispiel": "Die Klassenlehrerin hat mich angerufen.", "kategori": "Nomen", "zorlukSeviyesi": "schwer" }
+  ],
+  "gramer": [
+    {
+      "id": "t08-g001",
+      "konu": "Nomen.Kasus.Akkusativ",
+      "sprachhandlung": ["Informationsaustausch"],
+      "soru": "Ich hole ___ Sohn um vier Uhr vom Kindergarten ab.",
+      "secenekler": ["der", "den", "dem", "des"],
+      "dogruCevap": "den",
+      "aciklama": "'abholen' fiili Akkusativ ister; 'der Sohn' eril, Akkusativ'de 'den Sohn' olur.",
+      "zorlukSeviyesi": "orta"
+    },
+    {
+      "id": "t08-g002",
+      "konu": "Adjektiv.attributiv",
+      "sprachhandlung": ["Realisierung von Gefühlen/Haltungen/Meinungen"],
+      "soru": "Meine Tochter hat eine ___ Lehrerin.",
+      "secenekler": ["nette", "nett", "netten", "netter"],
+      "dogruCevap": "nette",
+      "aciklama": "Belirsiz artikel 'eine' sonrası dişil Nominativ sıfat çekimi '-e' alır: 'eine nette Lehrerin'.",
+      "zorlukSeviyesi": "orta"
+    },
+    {
+      "id": "t08-g003",
+      "konu": "Satz.Nebensatz.weil-da",
+      "sprachhandlung": ["Informationsaustausch"],
+      "soru": "Ich gehe zum Elternabend, ___ ich mehr über die Schule erfahren möchte.",
+      "secenekler": ["weil", "obwohl", "damit", "wenn"],
+      "dogruCevap": "weil",
+      "aciklama": "Neden belirtmek için 'weil' kullanılır; fiil cümle sonuna gider.",
+      "zorlukSeviyesi": "leicht"
+    }
+  ],
+  "lesen": {
+    "metin": "Frau Aksoy bringt ihren Sohn jeden Morgen in den Kindergarten und holt ihn um vier Uhr wieder ab. Am Mittwoch findet ein Elternabend in der Schule ihrer älteren Tochter statt. Die Klassenlehrerin möchte über die Hausaufgaben und die Leistungen der Kinder sprechen. Frau Aksoy freut sich, mehr über den Schulalltag ihrer Tochter zu erfahren.",
+    "sorular": [
+      { "id": "t08-l001", "soru": "Wann holt Frau Aksoy ihren Sohn vom Kindergarten ab?", "cevapTipi": "acikUclu" },
+      { "id": "t08-l002", "soru": "Worüber möchte die Klassenlehrerin sprechen?", "cevapTipi": "acikUclu" }
+    ]
+  },
+  "hoeren": {
+    "sesUrl": "assets/audio/t08-h001.mp3",
+    "sesKaynagi": "kayit",
+    "transkript": "Erzieherin: Guten Tag Frau Aksoy, Ihr Sohn hat heute gut mitgespielt. Mutter: Das freut mich zu hören. Hat er auch gegessen? Erzieherin: Ja, er hat das ganze Mittagessen aufgegessen. Mutter: Wunderbar, dann bis morgen.",
+    "sorular": [
+      {
+        "id": "t08-h001",
+        "soru": "Wer spricht mit Frau Aksoy?",
+        "secenekler": ["Die Lehrerin", "Die Erzieherin", "Die Ärztin", "Die Nachbarin"],
+        "dogruCevap": "Die Erzieherin"
+      },
+      {
+        "id": "t08-h002",
+        "soru": "Hat der Sohn gegessen?",
+        "secenekler": ["Nein, gar nicht", "Nur ein bisschen", "Ja, alles", "Das ist nicht klar"],
+        "dogruCevap": "Ja, alles"
+      }
+    ]
+  },
+  "schreiben": {
+    "gorev": "Sie können nicht zum Elternabend kommen und möchten sich entschuldigen. Schreiben Sie eine E-Mail an die Klassenlehrerin.",
+    "register": "halbformell",
+    "sprachhandlung": ["Handlungsregulierung", "Informationsaustausch"],
+    "leitpunkte": [
+      "Entschuldigen Sie sich, dass Sie nicht kommen können",
+      "Nennen Sie den Grund",
+      "Fragen Sie, ob es wichtige Informationen gab",
+      "Bieten Sie ein anderes Gespräch an"
+    ],
+    "minKelime": 40,
+    "maxKelime": 80
+  },
+  "sprechen": {
+    "teil1FollowUp": { "frage": "Haben Sie Kinder oder betreuen Sie manchmal Kinder?", "sprachhandlung": ["Informationsaustausch"] },
+    "teil2": {
+      "fotoUrl": "assets/fotos/tema08-kinderbetreuung.jpg",
+      "beschreibungsPrompt": "Was sehen Sie auf dem Foto?",
+      "vergleichsPrompt": "Wie ist die Kinderbetreuung in Ihrem Heimatland organisiert?",
+      "sprachhandlung": ["Informationsaustausch", "Umgang mit interkultureller Begegnung"]
+    },
+    "teil3": {
+      "szenario": "Sie und Ihr Partner müssen sich abwechseln, wer die Kinder von der Schule abholt. Einigen Sie sich auf einen Plan.",
+      "sprachhandlung": ["Handlungsregulierung"],
+      "modus": "eşli-veya-simule",
+      "cevapTipi": "yaziliCevap"
+    }
+  },
+  "miniTest": { "soruIdListesi": ["t08-g001", "t08-g002", "t08-h001", "t08-h002"] }
+}

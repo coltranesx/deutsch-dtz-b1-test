@@ -1,0 +1,101 @@
+{
+  "temaId": "tema-11-banken",
+  "temaNo": 11,
+  "baslik": "Banken und Versicherungen",
+  "handlungsfeld": "Banken und Versicherungen",
+  "kaynakEslesmeleri": [],
+  "kelime": [
+    { "id": "t11-w001", "de": "das Konto", "tr": "hesap", "beispiel": "Ich möchte ein neues Konto eröffnen.", "kategori": "Nomen", "zorlukSeviyesi": "leicht" },
+    { "id": "t11-w002", "de": "überweisen", "tr": "havale etmek", "beispiel": "Ich muss die Miete auf das Konto überweisen.", "kategori": "Verb", "zorlukSeviyesi": "orta" },
+    { "id": "t11-w003", "de": "die Versicherung", "tr": "sigorta", "beispiel": "Meine Versicherung zahlt die Reparatur.", "kategori": "Nomen", "zorlukSeviyesi": "orta" },
+    { "id": "t11-w004", "de": "der Vertrag", "tr": "sözleşme", "beispiel": "Ich habe den Vertrag noch nicht unterschrieben.", "kategori": "Nomen", "zorlukSeviyesi": "schwer" },
+    { "id": "t11-w005", "de": "die Gebühr", "tr": "ücret", "beispiel": "Die Bank verlangt eine monatliche Gebühr.", "kategori": "Nomen", "zorlukSeviyesi": "schwer" }
+  ],
+  "gramer": [
+    {
+      "id": "t11-g001",
+      "konu": "Verb.Wortbildung",
+      "sprachhandlung": ["Informationsaustausch"],
+      "soru": "Ich möchte Geld ___.",
+      "secenekler": ["überweisen", "überzuweisen", "überwiesen", "überweise"],
+      "dogruCevap": "überweisen",
+      "aciklama": "'möchte' modal fiili sonrası infinitiv 'zu' almadan kullanılır: 'möchte überweisen'.",
+      "zorlukSeviyesi": "orta"
+    },
+    {
+      "id": "t11-g002",
+      "konu": "Nomen.Kasus.Akkusativ",
+      "sprachhandlung": ["Handlungsregulierung"],
+      "soru": "Ich unterschreibe ___ Vertrag heute.",
+      "secenekler": ["der", "den", "dem", "des"],
+      "dogruCevap": "den",
+      "aciklama": "'unterschreiben' fiili Akkusativ ister; 'der Vertrag' eril, Akkusativ'de 'den Vertrag' olur.",
+      "zorlukSeviyesi": "orta"
+    },
+    {
+      "id": "t11-g003",
+      "konu": "Satz.Nebensatz.weil-da",
+      "sprachhandlung": ["Realisierung von Gefühlen/Haltungen/Meinungen"],
+      "soru": "Ich wechsle die Bank, ___ die Gebühren zu hoch sind.",
+      "secenekler": ["weil", "obwohl", "damit", "bevor"],
+      "dogruCevap": "weil",
+      "aciklama": "Neden belirtmek için 'weil' kullanılır; fiil cümle sonuna gider.",
+      "zorlukSeviyesi": "leicht"
+    }
+  ],
+  "lesen": {
+    "metin": "Frau Petrova möchte ein neues Bankkonto eröffnen, weil ihre jetzige Bank hohe Gebühren verlangt. Sie hat online mehrere Angebote verglichen und eine Bank ohne monatliche Kontogebühr gefunden. Bevor sie den Vertrag unterschreibt, möchte sie noch mit einem Berater sprechen. Sie hat dafür einen Termin für morgen vereinbart.",
+    "sorular": [
+      { "id": "t11-l001", "soru": "Warum möchte Frau Petrova die Bank wechseln?", "cevapTipi": "acikUclu" },
+      { "id": "t11-l002", "soru": "Was möchte sie vor der Unterschrift noch tun?", "cevapTipi": "acikUclu" }
+    ]
+  },
+  "hoeren": {
+    "sesUrl": "assets/audio/t11-h001.mp3",
+    "sesKaynagi": "kayit",
+    "transkript": "Berater: Guten Tag, wie kann ich Ihnen helfen? Kundin: Ich möchte ein Konto eröffnen und wissen, welche Versicherungen Sie anbieten. Berater: Wir haben eine Haftpflichtversicherung und eine Hausratversicherung im Angebot. Kundin: Interessant, können Sie mir die Kosten erklären?",
+    "sorular": [
+      {
+        "id": "t11-h001",
+        "soru": "Was möchte die Kundin eröffnen?",
+        "secenekler": ["Einen Sparplan", "Ein Konto", "Einen Kredit", "Eine Kreditkarte"],
+        "dogruCevap": "Ein Konto"
+      },
+      {
+        "id": "t11-h002",
+        "soru": "Welche Versicherungen bietet die Bank an?",
+        "secenekler": ["Nur Haftpflichtversicherung", "Nur Hausratversicherung", "Haftpflicht- und Hausratversicherung", "Keine Versicherungen"],
+        "dogruCevap": "Haftpflicht- und Hausratversicherung"
+      }
+    ]
+  },
+  "schreiben": {
+    "gorev": "Auf Ihrem Kontoauszug finden Sie eine Abbuchung, die Sie nicht erkennen. Schreiben Sie eine E-Mail an Ihre Bank.",
+    "register": "formell",
+    "sprachhandlung": ["Informationsaustausch", "Handlungsregulierung"],
+    "leitpunkte": [
+      "Beschreiben Sie die Abbuchung",
+      "Schreiben Sie, wann Sie sie bemerkt haben",
+      "Sagen Sie, dass Sie die Abbuchung nicht erkennen",
+      "Fragen Sie, wie es weitergeht"
+    ],
+    "minKelime": 40,
+    "maxKelime": 80
+  },
+  "sprechen": {
+    "teil1FollowUp": { "frage": "Haben Sie ein Bankkonto in Deutschland?", "sprachhandlung": ["Informationsaustausch"] },
+    "teil2": {
+      "fotoUrl": "assets/fotos/tema11-banken.jpg",
+      "beschreibungsPrompt": "Was sehen Sie auf dem Foto?",
+      "vergleichsPrompt": "Wie funktionieren Banken in Ihrem Heimatland?",
+      "sprachhandlung": ["Informationsaustausch", "Umgang mit interkultureller Begegnung"]
+    },
+    "teil3": {
+      "szenario": "Sie und Ihr Partner möchten gemeinsam eine Versicherung abschließen. Einigen Sie sich, welche Versicherung Sie brauchen.",
+      "sprachhandlung": ["Handlungsregulierung"],
+      "modus": "eşli-veya-simule",
+      "cevapTipi": "yaziliCevap"
+    }
+  },
+  "miniTest": { "soruIdListesi": ["t11-g001", "t11-g002", "t11-h001", "t11-h002"] }
+}

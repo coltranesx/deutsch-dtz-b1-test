@@ -1,7 +1,15 @@
 const TEMALAR = [
   { id: "tema-01-wohnen", file: "content/temalar/tema-01-wohnen.json" },
+  { id: "tema-02-arbeit", file: "content/temalar/tema-02-arbeit.json" },
+  { id: "tema-03-arbeitssuche", file: "content/temalar/tema-03-arbeitssuche.json" },
+  { id: "tema-04-mediennutzung", file: "content/temalar/tema-04-mediennutzung.json" },
+  { id: "tema-05-mobilitaet", file: "content/temalar/tema-05-mobilitaet.json" },
   { id: "tema-06-gesundheit", file: "content/temalar/tema-06-gesundheit.json" },
+  { id: "tema-07-ausbildung", file: "content/temalar/tema-07-ausbildung.json" },
+  { id: "tema-08-kinderbetreuung", file: "content/temalar/tema-08-kinderbetreuung.json" },
   { id: "tema-09-einkaufen", file: "content/temalar/tema-09-einkaufen.json" },
+  { id: "tema-10-behoerden", file: "content/temalar/tema-10-behoerden.json" },
+  { id: "tema-11-banken", file: "content/temalar/tema-11-banken.json" },
 ];
 
 const App = (() => {

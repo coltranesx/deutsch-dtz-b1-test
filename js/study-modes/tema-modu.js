@@ -175,12 +175,22 @@ const TemaModu = (() => {
     h.textContent = "Hören";
     wrap.appendChild(h);
 
+    const audioMissingNote = document.createElement("p");
+    audioMissingNote.className = "feedback";
+    audioMissingNote.textContent = "Bu tema için ses kaydı henüz hazır değil, aşağıdaki metni okuyarak soruları cevaplayın.";
+    audioMissingNote.style.display = "none";
+
     if (tema.hoeren.sesUrl) {
       const audio = document.createElement("audio");
       audio.controls = true;
       audio.style.width = "100%";
+      audio.addEventListener("error", () => {
+        audio.remove();
+        audioMissingNote.style.display = "block";
+      });
       audio.src = tema.hoeren.sesUrl;
       wrap.appendChild(audio);
+      wrap.appendChild(audioMissingNote);
     }
 
     if (tema.hoeren.transkript) {
@@ -268,9 +278,10 @@ const TemaModu = (() => {
     teil2.innerHTML = `<div class="question-text">Teil 2</div>`;
     if (s.teil2.fotoUrl) {
       const foto = document.createElement("img");
-      foto.src = s.teil2.fotoUrl;
       foto.alt = "Sprechen Teil 2 fotoğrafı";
       foto.className = "sprechen-foto";
+      foto.addEventListener("error", () => foto.remove());
+      foto.src = s.teil2.fotoUrl;
       teil2.appendChild(foto);
     }
     const teil2Prompt = document.createElement("p");

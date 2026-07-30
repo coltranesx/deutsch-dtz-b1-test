@@ -1,0 +1,101 @@
+{
+  "temaId": "tema-07-ausbildung",
+  "temaNo": 7,
+  "baslik": "Aus- und Weiterbildung",
+  "handlungsfeld": "Aus- und Weiterbildung",
+  "kaynakEslesmeleri": [],
+  "kelime": [
+    { "id": "t07-w001", "de": "der Kurs", "tr": "kurs", "beispiel": "Ich besuche einen Deutschkurs am Vormittag.", "kategori": "Nomen", "zorlukSeviyesi": "leicht" },
+    { "id": "t07-w002", "de": "die Prüfung", "tr": "sınav", "beispiel": "Die Prüfung findet nächste Woche statt.", "kategori": "Nomen", "zorlukSeviyesi": "orta" },
+    { "id": "t07-w003", "de": "das Zeugnis", "tr": "karne / sertifika", "beispiel": "Ich brauche mein Zeugnis für die Bewerbung.", "kategori": "Nomen", "zorlukSeviyesi": "schwer" },
+    { "id": "t07-w004", "de": "sich anmelden", "tr": "kayıt olmak", "beispiel": "Ich möchte mich für den Kurs anmelden.", "kategori": "Verb", "zorlukSeviyesi": "orta" },
+    { "id": "t07-w005", "de": "die Teilnahme", "tr": "katılım", "beispiel": "Die Teilnahme am Kurs ist kostenlos.", "kategori": "Nomen", "zorlukSeviyesi": "schwer" }
+  ],
+  "gramer": [
+    {
+      "id": "t07-g001",
+      "konu": "Verb.Wortbildung",
+      "sprachhandlung": ["Informationsaustausch"],
+      "soru": "Ich möchte mich für den Kurs ___.",
+      "secenekler": ["anmelden", "anzumelden", "angemeldet", "anmelde"],
+      "dogruCevap": "anmelden",
+      "aciklama": "'möchte' modal fiili sonrası infinitiv 'zu' almadan kullanılır: 'möchte anmelden'.",
+      "zorlukSeviyesi": "orta"
+    },
+    {
+      "id": "t07-g002",
+      "konu": "Nomen.Kasus.Dativ",
+      "sprachhandlung": ["Informationsaustausch"],
+      "soru": "Ich brauche Hilfe bei ___ Prüfungsvorbereitung.",
+      "secenekler": ["die", "der", "den", "dem"],
+      "dogruCevap": "der",
+      "aciklama": "'bei' edatı Dativ ister; 'die Prüfungsvorbereitung' dişil, Dativ'de 'der Prüfungsvorbereitung' olur.",
+      "zorlukSeviyesi": "orta"
+    },
+    {
+      "id": "t07-g003",
+      "konu": "Satz.Infinitivsatz",
+      "sprachhandlung": ["Realisierung von Gefühlen/Haltungen/Meinungen"],
+      "soru": "Es ist wichtig, jeden Tag ___.",
+      "secenekler": ["zu üben", "üben", "geübt", "übend"],
+      "dogruCevap": "zu üben",
+      "aciklama": "'Es ist wichtig, ...' kalıbından sonra 'zu' + infinitiv kullanılır.",
+      "zorlukSeviyesi": "schwer"
+    }
+  ],
+  "lesen": {
+    "metin": "Herr Nowak möchte seine Deutschkenntnisse verbessern und hat sich für einen B1-Kurs angemeldet. Der Kurs findet dreimal pro Woche am Abend statt. Am Ende des Kurses gibt es eine Prüfung, und wer sie besteht, bekommt ein Zeugnis. Herr Nowak hofft, dass das Zeugnis ihm bei der Arbeitssuche hilft.",
+    "sorular": [
+      { "id": "t07-l001", "soru": "Wie oft findet der Kurs statt?", "cevapTipi": "acikUclu" },
+      { "id": "t07-l002", "soru": "Warum ist das Zeugnis für Herrn Nowak wichtig?", "cevapTipi": "acikUclu" }
+    ]
+  },
+  "hoeren": {
+    "sesUrl": "assets/audio/t07-h001.mp3",
+    "sesKaynagi": "kayit",
+    "transkript": "Interessentin: Guten Tag, ich hätte gerne Informationen zum B1-Kurs. Sekretärin: Der Kurs beginnt am ersten März und findet dienstags und donnerstags statt. Interessentin: Wie lange dauert der Kurs insgesamt? Sekretärin: Er dauert zwölf Wochen.",
+    "sorular": [
+      {
+        "id": "t07-h001",
+        "soru": "An welchen Tagen findet der Kurs statt?",
+        "secenekler": ["Montags und Mittwochs", "Dienstags und Donnerstags", "Mittwochs und Freitags", "Samstags und Sonntags"],
+        "dogruCevap": "Dienstags und Donnerstags"
+      },
+      {
+        "id": "t07-h002",
+        "soru": "Wie lange dauert der Kurs?",
+        "secenekler": ["Vier Wochen", "Acht Wochen", "Zwölf Wochen", "Sechzehn Wochen"],
+        "dogruCevap": "Zwölf Wochen"
+      }
+    ]
+  },
+  "schreiben": {
+    "gorev": "Sie möchten sich für einen Deutschkurs anmelden, haben aber noch Fragen zu den Kurszeiten. Schreiben Sie eine E-Mail an die Volkshochschule.",
+    "register": "halbformell",
+    "sprachhandlung": ["Informationsaustausch"],
+    "leitpunkte": [
+      "Sagen Sie, für welchen Kurs Sie sich interessieren",
+      "Fragen Sie nach den Kurszeiten",
+      "Fragen Sie nach den Kosten",
+      "Fragen Sie, wie Sie sich anmelden können"
+    ],
+    "minKelime": 40,
+    "maxKelime": 80
+  },
+  "sprechen": {
+    "teil1FollowUp": { "frage": "Machen Sie zurzeit einen Kurs oder eine Ausbildung?", "sprachhandlung": ["Informationsaustausch"] },
+    "teil2": {
+      "fotoUrl": "assets/fotos/tema07-ausbildung.jpg",
+      "beschreibungsPrompt": "Was sehen Sie auf dem Foto?",
+      "vergleichsPrompt": "Wie funktioniert die Erwachsenenbildung in Ihrem Heimatland?",
+      "sprachhandlung": ["Informationsaustausch", "Umgang mit interkultureller Begegnung"]
+    },
+    "teil3": {
+      "szenario": "Sie und ein Kursteilnehmer möchten zusammen für die Prüfung lernen. Einigen Sie sich auf Zeit und Ort.",
+      "sprachhandlung": ["Handlungsregulierung"],
+      "modus": "eşli-veya-simule",
+      "cevapTipi": "yaziliCevap"
+    }
+  },
+  "miniTest": { "soruIdListesi": ["t07-g001", "t07-g002", "t07-h001", "t07-h002"] }
+}
