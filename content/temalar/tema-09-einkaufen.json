@@ -6,10 +6,10 @@
   "kaynakEslesmeleri": [],
   "kelime": [
     { "id": "t09-w001", "de": "der Kassierer / die Kassiererin", "tr": "kasiyer", "beispiel": "Die Kassiererin scannt die Ware an der Kasse.", "kategori": "Nomen", "zorlukSeviyesi": "leicht" },
-    { "id": "t09-w002", "de": "der Einkaufswagen", "tr": "alisveris arabasi", "beispiel": "Ich nehme einen Einkaufswagen fuer den grossen Einkauf.", "kategori": "Nomen", "zorlukSeviyesi": "leicht" },
+    { "id": "t09-w002", "de": "der Einkaufswagen", "tr": "alışveriş arabası", "beispiel": "Ich nehme einen Einkaufswagen für den großen Einkauf.", "kategori": "Nomen", "zorlukSeviyesi": "leicht" },
     { "id": "t09-w003", "de": "reduziert", "tr": "indirimli", "beispiel": "Die Preise sind diese Woche reduziert.", "kategori": "Adjektiv", "zorlukSeviyesi": "orta" },
-    { "id": "t09-w004", "de": "die Quittung", "tr": "fis", "beispiel": "Bitte geben Sie mir die Quittung.", "kategori": "Nomen", "zorlukSeviyesi": "orta" },
-    { "id": "t09-w005", "de": "umtauschen", "tr": "degistirmek (urun)", "beispiel": "Kann ich den Pullover umtauschen, er ist zu klein.", "kategori": "Verb", "zorlukSeviyesi": "schwer" }
+    { "id": "t09-w004", "de": "die Quittung", "tr": "fiş", "beispiel": "Bitte geben Sie mir die Quittung.", "kategori": "Nomen", "zorlukSeviyesi": "orta" },
+    { "id": "t09-w005", "de": "umtauschen", "tr": "değiştirmek (ürün)", "beispiel": "Kann ich den Pullover umtauschen, er ist zu klein.", "kategori": "Verb", "zorlukSeviyesi": "schwer" }
   ],
   "gramer": [
     {
@@ -19,14 +19,14 @@
       "soru": "Dieses Brot ist ___ als das andere.",
       "secenekler": ["teurer", "teuer", "am teuersten", "teuerer"],
       "dogruCevap": "teurer",
-      "aciklama": "Komparativ 'teuer -> teurer'; 'als' ile karsilastirma yapilir.",
+      "aciklama": "Komparativ 'teuer -> teurer'; 'als' ile karşılaştırma yapılır.",
       "zorlukSeviyesi": "orta"
     },
     {
       "id": "t09-g002",
       "konu": "Nomen.Kasus.Akkusativ",
       "sprachhandlung": ["Informationsaustausch"],
-      "soru": "Ich moechte ___ Apfel kaufen.",
+      "soru": "Ich möchte ___ Apfel kaufen.",
       "secenekler": ["der", "den", "dem", "des"],
       "dogruCevap": "den",
       "aciklama": "'kaufen' fiili Akkusativ ister; 'der Apfel' eril, Akkusativ'de 'den Apfel' olur.",
@@ -34,26 +34,26 @@
     },
     {
       "id": "t09-g003",
-      "konu": "Praeposition.modal",
+      "konu": "Präposition.modal",
       "sprachhandlung": ["Informationsaustausch"],
       "soru": "Ich bezahle ___ Karte.",
       "secenekler": ["mit", "auf", "in", "zu"],
       "dogruCevap": "mit",
-      "aciklama": "Odeme sekli belirtirken 'mit Karte/mit Bargeld bezahlen' kullanilir.",
+      "aciklama": "Ödeme şekli belirtirken 'mit Karte/mit Bargeld bezahlen' kullanılır.",
       "zorlukSeviyesi": "leicht"
     }
   ],
   "lesen": {
-    "metin": "Herr Yildiz geht am Samstag einkaufen. Er braucht Obst, Gemuese und Brot fuer die ganze Woche. Im Supermarkt sieht er, dass die Aepfel heute reduziert sind. Er nimmt einen Einkaufswagen und legt viele Sachen hinein. An der Kasse bezahlt er mit Karte und bekommt eine Quittung.",
+    "metin": "Herr Yıldız geht am Samstag einkaufen. Er braucht Obst, Gemüse und Brot für die ganze Woche. Im Supermarkt sieht er, dass die Äpfel heute reduziert sind. Er nimmt einen Einkaufswagen und legt viele Sachen hinein. An der Kasse bezahlt er mit Karte und bekommt eine Quittung.",
     "sorular": [
-      { "id": "t09-l001", "soru": "Was braucht Herr Yildiz fuer die Woche?", "cevapTipi": "acikUclu" },
+      { "id": "t09-l001", "soru": "Was braucht Herr Yıldız für die Woche?", "cevapTipi": "acikUclu" },
       { "id": "t09-l002", "soru": "Wie bezahlt er an der Kasse?", "cevapTipi": "acikUclu" }
     ]
   },
   "hoeren": {
     "sesUrl": "assets/audio/t09-h001.mp3",
     "sesKaynagi": "kayit",
-    "transkript": "Kundin: Entschuldigung, wo finde ich die Milchprodukte? Verkaeufer: Die Milchprodukte sind im Gang drei, direkt neben dem Kaese. Kundin: Vielen Dank! Und haben Sie auch glutenfreies Brot? Verkaeufer: Ja, das finden Sie im Regal daneben.",
+    "transkript": "Kundin: Entschuldigung, wo finde ich die Milchprodukte? Verkäufer: Die Milchprodukte sind im Gang drei, direkt neben dem Käse. Kundin: Vielen Dank! Und haben Sie auch glutenfreies Brot? Verkäufer: Ja, das finden Sie im Regal daneben.",
     "sorular": [
       {
         "id": "t09-h001",
@@ -64,19 +64,19 @@
       {
         "id": "t09-h002",
         "soru": "Wonach fragt die Kundin noch?",
-        "secenekler": ["Glutenfreies Brot", "Bio-Gemuese", "Frisches Obst", "Vegane Wurst"],
+        "secenekler": ["Glutenfreies Brot", "Bio-Gemüse", "Frisches Obst", "Vegane Wurst"],
         "dogruCevap": "Glutenfreies Brot"
       }
     ]
   },
   "schreiben": {
-    "gorev": "Sie haben online einen Pullover bestellt, aber er ist beschaedigt angekommen. Schreiben Sie eine E-Mail an den Kundenservice.",
+    "gorev": "Sie haben online einen Pullover bestellt, aber er ist beschädigt angekommen. Schreiben Sie eine E-Mail an den Kundenservice.",
     "register": "halbformell",
     "sprachhandlung": ["Handlungsregulierung", "Informationsaustausch"],
     "leitpunkte": [
       "Beschreiben Sie den Schaden",
       "Schreiben Sie, wann die Bestellung angekommen ist",
-      "Sagen Sie, was Sie moechten (Umtausch oder Geld zurueck)",
+      "Sagen Sie, was Sie möchten (Umtausch oder Geld zurück)",
       "Fragen Sie, wie es weitergeht"
     ],
     "minKelime": 40,
@@ -93,7 +93,7 @@
     "teil3": {
       "szenario": "Sie und Ihr Partner planen eine Geburtstagsfeier. Einigen Sie sich, wer was einkauft.",
       "sprachhandlung": ["Handlungsregulierung"],
-      "modus": "esli-veya-simule",
+      "modus": "eşli-veya-simule",
       "cevapTipi": "yaziliCevap"
     }
   },

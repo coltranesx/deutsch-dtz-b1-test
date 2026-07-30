@@ -7,18 +7,18 @@
   "kelime": [
     { "id": "t01-w001", "de": "die Wohnung", "tr": "daire", "beispiel": "Ich suche eine 2-Zimmer-Wohnung.", "kategori": "Nomen", "zorlukSeviyesi": "orta" },
     { "id": "t01-w002", "de": "der Vermieter", "tr": "ev sahibi", "beispiel": "Der Vermieter wohnt im Erdgeschoss.", "kategori": "Nomen", "zorlukSeviyesi": "orta" },
-    { "id": "t01-w003", "de": "die Miete", "tr": "kira", "beispiel": "Die Miete betraegt 650 Euro im Monat.", "kategori": "Nomen", "zorlukSeviyesi": "leicht" },
-    { "id": "t01-w004", "de": "kuendigen", "tr": "fesih etmek", "beispiel": "Ich moechte meinen Mietvertrag kuendigen.", "kategori": "Verb", "zorlukSeviyesi": "schwer" }
+    { "id": "t01-w003", "de": "die Miete", "tr": "kira", "beispiel": "Die Miete beträgt 650 Euro im Monat.", "kategori": "Nomen", "zorlukSeviyesi": "leicht" },
+    { "id": "t01-w004", "de": "kündigen", "tr": "fesih etmek", "beispiel": "Ich möchte meinen Mietvertrag kündigen.", "kategori": "Verb", "zorlukSeviyesi": "schwer" }
   ],
   "gramer": [
     {
       "id": "t01-g001",
-      "konu": "Praeposition.lokal",
+      "konu": "Präposition.lokal",
       "sprachhandlung": ["Informationsaustausch"],
       "soru": "Die Wohnung ist ___ dritten Stock.",
       "secenekler": ["im", "in", "am", "auf"],
       "dogruCevap": "im",
-      "aciklama": "'im' = 'in dem'; kat bildirirken 'im dritten Stock' kullanilir.",
+      "aciklama": "'im' = 'in dem'; kat bildirirken 'im dritten Stock' kullanılır.",
       "zorlukSeviyesi": "orta"
     },
     {
@@ -34,16 +34,16 @@
     {
       "id": "t01-g003",
       "konu": "Satz.Nebensatz.weil-da",
-      "sprachhandlung": ["Realisierung von Gefuehlen/Haltungen/Meinungen"],
+      "sprachhandlung": ["Realisierung von Gefühlen/Haltungen/Meinungen"],
       "soru": "Ich suche eine neue Wohnung, ___ die Miete zu teuer ist.",
       "secenekler": ["weil", "obwohl", "damit", "wenn"],
       "dogruCevap": "weil",
-      "aciklama": "Neden belirtmek icin 'weil' kullanilir; fiil cumle sonuna gider.",
+      "aciklama": "Neden belirtmek için 'weil' kullanılır; fiil cümle sonuna gider.",
       "zorlukSeviyesi": "leicht"
     }
   ],
   "lesen": {
-    "metin": "Familie Keskin sucht eine neue Wohnung in Koeln. Sie brauchen drei Zimmer, weil sie zwei Kinder haben. Die Miete darf nicht mehr als 900 Euro kosten. Auf einer Wohnungsanzeige finden sie eine passende 3-Zimmer-Wohnung im zweiten Stock, mit Balkon und Kueche. Sie rufen den Vermieter an und vereinbaren einen Besichtigungstermin.",
+    "metin": "Familie Keskin sucht eine neue Wohnung in Köln. Sie brauchen drei Zimmer, weil sie zwei Kinder haben. Die Miete darf nicht mehr als 900 Euro kosten. Auf einer Wohnungsanzeige finden sie eine passende 3-Zimmer-Wohnung im zweiten Stock, mit Balkon und Küche. Sie rufen den Vermieter an und vereinbaren einen Besichtigungstermin.",
     "sorular": [
       { "id": "t01-l001", "soru": "Warum sucht Familie Keskin eine neue Wohnung?", "cevapTipi": "acikUclu" },
       { "id": "t01-l002", "soru": "Was machen sie, nachdem sie eine passende Anzeige gefunden haben?", "cevapTipi": "acikUclu" }
@@ -52,7 +52,7 @@
   "hoeren": {
     "sesUrl": "assets/audio/t01-h001.mp3",
     "sesKaynagi": "kayit",
-    "transkript": "Guten Tag, hier ist Frau Keskin. Ich rufe wegen der Wohnungsanzeige an. Ist die 3-Zimmer-Wohnung im zweiten Stock noch frei? Wir moechten sie gerne besichtigen, am liebsten am Samstagvormittag.",
+    "transkript": "Guten Tag, hier ist Frau Keskin. Ich rufe wegen der Wohnungsanzeige an. Ist die 3-Zimmer-Wohnung im zweiten Stock noch frei? Wir möchten sie gerne besichtigen, am liebsten am Samstagvormittag.",
     "sorular": [
       {
         "id": "t01-h001",
@@ -62,7 +62,7 @@
       },
       {
         "id": "t01-h002",
-        "soru": "Wann moechte sie die Wohnung besichtigen?",
+        "soru": "Wann möchte sie die Wohnung besichtigen?",
         "secenekler": ["Freitagabend", "Samstagvormittag", "Sonntagnachmittag", "Montagmorgen"],
         "dogruCevap": "Samstagvormittag"
       }
@@ -90,9 +90,9 @@
       "sprachhandlung": ["Informationsaustausch", "Umgang mit interkultureller Begegnung"]
     },
     "teil3": {
-      "szenario": "Sie und Ihr Partner moechten zusammen eine Wohnung mieten. Einigen Sie sich, wer welche Aufgaben uebernimmt.",
+      "szenario": "Sie und Ihr Partner möchten zusammen eine Wohnung mieten. Einigen Sie sich, wer welche Aufgaben übernimmt.",
       "sprachhandlung": ["Handlungsregulierung"],
-      "modus": "esli-veya-simule",
+      "modus": "eşli-veya-simule",
       "cevapTipi": "yaziliCevap"
     }
   },

@@ -4,7 +4,7 @@ const TemaModu = (() => {
     kelime: "Kelime",
     gramer: "Gramer",
     lesen: "Lesen",
-    hoeren: "Hoeren",
+    hoeren: "Hören",
     schreiben: "Schreiben",
     sprechen: "Sprechen",
     miniTest: "Mini Test",
@@ -33,7 +33,7 @@ const TemaModu = (() => {
 
     const backBtn = document.createElement("button");
     backBtn.className = "btn secondary";
-    backBtn.textContent = "< Panele don";
+    backBtn.textContent = "< Panele dön";
     backBtn.style.marginBottom = "1rem";
     backBtn.addEventListener("click", () => state.onExit());
     container.appendChild(backBtn);
@@ -70,7 +70,7 @@ const TemaModu = (() => {
 
     const nextBtn = document.createElement("button");
     nextBtn.className = "btn";
-    nextBtn.textContent = stepIndex === STEPS.length - 1 ? "Temayi bitir" : "Devam et";
+    nextBtn.textContent = stepIndex === STEPS.length - 1 ? "Temayı bitir" : "Devam et";
     nextBtn.addEventListener("click", () => {
       Storage.saveProgress(tema.temaId, step);
       if (stepIndex === STEPS.length - 1) {
@@ -219,7 +219,7 @@ const TemaModu = (() => {
   function renderHoeren(tema) {
     const wrap = document.createElement("div");
     const h = document.createElement("h2");
-    h.textContent = "Hoeren";
+    h.textContent = "Hören";
     wrap.appendChild(h);
 
     if (tema.hoeren.sesUrl) {
@@ -234,7 +234,7 @@ const TemaModu = (() => {
       const details = document.createElement("details");
       details.style.marginTop = "0.75rem";
       const summary = document.createElement("summary");
-      summary.textContent = "Transkript metnini goster";
+      summary.textContent = "Transkript metnini göster";
       details.appendChild(summary);
       const transcript = document.createElement("p");
       transcript.textContent = tema.hoeren.transkript;
@@ -316,7 +316,7 @@ const TemaModu = (() => {
     if (s.teil2.fotoUrl) {
       const foto = document.createElement("img");
       foto.src = s.teil2.fotoUrl;
-      foto.alt = "Sprechen Teil 2 fotografi";
+      foto.alt = "Sprechen Teil 2 fotoğrafı";
       foto.className = "sprechen-foto";
       teil2.appendChild(foto);
     }
@@ -371,7 +371,7 @@ const TemaModu = (() => {
 
     if (allQuestions.length === 0) {
       const note = document.createElement("p");
-      note.textContent = "Bu tema icin mini test sorusu tanimli degil.";
+      note.textContent = "Bu tema için mini test sorusu tanımlı değil.";
       wrap.appendChild(note);
       return wrap;
     }
@@ -385,7 +385,7 @@ const TemaModu = (() => {
     summary.className = "result-summary";
     summary.innerHTML = `
       <div class="result-score">${correct.length}/${allQuestions.length}</div>
-      <p>${answered.length}/${allQuestions.length} soru cevaplandi</p>
+      <p>${answered.length}/${allQuestions.length} soru cevaplandı</p>
     `;
     wrap.appendChild(summary);
     return wrap;
