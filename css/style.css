@@ -246,6 +246,13 @@ body {
   color: var(--text-muted);
 }
 
+.sprechen-foto {
+  width: 100%;
+  border-radius: 8px;
+  margin-bottom: 0.75rem;
+  display: block;
+}
+
 textarea, input[type="text"] {
   width: 100%;
   border: 1px solid var(--border);

@@ -312,11 +312,17 @@ const TemaModu = (() => {
 
     const teil2 = document.createElement("div");
     teil2.className = "question-block";
-    teil2.innerHTML = `
-      <div class="question-text">Teil 2</div>
-      <p class="feedback">Foto: ${s.teil2.fotoUrl} (v1.0'da yer tutucu)</p>
-      <p>${s.teil2.beschreibungsPrompt}</p>
-    `;
+    teil2.innerHTML = `<div class="question-text">Teil 2</div>`;
+    if (s.teil2.fotoUrl) {
+      const foto = document.createElement("img");
+      foto.src = s.teil2.fotoUrl;
+      foto.alt = "Sprechen Teil 2 fotografi";
+      foto.className = "sprechen-foto";
+      teil2.appendChild(foto);
+    }
+    const teil2Prompt = document.createElement("p");
+    teil2Prompt.textContent = s.teil2.beschreibungsPrompt;
+    teil2.appendChild(teil2Prompt);
     const teil2Desc = document.createElement("textarea");
     teil2Desc.value = Storage.getAnswer(tema.temaId, "sprechen-teil2-beschreibung") ?? "";
     teil2Desc.addEventListener("input", () => {
