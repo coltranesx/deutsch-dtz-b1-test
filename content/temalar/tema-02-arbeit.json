@@ -5,11 +5,11 @@
   "handlungsfeld": "Arbeit",
   "kaynakEslesmeleri": [],
   "kelime": [
-    { "id": "t02-w001", "de": "der Kollege / die Kollegin", "tr": "meslektaş", "beispiel": "Meine Kollegin hilft mir bei der neuen Aufgabe.", "kategori": "Nomen", "zorlukSeviyesi": "leicht" },
-    { "id": "t02-w002", "de": "die Überstunde", "tr": "fazla mesai", "beispiel": "Ich habe diese Woche viele Überstunden gemacht.", "kategori": "Nomen", "zorlukSeviyesi": "orta" },
-    { "id": "t02-w003", "de": "der/die Vorgesetzte", "tr": "amir", "beispiel": "Ich muss mit meiner Vorgesetzten sprechen.", "kategori": "Nomen", "zorlukSeviyesi": "orta" },
-    { "id": "t02-w004", "de": "die Beförderung", "tr": "terfi", "beispiel": "Nach zwei Jahren hat sie eine Beförderung bekommen.", "kategori": "Nomen", "zorlukSeviyesi": "schwer" },
-    { "id": "t02-w005", "de": "der Feierabend", "tr": "mesai bitişi", "beispiel": "Nach Feierabend gehe ich immer joggen.", "kategori": "Nomen", "zorlukSeviyesi": "leicht" }
+    { "id": "t02-w001", "de": "der Kollege / die Kollegin", "tr": "meslektaş", "en": "colleague", "beispiel": "Meine Kollegin hilft mir bei der neuen Aufgabe.", "kategori": "Nomen", "zorlukSeviyesi": "leicht" },
+    { "id": "t02-w002", "de": "die Überstunde", "tr": "fazla mesai", "en": "overtime", "beispiel": "Ich habe diese Woche viele Überstunden gemacht.", "kategori": "Nomen", "zorlukSeviyesi": "orta" },
+    { "id": "t02-w003", "de": "der/die Vorgesetzte", "tr": "amir", "en": "supervisor", "beispiel": "Ich muss mit meiner Vorgesetzten sprechen.", "kategori": "Nomen", "zorlukSeviyesi": "orta" },
+    { "id": "t02-w004", "de": "die Beförderung", "tr": "terfi", "en": "promotion", "beispiel": "Nach zwei Jahren hat sie eine Beförderung bekommen.", "kategori": "Nomen", "zorlukSeviyesi": "schwer" },
+    { "id": "t02-w005", "de": "der Feierabend", "tr": "mesai bitişi", "en": "end of the workday", "beispiel": "Nach Feierabend gehe ich immer joggen.", "kategori": "Nomen", "zorlukSeviyesi": "leicht" }
   ],
   "gramer": [
     {
@@ -20,6 +20,7 @@
       "secenekler": ["anstrengend", "anstrengende", "anstrengender", "anstrengendes"],
       "dogruCevap": "anstrengend",
       "aciklama": "Yüklem konumundaki (praedikativ) sıfat çekim eki almaz: 'ist anstrengend'.",
+      "aciklamaEn": "An adjective in predicative position (praedikativ) takes no ending: 'ist anstrengend'.",
       "zorlukSeviyesi": "orta"
     },
     {
@@ -30,6 +31,7 @@
       "secenekler": ["der", "des", "dem", "den"],
       "dogruCevap": "des",
       "aciklama": "Eril isimlerde Genitiv artikeli 'des' olur: 'des Chefs'.",
+      "aciklamaEn": "For masculine nouns, the Genitive article is 'des': 'des Chefs'.",
       "zorlukSeviyesi": "orta"
     },
     {
@@ -40,6 +42,7 @@
       "secenekler": ["der", "die", "das", "den"],
       "dogruCevap": "der",
       "aciklama": "'der Kollege' eril; ilgi cümlesinde özne olduğu için Nominativ 'der' kullanılır.",
+      "aciklamaEn": "'der Kollege' is masculine; since it is the subject of the relative clause, Nominative 'der' is used.",
       "zorlukSeviyesi": "schwer"
     }
   ],

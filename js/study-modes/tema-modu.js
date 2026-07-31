@@ -115,7 +115,7 @@ const TemaModu = (() => {
       item.className = "word-item";
       item.innerHTML = `
         <div class="word-de">${w.de}</div>
-        <div class="word-tr">${w.tr}</div>
+        <div class="word-tr">${I18n.contentField(w, "tr")}</div>
         <div class="word-example">${w.beispiel}</div>
       `;
       wrap.appendChild(item);

@@ -5,11 +5,11 @@
   "handlungsfeld": "Mediennutzung",
   "kaynakEslesmeleri": [],
   "kelime": [
-    { "id": "t04-w001", "de": "die Nachrichten (Pl.)", "tr": "haberler", "beispiel": "Ich sehe jeden Abend die Nachrichten.", "kategori": "Nomen", "zorlukSeviyesi": "leicht" },
-    { "id": "t04-w002", "de": "das Passwort", "tr": "şifre", "beispiel": "Ich habe mein Passwort vergessen.", "kategori": "Nomen", "zorlukSeviyesi": "leicht" },
-    { "id": "t04-w003", "de": "herunterladen", "tr": "indirmek", "beispiel": "Kannst du mir die App herunterladen?", "kategori": "Verb", "zorlukSeviyesi": "orta" },
-    { "id": "t04-w004", "de": "die Werbung", "tr": "reklam", "beispiel": "Diese Werbung sehe ich ständig im Internet.", "kategori": "Nomen", "zorlukSeviyesi": "orta" },
-    { "id": "t04-w005", "de": "der Anhang", "tr": "ek (e-posta)", "beispiel": "Bitte öffnen Sie den Anhang in der E-Mail.", "kategori": "Nomen", "zorlukSeviyesi": "schwer" }
+    { "id": "t04-w001", "de": "die Nachrichten (Pl.)", "tr": "haberler", "en": "news", "beispiel": "Ich sehe jeden Abend die Nachrichten.", "kategori": "Nomen", "zorlukSeviyesi": "leicht" },
+    { "id": "t04-w002", "de": "das Passwort", "tr": "şifre", "en": "password", "beispiel": "Ich habe mein Passwort vergessen.", "kategori": "Nomen", "zorlukSeviyesi": "leicht" },
+    { "id": "t04-w003", "de": "herunterladen", "tr": "indirmek", "en": "to download", "beispiel": "Kannst du mir die App herunterladen?", "kategori": "Verb", "zorlukSeviyesi": "orta" },
+    { "id": "t04-w004", "de": "die Werbung", "tr": "reklam", "en": "advertisement", "beispiel": "Diese Werbung sehe ich ständig im Internet.", "kategori": "Nomen", "zorlukSeviyesi": "orta" },
+    { "id": "t04-w005", "de": "der Anhang", "tr": "ek (e-posta)", "en": "attachment (email)", "beispiel": "Bitte öffnen Sie den Anhang in der E-Mail.", "kategori": "Nomen", "zorlukSeviyesi": "schwer" }
   ],
   "gramer": [
     {
@@ -20,6 +20,7 @@
       "secenekler": ["herunterladen", "herunterzuladen", "heruntergeladen", "herunterlade"],
       "dogruCevap": "herunterladen",
       "aciklama": "'möchte' modal fiili sonrası infinitiv 'zu' almadan kullanılır: 'möchte herunterladen'.",
+      "aciklamaEn": "After the modal verb 'möchte' the infinitive is used without 'zu': 'möchte herunterladen'.",
       "zorlukSeviyesi": "orta"
     },
     {
@@ -30,6 +31,7 @@
       "secenekler": ["jemand", "niemand", "etwas", "alles"],
       "dogruCevap": "jemand",
       "aciklama": "Bilinmeyen bir kişiyi belirtirken 'jemand' (birisi) kullanılır.",
+      "aciklamaEn": "'jemand' (someone) is used to refer to an unknown person.",
       "zorlukSeviyesi": "orta"
     },
     {
@@ -40,6 +42,7 @@
       "secenekler": ["im", "in", "am", "ins"],
       "dogruCevap": "im",
       "aciklama": "'im' = 'in dem'; 'im Internet' kalıp bir ifadedir.",
+      "aciklamaEn": "'im' = 'in dem'; 'im Internet' is a fixed expression.",
       "zorlukSeviyesi": "leicht"
     }
   ],

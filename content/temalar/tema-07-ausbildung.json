@@ -5,11 +5,11 @@
   "handlungsfeld": "Aus- und Weiterbildung",
   "kaynakEslesmeleri": [],
   "kelime": [
-    { "id": "t07-w001", "de": "der Kurs", "tr": "kurs", "beispiel": "Ich besuche einen Deutschkurs am Vormittag.", "kategori": "Nomen", "zorlukSeviyesi": "leicht" },
-    { "id": "t07-w002", "de": "die Prüfung", "tr": "sınav", "beispiel": "Die Prüfung findet nächste Woche statt.", "kategori": "Nomen", "zorlukSeviyesi": "orta" },
-    { "id": "t07-w003", "de": "das Zeugnis", "tr": "karne / sertifika", "beispiel": "Ich brauche mein Zeugnis für die Bewerbung.", "kategori": "Nomen", "zorlukSeviyesi": "schwer" },
-    { "id": "t07-w004", "de": "sich anmelden", "tr": "kayıt olmak", "beispiel": "Ich möchte mich für den Kurs anmelden.", "kategori": "Verb", "zorlukSeviyesi": "orta" },
-    { "id": "t07-w005", "de": "die Teilnahme", "tr": "katılım", "beispiel": "Die Teilnahme am Kurs ist kostenlos.", "kategori": "Nomen", "zorlukSeviyesi": "schwer" }
+    { "id": "t07-w001", "de": "der Kurs", "tr": "kurs", "en": "course", "beispiel": "Ich besuche einen Deutschkurs am Vormittag.", "kategori": "Nomen", "zorlukSeviyesi": "leicht" },
+    { "id": "t07-w002", "de": "die Prüfung", "tr": "sınav", "en": "exam", "beispiel": "Die Prüfung findet nächste Woche statt.", "kategori": "Nomen", "zorlukSeviyesi": "orta" },
+    { "id": "t07-w003", "de": "das Zeugnis", "tr": "karne / sertifika", "en": "certificate", "beispiel": "Ich brauche mein Zeugnis für die Bewerbung.", "kategori": "Nomen", "zorlukSeviyesi": "schwer" },
+    { "id": "t07-w004", "de": "sich anmelden", "tr": "kayıt olmak", "en": "to register / to sign up", "beispiel": "Ich möchte mich für den Kurs anmelden.", "kategori": "Verb", "zorlukSeviyesi": "orta" },
+    { "id": "t07-w005", "de": "die Teilnahme", "tr": "katılım", "en": "participation", "beispiel": "Die Teilnahme am Kurs ist kostenlos.", "kategori": "Nomen", "zorlukSeviyesi": "schwer" }
   ],
   "gramer": [
     {
@@ -20,6 +20,7 @@
       "secenekler": ["anmelden", "anzumelden", "angemeldet", "anmelde"],
       "dogruCevap": "anmelden",
       "aciklama": "'möchte' modal fiili sonrası infinitiv 'zu' almadan kullanılır: 'möchte anmelden'.",
+      "aciklamaEn": "After the modal verb 'möchte', the infinitive is used without 'zu': 'möchte anmelden'.",
       "zorlukSeviyesi": "orta"
     },
     {
@@ -30,6 +31,7 @@
       "secenekler": ["die", "der", "den", "dem"],
       "dogruCevap": "der",
       "aciklama": "'bei' edatı Dativ ister; 'die Prüfungsvorbereitung' dişil, Dativ'de 'der Prüfungsvorbereitung' olur.",
+      "aciklamaEn": "The preposition 'bei' requires Dative; 'die Prüfungsvorbereitung' is feminine, so in Dative it becomes 'der Prüfungsvorbereitung'.",
       "zorlukSeviyesi": "orta"
     },
     {
@@ -40,6 +42,7 @@
       "secenekler": ["zu üben", "üben", "geübt", "übend"],
       "dogruCevap": "zu üben",
       "aciklama": "'Es ist wichtig, ...' kalıbından sonra 'zu' + infinitiv kullanılır.",
+      "aciklamaEn": "After the phrase 'Es ist wichtig, ...', 'zu' + infinitive is used.",
       "zorlukSeviyesi": "schwer"
     }
   ],

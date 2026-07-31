@@ -4,54 +4,71 @@
       "kategoriId": "redeorganisation",
       "baslik": "Redeorganisation",
       "aciklama": "Söze başlama/bitirme, söz isteme/kesme, devam ettirme, özetleme",
+      "aciklamaEn": "Starting/ending a turn, asking for or interrupting the floor, continuing, summarizing",
       "ifadeler": [
         {
           "id": "rb-reor-001",
           "de": "Also, ich möchte sagen, dass...",
           "tr": "Yani, şunu söylemek istiyorum ki...",
-          "kullanim": "Konuşmaya veya bir fikre başlarken kullanılır"
+          "en": "Well, I'd like to say that...",
+          "kullanim": "Konuşmaya veya bir fikre başlarken kullanılır",
+          "kullanimEn": "Used when starting to speak or introduce an idea"
         },
         {
           "id": "rb-reor-002",
           "de": "Zuerst möchte ich erwähnen, dass...",
           "tr": "Öncelikle şunu belirtmek istiyorum ki...",
-          "kullanim": "İlk noktayı sıralı bir şekilde ortaya koyarken kullanılır"
+          "en": "First of all, I'd like to mention that...",
+          "kullanim": "İlk noktayı sıralı bir şekilde ortaya koyarken kullanılır",
+          "kullanimEn": "Used to present the first point in a clear order"
         },
         {
           "id": "rb-reor-003",
           "de": "Entschuldigung, darf ich kurz etwas sagen?",
           "tr": "Affedersiniz, kısaca bir şey söyleyebilir miyim?",
-          "kullanim": "Söz almak istediğinde nazikçe izin isterken kullanılır"
+          "en": "Excuse me, may I say something briefly?",
+          "kullanim": "Söz almak istediğinde nazikçe izin isterken kullanılır",
+          "kullanimEn": "Used to politely ask for permission to take the floor"
         },
         {
           "id": "rb-reor-004",
           "de": "Entschuldigung, darf ich Sie kurz unterbrechen?",
           "tr": "Affedersiniz, sözünüzü kısaca kesebilir miyim?",
-          "kullanim": "Karşı tarafı kibarca kesip söz almak gerektiğinde kullanılır"
+          "en": "Excuse me, may I interrupt you for a moment?",
+          "kullanim": "Karşı tarafı kibarca kesip söz almak gerektiğinde kullanılır",
+          "kullanimEn": "Used to politely interrupt someone in order to take the floor"
         },
         {
           "id": "rb-reor-005",
           "de": "Wie ich schon gesagt habe, ...",
           "tr": "Daha önce de söylediğim gibi, ...",
-          "kullanim": "Önceki bir noktaya tekrar dönerken veya onu vurgularken kullanılır"
+          "en": "As I already said, ...",
+          "kullanim": "Önceki bir noktaya tekrar dönerken veya onu vurgularken kullanılır",
+          "kullanimEn": "Used to return to a previous point or emphasize it"
         },
         {
           "id": "rb-reor-006",
           "de": "Kommen wir zum nächsten Punkt.",
           "tr": "Bir sonraki konuya geçelim.",
-          "kullanim": "Bir konudan diğerine geçiş yaparken kullanılır"
+          "en": "Let's move on to the next point.",
+          "kullanim": "Bir konudan diğerine geçiş yaparken kullanılır",
+          "kullanimEn": "Used when transitioning from one topic to another"
         },
         {
           "id": "rb-reor-007",
           "de": "Um das noch einmal zusammenzufassen: ...",
           "tr": "Bunu bir kez daha özetlemek gerekirse: ...",
-          "kullanim": "Konuşmanın veya bir bölümün sonunda özet yaparken kullanılır"
+          "en": "To sum this up once more: ...",
+          "kullanim": "Konuşmanın veya bir bölümün sonunda özet yaparken kullanılır",
+          "kullanimEn": "Used to summarize the conversation or a section of it"
         },
         {
           "id": "rb-reor-008",
           "de": "Das wäre alles von meiner Seite.",
           "tr": "Benim tarafımdan söyleyeceklerim bu kadar.",
-          "kullanim": "Söz sırasını bitirip karşı tarafa devretmek istediğinde kullanılır"
+          "en": "That would be all from my side.",
+          "kullanim": "Söz sırasını bitirip karşı tarafa devretmek istediğinde kullanılır",
+          "kullanimEn": "Used to end your turn and hand the floor back to the other person"
         }
       ]
     },
@@ -59,54 +76,71 @@
       "kategoriId": "verstaendnissicherung",
       "baslik": "Verständnissicherung",
       "aciklama": "Anlaşılmayı kontrol etme, tekrar/yavaşlatma isteme, heceletme, anladığını teyit etme",
+      "aciklamaEn": "Checking understanding, asking for repetition/slower speech, spelling, confirming understanding",
       "ifadeler": [
         {
           "id": "rb-vers-001",
           "de": "Entschuldigung, ich habe das nicht verstanden.",
           "tr": "Affedersiniz, bunu anlamadım.",
-          "kullanim": "Söylenen bir şeyi anlamadığını nazikçe belirtirken kullanılır"
+          "en": "Sorry, I didn't understand that.",
+          "kullanim": "Söylenen bir şeyi anlamadığını nazikçe belirtirken kullanılır",
+          "kullanimEn": "Used to politely indicate that you didn't understand something"
         },
         {
           "id": "rb-vers-002",
           "de": "Können Sie das bitte wiederholen?",
           "tr": "Bunu lütfen tekrar edebilir misiniz?",
-          "kullanim": "Bir cümlenin veya bilginin tekrarlanmasını isterken kullanılır"
+          "en": "Could you please repeat that?",
+          "kullanim": "Bir cümlenin veya bilginin tekrarlanmasını isterken kullanılır",
+          "kullanimEn": "Used to ask for a sentence or piece of information to be repeated"
         },
         {
           "id": "rb-vers-003",
           "de": "Könnten Sie bitte etwas langsamer sprechen?",
           "tr": "Lütfen biraz daha yavaş konuşabilir misiniz?",
-          "kullanim": "Karşı tarafın hızlı konuşması nedeniyle takip edemediğinde kullanılır"
+          "en": "Could you please speak a bit more slowly?",
+          "kullanim": "Karşı tarafın hızlı konuşması nedeniyle takip edemediğinde kullanılır",
+          "kullanimEn": "Used when you can't keep up because the other person is speaking too fast"
         },
         {
           "id": "rb-vers-004",
           "de": "Können Sie das bitte buchstabieren?",
           "tr": "Bunu lütfen harf harf söyler misiniz?",
-          "kullanim": "Bir isim, adres veya kelimenin yazılışından emin olmak için kullanılır"
+          "en": "Could you please spell that for me?",
+          "kullanim": "Bir isim, adres veya kelimenin yazılışından emin olmak için kullanılır",
+          "kullanimEn": "Used to make sure of the spelling of a name, address or word"
         },
         {
           "id": "rb-vers-005",
           "de": "Wie bitte?",
           "tr": "Efendim? / Anlayamadım?",
-          "kullanim": "Bir şeyi anlık olarak duyamadığında veya anlamadığında hızlıca sorarken kullanılır"
+          "en": "Sorry, what was that?",
+          "kullanim": "Bir şeyi anlık olarak duyamadığında veya anlamadığında hızlıca sorarken kullanılır",
+          "kullanimEn": "Used to quickly ask again when you didn't hear or understand something"
         },
         {
           "id": "rb-vers-006",
           "de": "Ah, verstehe. Sie meinen also, dass...",
           "tr": "Ah, anladım. Yani demek istediğiniz...",
-          "kullanim": "Anladığını göstermek ve doğru anladığından emin olmak için kullanılır"
+          "en": "Ah, I see. So you mean that...",
+          "kullanim": "Anladığını göstermek ve doğru anladığından emin olmak için kullanılır",
+          "kullanimEn": "Used to show that you understood and to confirm you got it right"
         },
         {
           "id": "rb-vers-007",
           "de": "Habe ich das richtig verstanden, dass...?",
           "tr": "Şunu doğru anladım mı, ...?",
-          "kullanim": "Anlamı bir kez daha kontrol etmek/teyit almak için kullanılır"
+          "en": "Did I understand correctly that...?",
+          "kullanim": "Anlamı bir kez daha kontrol etmek/teyit almak için kullanılır",
+          "kullanimEn": "Used to double-check or confirm your understanding of the meaning"
         },
         {
           "id": "rb-vers-008",
           "de": "Was bedeutet das genau?",
           "tr": "Bu tam olarak ne anlama geliyor?",
-          "kullanim": "Bilinmeyen bir kelime veya ifadenin anlamını sorarken kullanılır"
+          "en": "What exactly does that mean?",
+          "kullanim": "Bilinmeyen bir kelime veya ifadenin anlamını sorarken kullanılır",
+          "kullanimEn": "Used to ask for the meaning of an unknown word or expression"
         }
       ]
     },
@@ -114,54 +148,71 @@
       "kategoriId": "kompensation",
       "baslik": "Kompensation",
       "aciklama": "Kelime bilmediğinde tanımlayarak anlatma, kendini düzeltme, genel ifade kullanma",
+      "aciklamaEn": "Describing around an unknown word, self-correcting, using vague/general expressions",
       "ifadeler": [
         {
           "id": "rb-komp-001",
           "de": "Ich weiß nicht, wie man das auf Deutsch sagt, aber es ist ein Ding, mit dem man...",
           "tr": "Bunu Almanca nasıl söyleyeceğimi bilmiyorum, ama bu şununla yapılan bir şey...",
-          "kullanim": "Bir kelimeyi bilmediğinde onu tanımlayarak anlatmak için kullanılır"
+          "en": "I don't know how to say this in German, but it's a thing you use to...",
+          "kullanim": "Bir kelimeyi bilmediğinde onu tanımlayarak anlatmak için kullanılır",
+          "kullanimEn": "Used to describe an unknown word instead of naming it directly"
         },
         {
           "id": "rb-komp-002",
           "de": "Wie sagt man das noch mal auf Deutsch?",
           "tr": "Bu Almanca nasıl deniyordu?",
-          "kullanim": "Unutulan bir kelimeyi hatırlamaya çalışırken kullanılır"
+          "en": "How do you say that in German again?",
+          "kullanim": "Unutulan bir kelimeyi hatırlamaya çalışırken kullanılır",
+          "kullanimEn": "Used when trying to recall a forgotten word"
         },
         {
           "id": "rb-komp-003",
           "de": "Ich meine... also... ich wollte eigentlich sagen, dass...",
           "tr": "Demek istediğim... yani... aslında şunu söylemek istemiştim ki...",
-          "kullanim": "Yanlış söylenen bir şeyi kendi kendine düzeltirken kullanılır"
+          "en": "I mean... well... what I actually wanted to say is that...",
+          "kullanim": "Yanlış söylenen bir şeyi kendi kendine düzeltirken kullanılır",
+          "kullanimEn": "Used to self-correct something that was said incorrectly"
         },
         {
           "id": "rb-komp-004",
           "de": "Anders gesagt: ...",
           "tr": "Başka bir deyişle: ...",
-          "kullanim": "Bir düşünceyi daha basit veya farklı kelimelerle yeniden ifade ederken kullanılır"
+          "en": "In other words: ...",
+          "kullanim": "Bir düşünceyi daha basit veya farklı kelimelerle yeniden ifade ederken kullanılır",
+          "kullanimEn": "Used to rephrase an idea more simply or in different words"
         },
         {
           "id": "rb-komp-005",
           "de": "So etwas wie ein Formular, aber nicht genau das.",
           "tr": "Bir form gibi bir şey, ama tam olarak o değil.",
-          "kullanim": "Tam kelimeyi bilmeyip ona benzer bir kavramla anlatırken kullanılır"
+          "en": "Something like a form, but not exactly that.",
+          "kullanim": "Tam kelimeyi bilmeyip ona benzer bir kavramla anlatırken kullanılır",
+          "kullanimEn": "Used when you don't know the exact word but can describe something similar"
         },
         {
           "id": "rb-komp-006",
           "de": "Das Ding da, mit dem man Termine ausmacht.",
           "tr": "Şu, randevu almak için kullanılan şey.",
-          "kullanim": "Nesnenin adını bilmeyip işlevini anlatarak belirtirken kullanılır"
+          "en": "That thing you use to make appointments.",
+          "kullanim": "Nesnenin adını bilmeyip işlevini anlatarak belirtirken kullanılır",
+          "kullanimEn": "Used to describe an object's function when you don't know its name"
         },
         {
           "id": "rb-komp-007",
           "de": "Es ist so eine Art Bescheinigung.",
           "tr": "Bu bir tür belge gibi bir şey.",
-          "kullanim": "Bir kavramı tam bilmeyip kategori belirterek yaklaşık anlatırken kullanılır"
+          "en": "It's a kind of certificate.",
+          "kullanim": "Bir kavramı tam bilmeyip kategori belirterek yaklaşık anlatırken kullanılır",
+          "kullanimEn": "Used to describe something roughly by naming its category when you don't know the exact term"
         },
         {
           "id": "rb-komp-008",
           "de": "Ich sage es mal anders, vielleicht verstehen Sie es dann besser.",
           "tr": "Bunu biraz farklı ifade edeyim, belki o zaman daha iyi anlarsınız.",
-          "kullanim": "İlk ifade anlaşılmadığında farklı kelimelerle yeniden anlatmaya geçerken kullanılır"
+          "en": "Let me put it differently, maybe then you'll understand better.",
+          "kullanim": "İlk ifade anlaşılmadığında farklı kelimelerle yeniden anlatmaya geçerken kullanılır",
+          "kullanimEn": "Used to rephrase in different words when the first explanation wasn't understood"
         }
       ]
     }

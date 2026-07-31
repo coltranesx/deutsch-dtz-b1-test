@@ -5,11 +5,11 @@
   "handlungsfeld": "Ämter und Behörden",
   "kaynakEslesmeleri": [],
   "kelime": [
-    { "id": "t10-w001", "de": "das Amt", "tr": "daire / kurum", "beispiel": "Ich muss heute zum Amt gehen.", "kategori": "Nomen", "zorlukSeviyesi": "leicht" },
-    { "id": "t10-w002", "de": "die Anmeldung", "tr": "kayıt (ikametgah vb.)", "beispiel": "Die Anmeldung beim Einwohnermeldeamt ist wichtig.", "kategori": "Nomen", "zorlukSeviyesi": "orta" },
-    { "id": "t10-w003", "de": "der Antrag", "tr": "başvuru", "beispiel": "Ich möchte einen Antrag auf Kindergeld stellen.", "kategori": "Nomen", "zorlukSeviyesi": "orta" },
-    { "id": "t10-w004", "de": "die Bescheinigung", "tr": "belge", "beispiel": "Ich brauche eine Bescheinigung von der Schule.", "kategori": "Nomen", "zorlukSeviyesi": "schwer" },
-    { "id": "t10-w005", "de": "zuständig", "tr": "yetkili / sorumlu", "beispiel": "Wer ist für meinen Fall zuständig?", "kategori": "Adjektiv", "zorlukSeviyesi": "schwer" }
+    { "id": "t10-w001", "de": "das Amt", "tr": "daire / kurum", "en": "government office / authority", "beispiel": "Ich muss heute zum Amt gehen.", "kategori": "Nomen", "zorlukSeviyesi": "leicht" },
+    { "id": "t10-w002", "de": "die Anmeldung", "tr": "kayıt (ikametgah vb.)", "en": "registration (e.g. of residence)", "beispiel": "Die Anmeldung beim Einwohnermeldeamt ist wichtig.", "kategori": "Nomen", "zorlukSeviyesi": "orta" },
+    { "id": "t10-w003", "de": "der Antrag", "tr": "başvuru", "en": "application", "beispiel": "Ich möchte einen Antrag auf Kindergeld stellen.", "kategori": "Nomen", "zorlukSeviyesi": "orta" },
+    { "id": "t10-w004", "de": "die Bescheinigung", "tr": "belge", "en": "certificate", "beispiel": "Ich brauche eine Bescheinigung von der Schule.", "kategori": "Nomen", "zorlukSeviyesi": "schwer" },
+    { "id": "t10-w005", "de": "zuständig", "tr": "yetkili / sorumlu", "en": "responsible / in charge", "beispiel": "Wer ist für meinen Fall zuständig?", "kategori": "Adjektiv", "zorlukSeviyesi": "schwer" }
   ],
   "gramer": [
     {
@@ -20,6 +20,7 @@
       "secenekler": ["die", "der", "den", "dem"],
       "dogruCevap": "der",
       "aciklama": "Dişil isimlerde Genitiv artikeli 'der' olur: 'der Ausländerbehörde'.",
+      "aciklamaEn": "Feminine nouns take 'der' as the genitive article: 'der Ausländerbehörde'.",
       "zorlukSeviyesi": "schwer"
     },
     {
@@ -30,6 +31,7 @@
       "secenekler": ["zum", "zur", "ins", "im"],
       "dogruCevap": "zum",
       "aciklama": "'zum' = 'zu dem'; nötr 'das Amt' Dativ'de 'dem Amt' olur, 'zu' ile 'zum'.",
+      "aciklamaEn": "'zum' = 'zu dem'; the neuter noun 'das Amt' becomes 'dem Amt' in the dative, which contracts to 'zum' with 'zu'.",
       "zorlukSeviyesi": "orta"
     },
     {
@@ -40,6 +42,7 @@
       "secenekler": ["wird", "wurde", "ist", "hat"],
       "dogruCevap": "wird",
       "aciklama": "Edilgen (Passiv) Präsens: 'werden' + Partizip II — 'wird bearbeitet'.",
+      "aciklamaEn": "Present passive: 'werden' + past participle — 'wird bearbeitet'.",
       "zorlukSeviyesi": "schwer"
     }
   ],

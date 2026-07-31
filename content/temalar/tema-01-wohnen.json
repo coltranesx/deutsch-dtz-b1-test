@@ -5,10 +5,10 @@
   "handlungsfeld": "Wohnen",
   "kaynakEslesmeleri": [{ "kitap": "Die neue Linie B1", "kapitel": 3, "sayfa": "42-48" }],
   "kelime": [
-    { "id": "t01-w001", "de": "die Wohnung", "tr": "daire", "beispiel": "Ich suche eine 2-Zimmer-Wohnung.", "kategori": "Nomen", "zorlukSeviyesi": "orta" },
-    { "id": "t01-w002", "de": "der Vermieter", "tr": "ev sahibi", "beispiel": "Der Vermieter wohnt im Erdgeschoss.", "kategori": "Nomen", "zorlukSeviyesi": "orta" },
-    { "id": "t01-w003", "de": "die Miete", "tr": "kira", "beispiel": "Die Miete beträgt 650 Euro im Monat.", "kategori": "Nomen", "zorlukSeviyesi": "leicht" },
-    { "id": "t01-w004", "de": "kündigen", "tr": "fesih etmek", "beispiel": "Ich möchte meinen Mietvertrag kündigen.", "kategori": "Verb", "zorlukSeviyesi": "schwer" }
+    { "id": "t01-w001", "de": "die Wohnung", "tr": "daire", "en": "apartment", "beispiel": "Ich suche eine 2-Zimmer-Wohnung.", "kategori": "Nomen", "zorlukSeviyesi": "orta" },
+    { "id": "t01-w002", "de": "der Vermieter", "tr": "ev sahibi", "en": "landlord", "beispiel": "Der Vermieter wohnt im Erdgeschoss.", "kategori": "Nomen", "zorlukSeviyesi": "orta" },
+    { "id": "t01-w003", "de": "die Miete", "tr": "kira", "en": "rent", "beispiel": "Die Miete beträgt 650 Euro im Monat.", "kategori": "Nomen", "zorlukSeviyesi": "leicht" },
+    { "id": "t01-w004", "de": "kündigen", "tr": "fesih etmek", "en": "to terminate (a contract)", "beispiel": "Ich möchte meinen Mietvertrag kündigen.", "kategori": "Verb", "zorlukSeviyesi": "schwer" }
   ],
   "gramer": [
     {
@@ -19,6 +19,7 @@
       "secenekler": ["im", "in", "am", "auf"],
       "dogruCevap": "im",
       "aciklama": "'im' = 'in dem'; kat bildirirken 'im dritten Stock' kullanılır.",
+      "aciklamaEn": "'im' = 'in dem'; used when stating a floor, e.g. 'im dritten Stock'.",
       "zorlukSeviyesi": "orta"
     },
     {
@@ -29,6 +30,7 @@
       "secenekler": ["der", "dem", "den", "des"],
       "dogruCevap": "dem",
       "aciklama": "'schreiben' fiili Dativ ister: 'dem Vermieter'.",
+      "aciklamaEn": "The verb 'schreiben' requires Dative: 'dem Vermieter'.",
       "zorlukSeviyesi": "orta"
     },
     {
@@ -39,6 +41,7 @@
       "secenekler": ["weil", "obwohl", "damit", "wenn"],
       "dogruCevap": "weil",
       "aciklama": "Neden belirtmek için 'weil' kullanılır; fiil cümle sonuna gider.",
+      "aciklamaEn": "'weil' is used to give a reason; the verb moves to the end of the clause.",
       "zorlukSeviyesi": "leicht"
     }
   ],

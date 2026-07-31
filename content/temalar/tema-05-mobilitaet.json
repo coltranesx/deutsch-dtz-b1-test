@@ -5,11 +5,11 @@
   "handlungsfeld": "Mobilität",
   "kaynakEslesmeleri": [],
   "kelime": [
-    { "id": "t05-w001", "de": "der Fahrplan", "tr": "sefer tarifesi", "beispiel": "Ich schaue im Fahrplan nach, wann der Bus kommt.", "kategori": "Nomen", "zorlukSeviyesi": "orta" },
-    { "id": "t05-w002", "de": "die Verspätung", "tr": "gecikme", "beispiel": "Der Zug hat heute 20 Minuten Verspätung.", "kategori": "Nomen", "zorlukSeviyesi": "orta" },
-    { "id": "t05-w003", "de": "umsteigen", "tr": "aktarma yapmak", "beispiel": "Sie müssen in Frankfurt umsteigen.", "kategori": "Verb", "zorlukSeviyesi": "schwer" },
-    { "id": "t05-w004", "de": "die Fahrkarte", "tr": "bilet", "beispiel": "Ich brauche eine Fahrkarte nach München.", "kategori": "Nomen", "zorlukSeviyesi": "leicht" },
-    { "id": "t05-w005", "de": "der Bahnsteig", "tr": "peron", "beispiel": "Der Zug fährt von Bahnsteig fünf ab.", "kategori": "Nomen", "zorlukSeviyesi": "orta" }
+    { "id": "t05-w001", "de": "der Fahrplan", "tr": "sefer tarifesi", "en": "timetable", "beispiel": "Ich schaue im Fahrplan nach, wann der Bus kommt.", "kategori": "Nomen", "zorlukSeviyesi": "orta" },
+    { "id": "t05-w002", "de": "die Verspätung", "tr": "gecikme", "en": "delay", "beispiel": "Der Zug hat heute 20 Minuten Verspätung.", "kategori": "Nomen", "zorlukSeviyesi": "orta" },
+    { "id": "t05-w003", "de": "umsteigen", "tr": "aktarma yapmak", "en": "to change (trains/buses)", "beispiel": "Sie müssen in Frankfurt umsteigen.", "kategori": "Verb", "zorlukSeviyesi": "schwer" },
+    { "id": "t05-w004", "de": "die Fahrkarte", "tr": "bilet", "en": "ticket", "beispiel": "Ich brauche eine Fahrkarte nach München.", "kategori": "Nomen", "zorlukSeviyesi": "leicht" },
+    { "id": "t05-w005", "de": "der Bahnsteig", "tr": "peron", "en": "platform", "beispiel": "Der Zug fährt von Bahnsteig fünf ab.", "kategori": "Nomen", "zorlukSeviyesi": "orta" }
   ],
   "gramer": [
     {
@@ -20,6 +20,7 @@
       "secenekler": ["umsteigen", "umzusteigen", "umgestiegen", "umsteige"],
       "dogruCevap": "umsteigen",
       "aciklama": "'müssen' modal fiili sonrası infinitiv 'zu' almadan kullanılır: 'muss umsteigen'.",
+      "aciklamaEn": "After the modal verb 'müssen', the infinitive is used without 'zu': 'muss umsteigen'.",
       "zorlukSeviyesi": "orta"
     },
     {
@@ -30,6 +31,7 @@
       "secenekler": ["der", "die", "das", "dem"],
       "dogruCevap": "dem",
       "aciklama": "'von' edatı Dativ ister; 'der Bahnsteig' eril, Dativ'de 'dem Bahnsteig' olur.",
+      "aciklamaEn": "The preposition 'von' requires Dative; 'der Bahnsteig' is masculine, so in Dative it becomes 'dem Bahnsteig'.",
       "zorlukSeviyesi": "orta"
     },
     {
@@ -40,6 +42,7 @@
       "secenekler": ["weil", "obwohl", "damit", "bevor"],
       "dogruCevap": "weil",
       "aciklama": "Neden belirtmek için 'weil' kullanılır; fiil cümle sonuna gider.",
+      "aciklamaEn": "'weil' is used to state a reason; the conjugated verb moves to the end of the clause.",
       "zorlukSeviyesi": "leicht"
     }
   ],

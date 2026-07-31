@@ -5,11 +5,11 @@
   "handlungsfeld": "Gesundheit",
   "kaynakEslesmeleri": [],
   "kelime": [
-    { "id": "t06-w001", "de": "der Termin", "tr": "randevu", "beispiel": "Ich brauche einen Termin beim Hausarzt.", "kategori": "Nomen", "zorlukSeviyesi": "leicht" },
-    { "id": "t06-w002", "de": "die Versicherungskarte", "tr": "sigorta kartı", "beispiel": "Bitte zeigen Sie Ihre Versicherungskarte.", "kategori": "Nomen", "zorlukSeviyesi": "orta" },
-    { "id": "t06-w003", "de": "die Nebenwirkung", "tr": "yan etki", "beispiel": "Dieses Medikament kann Nebenwirkungen haben.", "kategori": "Nomen", "zorlukSeviyesi": "schwer" },
-    { "id": "t06-w004", "de": "sich krank melden", "tr": "hasta olduğunu bildirmek", "beispiel": "Ich muss mich heute krank melden.", "kategori": "Verb", "zorlukSeviyesi": "orta" },
-    { "id": "t06-w005", "de": "die Apotheke", "tr": "eczane", "beispiel": "Die Apotheke ist bis 20 Uhr geöffnet.", "kategori": "Nomen", "zorlukSeviyesi": "leicht" }
+    { "id": "t06-w001", "de": "der Termin", "tr": "randevu", "en": "appointment", "beispiel": "Ich brauche einen Termin beim Hausarzt.", "kategori": "Nomen", "zorlukSeviyesi": "leicht" },
+    { "id": "t06-w002", "de": "die Versicherungskarte", "tr": "sigorta kartı", "en": "insurance card", "beispiel": "Bitte zeigen Sie Ihre Versicherungskarte.", "kategori": "Nomen", "zorlukSeviyesi": "orta" },
+    { "id": "t06-w003", "de": "die Nebenwirkung", "tr": "yan etki", "en": "side effect", "beispiel": "Dieses Medikament kann Nebenwirkungen haben.", "kategori": "Nomen", "zorlukSeviyesi": "schwer" },
+    { "id": "t06-w004", "de": "sich krank melden", "tr": "hasta olduğunu bildirmek", "en": "to call in sick", "beispiel": "Ich muss mich heute krank melden.", "kategori": "Verb", "zorlukSeviyesi": "orta" },
+    { "id": "t06-w005", "de": "die Apotheke", "tr": "eczane", "en": "pharmacy", "beispiel": "Die Apotheke ist bis 20 Uhr geöffnet.", "kategori": "Nomen", "zorlukSeviyesi": "leicht" }
   ],
   "gramer": [
     {
@@ -20,6 +20,7 @@
       "secenekler": ["bin", "habe", "war", "hatte"],
       "dogruCevap": "bin",
       "aciklama": "'sein' fiili Perfekt'te kendi hilfsverb'i olarak kullanılır: 'ich bin gewesen'.",
+      "aciklamaEn": "In the Perfekt tense, 'sein' uses itself as the auxiliary verb: 'ich bin gewesen'.",
       "zorlukSeviyesi": "orta"
     },
     {
@@ -30,6 +31,7 @@
       "secenekler": ["die", "der", "den", "dem"],
       "dogruCevap": "der",
       "aciklama": "'geben' fiili Dativ ister; 'die Patientin' dişil, Dativ'de 'der Patientin' olur.",
+      "aciklamaEn": "The verb 'geben' requires Dative; 'die Patientin' is feminine, so in Dative it becomes 'der Patientin'.",
       "zorlukSeviyesi": "orta"
     },
     {
@@ -40,6 +42,7 @@
       "secenekler": ["weil", "obwohl", "damit", "bevor"],
       "dogruCevap": "weil",
       "aciklama": "Neden belirtmek için 'weil' kullanılır; fiil cümle sonuna gider.",
+      "aciklamaEn": "'weil' is used to state a reason; the conjugated verb moves to the end of the clause.",
       "zorlukSeviyesi": "leicht"
     }
   ],
