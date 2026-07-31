@@ -1,4 +1,18 @@
 const I18n = (() => {
+  // Uygulama arayüz/içerik çeviri dilleri buradan yönetilir. Yeni bir dil eklemek için:
+  //  1. Bu listeye { code, label } eklenir
+  //  2. DICT'e o code ile bir blok eklenir (aşağıdaki tr/en objeleri gibi)
+  //  3. content JSON'larına o dile ait alanlar eklenir (kelime[].<code>, gramer[].aciklama<Code>, vb.)
+  // Kodun başka hiçbir yerinde "tr"/"en" hardcode edilmemeli — hepsi bu listeden türetilir.
+  // "de" ASLA buraya eklenmez: Almanca öğretilen dil, kelime[].de zaten hedef kelime alanı
+  // olarak kullanılıyor; Almanca'nın aynı zamanda bir arayüz/çeviri dili olması anlamsız ve
+  // alan adlarıyla çakışır.
+  const LANGUAGES = [
+    { code: "tr", label: "TR" },
+    { code: "en", label: "EN" },
+  ];
+  const BASE_LANG = "tr";
+
   const DICT = {
     tr: {
       "nav.backToDashboard": "< Panele dön",
@@ -110,10 +124,14 @@ const I18n = (() => {
     },
   };
 
-  let currentLang = "tr";
+  let currentLang = BASE_LANG;
 
   function init() {
     currentLang = Storage.getLanguage();
+  }
+
+  function getLanguages() {
+    return LANGUAGES;
   }
 
   function getLanguage() {
@@ -125,8 +143,17 @@ const I18n = (() => {
     Storage.setLanguage(lang);
   }
 
+  // Persists+applies the next language in LANGUAGES after the current one (wraps around).
+  // With 2 languages this behaves like a toggle; with 3+ it cycles through all of them.
+  function cycleLanguage() {
+    const index = LANGUAGES.findIndex((l) => l.code === currentLang);
+    const next = LANGUAGES[(index + 1) % LANGUAGES.length];
+    setLanguage(next.code);
+    return next;
+  }
+
   function t(key, vars) {
-    let str = DICT[currentLang]?.[key] ?? DICT.tr[key] ?? key;
+    let str = DICT[currentLang]?.[key] ?? DICT[BASE_LANG][key] ?? key;
     if (vars) {
       Object.entries(vars).forEach(([name, value]) => {
         str = str.replaceAll(`{${name}}`, value);
@@ -136,12 +163,16 @@ const I18n = (() => {
   }
 
   // Resolves a bilingual content field (tema JSON / redemittel-bank JSON), NOT a UI string.
-  // Base field "tr" -> English sibling is "en"; any other base field -> "<key>En".
+  // In the base language, the field is read as-is (e.g. kelime[].tr, gramer[].aciklama).
+  // In any other language, the sibling field is named after that language's code: the base
+  // field itself ("tr") maps to "<code>" (e.g. "en"), every other field maps to "<key><Code>"
+  // (e.g. "aciklama" -> "aciklamaEn"). Falls back to the base field if the sibling is missing.
   function contentField(obj, key) {
-    if (currentLang === "tr") return obj[key];
-    const enKey = key === "tr" ? "en" : `${key}En`;
-    return obj[enKey] ?? obj[key];
+    if (currentLang === BASE_LANG) return obj[key];
+    const suffix = currentLang.charAt(0).toUpperCase() + currentLang.slice(1);
+    const targetKey = key === BASE_LANG ? currentLang : `${key}${suffix}`;
+    return obj[targetKey] ?? obj[key];
   }
 
-  return { init, getLanguage, setLanguage, t, contentField };
+  return { init, getLanguages, getLanguage, setLanguage, cycleLanguage, t, contentField };
 })();
