@@ -2,7 +2,7 @@
 
 Bu dosya, projenin güncel durumunu ve önemli kararları/öğrenmeleri özetler. Yeni bir sohbete başlarken buradan devam edilebilir.
 
-**Son güncelleme:** 2026-07-30
+**Son güncelleme:** 2026-07-31
 **Canlı adres:** https://coltranesx.github.io/deutsch-dtz-b1-test/
 **Repo:** coltranesx/deutsch-dtz-b1-test (public, GitHub Pages ile otomatik deploy)
 
@@ -21,7 +21,7 @@ Bu dosya, projenin güncel durumunu ve önemli kararları/öğrenmeleri özetler
 ### v1.5 — KISMEN TAMAMLANDI
 - ✅ **Zayıf Konular Modu** altyapısı: Leitner kutu sistemi (5 kutu, kutu 1 hemen tekrar → kutu 5 14 gün), tema-bağımsız soru havuzu (tüm temaların gramer+hören soruları), kategori bazlı (Gramer taksonomisi üst kategorisi) başarı yüzdesi
 - ✅ Normal Tema Modu pratiği de Leitner sistemini besliyor (paylaşılan `SoruKart` bileşeni üzerinden)
-- ❌ **Redemittel-Bank** — henüz yok
+- ✅ **Redemittel-Bank**: `content/redemittel-bank.json` (3 kategori — Redeorganisation, Verständnissicherung, Kompensation — 24 ifade), `js/components/redemittel-bank.js` bileşeni (dashboard'da bağımsız tam ekran görünüm + Sprechen adımına gömülü, Teil'e göre öne çıkan kategoriyle açılan yardım paneli: Teil 1 → Verständnissicherung, Teil 2 → Kompensation, Teil 3 → Redeorganisation+Kompensation). Salt-okunur referans banka, LocalStorage'a yeni alan eklenmedi (v3.0'a kadar kullanım takibi planlanmıyor).
 - ❌ **21 Günlük Kamp** — henüz yok
 - ❌ **Günlük 15 Dakika** — henüz yok
 
@@ -42,11 +42,13 @@ js/
 ├── app.js                        — Dashboard, TEMALAR dizisi, routing
 ├── storage.js                    — LocalStorage katmanı (answers/progress/leitner)
 ├── components/
-│   └── soru-kart.js              — Paylaşılan soru render + ses bağlamı bileşeni
+│   ├── soru-kart.js              — Paylaşılan soru render + ses bağlamı bileşeni
+│   └── redemittel-bank.js        — Redemittel-Bank tam ekran görünüm + Sprechen yardım paneli
 └── study-modes/
     ├── tema-modu.js               — 7 adımlı normal çalışma modu
     └── zayif-konular-modu.js      — Leitner tabanlı akıllı tekrar modu
 content/temalar/*.json            — 11 tema içeriği (PRD §15 şemasına uygun)
+content/redemittel-bank.json      — Temadan bağımsız konuşma stratejisi ifade bankası (PRD §7.1)
 assets/audio/, assets/fotos/      — AI üretimi medya (Magnific/ElevenLabs)
 .github/workflows/deploy-pages.yml — Otomatik GitHub Pages deploy
 ```
@@ -81,9 +83,10 @@ assets/audio/, assets/fotos/      — AI üretimi medya (Magnific/ElevenLabs)
 
 ## 4. Sırada Ne Var (öneri sırası)
 
-1. **Redemittel-Bank** — Sprechen/Schreiben'de kullanılabilecek sabit ifade bankası (PRD §7)
-2. **21 Günlük Kamp** / **Günlük 15 Dakika** — sabit müfredat modları (PRD §17)
-3. v2.0: istatistik ekranı, dışa aktarma, DTZ Sınav Modu
-4. v3.0: AI entegrasyonu (bu noktada `guvenlik-uzmani` benzeri bir agent ve API anahtarı yönetimi gerekecek)
+1. **21 Günlük Kamp** / **Günlük 15 Dakika** — sabit müfredat modları (PRD §17)
+2. v2.0: istatistik ekranı, dışa aktarma, DTZ Sınav Modu
+3. v3.0: AI entegrasyonu (bu noktada `guvenlik-uzmani` benzeri bir agent ve API anahtarı yönetimi gerekecek)
+
+Not: Redemittel-Bank şu an sadece Sprechen'e entegre; Schreiben görevlerine (özellikle halbformell/formell register'da) benzer bir yardım paneli eklemek istenirse bu ayrı bir takip maddesi olarak ele alınmalı (bkz. `schreiben-sprechen-uzmani`).
 
 Ayrıca test sırasında bulunacak başka hatalar için: `.claude/agents/soru-kontrolcu` ve `almanca-dil-uzmani` içerik denetimi için, `pwa-vanilla-js-uzmani` kod/mimari sorunları için çağrılabilir.

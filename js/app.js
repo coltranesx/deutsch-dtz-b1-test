@@ -41,6 +41,18 @@ const App = (() => {
     return data;
   }
 
+  async function loadRedemittelBank() {
+    if (cache.redemittelBank) return cache.redemittelBank;
+    try {
+      const res = await fetch("content/redemittel-bank.json");
+      const data = await res.json();
+      cache.redemittelBank = data;
+      return data;
+    } catch {
+      return { kategoriler: [] };
+    }
+  }
+
   function stepCount() {
     return 7;
   }
@@ -48,7 +60,10 @@ const App = (() => {
   async function renderDashboard() {
     app.innerHTML = "";
 
-    const allData = await Promise.all(TEMALAR.map(loadTema));
+    const [allData, redemittelData] = await Promise.all([
+      Promise.all(TEMALAR.map(loadTema)),
+      loadRedemittelBank(),
+    ]);
 
     const zayifCard = document.createElement("div");
     zayifCard.className = "card zayif-konular-card";
@@ -61,6 +76,18 @@ const App = (() => {
     `;
     zayifCard.addEventListener("click", () => openZayifKonular(allData));
     app.appendChild(zayifCard);
+
+    const redemittelCard = document.createElement("div");
+    redemittelCard.className = "card redemittel-bank-card";
+    redemittelCard.innerHTML = `
+      <div style="font-size:1.5rem;">💬</div>
+      <div>
+        <h3 style="margin:0 0 0.25rem;">Redemittel-Bank</h3>
+        <p style="margin:0;color:var(--text-muted);font-size:var(--text-sm);">Sprechen için hazır konuşma stratejisi ifadeleri</p>
+      </div>
+    `;
+    redemittelCard.addEventListener("click", () => openRedemittelBank(redemittelData));
+    app.appendChild(redemittelCard);
 
     const h = document.createElement("h2");
     h.textContent = "Temalar";
@@ -81,17 +108,21 @@ const App = (() => {
         </div>
         <div>${pct}%</div>
       `;
-      card.addEventListener("click", () => openTema(entry, data));
+      card.addEventListener("click", () => openTema(entry, data, redemittelData));
       app.appendChild(card);
     });
   }
 
-  function openTema(entry, data) {
-    TemaModu.start(app, data, renderDashboard);
+  function openTema(entry, data, redemittelData) {
+    TemaModu.start(app, data, renderDashboard, redemittelData);
   }
 
   function openZayifKonular(allData) {
     ZayifKonularModu.start(app, allData, renderDashboard);
+  }
+
+  function openRedemittelBank(redemittelData) {
+    RedemittelBank.renderFullView(app, redemittelData, renderDashboard);
   }
 
   function init() {
