@@ -67,7 +67,7 @@ const SoruKart = (() => {
 
     const missingNote = document.createElement("p");
     missingNote.className = "feedback";
-    missingNote.textContent = "Bu soru için ses kaydı henüz hazır değil, aşağıdaki metni okuyarak cevaplayın.";
+    missingNote.textContent = I18n.t("soruKart.audioMissing");
     missingNote.style.display = "none";
 
     if (sesUrl) {
@@ -87,7 +87,7 @@ const SoruKart = (() => {
       const details = document.createElement("details");
       details.style.marginTop = "0.75rem";
       const summary = document.createElement("summary");
-      summary.textContent = "Transkript metnini göster";
+      summary.textContent = I18n.t("soruKart.transcriptSummary");
       details.appendChild(summary);
       const p = document.createElement("p");
       p.textContent = transkript;

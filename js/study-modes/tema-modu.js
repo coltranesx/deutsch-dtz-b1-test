@@ -1,14 +1,5 @@
 const TemaModu = (() => {
   const STEPS = ["kelime", "gramer", "lesen", "hoeren", "schreiben", "sprechen", "miniTest"];
-  const STEP_LABELS = {
-    kelime: "Kelime",
-    gramer: "Gramer",
-    lesen: "Lesen",
-    hoeren: "Hören",
-    schreiben: "Schreiben",
-    sprechen: "Sprechen",
-    miniTest: "Mini Test",
-  };
 
   const SPRECHEN_REDEMITTEL_MAP = {
     teil1: ["verstaendnissicherung"],
@@ -40,7 +31,7 @@ const TemaModu = (() => {
 
     const backBtn = document.createElement("button");
     backBtn.className = "btn secondary";
-    backBtn.textContent = "< Panele dön";
+    backBtn.textContent = I18n.t("nav.backToDashboard");
     backBtn.style.marginBottom = "1rem";
     backBtn.addEventListener("click", () => state.onExit());
     container.appendChild(backBtn);
@@ -52,7 +43,7 @@ const TemaModu = (() => {
       pill.className = "step-pill";
       if (i === stepIndex) pill.classList.add("active");
       else if (progress.completedSteps.includes(s)) pill.classList.add("done");
-      pill.textContent = `${i + 1}. ${STEP_LABELS[s]}`;
+      pill.textContent = `${i + 1}. ${I18n.t(`step.${s}`)}`;
       nav.appendChild(pill);
     });
     container.appendChild(nav);
@@ -67,7 +58,7 @@ const TemaModu = (() => {
 
     const prevBtn = document.createElement("button");
     prevBtn.className = "btn secondary";
-    prevBtn.textContent = "Geri";
+    prevBtn.textContent = I18n.t("nav.back");
     prevBtn.disabled = stepIndex === 0;
     prevBtn.addEventListener("click", () => {
       state.stepIndex -= 1;
@@ -77,7 +68,7 @@ const TemaModu = (() => {
 
     const nextBtn = document.createElement("button");
     nextBtn.className = "btn";
-    nextBtn.textContent = stepIndex === STEPS.length - 1 ? "Temayı bitir" : "Devam et";
+    nextBtn.textContent = stepIndex === STEPS.length - 1 ? I18n.t("nav.finishTema") : I18n.t("nav.continue");
     nextBtn.addEventListener("click", () => {
       Storage.saveProgress(tema.temaId, step);
       if (stepIndex === STEPS.length - 1) {
@@ -116,7 +107,7 @@ const TemaModu = (() => {
   function renderKelime(tema) {
     const wrap = document.createElement("div");
     const h = document.createElement("h2");
-    h.textContent = "Kelime";
+    h.textContent = I18n.t("step.kelime");
     wrap.appendChild(h);
 
     tema.kelime.forEach((w) => {
@@ -141,7 +132,7 @@ const TemaModu = (() => {
   function renderGramer(tema) {
     const wrap = document.createElement("div");
     const h = document.createElement("h2");
-    h.textContent = "Gramer";
+    h.textContent = I18n.t("step.gramer");
     wrap.appendChild(h);
     tema.gramer.forEach((q) => wrap.appendChild(renderGradedQuestion(tema, q)));
     return wrap;
@@ -150,7 +141,7 @@ const TemaModu = (() => {
   function renderLesen(tema) {
     const wrap = document.createElement("div");
     const h = document.createElement("h2");
-    h.textContent = "Lesen";
+    h.textContent = I18n.t("step.lesen");
     wrap.appendChild(h);
 
     const text = document.createElement("p");
@@ -179,7 +170,7 @@ const TemaModu = (() => {
   function renderHoeren(tema) {
     const wrap = document.createElement("div");
     const h = document.createElement("h2");
-    h.textContent = "Hören";
+    h.textContent = I18n.t("step.hoeren");
     wrap.appendChild(h);
 
     wrap.appendChild(SoruKart.renderAudioContext(tema.hoeren.sesUrl, tema.hoeren.transkript));
@@ -191,7 +182,7 @@ const TemaModu = (() => {
   function renderSchreiben(tema) {
     const wrap = document.createElement("div");
     const h = document.createElement("h2");
-    h.textContent = "Schreiben";
+    h.textContent = I18n.t("step.schreiben");
     wrap.appendChild(h);
 
     const task = tema.schreiben;
@@ -220,7 +211,7 @@ const TemaModu = (() => {
 
     const hint = document.createElement("p");
     hint.className = "feedback";
-    hint.textContent = `Hedef: ${task.minKelime}-${task.maxKelime} kelime`;
+    hint.textContent = I18n.t("schreiben.targetLabel", { min: task.minKelime, max: task.maxKelime });
     wrap.appendChild(hint);
 
     const answerId = "schreiben-metin";
@@ -236,14 +227,14 @@ const TemaModu = (() => {
   function renderSprechen(tema, redemittelData) {
     const wrap = document.createElement("div");
     const h = document.createElement("h2");
-    h.textContent = "Sprechen";
+    h.textContent = I18n.t("step.sprechen");
     wrap.appendChild(h);
 
     const s = tema.sprechen;
 
     const teil1 = document.createElement("div");
     teil1.className = "question-block";
-    teil1.innerHTML = `<div class="question-text">Teil 1 - ${s.teil1FollowUp.frage}</div>`;
+    teil1.innerHTML = `<div class="question-text">${I18n.t("sprechen.teil1")} - ${s.teil1FollowUp.frage}</div>`;
     const teil1Input = document.createElement("textarea");
     teil1Input.value = Storage.getAnswer(tema.temaId, "sprechen-teil1") ?? "";
     teil1Input.addEventListener("input", () => {
@@ -255,10 +246,10 @@ const TemaModu = (() => {
 
     const teil2 = document.createElement("div");
     teil2.className = "question-block";
-    teil2.innerHTML = `<div class="question-text">Teil 2</div>`;
+    teil2.innerHTML = `<div class="question-text">${I18n.t("sprechen.teil2")}</div>`;
     if (s.teil2.fotoUrl) {
       const foto = document.createElement("img");
-      foto.alt = "Sprechen Teil 2 fotoğrafı";
+      foto.alt = I18n.t("sprechen.fotoAlt");
       foto.className = "sprechen-foto";
       foto.addEventListener("error", () => foto.remove());
       foto.src = s.teil2.fotoUrl;
@@ -290,7 +281,7 @@ const TemaModu = (() => {
     const teil3 = document.createElement("div");
     teil3.className = "question-block";
     teil3.innerHTML = `
-      <div class="question-text">Teil 3</div>
+      <div class="question-text">${I18n.t("sprechen.teil3")}</div>
       <p>${s.teil3.szenario}</p>
     `;
     const teil3Input = document.createElement("textarea");
@@ -308,7 +299,7 @@ const TemaModu = (() => {
   function renderMiniTest(tema) {
     const wrap = document.createElement("div");
     const h = document.createElement("h2");
-    h.textContent = "Mini Test";
+    h.textContent = I18n.t("step.miniTest");
     wrap.appendChild(h);
 
     const allQuestions = [...tema.gramer, ...tema.hoeren.sorular].filter((q) =>
@@ -317,7 +308,7 @@ const TemaModu = (() => {
 
     if (allQuestions.length === 0) {
       const note = document.createElement("p");
-      note.textContent = "Bu tema için mini test sorusu tanımlı değil.";
+      note.textContent = I18n.t("miniTest.noQuestions");
       wrap.appendChild(note);
       return wrap;
     }
@@ -331,11 +322,16 @@ const TemaModu = (() => {
     summary.className = "result-summary";
     summary.innerHTML = `
       <div class="result-score">${correct.length}/${allQuestions.length}</div>
-      <p>${answered.length}/${allQuestions.length} soru cevaplandı</p>
+      <p>${I18n.t("miniTest.answeredCount", { answered: answered.length, total: allQuestions.length })}</p>
     `;
     wrap.appendChild(summary);
     return wrap;
   }
 
-  return { start };
+  function refresh() {
+    if (!state) return;
+    render();
+  }
+
+  return { start, refresh };
 })();

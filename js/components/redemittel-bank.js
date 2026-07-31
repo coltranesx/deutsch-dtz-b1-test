@@ -20,23 +20,23 @@ const RedemittelBank = (() => {
 
     const backBtn = document.createElement("button");
     backBtn.className = "btn secondary";
-    backBtn.textContent = "< Panele dön";
+    backBtn.textContent = I18n.t("nav.backToDashboard");
     backBtn.style.marginBottom = "1rem";
     backBtn.addEventListener("click", () => onExit());
     container.appendChild(backBtn);
 
     const h = document.createElement("h2");
-    h.textContent = "Redemittel-Bank";
+    h.textContent = I18n.t("dashboard.redemittelTitle");
     container.appendChild(h);
 
     const desc = document.createElement("p");
     desc.className = "feedback";
-    desc.textContent = "Sprechen pratiğinde takıldığınızda kullanabileceğiniz sabit ifadeler.";
+    desc.textContent = I18n.t("redemittel.fullViewDesc");
     container.appendChild(desc);
 
     if (!data?.kategoriler?.length) {
       const note = document.createElement("p");
-      note.textContent = "İçerik yüklenemedi.";
+      note.textContent = I18n.t("redemittel.loadError");
       container.appendChild(note);
       return;
     }
@@ -63,7 +63,7 @@ const RedemittelBank = (() => {
     const outer = document.createElement("details");
     outer.className = "redemittel-helper";
     const summary = document.createElement("summary");
-    summary.textContent = "Yardım ifadeleri (takıldığınızda açın)";
+    summary.textContent = I18n.t("redemittel.helperSummary");
     outer.appendChild(summary);
 
     data.kategoriler.forEach((kategori) => {
