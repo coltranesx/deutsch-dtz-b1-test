@@ -10,15 +10,22 @@ const TemaModu = (() => {
     miniTest: "Mini Test",
   };
 
+  const SPRECHEN_REDEMITTEL_MAP = {
+    teil1: ["verstaendnissicherung"],
+    teil2: ["kompensation"],
+    teil3: ["redeorganisation", "kompensation"],
+  };
+
   let state = null;
 
-  function start(container, tema, onExit) {
+  function start(container, tema, onExit, redemittelData = null) {
     const progress = Storage.getProgress(tema.temaId);
     const nextIncompleteIndex = STEPS.findIndex((s) => !progress.completedSteps.includes(s));
     state = {
       container,
       tema,
       onExit,
+      redemittel: redemittelData,
       stepIndex: nextIncompleteIndex === -1 ? STEPS.length - 1 : nextIncompleteIndex,
     };
     render();
@@ -98,7 +105,7 @@ const TemaModu = (() => {
       case "schreiben":
         return renderSchreiben(tema);
       case "sprechen":
-        return renderSprechen(tema);
+        return renderSprechen(tema, state.redemittel);
       case "miniTest":
         return renderMiniTest(tema);
       default:
@@ -226,7 +233,7 @@ const TemaModu = (() => {
     return wrap;
   }
 
-  function renderSprechen(tema) {
+  function renderSprechen(tema, redemittelData) {
     const wrap = document.createElement("div");
     const h = document.createElement("h2");
     h.textContent = "Sprechen";
@@ -243,6 +250,7 @@ const TemaModu = (() => {
       Storage.saveAnswer(tema.temaId, "sprechen-teil1", teil1Input.value);
     });
     teil1.appendChild(teil1Input);
+    teil1.appendChild(RedemittelBank.renderHelper(redemittelData, SPRECHEN_REDEMITTEL_MAP.teil1));
     wrap.appendChild(teil1);
 
     const teil2 = document.createElement("div");
@@ -276,6 +284,7 @@ const TemaModu = (() => {
       Storage.saveAnswer(tema.temaId, "sprechen-teil2-vergleich", teil2Compare.value);
     });
     teil2.appendChild(teil2Compare);
+    teil2.appendChild(RedemittelBank.renderHelper(redemittelData, SPRECHEN_REDEMITTEL_MAP.teil2));
     wrap.appendChild(teil2);
 
     const teil3 = document.createElement("div");
@@ -290,6 +299,7 @@ const TemaModu = (() => {
       Storage.saveAnswer(tema.temaId, "sprechen-teil3", teil3Input.value);
     });
     teil3.appendChild(teil3Input);
+    teil3.appendChild(RedemittelBank.renderHelper(redemittelData, SPRECHEN_REDEMITTEL_MAP.teil3));
     wrap.appendChild(teil3);
 
     return wrap;

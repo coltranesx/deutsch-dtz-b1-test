@@ -75,6 +75,44 @@ Her Temanın Gramer/Schreiben/Sprechen öğeleri şu işlevlerden en az birini e
 
 Temalardan bağımsız, sabit bir ifade/strateji bankası: **Redeorganisation** (söze başlama/bitirme, söz isteme), **Verständnissicherung** (anlaşılmayı kontrol etme, tekrar/yavaşlatma isteme, heceletme), **Kompensation** (kelime bilmediğinde tanımlayarak anlatma, kendini düzeltme). Sprechen pratiğinde kullanıcı takıldığında "yardım ifadeleri" olarak sunulur — gerçek sınavın canlı/eşli formatında donup kalmamayı öğretir.
 
+### 7.1 `redemittel-bank.json` JSON Şeması
+
+Bu dosya bir Tema değildir, §15'teki Tema şemasına tabi olmadan kendi basit şemasını kullanır. `kategoriId` alanı sabit 3 değerden biridir (`redeorganisation`, `verstaendnissicherung`, `kompensation`) — kod bu ID'lere doğrudan referans verir, değiştirilemez/genişletilemez. Kategori sırası şema içinde bu 3 değerle sabittir.
+
+```json
+{
+  "kategoriler": [
+    {
+      "kategoriId": "redeorganisation",
+      "baslik": "Redeorganisation",
+      "aciklama": "Söze başlama/bitirme, söz isteme/kesme, devam ettirme",
+      "ifadeler": [
+        {
+          "id": "rb-reor-001",
+          "de": "Ich möchte noch etwas dazu sagen.",
+          "tr": "Buna bir şey daha eklemek istiyorum.",
+          "kullanim": "Söz almak / devam ettirmek istediğinde"
+        }
+      ]
+    },
+    {
+      "kategoriId": "verstaendnissicherung",
+      "baslik": "Verständnissicherung",
+      "aciklama": "Anlaşılmayı kontrol etme, tekrar/yavaşlatma isteme, heceletme, teyit etme",
+      "ifadeler": [ { "id": "rb-vers-001", "de": "...", "tr": "...", "kullanim": "..." } ]
+    },
+    {
+      "kategoriId": "kompensation",
+      "baslik": "Kompensation",
+      "aciklama": "Kelime bilmediğinde tanımlayarak anlatma, kendini düzeltme, genel ifade kullanma",
+      "ifadeler": [ { "id": "rb-komp-001", "de": "...", "tr": "...", "kullanim": "..." } ]
+    }
+  ]
+}
+```
+
+Her `ifadeler[]` maddesi 4 alan zorunludur: `id` (`rb-<kategori-kısaltması>-<3hane>` formatında; kısaltmalar `reor`/`vers`/`komp`), `de` (Almanca ifade), `tr` (Türkçe çevirisi), `kullanim` (ifadenin ne zaman/hangi bağlamda kullanılacağını açıklayan kısa Türkçe not). `id` alanı v2.0'da bireysel ifade bazlı istatistik/tekrar takibi için ileriye dönük genişletilebilirlik amacıyla eklenmiştir.
+
 ## 8. Gramer Yapı Taksonomisi (§8.4)
 
 | # | Kategori | Kapsam (özet) |
