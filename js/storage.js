@@ -59,12 +59,27 @@ const Storage = (() => {
     return data.progress[temaId] ?? { completedSteps: [], lastStep: null };
   }
 
+  function resetTemaProgress(temaId) {
+    const data = readAll();
+    delete data.answers[temaId];
+    delete data.progress[temaId];
+    writeAll(data);
+  }
+
   function getTheme() {
     return localStorage.getItem(`${NAMESPACE}:theme`) ?? "light";
   }
 
   function setTheme(theme) {
     localStorage.setItem(`${NAMESPACE}:theme`, theme);
+  }
+
+  function getLanguage() {
+    return localStorage.getItem(`${NAMESPACE}:language`) ?? "tr";
+  }
+
+  function setLanguage(lang) {
+    localStorage.setItem(`${NAMESPACE}:language`, lang);
   }
 
   function recordLeitnerResult(questionId, correct) {
@@ -97,8 +112,11 @@ const Storage = (() => {
     getTemaAnswers,
     saveProgress,
     getProgress,
+    resetTemaProgress,
     getTheme,
     setTheme,
+    getLanguage,
+    setLanguage,
     recordLeitnerResult,
     getLeitnerEntry,
     isLeitnerDue,

@@ -22,6 +22,8 @@ Bu dosya, projenin güncel durumunu ve önemli kararları/öğrenmeleri özetler
 - ✅ **Zayıf Konular Modu** altyapısı: Leitner kutu sistemi (5 kutu, kutu 1 hemen tekrar → kutu 5 14 gün), tema-bağımsız soru havuzu (tüm temaların gramer+hören soruları), kategori bazlı (Gramer taksonomisi üst kategorisi) başarı yüzdesi
 - ✅ Normal Tema Modu pratiği de Leitner sistemini besliyor (paylaşılan `SoruKart` bileşeni üzerinden)
 - ✅ **Redemittel-Bank**: `content/redemittel-bank.json` (3 kategori — Redeorganisation, Verständnissicherung, Kompensation — 24 ifade), `js/components/redemittel-bank.js` bileşeni (dashboard'da bağımsız tam ekran görünüm + Sprechen adımına gömülü, Teil'e göre öne çıkan kategoriyle açılan yardım paneli: Teil 1 → Verständnissicherung, Teil 2 → Kompensation, Teil 3 → Redeorganisation+Kompensation). Salt-okunur referans banka, LocalStorage'a yeni alan eklenmedi (v3.0'a kadar kullanım takibi planlanmıyor).
+- ✅ **Tema reset tuşu**: Dashboard'daki her tema kartında ↺ tuşu (`Storage.resetTemaProgress(temaId)`) — o temanın `answers`/`progress` kaydını siler, kullanıcı temayı baştan çözebilir. Leitner (Zayıf Konular) verisine kasıtlı olarak dokunulmuyor. `confirm()` ile onay isteniyor, tuşun tıklaması karta bubble etmiyor (`stopPropagation`).
+- ✅ **TR/EN arayüz dili desteği** (sadece UI kabuğu): Yeni `js/i18n.js` modülü (`I18n.t(key, vars)`, düz key + `tr`/`en` sözlük + fallback zinciri `en → tr → ham key`), dil tercihi `Storage.getLanguage()/setLanguage()` ile tema tercihiyle aynı desende saklanıyor. Header'da `#langToggle` tuşu (hedef dili gösterir, tema tuşuyla aynı konvansiyon). Dil değişince aktif ekran state kaybetmeden yeniden çiziliyor (`TemaModu.refresh()` / `ZayifKonularModu.refresh()` — `start()` DEĞİL, `App.currentRenderer` üzerinden). Resmi sınav bölüm adları (`Lesen/Hören/Schreiben/Sprechen`, `Teil 1/2/3`) bilinçli olarak iki dilde de Almanca bırakıldı (PRD'nin "resmi terimler çevrilmez" ilkesiyle tutarlı — bkz. `Handlungsfeld`, `Konjunktiv`); sadece `Kelime→Vocabulary`, `Gramer→Grammar` çevrildi. **İçerik çevirisi (tema JSON'larındaki `tr` alanları, gramer `aciklama`, Redemittel-Bank `tr`/`kullanim` vb.) BİLİNÇLİ OLARAK KAPSAM DIŞI** — kullanıcının isteğiyle ayrı bir sonraki iş olarak planlandı (bkz. §4).
 - ❌ **21 Günlük Kamp** — henüz yok
 - ❌ **Günlük 15 Dakika** — henüz yok
 
@@ -41,12 +43,13 @@ css/style.css                     — Tasarım sistemi (CSS custom properties)
 js/
 ├── app.js                        — Dashboard, TEMALAR dizisi, routing
 ├── storage.js                    — LocalStorage katmanı (answers/progress/leitner)
+├── i18n.js                       — TR/EN arayüz kabuğu sözlüğü (I18n.t/setLanguage/getLanguage)
 ├── components/
 │   ├── soru-kart.js              — Paylaşılan soru render + ses bağlamı bileşeni
 │   └── redemittel-bank.js        — Redemittel-Bank tam ekran görünüm + Sprechen yardım paneli
 └── study-modes/
-    ├── tema-modu.js               — 7 adımlı normal çalışma modu
-    └── zayif-konular-modu.js      — Leitner tabanlı akıllı tekrar modu
+    ├── tema-modu.js               — 7 adımlı normal çalışma modu (refresh() ile dil değişiminde state korunur)
+    └── zayif-konular-modu.js      — Leitner tabanlı akıllı tekrar modu (refresh() ile dil değişiminde state korunur)
 content/temalar/*.json            — 11 tema içeriği (PRD §15 şemasına uygun)
 content/redemittel-bank.json      — Temadan bağımsız konuşma stratejisi ifade bankası (PRD §7.1)
 assets/audio/, assets/fotos/      — AI üretimi medya (Magnific/ElevenLabs)
@@ -83,9 +86,10 @@ assets/audio/, assets/fotos/      — AI üretimi medya (Magnific/ElevenLabs)
 
 ## 4. Sırada Ne Var (öneri sırası)
 
-1. **21 Günlük Kamp** / **Günlük 15 Dakika** — sabit müfredat modları (PRD §17)
-2. v2.0: istatistik ekranı, dışa aktarma, DTZ Sınav Modu
-3. v3.0: AI entegrasyonu (bu noktada `guvenlik-uzmani` benzeri bir agent ve API anahtarı yönetimi gerekecek)
+1. **İçerik çevirisi (EN)** — kullanıcının onayladığı takip işi: tema JSON'larındaki `tr` alanları, gramer `aciklama`, lesen soruları, Redemittel-Bank `tr`/`kullanim`/`baslik`/`aciklama` alanlarına `en` eşdeğerlerinin eklenmesi. Mimari zaten buna hazır (i18n kabuk sözlüğünden kasıtlı olarak ayrı tutuldu); yapılacak iş: (a) PRD §15 şemasına `en` alanları eklemek, (b) 11 tema + redemittel-bank.json içeriğini `dtz-icerik-uzmani`/`almanca-dil-uzmani` ile İngilizce'ye taşımak, (c) render fonksiyonlarında `w.tr` gibi doğrudan erişimleri dil-duyarlı bir okuyucuya çevirmek.
+2. **21 Günlük Kamp** / **Günlük 15 Dakika** — sabit müfredat modları (PRD §17)
+3. v2.0: istatistik ekranı, dışa aktarma, DTZ Sınav Modu
+4. v3.0: AI entegrasyonu (bu noktada `guvenlik-uzmani` benzeri bir agent ve API anahtarı yönetimi gerekecek)
 
 Not: Redemittel-Bank şu an sadece Sprechen'e entegre; Schreiben görevlerine (özellikle halbformell/formell register'da) benzer bir yardım paneli eklemek istenirse bu ayrı bir takip maddesi olarak ele alınmalı (bkz. `schreiben-sprechen-uzmani`).
 

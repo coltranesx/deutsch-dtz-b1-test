@@ -76,13 +76,13 @@ const ZayifKonularModu = (() => {
 
     const backBtn = document.createElement("button");
     backBtn.className = "btn secondary";
-    backBtn.textContent = "< Panele dön";
+    backBtn.textContent = I18n.t("nav.backToDashboard");
     backBtn.style.marginBottom = "1rem";
     backBtn.addEventListener("click", () => state.onExit());
     container.appendChild(backBtn);
 
     const h = document.createElement("h2");
-    h.textContent = "Zayıf Konular Modu";
+    h.textContent = I18n.t("dashboard.zayifKonularTitle");
     container.appendChild(h);
 
     if (session.length === 0) {
@@ -97,7 +97,7 @@ const ZayifKonularModu = (() => {
 
     const progress = document.createElement("p");
     progress.className = "feedback";
-    progress.textContent = `Soru ${index + 1}/${session.length}`;
+    progress.textContent = I18n.t("zayif.questionProgress", { current: index + 1, total: session.length });
     container.appendChild(progress);
 
     const card = document.createElement("div");
@@ -121,7 +121,7 @@ const ZayifKonularModu = (() => {
     btnRow.style.justifyContent = "flex-end";
     const nextBtn = document.createElement("button");
     nextBtn.className = "btn";
-    nextBtn.textContent = index === session.length - 1 ? "Bitir" : "Sonraki soru";
+    nextBtn.textContent = index === session.length - 1 ? I18n.t("nav.finish") : I18n.t("nav.nextQuestion");
     nextBtn.addEventListener("click", () => {
       state.index += 1;
       render();
@@ -132,7 +132,7 @@ const ZayifKonularModu = (() => {
 
   function renderEmpty(container, pool) {
     const note = document.createElement("p");
-    note.textContent = "Şu an tekrar edilecek soru yok, hepsi güncel. Yeni sorular için bir Tema tamamlayın.";
+    note.textContent = I18n.t("zayif.emptyState");
     container.appendChild(note);
     renderStatsBlock(container, pool);
   }
@@ -142,7 +142,7 @@ const ZayifKonularModu = (() => {
     summary.className = "card result-summary";
     summary.innerHTML = `
       <div class="result-score">${state.correctInSession}/${state.session.length}</div>
-      <p>Bu tekrar oturumu tamamlandı</p>
+      <p>${I18n.t("zayif.sessionDone")}</p>
     `;
     container.appendChild(summary);
     renderStatsBlock(container, pool);
@@ -155,7 +155,7 @@ const ZayifKonularModu = (() => {
     wrap.className = "card";
     const h3 = document.createElement("h3");
     h3.style.marginTop = "0";
-    h3.textContent = "Kategori bazlı başarı";
+    h3.textContent = I18n.t("zayif.categoryStatsHeading");
     wrap.appendChild(h3);
     stats.forEach((s) => {
       const pct = Math.round(s.oran * 100);
@@ -170,5 +170,10 @@ const ZayifKonularModu = (() => {
     container.appendChild(wrap);
   }
 
-  return { start };
+  function refresh() {
+    if (!state) return;
+    render();
+  }
+
+  return { start, refresh };
 })();

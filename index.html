@@ -11,16 +11,20 @@
 <body>
   <header class="app-header">
     <h1>DTZ B1 Trainer</h1>
-    <button id="themeToggle" class="icon-btn" aria-label="Tema değiştir" title="Karanlık/Aydınlık mod">&#9789;</button>
+    <div class="header-actions">
+      <button id="langToggle" class="icon-btn" aria-label="Dil değiştir" title="Türkçe/İngilizce">EN</button>
+      <button id="themeToggle" class="icon-btn" aria-label="Tema değiştir" title="Karanlık/Aydınlık mod">&#9789;</button>
+    </div>
   </header>
 
   <main id="app" class="app-main"></main>
 
   <footer class="app-footer">
-    <p>v1.0 &middot; Offline çalışır &middot; Cevaplar cihazınızda saklanır</p>
+    <p id="footerText">v1.0 &middot; Offline çalışır &middot; Cevaplar cihazınızda saklanır</p>
   </footer>
 
   <script src="js/storage.js"></script>
+  <script src="js/i18n.js"></script>
   <script src="js/components/soru-kart.js"></script>
   <script src="js/components/redemittel-bank.js"></script>
   <script src="js/study-modes/tema-modu.js"></script>
