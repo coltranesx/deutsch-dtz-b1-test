@@ -7,8 +7,8 @@ const RedemittelBank = (() => {
       li.className = "redemittel-ifade";
       li.innerHTML = `
         <div class="redemittel-de">${ifade.de}</div>
-        <div class="redemittel-tr">${ifade.tr}</div>
-        <div class="redemittel-kullanim">${ifade.kullanim}</div>
+        <div class="redemittel-tr">${I18n.contentField(ifade, "tr")}</div>
+        <div class="redemittel-kullanim">${I18n.contentField(ifade, "kullanim")}</div>
       `;
       list.appendChild(li);
     });
@@ -50,7 +50,7 @@ const RedemittelBank = (() => {
       card.appendChild(h3);
       const aciklama = document.createElement("p");
       aciklama.className = "feedback";
-      aciklama.textContent = kategori.aciklama;
+      aciklama.textContent = I18n.contentField(kategori, "aciklama");
       card.appendChild(aciklama);
       card.appendChild(renderIfadeList(kategori));
       container.appendChild(card);

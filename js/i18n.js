@@ -135,5 +135,13 @@ const I18n = (() => {
     return str;
   }
 
-  return { init, getLanguage, setLanguage, t };
+  // Resolves a bilingual content field (tema JSON / redemittel-bank JSON), NOT a UI string.
+  // Base field "tr" -> English sibling is "en"; any other base field -> "<key>En".
+  function contentField(obj, key) {
+    if (currentLang === "tr") return obj[key];
+    const enKey = key === "tr" ? "en" : `${key}En`;
+    return obj[enKey] ?? obj[key];
+  }
+
+  return { init, getLanguage, setLanguage, t, contentField };
 })();

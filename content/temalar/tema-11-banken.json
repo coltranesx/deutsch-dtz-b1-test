@@ -5,11 +5,11 @@
   "handlungsfeld": "Banken und Versicherungen",
   "kaynakEslesmeleri": [],
   "kelime": [
-    { "id": "t11-w001", "de": "das Konto", "tr": "hesap", "beispiel": "Ich möchte ein neues Konto eröffnen.", "kategori": "Nomen", "zorlukSeviyesi": "leicht" },
-    { "id": "t11-w002", "de": "überweisen", "tr": "havale etmek", "beispiel": "Ich muss die Miete auf das Konto überweisen.", "kategori": "Verb", "zorlukSeviyesi": "orta" },
-    { "id": "t11-w003", "de": "die Versicherung", "tr": "sigorta", "beispiel": "Meine Versicherung zahlt die Reparatur.", "kategori": "Nomen", "zorlukSeviyesi": "orta" },
-    { "id": "t11-w004", "de": "der Vertrag", "tr": "sözleşme", "beispiel": "Ich habe den Vertrag noch nicht unterschrieben.", "kategori": "Nomen", "zorlukSeviyesi": "schwer" },
-    { "id": "t11-w005", "de": "die Gebühr", "tr": "ücret", "beispiel": "Die Bank verlangt eine monatliche Gebühr.", "kategori": "Nomen", "zorlukSeviyesi": "schwer" }
+    { "id": "t11-w001", "de": "das Konto", "tr": "hesap", "en": "account (bank)", "beispiel": "Ich möchte ein neues Konto eröffnen.", "kategori": "Nomen", "zorlukSeviyesi": "leicht" },
+    { "id": "t11-w002", "de": "überweisen", "tr": "havale etmek", "en": "to transfer (money)", "beispiel": "Ich muss die Miete auf das Konto überweisen.", "kategori": "Verb", "zorlukSeviyesi": "orta" },
+    { "id": "t11-w003", "de": "die Versicherung", "tr": "sigorta", "en": "insurance", "beispiel": "Meine Versicherung zahlt die Reparatur.", "kategori": "Nomen", "zorlukSeviyesi": "orta" },
+    { "id": "t11-w004", "de": "der Vertrag", "tr": "sözleşme", "en": "contract", "beispiel": "Ich habe den Vertrag noch nicht unterschrieben.", "kategori": "Nomen", "zorlukSeviyesi": "schwer" },
+    { "id": "t11-w005", "de": "die Gebühr", "tr": "ücret", "en": "fee", "beispiel": "Die Bank verlangt eine monatliche Gebühr.", "kategori": "Nomen", "zorlukSeviyesi": "schwer" }
   ],
   "gramer": [
     {
@@ -20,6 +20,7 @@
       "secenekler": ["überweisen", "überzuweisen", "überwiesen", "überweise"],
       "dogruCevap": "überweisen",
       "aciklama": "'möchte' modal fiili sonrası infinitiv 'zu' almadan kullanılır: 'möchte überweisen'.",
+      "aciklamaEn": "After the modal verb 'möchte' the infinitive is used without 'zu': 'möchte überweisen'.",
       "zorlukSeviyesi": "orta"
     },
     {
@@ -30,6 +31,7 @@
       "secenekler": ["der", "den", "dem", "des"],
       "dogruCevap": "den",
       "aciklama": "'unterschreiben' fiili Akkusativ ister; 'der Vertrag' eril, Akkusativ'de 'den Vertrag' olur.",
+      "aciklamaEn": "'unterschreiben' requires the accusative case; 'der Vertrag' is masculine, so it becomes 'den Vertrag' in the accusative.",
       "zorlukSeviyesi": "orta"
     },
     {
@@ -40,6 +42,7 @@
       "secenekler": ["weil", "obwohl", "damit", "bevor"],
       "dogruCevap": "weil",
       "aciklama": "Neden belirtmek için 'weil' kullanılır; fiil cümle sonuna gider.",
+      "aciklamaEn": "'weil' is used to give a reason; the verb goes to the end of the clause.",
       "zorlukSeviyesi": "leicht"
     }
   ],

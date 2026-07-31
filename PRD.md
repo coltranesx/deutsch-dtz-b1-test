@@ -86,12 +86,15 @@ Bu dosya bir Tema değildir, §15'teki Tema şemasına tabi olmadan kendi basit 
       "kategoriId": "redeorganisation",
       "baslik": "Redeorganisation",
       "aciklama": "Söze başlama/bitirme, söz isteme/kesme, devam ettirme",
+      "aciklamaEn": "Starting/ending a turn, asking for the floor, continuing",
       "ifadeler": [
         {
           "id": "rb-reor-001",
           "de": "Ich möchte noch etwas dazu sagen.",
           "tr": "Buna bir şey daha eklemek istiyorum.",
-          "kullanim": "Söz almak / devam ettirmek istediğinde"
+          "en": "I would like to add something to that.",
+          "kullanim": "Söz almak / devam ettirmek istediğinde",
+          "kullanimEn": "When you want to take or keep the floor"
         }
       ]
     },
@@ -99,19 +102,21 @@ Bu dosya bir Tema değildir, §15'teki Tema şemasına tabi olmadan kendi basit 
       "kategoriId": "verstaendnissicherung",
       "baslik": "Verständnissicherung",
       "aciklama": "Anlaşılmayı kontrol etme, tekrar/yavaşlatma isteme, heceletme, teyit etme",
-      "ifadeler": [ { "id": "rb-vers-001", "de": "...", "tr": "...", "kullanim": "..." } ]
+      "aciklamaEn": "Checking understanding, asking for repetition/slower speech, spelling, confirming",
+      "ifadeler": [ { "id": "rb-vers-001", "de": "...", "tr": "...", "en": "...", "kullanim": "...", "kullanimEn": "..." } ]
     },
     {
       "kategoriId": "kompensation",
       "baslik": "Kompensation",
       "aciklama": "Kelime bilmediğinde tanımlayarak anlatma, kendini düzeltme, genel ifade kullanma",
-      "ifadeler": [ { "id": "rb-komp-001", "de": "...", "tr": "...", "kullanim": "..." } ]
+      "aciklamaEn": "Describing around an unknown word, self-correcting, using vague expressions",
+      "ifadeler": [ { "id": "rb-komp-001", "de": "...", "tr": "...", "en": "...", "kullanim": "...", "kullanimEn": "..." } ]
     }
   ]
 }
 ```
 
-Her `ifadeler[]` maddesi 4 alan zorunludur: `id` (`rb-<kategori-kısaltması>-<3hane>` formatında; kısaltmalar `reor`/`vers`/`komp`), `de` (Almanca ifade), `tr` (Türkçe çevirisi), `kullanim` (ifadenin ne zaman/hangi bağlamda kullanılacağını açıklayan kısa Türkçe not). `id` alanı v2.0'da bireysel ifade bazlı istatistik/tekrar takibi için ileriye dönük genişletilebilirlik amacıyla eklenmiştir.
+Her `ifadeler[]` maddesi 4 alan zorunludur: `id` (`rb-<kategori-kısaltması>-<3hane>` formatında; kısaltmalar `reor`/`vers`/`komp`), `de` (Almanca ifade), `tr` (Türkçe çevirisi), `kullanim` (ifadenin ne zaman/hangi bağlamda kullanılacağını açıklayan kısa Türkçe not). `id` alanı v2.0'da bireysel ifade bazlı istatistik/tekrar takibi için ileriye dönük genişletilebilirlik amacıyla eklenmiştir. **v1.5 eki:** `en` (`tr`'nin İngilizce karşılığı) ve `kullanimEn` (`kullanim`'ın İngilizce karşılığı) alanları eklemeli olarak eklenir; `kategoriler[].aciklama` için de aynı şekilde `aciklamaEn` eklenir — bkz. §15.1.
 
 ## 8. Gramer Yapı Taksonomisi (§8.4)
 
@@ -173,7 +178,7 @@ Minimal, Dark/Light Mode, responsive, mobil öncelikli, ana ekrana eklenebilir, 
   "handlungsfeld": "Wohnen",
   "kaynakEslesmeleri": [{ "kitap": "Die neue Linie B1", "kapitel": 3, "sayfa": "42-48" }],
   "kelime": [
-    { "id": "t01-w001", "de": "die Wohnung", "tr": "daire", "beispiel": "Ich suche eine 2-Zimmer-Wohnung.", "kategori": "Nomen", "zorlukSeviyesi": "orta" }
+    { "id": "t01-w001", "de": "die Wohnung", "tr": "daire", "en": "apartment", "beispiel": "Ich suche eine 2-Zimmer-Wohnung.", "kategori": "Nomen", "zorlukSeviyesi": "orta" }
   ],
   "gramer": [
     {
@@ -184,6 +189,7 @@ Minimal, Dark/Light Mode, responsive, mobil öncelikli, ana ekrana eklenebilir, 
       "secenekler": ["im", "in", "am", "auf"],
       "dogruCevap": "im",
       "aciklama": "'im' = 'in dem'; kat bildirirken 'im dritten Stock' kullanılır.",
+      "aciklamaEn": "'im' = 'in dem'; used when stating a floor, e.g. 'im dritten Stock'.",
       "zorlukSeviyesi": "orta"
     }
   ],
@@ -217,6 +223,10 @@ Minimal, Dark/Light Mode, responsive, mobil öncelikli, ana ekrana eklenebilir, 
 ```
 
 **Temadan bağımsız, sabit dosyalar:** `redemittel-bank.json` (§7), `profil-tanitim.json` (Sprechen Teil 1 şablonu).
+
+### 15.1 İngilizce Arayüz Dili İçin Ek Alanlar (v1.5)
+
+Uygulamanın arayüz dili İngilizce'ye çevrildiğinde (bkz. §17, TR/EN dil desteği) içerik seviyesinde de karşılık gösterilmesi gereken iki alan var: `kelime[].en` (kelimenin İngilizce çevirisi, `tr` alanının yanına eklenir) ve `gramer[].aciklamaEn` (gramer açıklamasının İngilizce hali, `aciklama` alanının yanına eklenir). Bu alanlar **eklemelidir** — mevcut `tr`/`aciklama` alanları değiştirilmez veya yeniden adlandırılmaz, sadece yanlarına yeni bir alan eklenir. Kod tarafında `I18n.contentField(obj, key)` yardımcı fonksiyonu bu ikisini çözümler: `key === "tr"` ise İngilizce karşılığı `en` alanıdır, diğer tüm alanlar için (örn. `aciklama`) İngilizce karşılığı `<key>En` (örn. `aciklamaEn`) formatındadır. Lesen/Hören/Schreiben/Sprechen içindeki Almanca metinler (soru, metin, transkript, görev, Leitpunkt'ler) bu kapsamın dışındadır — onlar sınavın kendisi, arayüz dilinden bağımsız olarak her zaman Almanca kalır.
 
 ## 16. Modüler Yapı
 

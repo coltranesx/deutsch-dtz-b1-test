@@ -5,11 +5,11 @@
   "handlungsfeld": "Betreuung und Ausbildung der Kinder / Unterricht",
   "kaynakEslesmeleri": [],
   "kelime": [
-    { "id": "t08-w001", "de": "der Kindergarten", "tr": "anaokulu", "beispiel": "Mein Sohn geht seit einem Jahr in den Kindergarten.", "kategori": "Nomen", "zorlukSeviyesi": "leicht" },
-    { "id": "t08-w002", "de": "die Hausaufgabe", "tr": "ev ödevi", "beispiel": "Meine Tochter macht gerade ihre Hausaufgaben.", "kategori": "Nomen", "zorlukSeviyesi": "leicht" },
-    { "id": "t08-w003", "de": "der Elternabend", "tr": "veli toplantısı", "beispiel": "Der Elternabend ist am Mittwoch um 18 Uhr.", "kategori": "Nomen", "zorlukSeviyesi": "orta" },
-    { "id": "t08-w004", "de": "betreuen", "tr": "bakmak / gözetmek", "beispiel": "Meine Nachbarin betreut mein Kind am Nachmittag.", "kategori": "Verb", "zorlukSeviyesi": "orta" },
-    { "id": "t08-w005", "de": "die Klassenlehrerin", "tr": "sınıf öğretmeni", "beispiel": "Die Klassenlehrerin hat mich angerufen.", "kategori": "Nomen", "zorlukSeviyesi": "schwer" }
+    { "id": "t08-w001", "de": "der Kindergarten", "tr": "anaokulu", "en": "kindergarten", "beispiel": "Mein Sohn geht seit einem Jahr in den Kindergarten.", "kategori": "Nomen", "zorlukSeviyesi": "leicht" },
+    { "id": "t08-w002", "de": "die Hausaufgabe", "tr": "ev ödevi", "en": "homework", "beispiel": "Meine Tochter macht gerade ihre Hausaufgaben.", "kategori": "Nomen", "zorlukSeviyesi": "leicht" },
+    { "id": "t08-w003", "de": "der Elternabend", "tr": "veli toplantısı", "en": "parents' evening", "beispiel": "Der Elternabend ist am Mittwoch um 18 Uhr.", "kategori": "Nomen", "zorlukSeviyesi": "orta" },
+    { "id": "t08-w004", "de": "betreuen", "tr": "bakmak / gözetmek", "en": "to look after", "beispiel": "Meine Nachbarin betreut mein Kind am Nachmittag.", "kategori": "Verb", "zorlukSeviyesi": "orta" },
+    { "id": "t08-w005", "de": "die Klassenlehrerin", "tr": "sınıf öğretmeni", "en": "class teacher", "beispiel": "Die Klassenlehrerin hat mich angerufen.", "kategori": "Nomen", "zorlukSeviyesi": "schwer" }
   ],
   "gramer": [
     {
@@ -20,6 +20,7 @@
       "secenekler": ["der", "den", "dem", "des"],
       "dogruCevap": "den",
       "aciklama": "'abholen' fiili Akkusativ ister; 'der Sohn' eril, Akkusativ'de 'den Sohn' olur.",
+      "aciklamaEn": "The verb 'abholen' requires Accusative; 'der Sohn' is masculine, so in Accusative it becomes 'den Sohn'.",
       "zorlukSeviyesi": "orta"
     },
     {
@@ -30,6 +31,7 @@
       "secenekler": ["nette", "nett", "netten", "netter"],
       "dogruCevap": "nette",
       "aciklama": "Belirsiz artikel 'eine' sonrası dişil Nominativ sıfat çekimi '-e' alır: 'eine nette Lehrerin'.",
+      "aciklamaEn": "After the indefinite article 'eine', feminine Nominative adjective endings take '-e': 'eine nette Lehrerin'.",
       "zorlukSeviyesi": "orta"
     },
     {
@@ -40,6 +42,7 @@
       "secenekler": ["weil", "obwohl", "damit", "wenn"],
       "dogruCevap": "weil",
       "aciklama": "Neden belirtmek için 'weil' kullanılır; fiil cümle sonuna gider.",
+      "aciklamaEn": "'weil' is used to state a reason; the conjugated verb moves to the end of the clause.",
       "zorlukSeviyesi": "leicht"
     }
   ],

@@ -5,11 +5,11 @@
   "handlungsfeld": "Einkaufen",
   "kaynakEslesmeleri": [],
   "kelime": [
-    { "id": "t09-w001", "de": "der Kassierer / die Kassiererin", "tr": "kasiyer", "beispiel": "Die Kassiererin scannt die Ware an der Kasse.", "kategori": "Nomen", "zorlukSeviyesi": "leicht" },
-    { "id": "t09-w002", "de": "der Einkaufswagen", "tr": "alışveriş arabası", "beispiel": "Ich nehme einen Einkaufswagen für den großen Einkauf.", "kategori": "Nomen", "zorlukSeviyesi": "leicht" },
-    { "id": "t09-w003", "de": "reduziert", "tr": "indirimli", "beispiel": "Die Preise sind diese Woche reduziert.", "kategori": "Adjektiv", "zorlukSeviyesi": "orta" },
-    { "id": "t09-w004", "de": "die Quittung", "tr": "fiş", "beispiel": "Bitte geben Sie mir die Quittung.", "kategori": "Nomen", "zorlukSeviyesi": "orta" },
-    { "id": "t09-w005", "de": "umtauschen", "tr": "değiştirmek (ürün)", "beispiel": "Kann ich den Pullover umtauschen, er ist zu klein.", "kategori": "Verb", "zorlukSeviyesi": "schwer" }
+    { "id": "t09-w001", "de": "der Kassierer / die Kassiererin", "tr": "kasiyer", "en": "cashier", "beispiel": "Die Kassiererin scannt die Ware an der Kasse.", "kategori": "Nomen", "zorlukSeviyesi": "leicht" },
+    { "id": "t09-w002", "de": "der Einkaufswagen", "tr": "alışveriş arabası", "en": "shopping cart", "beispiel": "Ich nehme einen Einkaufswagen für den großen Einkauf.", "kategori": "Nomen", "zorlukSeviyesi": "leicht" },
+    { "id": "t09-w003", "de": "reduziert", "tr": "indirimli", "en": "discounted", "beispiel": "Die Preise sind diese Woche reduziert.", "kategori": "Adjektiv", "zorlukSeviyesi": "orta" },
+    { "id": "t09-w004", "de": "die Quittung", "tr": "fiş", "en": "receipt", "beispiel": "Bitte geben Sie mir die Quittung.", "kategori": "Nomen", "zorlukSeviyesi": "orta" },
+    { "id": "t09-w005", "de": "umtauschen", "tr": "değiştirmek (ürün)", "en": "to exchange (a product)", "beispiel": "Kann ich den Pullover umtauschen, er ist zu klein.", "kategori": "Verb", "zorlukSeviyesi": "schwer" }
   ],
   "gramer": [
     {
@@ -20,6 +20,7 @@
       "secenekler": ["teurer", "teuer", "am teuersten", "teuerer"],
       "dogruCevap": "teurer",
       "aciklama": "Komparativ 'teuer -> teurer'; 'als' ile karşılaştırma yapılır.",
+      "aciklamaEn": "Comparative 'teuer -> teurer'; 'als' is used to make the comparison.",
       "zorlukSeviyesi": "orta"
     },
     {
@@ -30,6 +31,7 @@
       "secenekler": ["der", "den", "dem", "des"],
       "dogruCevap": "den",
       "aciklama": "'kaufen' fiili Akkusativ ister; 'der Apfel' eril, Akkusativ'de 'den Apfel' olur.",
+      "aciklamaEn": "'kaufen' requires the accusative case; 'der Apfel' is masculine, so it becomes 'den Apfel' in the accusative.",
       "zorlukSeviyesi": "orta"
     },
     {
@@ -40,6 +42,7 @@
       "secenekler": ["mit", "auf", "in", "zu"],
       "dogruCevap": "mit",
       "aciklama": "Ödeme şekli belirtirken 'mit Karte/mit Bargeld bezahlen' kullanılır.",
+      "aciklamaEn": "'mit Karte/mit Bargeld bezahlen' is used to state the method of payment.",
       "zorlukSeviyesi": "leicht"
     }
   ],

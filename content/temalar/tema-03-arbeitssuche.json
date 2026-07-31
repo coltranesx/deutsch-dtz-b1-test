@@ -5,11 +5,11 @@
   "handlungsfeld": "Arbeitssuche",
   "kaynakEslesmeleri": [],
   "kelime": [
-    { "id": "t03-w001", "de": "die Stellenanzeige", "tr": "iş ilanı", "beispiel": "Ich habe eine interessante Stellenanzeige gefunden.", "kategori": "Nomen", "zorlukSeviyesi": "orta" },
-    { "id": "t03-w002", "de": "der Lebenslauf", "tr": "özgeçmiş", "beispiel": "Bitte schicken Sie mir Ihren Lebenslauf.", "kategori": "Nomen", "zorlukSeviyesi": "orta" },
-    { "id": "t03-w003", "de": "das Vorstellungsgespräch", "tr": "iş görüşmesi", "beispiel": "Das Vorstellungsgespräch ist am Freitag um 10 Uhr.", "kategori": "Nomen", "zorlukSeviyesi": "schwer" },
-    { "id": "t03-w004", "de": "sich bewerben", "tr": "başvurmak", "beispiel": "Ich möchte mich für diese Stelle bewerben.", "kategori": "Verb", "zorlukSeviyesi": "orta" },
-    { "id": "t03-w005", "de": "die Qualifikation", "tr": "nitelik / yeterlilik", "beispiel": "Welche Qualifikationen brauche ich für diesen Job?", "kategori": "Nomen", "zorlukSeviyesi": "schwer" }
+    { "id": "t03-w001", "de": "die Stellenanzeige", "tr": "iş ilanı", "en": "job advertisement", "beispiel": "Ich habe eine interessante Stellenanzeige gefunden.", "kategori": "Nomen", "zorlukSeviyesi": "orta" },
+    { "id": "t03-w002", "de": "der Lebenslauf", "tr": "özgeçmiş", "en": "CV / résumé", "beispiel": "Bitte schicken Sie mir Ihren Lebenslauf.", "kategori": "Nomen", "zorlukSeviyesi": "orta" },
+    { "id": "t03-w003", "de": "das Vorstellungsgespräch", "tr": "iş görüşmesi", "en": "job interview", "beispiel": "Das Vorstellungsgespräch ist am Freitag um 10 Uhr.", "kategori": "Nomen", "zorlukSeviyesi": "schwer" },
+    { "id": "t03-w004", "de": "sich bewerben", "tr": "başvurmak", "en": "to apply", "beispiel": "Ich möchte mich für diese Stelle bewerben.", "kategori": "Verb", "zorlukSeviyesi": "orta" },
+    { "id": "t03-w005", "de": "die Qualifikation", "tr": "nitelik / yeterlilik", "en": "qualification", "beispiel": "Welche Qualifikationen brauche ich für diesen Job?", "kategori": "Nomen", "zorlukSeviyesi": "schwer" }
   ],
   "gramer": [
     {
@@ -20,6 +20,7 @@
       "secenekler": ["vorstellen", "vorzustellen", "vorgestellt", "vorstellend"],
       "dogruCevap": "vorstellen",
       "aciklama": "'möchte' modal fiili sonrası infinitiv 'zu' almadan kullanılır: 'möchte vorstellen'.",
+      "aciklamaEn": "After the modal verb 'möchte' the infinitive is used without 'zu': 'möchte vorstellen'.",
       "zorlukSeviyesi": "orta"
     },
     {
@@ -30,6 +31,7 @@
       "secenekler": ["der", "den", "dem", "des"],
       "dogruCevap": "den",
       "aciklama": "'schreiben' fiili Akkusativ ister; 'der Lebenslauf' eril, Akkusativ'de 'den Lebenslauf' olur.",
+      "aciklamaEn": "The verb 'schreiben' requires Accusative; 'der Lebenslauf' is masculine, so Accusative gives 'den Lebenslauf'.",
       "zorlukSeviyesi": "orta"
     },
     {
@@ -40,6 +42,7 @@
       "secenekler": ["am", "im", "um", "an"],
       "dogruCevap": "am",
       "aciklama": "Gün belirtirken 'am' kullanılır: 'am Freitag'.",
+      "aciklamaEn": "'am' is used when stating a day: 'am Freitag'.",
       "zorlukSeviyesi": "leicht"
     }
   ],

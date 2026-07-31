@@ -54,7 +54,7 @@ const SoruKart = (() => {
           else if (val === current) label.classList.add("incorrect");
         }
       });
-      feedback.textContent = current ? (q.aciklama ?? "") : "";
+      feedback.textContent = current ? (I18n.contentField(q, "aciklama") ?? "") : "";
     }
 
     applyFeedback();
