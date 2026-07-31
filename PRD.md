@@ -224,9 +224,13 @@ Minimal, Dark/Light Mode, responsive, mobil öncelikli, ana ekrana eklenebilir, 
 
 **Temadan bağımsız, sabit dosyalar:** `redemittel-bank.json` (§7), `profil-tanitim.json` (Sprechen Teil 1 şablonu).
 
-### 15.1 İngilizce Arayüz Dili İçin Ek Alanlar (v1.5)
+### 15.1 Çok Dilli Arayüz İçin İçerik Alanları (v1.5)
 
-Uygulamanın arayüz dili İngilizce'ye çevrildiğinde (bkz. §17, TR/EN dil desteği) içerik seviyesinde de karşılık gösterilmesi gereken iki alan var: `kelime[].en` (kelimenin İngilizce çevirisi, `tr` alanının yanına eklenir) ve `gramer[].aciklamaEn` (gramer açıklamasının İngilizce hali, `aciklama` alanının yanına eklenir). Bu alanlar **eklemelidir** — mevcut `tr`/`aciklama` alanları değiştirilmez veya yeniden adlandırılmaz, sadece yanlarına yeni bir alan eklenir. Kod tarafında `I18n.contentField(obj, key)` yardımcı fonksiyonu bu ikisini çözümler: `key === "tr"` ise İngilizce karşılığı `en` alanıdır, diğer tüm alanlar için (örn. `aciklama`) İngilizce karşılığı `<key>En` (örn. `aciklamaEn`) formatındadır. Lesen/Hören/Schreiben/Sprechen içindeki Almanca metinler (soru, metin, transkript, görev, Leitpunkt'ler) bu kapsamın dışındadır — onlar sınavın kendisi, arayüz dilinden bağımsız olarak her zaman Almanca kalır.
+Uygulama, arayüz/çeviri dili olarak `js/i18n.js`'teki `LANGUAGES` listesinde tanımlı diller arasında geçiş yapabilir (bkz. §17). Taban dil (`BASE_LANG`) Türkçe'dir — mevcut `tr`/`aciklama`/`kullanim` gibi alanlar hep taban dili taşır, hiçbir zaman değiştirilmez veya yeniden adlandırılmaz. `LANGUAGES` listesine yeni bir dil eklendiğinde (örn. `en`), o dile ait alanlar **eklemeli** olarak konur: taban alan `tr`'nin karşılığı doğrudan o dilin kodudur (`kelime[].en`), `aciklama`/`kullanim` gibi diğer alanların karşılığı `<alan><Dil>` formatındadır (örn. `gramer[].aciklamaEn`, Redemittel-Bank `ifadeler[].kullanimEn`). Kod tarafında `I18n.contentField(obj, key)` bu eşlemeyi `LANGUAGES`'tan bağımsız, genel bir kuralla çözer — yeni bir dil eklenince bu fonksiyonda değişiklik gerekmez, sadece içerik dosyalarına yeni alanlar eklenir.
+
+**Kesin kural:** `de` hiçbir zaman bir arayüz/çeviri dili olamaz — Almanca öğretilen dildir, `kelime[].de` zaten hedef kelime alanı olarak kullanılıyor; bu alanla çakışacağı ve kavramsal olarak anlamsız olacağı için `LANGUAGES` listesine eklenmez.
+
+Lesen/Hören/Schreiben/Sprechen içindeki Almanca metinler (soru, metin, transkript, görev, Leitpunkt'ler) bu kapsamın tamamen dışındadır — onlar sınavın kendisi, arayüz dilinden bağımsız olarak her zaman Almanca kalır.
 
 ## 16. Modüler Yapı
 

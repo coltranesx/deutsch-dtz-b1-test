@@ -38,8 +38,12 @@ const App = (() => {
 
   function applyLanguage() {
     const lang = I18n.getLanguage();
+    const languages = I18n.getLanguages();
+    const currentIndex = languages.findIndex((l) => l.code === lang);
+    const next = languages[(currentIndex + 1) % languages.length];
+
     document.documentElement.setAttribute("lang", lang);
-    langToggle.textContent = lang === "tr" ? "EN" : "TR";
+    langToggle.textContent = next.label;
     langToggle.setAttribute("aria-label", I18n.t("lang.ariaLabel"));
     langToggle.setAttribute("title", I18n.t("lang.title"));
     themeToggle.setAttribute("aria-label", I18n.t("theme.ariaLabel"));
@@ -51,7 +55,7 @@ const App = (() => {
     I18n.init();
     applyLanguage();
     langToggle.addEventListener("click", () => {
-      I18n.setLanguage(I18n.getLanguage() === "tr" ? "en" : "tr");
+      I18n.cycleLanguage();
       applyLanguage();
       currentRenderer();
     });
