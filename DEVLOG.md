@@ -5,6 +5,7 @@ Bu dosya, projenin güncel durumunu ve önemli kararları/öğrenmeleri özetler
 **Son güncelleme:** 2026-07-31
 **Canlı adres:** https://coltranesx.github.io/deutsch-dtz-b1-test/
 **Repo:** coltranesx/deutsch-dtz-b1-test (public, GitHub Pages ile otomatik deploy)
+**Branch durumu:** `claude/devlog-baslayalim-7rfrki` üzerinde çalışılıyor, bu oturumdaki tüm işler (#1, #2, #3, #4 PR'ları) `main`'e merge edildi ve deploy başarıyla tamamlandı (`main` @ `a6e88011`) — bekleyen PR veya push yok, yeni sohbet `main`'in en güncel hali üzerinden devam edebilir.
 
 ---
 
@@ -45,7 +46,7 @@ css/style.css                     — Tasarım sistemi (CSS custom properties)
 js/
 ├── app.js                        — Dashboard, TEMALAR dizisi, routing
 ├── storage.js                    — LocalStorage katmanı (answers/progress/leitner)
-├── i18n.js                       — TR/EN arayüz kabuğu sözlüğü (I18n.t/setLanguage/getLanguage)
+├── i18n.js                       — N-dilli i18n çekirdeği: LANGUAGES listesi, BASE_LANG, I18n.t (UI sözlüğü) + I18n.contentField (içerik alanları) + cycleLanguage
 ├── components/
 │   ├── soru-kart.js              — Paylaşılan soru render + ses bağlamı bileşeni
 │   └── redemittel-bank.js        — Redemittel-Bank tam ekran görünüm + Sprechen yardım paneli
