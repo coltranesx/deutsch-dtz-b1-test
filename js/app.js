@@ -131,6 +131,24 @@ const App = (() => {
     redemittelCard.addEventListener("click", () => openRedemittelBank(redemittelData));
     app.appendChild(redemittelCard);
 
+    const dtzSinavSession = Storage.getDtzSinavSession();
+    const dtzSinavCard = document.createElement("div");
+    dtzSinavCard.className = "card dtz-sinav-card";
+    dtzSinavCard.innerHTML = `
+      <div style="font-size:1.5rem;">📝</div>
+      <div>
+        <h3 style="margin:0 0 0.25rem;">${I18n.t("dashboard.dtzSinavTitle")}</h3>
+        <p style="margin:0;color:var(--text-muted);font-size:var(--text-sm);">${I18n.t("dashboard.dtzSinavDesc")}</p>
+        ${
+          dtzSinavSession
+            ? `<p style="margin:0.25rem 0 0;color:var(--primary);font-size:var(--text-xs);font-weight:var(--font-medium);">${I18n.t("dashboard.dtzSinavContinueBadge")}</p>`
+            : ""
+        }
+      </div>
+    `;
+    dtzSinavCard.addEventListener("click", () => openDtzSinav(allData));
+    app.appendChild(dtzSinavCard);
+
     if (kampData) {
       let kampTamamlananGun = 0;
       for (let n = 1; n <= 21; n += 1) {
@@ -237,6 +255,11 @@ const App = (() => {
   function openRedemittelBank(redemittelData) {
     currentRenderer = () => RedemittelBank.renderFullView(app, redemittelData, renderDashboard);
     RedemittelBank.renderFullView(app, redemittelData, renderDashboard);
+  }
+
+  function openDtzSinav(allData) {
+    currentRenderer = DtzSinavModu.refresh;
+    DtzSinavModu.start(app, allData, renderDashboard);
   }
 
   function openKamp(kampData, allData) {

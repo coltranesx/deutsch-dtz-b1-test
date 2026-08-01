@@ -12,14 +12,15 @@ const Storage = (() => {
 
   function readAll() {
     const raw = localStorage.getItem(NAMESPACE);
-    if (!raw) return { answers: {}, progress: {}, leitner: {}, kamp: { gunIlerleme: {} } };
+    if (!raw) return { answers: {}, progress: {}, leitner: {}, kamp: { gunIlerleme: {} }, dtzSinav: null };
     try {
       const data = JSON.parse(raw);
       if (!data.leitner) data.leitner = {};
       if (!data.kamp) data.kamp = { gunIlerleme: {} };
+      if (data.dtzSinav === undefined) data.dtzSinav = null;
       return data;
     } catch {
-      return { answers: {}, progress: {}, leitner: {}, kamp: { gunIlerleme: {} } };
+      return { answers: {}, progress: {}, leitner: {}, kamp: { gunIlerleme: {} }, dtzSinav: null };
     }
   }
 
@@ -151,6 +152,27 @@ const Storage = (() => {
     writeAll(data);
   }
 
+  // DTZ Sınav Modu (§17.3) — tek bir aktif sınav oturumu (yoksa null). Şekli:
+  // { startedAt, currentSection, hoerenIds, hoerenDeadline, lesenDeadline,
+  //   sectionAutoFinished: { hoeren, lesen }, schreibenSprechenTemaId }
+  // Süre `deadline` timestamp'inden hesaplanır (bellekte tutulmaz), bu yüzden
+  // burada sadece kalıcı okuma/yazma yapılır — hesaplama dtz-sinav-modu.js'te.
+  function getDtzSinavSession() {
+    return readAll().dtzSinav;
+  }
+
+  function saveDtzSinavSession(session) {
+    const data = readAll();
+    data.dtzSinav = session;
+    writeAll(data);
+  }
+
+  function clearDtzSinavSession() {
+    const data = readAll();
+    data.dtzSinav = null;
+    writeAll(data);
+  }
+
   return {
     readAll,
     saveAnswer,
@@ -171,5 +193,8 @@ const Storage = (() => {
     getKampGunIlerleme,
     getKampAcikGun,
     resetKampProgress,
+    getDtzSinavSession,
+    saveDtzSinavSession,
+    clearDtzSinavSession,
   };
 })();
