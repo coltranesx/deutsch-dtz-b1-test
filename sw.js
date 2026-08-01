@@ -1,4 +1,4 @@
-const CACHE_NAME = "dtz-b1-trainer-v7";
+const CACHE_NAME = "dtz-b1-trainer-v8";
 const APP_SHELL = [
   "./",
   "./index.html",
@@ -9,9 +9,11 @@ const APP_SHELL = [
   "./js/i18n.js",
   "./js/components/soru-kart.js",
   "./js/components/redemittel-bank.js",
+  "./js/study-modes/soru-havuzu-yardimci.js",
   "./js/study-modes/tema-modu.js",
   "./js/study-modes/zayif-konular-modu.js",
   "./js/study-modes/kamp-21-gun.js",
+  "./js/study-modes/gunluk-15-dakika.js",
   "./content/redemittel-bank.json",
   "./content/kamp-21-gun.json",
   "./content/temalar/tema-01-wohnen.json",

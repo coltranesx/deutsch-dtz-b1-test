@@ -2,23 +2,6 @@ const ZayifKonularModu = (() => {
   const SESSION_SIZE = 10;
   let state = null;
 
-  function collectPool(temalar) {
-    const pool = [];
-    temalar.forEach((tema) => {
-      tema.gramer.forEach((q) => pool.push({ ...q, temaId: tema.temaId, kaynak: "gramer" }));
-      tema.hoeren.sorular.forEach((q) =>
-        pool.push({
-          ...q,
-          temaId: tema.temaId,
-          kaynak: "hoeren",
-          sesUrl: tema.hoeren.sesUrl,
-          transkript: tema.hoeren.transkript,
-        })
-      );
-    });
-    return pool;
-  }
-
   function pickSession(pool) {
     const now = Date.now();
     const scored = pool.map((q) => {
@@ -58,7 +41,7 @@ const ZayifKonularModu = (() => {
   }
 
   function start(container, temalar, onExit) {
-    const pool = collectPool(temalar);
+    const pool = SoruHavuzu.collectPool(temalar);
     state = {
       container,
       pool,

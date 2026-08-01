@@ -155,6 +155,18 @@ const App = (() => {
       app.appendChild(kampCard);
     }
 
+    const gunluk15Card = document.createElement("div");
+    gunluk15Card.className = "card gunluk15-card";
+    gunluk15Card.innerHTML = `
+      <div style="font-size:1.5rem;">🔥</div>
+      <div>
+        <h3 style="margin:0 0 0.25rem;">${I18n.t("dashboard.gunluk15Title")}</h3>
+        <p style="margin:0;color:var(--text-muted);font-size:var(--text-sm);">${I18n.t("dashboard.gunluk15Desc")}</p>
+      </div>
+    `;
+    gunluk15Card.addEventListener("click", () => openGunluk15(allData));
+    app.appendChild(gunluk15Card);
+
     const h = document.createElement("h2");
     h.textContent = I18n.t("dashboard.temalarHeading");
     app.appendChild(h);
@@ -206,6 +218,11 @@ const App = (() => {
   function openKamp(kampData, allData) {
     currentRenderer = Kamp21GunModu.refresh;
     Kamp21GunModu.start(app, kampData, allData, renderDashboard);
+  }
+
+  function openGunluk15(allData) {
+    currentRenderer = Gunluk15DakikaModu.refresh;
+    Gunluk15DakikaModu.start(app, allData, renderDashboard);
   }
 
   function init() {

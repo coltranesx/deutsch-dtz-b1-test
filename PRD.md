@@ -304,6 +304,16 @@ Her `gunler[]` maddesi `gunNo` (1-21), `baslik`, `odakTemalar` (o güne ait `tem
 
 **Bilinen sınırlama (v1.6+ takip maddesi):** Kampa özel (`tur:"ozel"`) sorular, v1.5 itibarıyla Zayıf Konular Modu'nun Leitner tekrar havuzuna dahil değildir.
 
+### 17.2 Günlük 15 Dakika — Seçim Algoritması
+
+Bu mod için ayrı bir content JSON'u YOKTUR. Mevcut 11 Tema'nın `gramer[]` + `hoeren.sorular[]` havuzu (Zayıf Konular Modu'nun kullandığı aynı havuz) ile Leitner verisini (`Storage.getLeitnerEntry`) orkestre eden saf bir seçim algoritmasıdır. Sabit oturum boyutu **10 soru = 7 tekrar + 3 yeni**.
+
+- **Tekrar havuzu:** `Storage.getLeitnerEntry(q.id)` mevcut VE `entry.dueAt <= Date.now()` olan sorular. Kutu no artan, ardından `dueAt` artan sıraya göre önceliklendirilir — en zayıf/en geciken soru önce gelir.
+- **Yeni havuzu:** `Storage.getLeitnerEntry(q.id)` HİÇ mevcut olmayan (yani hiç cevaplanmamış) sorular. `Storage.isLeitnerDue` burada KULLANILMAZ — o fonksiyon "hiç cevaplanmamış" ile "süresi gelmiş"i aynı kefeye koyar (`!entry || entry.dueAt <= now`), Günlük 15 Dakika'da bu iki durumun ayrıştırılması gerekir. Yeni havuzda seçim öncesi Fisher-Yates ile karıştırma uygulanır, aksi halde her oturumda temaların sırasına göre hep aynı sorular gelir.
+- **Fallback kuralı:** tekrar havuzu 7'den azsa eksik kadar yeni havuzdan tamamlanır; yeni havuz 3'ten azsa eksik kadar tekrar havuzundan tamamlanır (çapraz doldurma). İki havuz toplamı 10'dan azsa daha küçük bir set gösterilir (soru uydurulmaz). İki havuz da boşsa bir "boş durum" ekranı gösterilir.
+- Takvim/tarih state'i yoktur — günde istediği kadar başlatılabilir, "bugün yapıldı mı" diye bir kilit yoktur; oturum bitince kullanıcı aynı ekrandan taze bir set ile yeniden başlatabilir.
+- Yeni bir storage alanı gerekmez — mevcut `recordLeitnerResult`/`saveAnswer` (SoruKart üzerinden) yeterlidir.
+
 ## 18. AI Teacher Mode
 
 Schreiben: resmi 4 kriterli rubrik + Leitpunkt kontrolü. Sprechen: global izlenim + analitik kriter kırılımı (v3.0), gerçek eşli pratik (v4.0). Redemittel-Bank kullanım eksikliğini tespit edip öneri sunma.

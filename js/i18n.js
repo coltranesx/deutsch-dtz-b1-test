@@ -46,6 +46,8 @@ const I18n = (() => {
       "dashboard.redemittelDesc": "Sprechen için hazır konuşma stratejisi ifadeleri",
       "dashboard.kampTitle": "21 Günlük Kamp",
       "dashboard.kampDesc": "Sabit 21 günlük müfredat, 11 Temaya dağıtılmış",
+      "dashboard.gunluk15Title": "Günlük 15 Dakika",
+      "dashboard.gunluk15Desc": "%70 tekrar / %30 yeni, kural tabanlı hızlı tur",
       "dashboard.temalarHeading": "Temalar",
       "dashboard.resetBtnLabel": "Temayı sıfırla",
       "dashboard.resetBtnTitle": "Cevapları ve ilerlemeyi sıfırla",
@@ -55,6 +57,10 @@ const I18n = (() => {
       "zayif.emptyState": "Şu an tekrar edilecek soru yok, hepsi güncel. Yeni sorular için bir Tema tamamlayın.",
       "zayif.sessionDone": "Bu tekrar oturumu tamamlandı",
       "zayif.categoryStatsHeading": "Kategori bazlı başarı",
+
+      "gunluk15.emptyState": "Şu an tekrar edilecek veya yeni bir soru yok, harika gidiyorsun!",
+      "gunluk15.sessionDone": "Bu 15 dakikalık oturum tamamlandı",
+      "gunluk15.startNewSession": "Yeni Oturum Başlat",
 
       "redemittel.fullViewDesc": "Sprechen pratiğinde takıldığınızda kullanabileceğiniz sabit ifadeler.",
       "redemittel.loadError": "İçerik yüklenemedi.",
@@ -115,6 +121,8 @@ const I18n = (() => {
       "dashboard.redemittelDesc": "Ready-made speaking strategy phrases for Sprechen",
       "dashboard.kampTitle": "21-Day Camp",
       "dashboard.kampDesc": "Fixed 21-day curriculum spread across the 11 Topics",
+      "dashboard.gunluk15Title": "Daily 15 Minutes",
+      "dashboard.gunluk15Desc": "70% review / 30% new, rule-based quick round",
       "dashboard.temalarHeading": "Topics",
       "dashboard.resetBtnLabel": "Reset topic",
       "dashboard.resetBtnTitle": "Reset answers and progress",
@@ -124,6 +132,10 @@ const I18n = (() => {
       "zayif.emptyState": "No questions to review right now, everything is up to date. Complete a Topic for new questions.",
       "zayif.sessionDone": "This review session is complete",
       "zayif.categoryStatsHeading": "Success rate by category",
+
+      "gunluk15.emptyState": "No review or new questions right now, great job!",
+      "gunluk15.sessionDone": "This 15-minute session is complete",
+      "gunluk15.startNewSession": "Start New Session",
 
       "redemittel.fullViewDesc": "Fixed phrases you can use when you get stuck during Sprechen practice.",
       "redemittel.loadError": "Content could not be loaded.",
