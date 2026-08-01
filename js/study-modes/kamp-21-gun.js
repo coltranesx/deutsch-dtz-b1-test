@@ -17,6 +17,7 @@ const Kamp21GunModu = (() => {
       onExit,
       acikGun,
       selectedGun: acikGun,
+      viewStartedAt: Date.now(),
     };
     render();
   }
@@ -183,6 +184,7 @@ const Kamp21GunModu = (() => {
         Storage.recordLeitnerResult(q.id, correct);
         Storage.saveKampGorevTamamlandi(gunNo, gorevId);
       },
+      freshSince: state.viewStartedAt,
     });
   }
 

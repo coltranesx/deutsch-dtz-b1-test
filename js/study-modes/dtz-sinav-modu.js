@@ -297,6 +297,7 @@ const DtzSinavModu = (() => {
   function renderGradedQuestion(q) {
     return SoruKart.renderMultipleChoice(q.temaId, q, {
       onAnswer: (correct) => Storage.recordLeitnerResult(q.id, correct),
+      freshSince: state.session.startedAt,
     });
   }
 

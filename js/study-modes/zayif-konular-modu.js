@@ -36,6 +36,7 @@ const ZayifKonularModu = (() => {
       index: 0,
       correctInSession: 0,
       onExit,
+      sessionStartedAt: Date.now(),
     };
     render();
   }
@@ -82,6 +83,7 @@ const ZayifKonularModu = (() => {
           Storage.recordLeitnerResult(q.id, correct);
           if (correct) state.correctInSession += 1;
         },
+        freshSince: state.sessionStartedAt,
       })
     );
     container.appendChild(card);

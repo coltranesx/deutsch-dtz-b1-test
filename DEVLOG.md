@@ -101,6 +101,7 @@ assets/audio/, assets/fotos/      — AI üretimi medya (Magnific/ElevenLabs)
 - **Bulunan ve düzeltilen hatalar:**
   1. Zayıf Konular Modu'nda bir soruyu birden fazla kez tıklamak (örn. önce yanlışı deneyip sonra doğruyu seçmek) puanı ve Leitner istatistiklerini kalıcı olarak şişiriyordu → artık ilk cevaptan sonra seçenekler kilitleniyor.
   2. Zayıf Konular Modu'nda dinleme (Hören) kaynaklı sorular ses/transkript bağlamı olmadan gösteriliyordu → `SoruKart.renderAudioContext` ile düzeltildi, artık ses+transkript de gösteriliyor.
+  3. **(v2.0 sonrası)** Zayıf Konular Modu, Günlük 15 Dakika, 21 Günlük Kamp ve DTZ Sınav Modu'nda daha önce (özellikle Tema Modu'nda) cevaplanmış bir soru tekrar çıktığında önceki cevap otomatik işaretlenip hemen doğru/yanlış rengiyle gösteriliyordu — aralıklı tekrar amacını baltalıyordu. `SoruKart.renderMultipleChoice`'a `freshSince` (zaman damgası) parametresi eklendi: bu değerden önce kaydedilmiş cevaplar "yokmuş gibi" davranılır, sonra kaydedilenler (bu oturumda verilmiş) normal gösterilir. Her mod kendi `sessionStartedAt`/`viewStartedAt`'ını (DTZ Sınav Modu zaten var olan `session.startedAt`'ı) geçirir — dil değişiminde (`refresh()`) cevap kaybolmaz, ama dashboard'a çıkıp tekrar girince temiz gelir. Tema Modu `freshSince` geçirmediği için davranışı değişmedi. Bu sayede ayrı bir "reset" butonuna gerek kalmadı.
 
 ---
 

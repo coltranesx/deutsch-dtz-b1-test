@@ -64,6 +64,7 @@ const Gunluk15DakikaModu = (() => {
       index: 0,
       correctInSession: 0,
       onExit,
+      sessionStartedAt: Date.now(),
     };
     render();
   }
@@ -119,6 +120,7 @@ const Gunluk15DakikaModu = (() => {
           Storage.recordLeitnerResult(q.id, correct);
           if (correct) state.correctInSession += 1;
         },
+        freshSince: state.sessionStartedAt,
       })
     );
     container.appendChild(card);
@@ -162,6 +164,7 @@ const Gunluk15DakikaModu = (() => {
       state.session = pickSession(state.pool);
       state.index = 0;
       state.correctInSession = 0;
+      state.sessionStartedAt = Date.now();
       render();
     });
     btnRow.appendChild(restartBtn);
