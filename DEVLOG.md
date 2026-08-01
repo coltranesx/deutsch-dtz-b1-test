@@ -2,10 +2,10 @@
 
 Bu dosya, projenin güncel durumunu ve önemli kararları/öğrenmeleri özetler. Yeni bir sohbete başlarken buradan devam edilebilir.
 
-**Son güncelleme:** 2026-07-31
+**Son güncelleme:** 2026-08-01
 **Canlı adres:** https://coltranesx.github.io/deutsch-dtz-b1-test/
 **Repo:** coltranesx/deutsch-dtz-b1-test (public, GitHub Pages ile otomatik deploy)
-**Branch durumu:** `claude/devlog-baslayalim-7rfrki` üzerinde çalışılıyor, bu oturumdaki tüm işler (#1, #2, #3, #4 PR'ları) `main`'e merge edildi ve deploy başarıyla tamamlandı (`main` @ `a6e88011`) — bekleyen PR veya push yok, yeni sohbet `main`'in en güncel hali üzerinden devam edebilir.
+**Branch durumu:** `claude/devlog-review-planning-q2xphc` üzerinde çalışıldı (21 Günlük Kamp özelliği), branch `origin`'e push edildi — henüz `main`'e merge edilmedi, PR açılmadı (kullanıcı istemedi). Yeni bir sohbet bu branch'in üzerinden devam edebilir veya `main`'e merge/PR kararını kullanıcıyla netleştirebilir.
 
 ---
 
@@ -27,7 +27,7 @@ Bu dosya, projenin güncel durumunu ve önemli kararları/öğrenmeleri özetler
 - ✅ **TR/EN arayüz dili desteği** (UI kabuğu): Yeni `js/i18n.js` modülü (`I18n.t(key, vars)`, düz key + `tr`/`en` sözlük + fallback zinciri `en → tr → ham key`), dil tercihi `Storage.getLanguage()/setLanguage()` ile tema tercihiyle aynı desende saklanıyor. Header'da `#langToggle` tuşu (hedef dili gösterir, tema tuşuyla aynı konvansiyon). Dil değişince aktif ekran state kaybetmeden yeniden çiziliyor (`TemaModu.refresh()` / `ZayifKonularModu.refresh()` — `start()` DEĞİL, `App.currentRenderer` üzerinden). Resmi sınav bölüm adları (`Lesen/Hören/Schreiben/Sprechen`, `Teil 1/2/3`) bilinçli olarak iki dilde de Almanca bırakıldı (PRD'nin "resmi terimler çevrilmez" ilkesiyle tutarlı — bkz. `Handlungsfeld`, `Konjunktiv`); sadece `Kelime→Vocabulary`, `Gramer→Grammar` çevrildi.
 - ✅ **İçerik seviyesinde EN desteği** (PRD §15.1 + §7.1): 11 tema dosyasına `kelime[].en` (54 adet) ve `gramer[].aciklamaEn` (33 adet) alanları eklendi; `redemittel-bank.json`'a `kategoriler[].aciklamaEn` (3), `ifadeler[].en` + `ifadeler[].kullanimEn` (24×2) eklendi — hepsi additive-only, mevcut `tr`/`aciklama`/`kullanim` alanlarına dokunulmadı. Lesen/Hören/Schreiben/Sprechen içeriği (sınavın kendisi) kasıtlı olarak dışarıda bırakıldı, her zaman Almanca kalıyor. `almanca-dil-uzmani` ile denetlendi (54 kelime + 33 gramer + 27 Redemittel-Bank alanı, hatasız onaylandı).
 - ✅ **i18n mimarisi TR/EN'e özel olmaktan çıkarıldı, N-dilli hale getirildi**: `js/i18n.js`'te tek bir `LANGUAGES = [{code,label}, ...]` listesi + `BASE_LANG = "tr"` sabiti eklendi — kodun başka hiçbir yerinde (`app.js` dahil) dil kodu hardcode edilmiyor. `I18n.cycleLanguage()` header tuşunu `LANGUAGES` listesindeki bir sonraki dile geçirir (2 dilde toggle gibi davranır, 3+ dilde otomatik döngüye döner); `I18n.contentField(obj, key)` genelleştirildi (taban alan `key===BASE_LANG` ise karşılık `<dilKodu>`, diğerleri `<key><DilKodu>` — örn. üçüncü bir dil `fr` eklenince otomatik olarak `kelime[].fr` ve `gramer[].aciklamaFr` bekler, kodda değişiklik gerekmez). **Kesin kural: `de` asla `LANGUAGES`'a eklenmez** — Almanca öğretilen dil, `kelime[].de` zaten hedef kelime alanı; çakışma + kavramsal anlamsızlık riski var. Yeni dil eklemek artık sadece: (1) `LANGUAGES`'a satır ekle, (2) `DICT`'e o dilin bloğunu ekle, (3) içerik JSON'larına o dilin alanlarını ekle — kod tarafında başka değişiklik gerekmiyor.
-- ❌ **21 Günlük Kamp** — henüz yok
+- ✅ **21 Günlük Kamp**: `content/kamp-21-gun.json` (139 görev, 21 gün, PRD §17.1 şeması) + `js/study-modes/kamp-21-gun.js` (yeni Study Mode). Sabit/editoryal müfredat — Zayıf Konular Modu'nun aksine adaptif değil. Self-paced (takvime kilitli değil, bir gün tamamlanınca sonraki hemen açılır; "açık gün" ayrı state olarak saklanmaz, tamamlanan günlerden türetilir). Her gün karışık mikro-ders: `tur:"referans"` görevler mevcut 11 tema JSON'undaki gerçek soruya işaret eder (cevap orijinal `temaId` altında saklanır, Tema Modu'yla senkron), `tur:"ozel"` görevler kampa hastır (cevap `"kamp-21-gun"` pseudo-namespace'inde saklanır). 3 fazlı dağılım: Gün 1-11 tema tanıtımı (~%70 referans/%30 özel), Gün 12-18 çapraz pekiştirme (~%25 referans/%75 özel, ikili tema kombinasyonları), Gün 19-21 iki mini sınav + mezuniyet özet ekranı. Özel gramer sorularının `konu` etiketleri bilinçli olarak 11 temada az işlenmiş taksonomi path'lerini (`Artikelwörter/Pronomen.*`, `Adjektiv.adverbial/Wortbildung`, `Nomen.Genus/Numerus/Komposita` vb.) hedefliyor — kamp, temaların tekrarı değil boşluk dolduran bir katman. `js/storage.js`'e izole yeni bir `data.kamp.gunIlerleme` alanı eklendi, mevcut `answers/progress/leitner` şemasına dokunulmadı. `sw.js` CACHE_NAME v6->v7. Bilinen sınırlama: kampa özel sorular henüz Zayıf Konular Modu'nun Leitner havuzuna dahil değil (v1.6+ takip maddesi).
 - ❌ **Günlük 15 Dakika** — henüz yok
 
 ### v2.0 / v3.0 — BAŞLANMADI
@@ -52,9 +52,11 @@ js/
 │   └── redemittel-bank.js        — Redemittel-Bank tam ekran görünüm + Sprechen yardım paneli
 └── study-modes/
     ├── tema-modu.js               — 7 adımlı normal çalışma modu (refresh() ile dil değişiminde state korunur)
-    └── zayif-konular-modu.js      — Leitner tabanlı akıllı tekrar modu (refresh() ile dil değişiminde state korunur)
+    ├── zayif-konular-modu.js      — Leitner tabanlı akıllı tekrar modu (refresh() ile dil değişiminde state korunur)
+    └── kamp-21-gun.js             — Sabit 21 günlük müfredat modu, self-paced gün kilidi (refresh() ile dil değişiminde state korunur)
 content/temalar/*.json            — 11 tema içeriği (PRD §15 şemasına uygun)
 content/redemittel-bank.json      — Temadan bağımsız konuşma stratejisi ifade bankası (PRD §7.1)
+content/kamp-21-gun.json          — 21 Günlük Kamp müfredatı, referans+özel görev karışımı (PRD §17.1)
 assets/audio/, assets/fotos/      — AI üretimi medya (Magnific/ElevenLabs)
 .github/workflows/deploy-pages.yml — Otomatik GitHub Pages deploy
 ```
@@ -66,9 +68,11 @@ assets/audio/, assets/fotos/      — AI üretimi medya (Magnific/ElevenLabs)
 {
   answers: { [temaId]: { [questionId]: { value, savedAt } } },
   progress: { [temaId]: { completedSteps: [], lastStep, lastStudiedAt } },
-  leitner: { [questionId]: { box, dueAt, lastResult, correctCount, incorrectCount, lastReviewedAt } }
+  leitner: { [questionId]: { box, dueAt, lastResult, correctCount, incorrectCount, lastReviewedAt } },
+  kamp: { gunIlerleme: { [gunNo]: { tamamlananGorevler: [], tamamlandiMi, tamamlanmaTarihi } } }
 }
 ```
+`kamp.gunIlerleme` izole bir alandır, `answers/progress/leitner`'a dokunmaz. "Açık gün" ayrı saklanmaz — `Storage.getKampAcikGun()` tamamlanan en yüksek günden türetir (tek doğruluk kaynağı).
 
 ---
 
@@ -89,9 +93,11 @@ assets/audio/, assets/fotos/      — AI üretimi medya (Magnific/ElevenLabs)
 
 ## 4. Sırada Ne Var (öneri sırası)
 
-1. **21 Günlük Kamp** / **Günlük 15 Dakika** — sabit müfredat modları (PRD §17)
+1. **Günlük 15 Dakika** — sabit müfredat modu, %70 tekrar/%30 yeni, kural tabanlı (PRD §17) — 21 Günlük Kamp TAMAMLANDI, sıradaki v1.5 kalemi bu.
 2. v2.0: istatistik ekranı, dışa aktarma, DTZ Sınav Modu
 3. v3.0: AI entegrasyonu (bu noktada `guvenlik-uzmani` benzeri bir agent ve API anahtarı yönetimi gerekecek)
+
+Not: 21 Günlük Kamp özelliği `claude/devlog-review-planning-q2xphc` branch'inde, henüz `main`'e merge edilmedi/PR açılmadı — merge kararı kullanıcıyla netleştirilmeli.
 
 Not: Redemittel-Bank şu an sadece Sprechen'e entegre; Schreiben görevlerine (özellikle halbformell/formell register'da) benzer bir yardım paneli eklemek istenirse bu ayrı bir takip maddesi olarak ele alınmalı (bkz. `schreiben-sprechen-uzmani`).
 
