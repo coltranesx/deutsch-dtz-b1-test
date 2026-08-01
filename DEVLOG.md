@@ -5,7 +5,7 @@ Bu dosya, projenin güncel durumunu ve önemli kararları/öğrenmeleri özetler
 **Son güncelleme:** 2026-08-01
 **Canlı adres:** https://coltranesx.github.io/deutsch-dtz-b1-test/
 **Repo:** coltranesx/deutsch-dtz-b1-test (public, GitHub Pages ile otomatik deploy)
-**Branch durumu:** `claude/devlog-review-planning-q2xphc` üzerinde çalışıldı (21 Günlük Kamp özelliği), branch `origin`'e push edildi — henüz `main`'e merge edilmedi, PR açılmadı (kullanıcı istemedi). Yeni bir sohbet bu branch'in üzerinden devam edebilir veya `main`'e merge/PR kararını kullanıcıyla netleştirebilir.
+**Branch durumu:** v1.5'in tüm işleri (21 Günlük Kamp + Günlük 15 Dakika) PR #6 üzerinden `main`'e merge edildi (`main` @ `ef28cbc`) — bekleyen PR veya push yok, yeni sohbet `main`'in en güncel hali üzerinden devam edebilir.
 
 ---
 
@@ -100,7 +100,7 @@ assets/audio/, assets/fotos/      — AI üretimi medya (Magnific/ElevenLabs)
 1. v2.0: istatistik ekranı, dışa aktarma, DTZ Sınav Modu (PRD §22, §13, §17 — DTZ Sınav Modu `SoruHavuzu.collectPool` benzeri bir havuzlama ihtiyacı duyacak, mevcut yardımcı modülden faydalanabilir)
 2. v3.0: AI entegrasyonu (bu noktada `guvenlik-uzmani` benzeri bir agent ve API anahtarı yönetimi gerekecek)
 
-Not: v1.5'in tüm işleri `claude/devlog-review-planning-q2xphc` branch'inde, PR #6 açıldı (https://github.com/coltranesx/deutsch-dtz-b1-test/pull/6), henüz `main`'e merge edilmedi.
+Not: v1.5'in tüm işleri PR #6 (https://github.com/coltranesx/deutsch-dtz-b1-test/pull/6) ile `main`'e merge edildi, GitHub Pages otomatik deploy tetiklendi.
 
 Not: Redemittel-Bank şu an sadece Sprechen'e entegre; Schreiben görevlerine (özellikle halbformell/formell register'da) benzer bir yardım paneli eklemek istenirse bu ayrı bir takip maddesi olarak ele alınmalı (bkz. `schreiben-sprechen-uzmani`).
 
