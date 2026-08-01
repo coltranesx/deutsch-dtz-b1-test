@@ -164,6 +164,19 @@ Tema + Sprachhandlung + Gramer-taksonomisi bazlı başarı takibi; yanlışlar o
 
 TXT, JSON, PDF olarak indirme; tek tuşla kopyalama.
 
+### 13.1 Dışa Aktarma Formatları (v2.0)
+
+Dışa Aktarma ekranı için ayrı bir content JSON'u YOKTUR. Mevcut `Storage` (`readAll`, `getProgress`, `getTemaAnswers`, `getKampGunIlerleme`), `IstatistikYardimci` (`byTema`/`byGramerKategori`/`bySprachhandlung`, bkz. §22.1) ve `SoruHavuzu.collectPool` orkestre edilerek her açılışta yeniden hesaplanan salt-okunur bir rapordur; ayrı bir dışa aktarma state'i saklanmaz (tek doğruluk kaynağı ilkesi, bkz. §12). Üç format da (JSON/TXT/PDF) ve panoya kopyalama aynı yapılandırılmış rapor verisinden üretilir.
+
+- **JSON zarfı — tam yedek:** `{ exportedAt: <ISO tarih>, appVersion: <sabit sürüm string'i>, data: <Storage.readAll() çıktısının tamamı> }`. Bu format `answers`/`progress`/`leitner`/`kamp` şemasının tamamını (bkz. §11, §12) kayıpsız taşır — cihaz değişimi veya yedekleme senaryosu içindir, geri yükleme mekanizması ayrı bir madde olarak ileride eklenebilir.
+- **TXT/PDF/kopyalama — okunabilir özet rapor:** Aşağıdaki yapılandırılmış bölümleri, ısı haritası gibi görsel bir bileşen OLMADAN sayısal biçimde içerir:
+  1. **Genel özet:** rapor tarihi, kaç Tema'nın 7 adımının (kelime→gramer→lesen→hören→schreiben→sprechen→miniTest) tamamının bittiği (`Storage.getProgress(temaId).completedSteps.length === 7`).
+  2. **İstatistik özeti:** `IstatistikYardimci.byTema/byGramerKategori/bySprachhandlung` çıktısı satır satır ("Tema: Wohnen — %72 (18 soru)" formatında), §22.1'deki aynı "yeterli veri yok" notuyla.
+  3. **21 Günlük Kamp ilerlemesi:** ayrı bir bölüm, "X/21 gün tamamlandı" (`Storage.getKampGunIlerleme` üzerinden sayılır).
+  4. **Tema bazlı detay (11 Tema'nın her biri için):** `completedSteps` (7 adımın kaçı/hangileri tamam), Schreiben yanıtı (varsa serbest metin + her Leitpunkt'in işaretli olup olmadığı), Sprechen yanıtları (varsa Teil 1/Teil 2 Beschreibung/Teil 2 Vergleich/Teil 3).
+- **Lesen kapsam dışı (bilinçli sınır):** Lesen yanıtları rapora dahil edilmez — sadece genel adım listesinde "tamamlandı/tamamlanmadı" durumu görünür. Gerekçe: Lesen soruları açık uçlu serbest metin cevaplardır ve rapor zaten Schreiben/Sprechen'de yeterince uzun serbest metin taşır; Lesen'i de eklemek raporu orantısız şişirir ve tekrar/paylaşım amacına (kısa, taranabilir özet) hizmet etmez. `data.answers[temaId]` içinde Lesen cevapları JSON tam yedeğinde zaten mevcuttur, kayıp yoktur.
+- **PDF yöntemi — tarayıcı print-to-PDF:** Üçüncü parti bir PDF kütüphanesi eklenmez (§2 Framework Yasağı ile uyum); `window.print()` + `@media print` CSS izolasyon deseni kullanılır (rapor alanı dışındaki her şey `visibility: hidden` yapılır). Kullanıcı tarayıcının "PDF olarak kaydet" seçeneğiyle çıktı alır — bu, hem bağımlılık eklemeden hem de her tarayıcıda tutarlı biçimde çalışan tek yoldur.
+
 ## 14. Arayüz ve PWA
 
 Minimal, Dark/Light Mode, responsive, mobil öncelikli, ana ekrana eklenebilir, offline çalışır.

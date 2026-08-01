@@ -179,6 +179,18 @@ const App = (() => {
     istatistikCard.addEventListener("click", () => openIstatistik(allData));
     app.appendChild(istatistikCard);
 
+    const disaAktarmaCard = document.createElement("div");
+    disaAktarmaCard.className = "card disa-aktarma-card";
+    disaAktarmaCard.innerHTML = `
+      <div style="font-size:1.5rem;">📤</div>
+      <div>
+        <h3 style="margin:0 0 0.25rem;">${I18n.t("dashboard.disaAktarmaTitle")}</h3>
+        <p style="margin:0;color:var(--text-muted);font-size:var(--text-sm);">${I18n.t("dashboard.disaAktarmaDesc")}</p>
+      </div>
+    `;
+    disaAktarmaCard.addEventListener("click", () => openDisaAktarma(allData));
+    app.appendChild(disaAktarmaCard);
+
     const h = document.createElement("h2");
     h.textContent = I18n.t("dashboard.temalarHeading");
     app.appendChild(h);
@@ -240,6 +252,11 @@ const App = (() => {
   function openIstatistik(allData) {
     currentRenderer = () => IstatistikEkrani.renderFullView(app, allData, renderDashboard);
     IstatistikEkrani.renderFullView(app, allData, renderDashboard);
+  }
+
+  function openDisaAktarma(allData) {
+    currentRenderer = () => DisaAktarma.renderFullView(app, allData, renderDashboard);
+    DisaAktarma.renderFullView(app, allData, renderDashboard);
   }
 
   function init() {

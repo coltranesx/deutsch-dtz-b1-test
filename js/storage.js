@@ -152,6 +152,7 @@ const Storage = (() => {
   }
 
   return {
+    readAll,
     saveAnswer,
     getAnswer,
     getTemaAnswers,
