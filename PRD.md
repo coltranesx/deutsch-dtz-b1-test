@@ -247,6 +247,73 @@ Omurga: 11 Tema + Sprachhandlungen + Redemittel-Bank + Gramer Taksonomisi + Schr
 | 🔥 Günlük 15 Dakika | %70 tekrar/%30 yeni, kural tabanlı, offline | v1.5 |
 | 🧠 AI Koç Modu | Offline kural tabanlı orkestrasyon + online LLM kişiselleştirme | v3.0 |
 
+### 17.1 `kamp-21-gun.json` JSON Şeması
+
+Bu dosya bir Tema değildir, §15'teki Tema şemasına tabi olmadan kendi basit şemasını kullanır. 21 Günlük Kamp, tek bir `content/kamp-21-gun.json` dosyasında tanımlanan sabit bir müfredattır; her gün ya mevcut bir Tema'daki gerçek soruya işaret eden (`tur:"referans"`) ya da kampa özgü yeni bir soru taşıyan (`tur:"ozel"`) görevlerden oluşur. `tur:"ozel"` görevler, `adimTipi`'ne göre §15'teki ilgili Tema alt-şemasıyla (kelime/gramer/lesen/hoeren/schreiben/sprechen) birebir aynı alan setini taşır — böylece mevcut SoruKart bileşeni hiçbir özel durum kodu olmadan hem Tema Modu'nda hem Kamp'ta aynı şekilde çalışır. `adimTipi:"tekrar"` özel bir durumdur, önceki günlerden seçilmiş bir `referans` görev kümesini tekrar sunar.
+
+```json
+{
+  "kampId": "kamp-21-gun",
+  "baslik": "21 Günlük Kamp",
+  "gunler": [
+    {
+      "gunNo": 1,
+      "baslik": "Gün 1 — Wohnen'e Giriş",
+      "odakTemalar": ["tema-01-wohnen"],
+      "gorevler": [
+        {
+          "id": "kamp-g01-ref-001",
+          "tur": "referans",
+          "adimTipi": "kelime",
+          "temaId": "tema-01-wohnen",
+          "soruId": "t01-w001"
+        },
+        {
+          "id": "kamp-g01-oz-001",
+          "tur": "ozel",
+          "adimTipi": "gramer",
+          "soru": "...",
+          "secenekler": ["...", "...", "...", "..."],
+          "dogruCevap": "...",
+          "konu": "Verb.Tempus.Perfekt",
+          "sprachhandlung": ["Informationsaustausch"],
+          "aciklama": "...",
+          "aciklamaEn": "..."
+        }
+      ]
+    }
+  ]
+}
+```
+
+Her `gunler[]` maddesi `gunNo` (1-21), `baslik`, `odakTemalar` (o güne ait `temaId` listesi, Faz 3'te boş olabilir) ve `gorevler[]` alanlarını zorunlu taşır. `gorevler[]` içindeki her madde önce ortak `id`/`tur`/`adimTipi` alanlarını, sonra `tur`'a göre değişen alan setini içerir:
+
+- **`tur:"referans"`** — sadece `temaId` ve `soruId` taşır, yeni içerik üretmez; ilgili Tema JSON'undaki gerçek soru nesnesine işaret eder (`temaId` §15'teki `temaId`, `soruId` o Tema'nın `kelime[].id`/`gramer[].id`/`lesen.sorular[].id`/`hoeren.sorular[].id` gibi alanlarından biri olmalı).
+- **`tur:"ozel"`** — `adimTipi`'ne göre §15'teki ilgili alt-şemanın alanlarını birebir taşır: `adimTipi:"gramer"` için `soru/secenekler/dogruCevap/konu/sprachhandlung/aciklama/aciklamaEn/zorlukSeviyesi`, `adimTipi:"kelime"` için `de/tr/en/beispiel/kategori/zorlukSeviyesi`, `adimTipi:"lesen"` için `metin/sorular[]`, `adimTipi:"hoeren"` için `sesUrl/transkript/sorular[]`, `adimTipi:"schreiben"` için `gorev/register/sprachhandlung/leitpunkte/minKelime/maxKelime`, `adimTipi:"sprechen"` için `teil1FollowUp`/`teil2`/`teil3` alt kümesinden ilgili olanı. `konu` etiketi (gramer görevlerinde) §8.4 taksonomisine uyar, `sprachhandlung` §8.2 listesinden seçilir — bu kural referans/özel ayrımından bağımsız her zaman geçerlidir.
+- **`id` önek kuralı:** `kamp-g<gunNo-2hane>-oz-<sıraNo-3hane>` (özel görevler) / `kamp-g<gunNo-2hane>-ref-<sıraNo-3hane>` (referans görevler) — örn. `kamp-g01-ref-001`, `kamp-g12-oz-002`.
+
+**21 günlük dağılım (3 faz):**
+
+- **Faz 1 (Gün 1-11) — Tema Tanıtımı:** Her gün tek bir Handlungsfeld'e odaklanır (`odakTemalar` tek elemanlı), görev karışımı %70 referans / %30 özel. Gün 2'den itibaren her günün başına önceki günden küçük bir `adimTipi:"tekrar"` görev bloğu eklenir.
+- **Faz 2 (Gün 12-18) — Çapraz Pekiştirme:** Karışık mikro-dersler, görev karışımı özel görev ağırlıklı (gün başına 1 referans + 3 özel görev, ~%25 referans/%75 özel). Gün 12=Tema1+2, Gün13=Tema3+4, Gün14=Tema5+6, Gün15=Tema7+8, Gün16=Tema9+10, Gün17=Tema11 + genel Sprachhandlung tekrarı, Gün18=tüm Temalardan serbest karma + 1 özel Schreiben mikro-görevi.
+- **Faz 3 (Gün 19-21) — Sınav ve Kapanış:** Gün19=Kamp Mini Sınav 1 (Gramer+Hören karışık, tamamı `tur:"ozel"` veya karışık), Gün20=Kamp Mini Sınav 2 (Lesen+Schreiben+Sprechen odaklı), Gün21="Mezuniyet Günü" — `gorevler[]` boş veya sadece özet ekranına işaret eden bir meta görev içerir; yeni soru yoktur, sadece istatistik+tebrik gösterilir.
+
+**Self-paced unlock kuralı:** Günler takvime kilitli değildir. Bir sonraki gün, mevcut gün tamamlanır tamamlanmaz açılır. "Açık gün" ayrı bir state olarak saklanmaz — tamamlanan günler listesinden türetilir (tek doğruluk kaynağı ilkesi, bkz. §12).
+
+**Storage etkisi (özet — detay `js/storage.js`'te):** `data.kamp.gunIlerleme[gunNo] = { tamamlananGorevler: [], tamamlandiMi: bool }` mevcut `answers`/`progress`/Leitner şemasına dokunmayan, izole yeni bir alandır. Özel (`tur:"ozel"`) görevlerin cevapları `"kamp-21-gun"` pseudo-namespace'i altında saklanır; referans (`tur:"referans"`) görevlerin cevapları ise orijinal `temaId` altında saklanır — böylece aynı soruyla kullanıcı Tema Modu'nda tekrar karşılaştığında ilerleme senkron kalır.
+
+**Bilinen sınırlama (v1.6+ takip maddesi):** Kampa özel (`tur:"ozel"`) sorular, v1.5 itibarıyla Zayıf Konular Modu'nun Leitner tekrar havuzuna dahil değildir.
+
+### 17.2 Günlük 15 Dakika — Seçim Algoritması
+
+Bu mod için ayrı bir content JSON'u YOKTUR. Mevcut 11 Tema'nın `gramer[]` + `hoeren.sorular[]` havuzu (Zayıf Konular Modu'nun kullandığı aynı havuz) ile Leitner verisini (`Storage.getLeitnerEntry`) orkestre eden saf bir seçim algoritmasıdır. Sabit oturum boyutu **10 soru = 7 tekrar + 3 yeni**.
+
+- **Tekrar havuzu:** `Storage.getLeitnerEntry(q.id)` mevcut VE `entry.dueAt <= Date.now()` olan sorular. Kutu no artan, ardından `dueAt` artan sıraya göre önceliklendirilir — en zayıf/en geciken soru önce gelir.
+- **Yeni havuzu:** `Storage.getLeitnerEntry(q.id)` HİÇ mevcut olmayan (yani hiç cevaplanmamış) sorular. `Storage.isLeitnerDue` burada KULLANILMAZ — o fonksiyon "hiç cevaplanmamış" ile "süresi gelmiş"i aynı kefeye koyar (`!entry || entry.dueAt <= now`), Günlük 15 Dakika'da bu iki durumun ayrıştırılması gerekir. Yeni havuzda seçim öncesi Fisher-Yates ile karıştırma uygulanır, aksi halde her oturumda temaların sırasına göre hep aynı sorular gelir.
+- **Fallback kuralı:** tekrar havuzu 7'den azsa eksik kadar yeni havuzdan tamamlanır; yeni havuz 3'ten azsa eksik kadar tekrar havuzundan tamamlanır (çapraz doldurma). İki havuz toplamı 10'dan azsa daha küçük bir set gösterilir (soru uydurulmaz). İki havuz da boşsa bir "boş durum" ekranı gösterilir.
+- Takvim/tarih state'i yoktur — günde istediği kadar başlatılabilir, "bugün yapıldı mı" diye bir kilit yoktur; oturum bitince kullanıcı aynı ekrandan taze bir set ile yeniden başlatabilir.
+- Yeni bir storage alanı gerekmez — mevcut `recordLeitnerResult`/`saveAnswer` (SoruKart üzerinden) yeterlidir.
+
 ## 18. AI Teacher Mode
 
 Schreiben: resmi 4 kriterli rubrik + Leitpunkt kontrolü. Sprechen: global izlenim + analitik kriter kırılımı (v3.0), gerçek eşli pratik (v4.0). Redemittel-Bank kullanım eksikliğini tespit edip öneri sunma.

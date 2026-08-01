@@ -12,13 +12,14 @@ const Storage = (() => {
 
   function readAll() {
     const raw = localStorage.getItem(NAMESPACE);
-    if (!raw) return { answers: {}, progress: {}, leitner: {} };
+    if (!raw) return { answers: {}, progress: {}, leitner: {}, kamp: { gunIlerleme: {} } };
     try {
       const data = JSON.parse(raw);
       if (!data.leitner) data.leitner = {};
+      if (!data.kamp) data.kamp = { gunIlerleme: {} };
       return data;
     } catch {
-      return { answers: {}, progress: {}, leitner: {} };
+      return { answers: {}, progress: {}, leitner: {}, kamp: { gunIlerleme: {} } };
     }
   }
 
@@ -106,6 +107,50 @@ const Storage = (() => {
     return !entry || entry.dueAt <= Date.now();
   }
 
+  function saveKampGorevTamamlandi(gunNo, gorevId) {
+    const data = readAll();
+    if (!data.kamp.gunIlerleme[gunNo]) {
+      data.kamp.gunIlerleme[gunNo] = { tamamlananGorevler: [], tamamlandiMi: false };
+    }
+    if (!data.kamp.gunIlerleme[gunNo].tamamlananGorevler.includes(gorevId)) {
+      data.kamp.gunIlerleme[gunNo].tamamlananGorevler.push(gorevId);
+    }
+    writeAll(data);
+  }
+
+  function saveKampGunTamamlandi(gunNo) {
+    const data = readAll();
+    if (!data.kamp.gunIlerleme[gunNo]) {
+      data.kamp.gunIlerleme[gunNo] = { tamamlananGorevler: [], tamamlandiMi: false };
+    }
+    data.kamp.gunIlerleme[gunNo].tamamlandiMi = true;
+    data.kamp.gunIlerleme[gunNo].tamamlanmaTarihi = Date.now();
+    writeAll(data);
+  }
+
+  function getKampGunIlerleme(gunNo) {
+    const data = readAll();
+    return data.kamp.gunIlerleme[gunNo] ?? { tamamlananGorevler: [], tamamlandiMi: false };
+  }
+
+  function getKampAcikGun() {
+    const data = readAll();
+    let sonTamamlananGun = 0;
+    Object.entries(data.kamp.gunIlerleme).forEach(([gunNo, ilerleme]) => {
+      if (ilerleme.tamamlandiMi) {
+        sonTamamlananGun = Math.max(sonTamamlananGun, Number(gunNo));
+      }
+    });
+    if (sonTamamlananGun >= 21) return 21;
+    return Math.max(1, sonTamamlananGun + 1);
+  }
+
+  function resetKampProgress() {
+    const data = readAll();
+    delete data.kamp;
+    writeAll(data);
+  }
+
   return {
     saveAnswer,
     getAnswer,
@@ -120,5 +165,10 @@ const Storage = (() => {
     recordLeitnerResult,
     getLeitnerEntry,
     isLeitnerDue,
+    saveKampGorevTamamlandi,
+    saveKampGunTamamlandi,
+    getKampGunIlerleme,
+    getKampAcikGun,
+    resetKampProgress,
   };
 })();
