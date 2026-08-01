@@ -743,7 +743,21 @@
           "aciklamaEn": "The suffix '-lich' derives adjectives from verb stems (word formation): 'verstehen' -> 'verständlich' (understandable).",
           "zorlukSeviyesi": "orta"
         },
-        { "id": "kamp-g18-oz-003", "tur": "ozel", "adimTipi": "schreiben", "PLACEHOLDER": true }
+        {
+          "id": "kamp-g18-oz-003",
+          "tur": "ozel",
+          "adimTipi": "schreiben",
+          "gorev": "Sie haben morgen einen wichtigen Termin, aber Sie können leider nicht kommen. Schreiben Sie eine kurze Nachricht, in der Sie den Termin absagen.",
+          "register": "halbformell",
+          "sprachhandlung": ["Handlungsregulierung", "Informationsaustausch"],
+          "leitpunkte": [
+            "Sagen Sie, um welchen Termin es geht und warum Sie nicht kommen können",
+            "Entschuldigen Sie sich für die kurzfristige Absage",
+            "Schlagen Sie einen neuen Termin vor"
+          ],
+          "minKelime": 30,
+          "maxKelime": 60
+        }
       ]
     },
     {
@@ -868,8 +882,33 @@
           "aciklamaEn": "'nicht' is used to negate a verb or the whole sentence; here it negates 'bekommen'.",
           "zorlukSeviyesi": "orta"
         },
-        { "id": "kamp-g20-oz-003", "tur": "ozel", "adimTipi": "schreiben", "PLACEHOLDER": true },
-        { "id": "kamp-g20-oz-004", "tur": "ozel", "adimTipi": "sprechen", "PLACEHOLDER": true }
+        {
+          "id": "kamp-g20-oz-003",
+          "tur": "ozel",
+          "adimTipi": "schreiben",
+          "gorev": "Sie haben vor zwei Wochen einen Deutschkurs erfolgreich abgeschlossen, aber Sie haben Ihr Kurszertifikat noch nicht bekommen. Sie brauchen es dringend für eine Bewerbung. Schreiben Sie eine E-Mail an die Kursleitung.",
+          "register": "halbformell",
+          "sprachhandlung": ["Informationsaustausch", "Handlungsregulierung"],
+          "leitpunkte": [
+            "Sagen Sie, welchen Kurs Sie besucht haben und wann er zu Ende war",
+            "Erklären Sie, dass Sie das Zertifikat noch nicht erhalten haben",
+            "Sagen Sie, warum Sie das Zertifikat dringend brauchen",
+            "Fragen Sie, bis wann Sie das Zertifikat bekommen können"
+          ],
+          "minKelime": 40,
+          "maxKelime": 80
+        },
+        {
+          "id": "kamp-g20-oz-004",
+          "tur": "ozel",
+          "adimTipi": "sprechen",
+          "teil3": {
+            "szenario": "Ihre EC-Karte wurde beim Geldautomaten eingezogen und Sie brauchen dringend eine neue Karte. Sie sprechen mit einem Bankberater / einer Bankberaterin. Einigen Sie sich: Wer beantragt die neue Karte, welche Unterlagen sind nötig und wann können Sie die Karte in der Filiale abholen?",
+            "sprachhandlung": ["Handlungsregulierung"],
+            "modus": "eşli-veya-simule",
+            "cevapTipi": "yaziliCevap"
+          }
+        }
       ]
     },
     {
