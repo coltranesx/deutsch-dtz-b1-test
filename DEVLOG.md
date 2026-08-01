@@ -5,7 +5,7 @@ Bu dosya, projenin güncel durumunu ve önemli kararları/öğrenmeleri özetler
 **Son güncelleme:** 2026-08-01
 **Canlı adres:** https://coltranesx.github.io/deutsch-dtz-b1-test/
 **Repo:** coltranesx/deutsch-dtz-b1-test (public, GitHub Pages ile otomatik deploy)
-**Branch durumu:** v2.0'ın tüm işleri (İstatistik Ekranı + Dışa Aktarma + DTZ Sınav Modu) PR #7 üzerinden `main`'e merge edildi (`main` @ `79c6c3f`) — bekleyen PR veya push yok, yeni sohbet `main`'in en güncel hali üzerinden devam edebilir.
+**Branch durumu:** v2.0 (PR #7) ve ardından pratik modlarındaki eski cevap sızıntısı bugfix'i (PR #8) `main`'e merge edildi (`main` @ `8af71e7`) — bekleyen PR veya push yok, yeni sohbet `main`'in en güncel hali üzerinden devam edebilir.
 
 ---
 
