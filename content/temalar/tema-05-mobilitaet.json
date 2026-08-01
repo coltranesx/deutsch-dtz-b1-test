@@ -49,8 +49,8 @@
   "lesen": {
     "metin": "Frau Krüger fährt jeden Tag mit dem Zug zur Arbeit. Heute hat der Zug 20 Minuten Verspätung, weil es auf der Strecke technische Probleme gibt. Sie muss deshalb in Köln umsteigen und einen anderen Zug nehmen. Zum Glück hat sie eine App, die ihr den aktuellen Fahrplan zeigt.",
     "sorular": [
-      { "id": "t05-l001", "soru": "Warum hat der Zug heute Verspätung?", "cevapTipi": "acikUclu" },
-      { "id": "t05-l002", "soru": "Was macht Frau Krüger deshalb?", "cevapTipi": "acikUclu" }
+      { "id": "t05-l001", "soru": "Warum hat der Zug heute Verspätung?", "cevapTipi": "coktanSecmeli", "secenekler": ["Weil es technische Probleme auf der Strecke gibt", "Weil zu viele Fahrgäste einsteigen", "Weil das Wetter schlecht ist", "Weil der Bahnsteig gewechselt wurde"], "dogruCevap": "Weil es technische Probleme auf der Strecke gibt" },
+      { "id": "t05-l002", "soru": "Was macht Frau Krüger deshalb?", "cevapTipi": "coktanSecmeli", "secenekler": ["Sie steigt in Köln um und nimmt einen anderen Zug", "Sie fährt heute mit dem Auto", "Sie wartet einfach am Bahnsteig", "Sie storniert ihre Fahrkarte"], "dogruCevap": "Sie steigt in Köln um und nimmt einen anderen Zug" }
     ]
   },
   "hoeren": {

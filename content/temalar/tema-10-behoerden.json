@@ -49,8 +49,9 @@
   "lesen": {
     "metin": "Herr Ivanov muss beim Einwohnermeldeamt seine neue Adresse anmelden. Dafür braucht er seinen Mietvertrag und seinen Ausweis. Er hat online einen Termin gemacht, weil das Amt sonst sehr voll ist. Nach der Anmeldung bekommt er eine Bescheinigung, die er für andere Behördengänge braucht.",
     "sorular": [
-      { "id": "t10-l001", "soru": "Was muss Herr Ivanov beim Amt machen?", "cevapTipi": "acikUclu" },
-      { "id": "t10-l002", "soru": "Warum hat er online einen Termin gemacht?", "cevapTipi": "acikUclu" }
+      { "id": "t10-l001", "soru": "Was muss Herr Ivanov beim Amt machen?", "cevapTipi": "coktanSecmeli", "secenekler": ["Seine neue Adresse anmelden", "Einen neuen Ausweis beantragen", "Kindergeld beantragen", "Seinen Mietvertrag kündigen"], "dogruCevap": "Seine neue Adresse anmelden" },
+      { "id": "t10-l002", "soru": "Warum hat er online einen Termin gemacht?", "cevapTipi": "coktanSecmeli", "secenekler": ["Weil das Amt sonst sehr voll ist", "Weil das Amt sonst geschlossen wäre", "Weil er keine Zeit während der Öffnungszeiten hat", "Weil er ohne Termin nicht hineindarf"], "dogruCevap": "Weil das Amt sonst sehr voll ist" },
+      { "id": "t10-l003", "soru": "Was braucht Herr Ivanov für die Anmeldung?", "cevapTipi": "coktanSecmeli", "secenekler": ["Nur seinen Ausweis", "Seinen Mietvertrag und seinen Ausweis", "Eine Geburtsurkunde", "Einen Kontoauszug"], "dogruCevap": "Seinen Mietvertrag und seinen Ausweis" }
     ]
   },
   "hoeren": {

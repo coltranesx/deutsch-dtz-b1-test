@@ -49,8 +49,8 @@
   "lesen": {
     "metin": "Frau Petrova möchte ein neues Bankkonto eröffnen, weil ihre jetzige Bank hohe Gebühren verlangt. Sie hat online mehrere Angebote verglichen und eine Bank ohne monatliche Kontogebühr gefunden. Bevor sie den Vertrag unterschreibt, möchte sie noch mit einem Berater sprechen. Sie hat dafür einen Termin für morgen vereinbart.",
     "sorular": [
-      { "id": "t11-l001", "soru": "Warum möchte Frau Petrova die Bank wechseln?", "cevapTipi": "acikUclu" },
-      { "id": "t11-l002", "soru": "Was möchte sie vor der Unterschrift noch tun?", "cevapTipi": "acikUclu" }
+      { "id": "t11-l001", "soru": "Warum möchte Frau Petrova die Bank wechseln?", "cevapTipi": "coktanSecmeli", "secenekler": ["Weil ihre jetzige Bank hohe Gebühren verlangt", "Weil sie umzieht", "Weil ihr Konto gesperrt wurde", "Weil die Bank schließt"], "dogruCevap": "Weil ihre jetzige Bank hohe Gebühren verlangt" },
+      { "id": "t11-l002", "soru": "Was möchte sie vor der Unterschrift noch tun?", "cevapTipi": "coktanSecmeli", "secenekler": ["Mit einem Berater sprechen", "Den Vertrag online lesen", "Ihre alte Bank informieren", "Eine zweite Bank besuchen"], "dogruCevap": "Mit einem Berater sprechen" }
     ]
   },
   "hoeren": {

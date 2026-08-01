@@ -49,8 +49,8 @@
   "lesen": {
     "metin": "Herr Yıldız geht am Samstag einkaufen. Er braucht Obst, Gemüse und Brot für die ganze Woche. Im Supermarkt sieht er, dass die Äpfel heute reduziert sind. Er nimmt einen Einkaufswagen und legt viele Sachen hinein. An der Kasse bezahlt er mit Karte und bekommt eine Quittung.",
     "sorular": [
-      { "id": "t09-l001", "soru": "Was braucht Herr Yıldız für die Woche?", "cevapTipi": "acikUclu" },
-      { "id": "t09-l002", "soru": "Wie bezahlt er an der Kasse?", "cevapTipi": "acikUclu" }
+      { "id": "t09-l001", "soru": "Was braucht Herr Yıldız für die Woche?", "cevapTipi": "coktanSecmeli", "secenekler": ["Obst, Gemüse und Brot", "Nur Getränke", "Elektronikartikel", "Kleidung für die Arbeit"], "dogruCevap": "Obst, Gemüse und Brot" },
+      { "id": "t09-l002", "soru": "Wie bezahlt er an der Kasse?", "cevapTipi": "coktanSecmeli", "secenekler": ["Mit Karte", "Mit Bargeld", "Mit einem Gutschein", "Er bezahlt online im Voraus"], "dogruCevap": "Mit Karte" }
     ]
   },
   "hoeren": {

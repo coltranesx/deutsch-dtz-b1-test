@@ -49,8 +49,8 @@
   "lesen": {
     "metin": "Herr Aydın arbeitet als Verkäufer in einem Elektronikgeschäft. Er beginnt um acht Uhr und macht um zwölf Uhr eine Mittagspause. Sein Chef hat ihm gesagt, dass er nächste Woche mehr Verantwortung bekommt. Herr Aydın freut sich über die neue Aufgabe, auch wenn sie mit mehr Stress verbunden ist.",
     "sorular": [
-      { "id": "t02-l001", "soru": "Als was arbeitet Herr Aydın?", "cevapTipi": "acikUclu" },
-      { "id": "t02-l002", "soru": "Was hat der Chef ihm gesagt?", "cevapTipi": "acikUclu" }
+      { "id": "t02-l001", "soru": "Als was arbeitet Herr Aydın?", "cevapTipi": "coktanSecmeli", "secenekler": ["Als Verkäufer", "Als Lagerarbeiter", "Als Kassierer", "Als Techniker"], "dogruCevap": "Als Verkäufer" },
+      { "id": "t02-l002", "soru": "Was hat der Chef ihm gesagt?", "cevapTipi": "coktanSecmeli", "secenekler": ["Dass er nächste Woche mehr Verantwortung bekommt", "Dass er eine Gehaltserhöhung bekommt", "Dass er die Abteilung wechseln muss", "Dass er weniger arbeiten soll"], "dogruCevap": "Dass er nächste Woche mehr Verantwortung bekommt" }
     ]
   },
   "hoeren": {

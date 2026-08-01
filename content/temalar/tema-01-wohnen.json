@@ -48,8 +48,9 @@
   "lesen": {
     "metin": "Familie Keskin sucht eine neue Wohnung in Köln. Sie brauchen drei Zimmer, weil sie zwei Kinder haben. Die Miete darf nicht mehr als 900 Euro kosten. Auf einer Wohnungsanzeige finden sie eine passende 3-Zimmer-Wohnung im zweiten Stock, mit Balkon und Küche. Sie rufen den Vermieter an und vereinbaren einen Besichtigungstermin.",
     "sorular": [
-      { "id": "t01-l001", "soru": "Warum sucht Familie Keskin eine neue Wohnung?", "cevapTipi": "acikUclu" },
-      { "id": "t01-l002", "soru": "Was machen sie, nachdem sie eine passende Anzeige gefunden haben?", "cevapTipi": "acikUclu" }
+      { "id": "t01-l001", "soru": "Warum sucht Familie Keskin eine neue Wohnung?", "cevapTipi": "coktanSecmeli", "secenekler": ["Weil sie mehr Zimmer für ihre Familie brauchen", "Weil ihr Vermieter ihnen gekündigt hat", "Weil sie näher zur Arbeit wohnen möchten", "Weil die Wohnung zu laut ist"], "dogruCevap": "Weil sie mehr Zimmer für ihre Familie brauchen" },
+      { "id": "t01-l002", "soru": "Was machen sie, nachdem sie eine passende Anzeige gefunden haben?", "cevapTipi": "coktanSecmeli", "secenekler": ["Sie rufen den Vermieter an und vereinbaren einen Besichtigungstermin", "Sie schreiben sofort eine E-Mail an die Hausverwaltung", "Sie unterschreiben direkt den Mietvertrag", "Sie besuchen die Wohnung ohne Termin"], "dogruCevap": "Sie rufen den Vermieter an und vereinbaren einen Besichtigungstermin" },
+      { "id": "t01-l003", "soru": "In welchem Stock liegt die Wohnung, die die Familie gefunden hat?", "cevapTipi": "coktanSecmeli", "secenekler": ["Im Erdgeschoss", "Im ersten Stock", "Im zweiten Stock", "Im dritten Stock"], "dogruCevap": "Im zweiten Stock" }
     ]
   },
   "hoeren": {

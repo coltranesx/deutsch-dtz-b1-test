@@ -49,8 +49,8 @@
   "lesen": {
     "metin": "Frau Aksoy bringt ihren Sohn jeden Morgen in den Kindergarten und holt ihn um vier Uhr wieder ab. Am Mittwoch findet ein Elternabend in der Schule ihrer älteren Tochter statt. Die Klassenlehrerin möchte über die Hausaufgaben und die Leistungen der Kinder sprechen. Frau Aksoy freut sich, mehr über den Schulalltag ihrer Tochter zu erfahren.",
     "sorular": [
-      { "id": "t08-l001", "soru": "Wann holt Frau Aksoy ihren Sohn vom Kindergarten ab?", "cevapTipi": "acikUclu" },
-      { "id": "t08-l002", "soru": "Worüber möchte die Klassenlehrerin sprechen?", "cevapTipi": "acikUclu" }
+      { "id": "t08-l001", "soru": "Wann holt Frau Aksoy ihren Sohn vom Kindergarten ab?", "cevapTipi": "coktanSecmeli", "secenekler": ["Um zwei Uhr", "Um drei Uhr", "Um vier Uhr", "Um fünf Uhr"], "dogruCevap": "Um vier Uhr" },
+      { "id": "t08-l002", "soru": "Worüber möchte die Klassenlehrerin sprechen?", "cevapTipi": "coktanSecmeli", "secenekler": ["Über die Hausaufgaben und die Leistungen der Kinder", "Über die Kosten des Kindergartens", "Über einen Schulausflug", "Über die Ferienzeiten"], "dogruCevap": "Über die Hausaufgaben und die Leistungen der Kinder" }
     ]
   },
   "hoeren": {

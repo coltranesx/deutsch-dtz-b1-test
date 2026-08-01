@@ -49,8 +49,8 @@
   "lesen": {
     "metin": "Frau Çelik sucht eine neue Stelle als Bürokauffrau. Sie hat schon drei Bewerbungen geschrieben, aber noch keine Antwort bekommen. Gestern hat sie eine Stellenanzeige gesehen, die perfekt zu ihrer Qualifikation passt. Sie möchte sich noch heute bewerben und ihren Lebenslauf aktualisieren.",
     "sorular": [
-      { "id": "t03-l001", "soru": "Welche Stelle sucht Frau Çelik?", "cevapTipi": "acikUclu" },
-      { "id": "t03-l002", "soru": "Was möchte sie heute machen?", "cevapTipi": "acikUclu" }
+      { "id": "t03-l001", "soru": "Welche Stelle sucht Frau Çelik?", "cevapTipi": "coktanSecmeli", "secenekler": ["Eine Stelle als Bürokauffrau", "Eine Stelle als Verkäuferin", "Eine Stelle als Krankenschwester", "Eine Stelle als Lehrerin"], "dogruCevap": "Eine Stelle als Bürokauffrau" },
+      { "id": "t03-l002", "soru": "Was möchte sie heute machen?", "cevapTipi": "coktanSecmeli", "secenekler": ["Sich bewerben und den Lebenslauf aktualisieren", "Zum Vorstellungsgespräch gehen", "Eine Absage beantworten", "Ihren Arbeitsvertrag kündigen"], "dogruCevap": "Sich bewerben und den Lebenslauf aktualisieren" }
     ]
   },
   "hoeren": {
