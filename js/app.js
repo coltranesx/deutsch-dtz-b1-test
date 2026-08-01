@@ -167,6 +167,18 @@ const App = (() => {
     gunluk15Card.addEventListener("click", () => openGunluk15(allData));
     app.appendChild(gunluk15Card);
 
+    const istatistikCard = document.createElement("div");
+    istatistikCard.className = "card istatistik-card";
+    istatistikCard.innerHTML = `
+      <div style="font-size:1.5rem;">📊</div>
+      <div>
+        <h3 style="margin:0 0 0.25rem;">${I18n.t("dashboard.istatistikTitle")}</h3>
+        <p style="margin:0;color:var(--text-muted);font-size:var(--text-sm);">${I18n.t("dashboard.istatistikDesc")}</p>
+      </div>
+    `;
+    istatistikCard.addEventListener("click", () => openIstatistik(allData));
+    app.appendChild(istatistikCard);
+
     const h = document.createElement("h2");
     h.textContent = I18n.t("dashboard.temalarHeading");
     app.appendChild(h);
@@ -223,6 +235,11 @@ const App = (() => {
   function openGunluk15(allData) {
     currentRenderer = Gunluk15DakikaModu.refresh;
     Gunluk15DakikaModu.start(app, allData, renderDashboard);
+  }
+
+  function openIstatistik(allData) {
+    currentRenderer = () => IstatistikEkrani.renderFullView(app, allData, renderDashboard);
+    IstatistikEkrani.renderFullView(app, allData, renderDashboard);
   }
 
   function init() {

@@ -20,24 +20,11 @@ const ZayifKonularModu = (() => {
       .map((s) => s.q);
   }
 
+  // Saf tasima: gercek hesaplama artik istatistik-yardimci.js'teki paylasilan
+  // yardimcida yasiyor (Istatistik Ekrani ile ortak). Davranis (donen veri
+  // sekli, siralama) birebir korunur.
   function computeWeakStats(pool) {
-    const byKategori = {};
-    pool.forEach((q) => {
-      if (!q.konu) return;
-      const entry = Storage.getLeitnerEntry(q.id);
-      if (!entry) return;
-      const kategori = q.konu.split(".")[0];
-      if (!byKategori[kategori]) byKategori[kategori] = { correct: 0, incorrect: 0 };
-      byKategori[kategori].correct += entry.correctCount;
-      byKategori[kategori].incorrect += entry.incorrectCount;
-    });
-    return Object.entries(byKategori)
-      .map(([kategori, s]) => ({
-        kategori,
-        toplam: s.correct + s.incorrect,
-        oran: s.correct / (s.correct + s.incorrect),
-      }))
-      .sort((a, b) => a.oran - b.oran);
+    return IstatistikYardimci.byGramerKategori(pool);
   }
 
   function start(container, temalar, onExit) {

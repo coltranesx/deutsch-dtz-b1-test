@@ -334,6 +334,16 @@ Günlük hedefler, streak, rozetler, seviye puanları, haftalık grafikler, öd�
 
 Güçlü/zayıf Temalar, Sprachhandlungen ve Gramer kategorileri (ısı haritası olarak), kelime başarı oranı, yazma gelişimi.
 
+### 22.1 Hesaplama Mantığı (v2.0)
+
+İstatistik Ekranı için ayrı bir content JSON'u YOKTUR. Mevcut Leitner verisi (`Storage.getLeitnerEntry`), 11 Tema'nın `gramer[]` + `hoeren.sorular[]` havuzu (`SoruHavuzu.collectPool` — Zayıf Konular Modu ve Günlük 15 Dakika'nın kullandığı aynı havuz) ve `Storage.getProgress` orkestre edilerek her açılışta yeniden hesaplanan salt-okunur bir rapordur; ayrı bir istatistik state'i saklanmaz (tek doğruluk kaynağı ilkesi, bkz. §12).
+
+- **Tema ısı haritası:** Havuzdaki (gramer+hören) her sorunun `temaId`'sine göre gruplanıp `Storage.getLeitnerEntry` üzerinden `correctCount`/`incorrectCount` toplanarak Tema başına doğruluk oranı hesaplanır.
+- **Gramer kategori ısı haritası:** Aynı hesap, `konu.split(".")[0]` (§8.4'teki 6 ana kategoriden biri: Verb, Nomen, Artikelwörter/Pronomen, Adjektiv, Präposition, Satz) bazında yapılır — Zayıf Konular Modu'nun kategori bazlı başarı hesabıyla aynı mantık, artık paylaşılan bir yardımcı fonksiyon üzerinden.
+- **Sprachhandlung ısı haritası:** Gramer sorularının `sprachhandlung[]` dizisi (§8.2) üzerinden hesaplanır. Bir soru birden fazla Sprachhandlung'a etiketliyse **her birine ayrı ayrı katkı yapar** (çoklu-katkı kuralı) — tek bir sorunun doğru/yanlış sonucu, etiketlendiği tüm Sprachhandlung kategorilerinin sayaçlarına eklenir. `hoeren` sorularında `sprachhandlung` alanı yoktur, bu eksen sadece gramer alt-kümesinden beslenir; bu yüzden veri diğer iki eksene göre daha seyrek olabilir. Toplam örneklem düşükse ("toplam soru sayısı çok azsa") ekranda bir "yeterli veri yok" notu gösterilir.
+- **Kelime ilerlemesi:** Kelime adımında kullanıcı serbest metin girmediği (`tema-modu.js`'te kelime adımı salt-okunur bir liste, `Storage.saveAnswer()` hiç çağrılmaz) için per-kelime doğruluk kaydı yoktur ve v2.0'da eklenmez. Bunun yerine Tema bazında ikili bir sinyal kullanılır: `Storage.getProgress(temaId).completedSteps.includes("kelime")` — kelime adımı tamamlandı mı tamamlanmadı mı. Bu, yukarıdaki üç ısı haritasından (doğruluk oranı kavramından) ayrı, kendi başına bir bölüm olarak gösterilir.
+- **Yazma gelişimi kapsam dışı:** Bu maddedeki "yazma gelişimi" v2.0'da uygulanmaz — Schreiben yanıtları serbest metin olduğu için otomatik doğruluk ölçümü gerektirir, bu da gerçek değerlendirmenin geldiği v3.0'a (AI Teacher Mode, bkz. §18) ertelenmiştir.
+
 ## 23. Bildirim Sistemi
 
 Günlük hatırlatma, haftalık tekrar, mini sınav zamanı, yeni görev bildirimi.
