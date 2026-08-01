@@ -5,7 +5,7 @@ Bu dosya, projenin güncel durumunu ve önemli kararları/öğrenmeleri özetler
 **Son güncelleme:** 2026-08-01
 **Canlı adres:** https://coltranesx.github.io/deutsch-dtz-b1-test/
 **Repo:** coltranesx/deutsch-dtz-b1-test (public, GitHub Pages ile otomatik deploy)
-**Branch durumu:** v1.5'in tüm işleri (21 Günlük Kamp + Günlük 15 Dakika) PR #6 üzerinden `main`'e merge edildi (`main` @ `ef28cbc`) — bekleyen PR veya push yok, yeni sohbet `main`'in en güncel hali üzerinden devam edebilir.
+**Branch durumu:** `claude/devlog-review-planning-q2xphc` üzerinde çalışılıyor (v2.0 İstatistik Ekranı), branch `origin`'e push edildi — henüz PR açılmadı/`main`'e merge edilmedi. Branch, önceki PR #6 merge edildikten sonra `main`'den yeniden başlatıldı (`git checkout -B ... origin/main`) — eski dallanma yok, temiz.
 
 ---
 
@@ -30,9 +30,13 @@ Bu dosya, projenin güncel durumunu ve önemli kararları/öğrenmeleri özetler
 - ✅ **21 Günlük Kamp**: `content/kamp-21-gun.json` (139 görev, 21 gün, PRD §17.1 şeması) + `js/study-modes/kamp-21-gun.js` (yeni Study Mode). Sabit/editoryal müfredat — Zayıf Konular Modu'nun aksine adaptif değil. Self-paced (takvime kilitli değil, bir gün tamamlanınca sonraki hemen açılır; "açık gün" ayrı state olarak saklanmaz, tamamlanan günlerden türetilir). Her gün karışık mikro-ders: `tur:"referans"` görevler mevcut 11 tema JSON'undaki gerçek soruya işaret eder (cevap orijinal `temaId` altında saklanır, Tema Modu'yla senkron), `tur:"ozel"` görevler kampa hastır (cevap `"kamp-21-gun"` pseudo-namespace'inde saklanır). 3 fazlı dağılım: Gün 1-11 tema tanıtımı (~%70 referans/%30 özel), Gün 12-18 çapraz pekiştirme (~%25 referans/%75 özel, ikili tema kombinasyonları), Gün 19-21 iki mini sınav + mezuniyet özet ekranı. Özel gramer sorularının `konu` etiketleri bilinçli olarak 11 temada az işlenmiş taksonomi path'lerini (`Artikelwörter/Pronomen.*`, `Adjektiv.adverbial/Wortbildung`, `Nomen.Genus/Numerus/Komposita` vb.) hedefliyor — kamp, temaların tekrarı değil boşluk dolduran bir katman. `js/storage.js`'e izole yeni bir `data.kamp.gunIlerleme` alanı eklendi, mevcut `answers/progress/leitner` şemasına dokunulmadı. `sw.js` CACHE_NAME v6->v7. Bilinen sınırlama: kampa özel sorular henüz Zayıf Konular Modu'nun Leitner havuzuna dahil değil (v1.6+ takip maddesi).
 - ✅ **Günlük 15 Dakika**: `js/study-modes/gunluk-15-dakika.js` (yeni Study Mode). Yeni bir content şeması YOK — mevcut 11 temanın gramer+hören havuzu (`SoruHavuzu.collectPool`, Zayıf Konular Modu ile paylaşılan yardımcı modül) + Leitner verisini orkestre eden saf bir seçim algoritması (PRD §17.2). Sabit 10 soruluk oturum = 7 tekrar (Leitner kaydı olan + süresi gelmiş, kutu no + dueAt'e göre öncelikli) + 3 yeni (hiç cevaplanmamış, Fisher-Yates ile karıştırılmış — "taze set" garantisi). Havuzlardan biri yetersizse çapraz doldurma yapılır. Takvim/günlük kilit YOK — sınırsız başlatılabilir, oturum bitince sayfadan çıkmadan "Yeni Oturum Başlat" ile taze bir set çekilir. Yeni bir storage alanı eklenmedi (mevcut `recordLeitnerResult`/`saveAnswer` yeterli). `zayif-konular-modu.js`'teki `collectPool` fonksiyonu davranış değişmeden `soru-havuzu-yardimci.js`'e taşındı (DTZ Sınav Modu v2.0'da da aynı havuza ihtiyaç duyacağı için gerekçeli bir paylaşım). `sw.js` CACHE_NAME v7->v8. **v1.5 TAMAMLANDI.**
 
-### v2.0 / v3.0 — BAŞLANMADI
-- v2.0: Gelişmiş istatistik, PDF/JSON dışa aktarma, DTZ Sınav Modu
-- v3.0: AI Öğretmen (otomatik Schreiben/Sprechen değerlendirme, AI soru üretimi, AI Koç Modu)
+### v2.0 — TAMAMLANDI
+- ✅ **İstatistik Ekranı**: `js/components/istatistik-ekrani.js` (yeni, `renderFullView` — Study Mode değil, state'siz salt-okunur rapor, `redemittel-bank.js` deseninde). Yeni içerik şeması YOK — mevcut Leitner verisi + `SoruHavuzu.collectPool` (gramer+hören) + `Storage.getProgress` orkestre edilir (PRD §22.1). Üç ısı haritası: Tema, Gramer kategorisi (§8.4), Sprachhandlung (§8.2, çoklu-etiket kuralı — bir soru birden fazla Sprachhandlung'a katkı yapar, sadece gramer sorularından beslenir çünkü hoeren'de bu alan yok, düşük örneklemde uyarı notu gösterilir). Ayrı bir **Kelime İlerlemesi** bölümü: doğruluk kavramı yok (kelime adımı serbest metin/soru içermiyor), Tema bazında ikili sinyal (`Storage.getProgress(temaId).completedSteps.includes("kelime")`). **"Yazma gelişimi" bilinçli olarak v2.0 kapsamı dışında bırakıldı** — otomatik değerlendirme olmadan (AI Teacher Mode v3.0) anlamlı bir metrik yok. `js/study-modes/istatistik-yardimci.js` (yeni, paylaşılan `groupByLeitnerStats` + 3 sarmalayıcı) — Zayıf Konular Modu'nun `computeWeakStats`'ı ve 21 Günlük Kamp'ın `computeKampOzet`'i artık buna delege ediyor (saf refactor, davranış birebir korundu, DRY: üçüncü kullanım noktası eşiği aşınca ortak modüle çıkarıldı — `SoruHavuzu` ile aynı prensip).
+- ✅ **Dışa Aktarma**: `js/components/disa-aktarma.js` (yeni, `renderFullView`) + `js/study-modes/disa-aktarma-yardimci.js` (yeni, saf rapor üretimi). Yeni content şeması yok (PRD §13.1). **JSON** = `Storage.readAll()`'ın `{exportedAt, appVersion, data}` zarfıyla tam yedeği. **TXT/PDF/kopyalama** = aynı yapılandırılmış veriden üretilen okunabilir özet rapor: genel özet, İstatistik Ekranı'ndaki üç ısı haritasının sayısal dökümü (`IstatistikYardimci` yeniden kullanıldı), 21 Günlük Kamp ilerlemesi, her Tema için tamamlanan adımlar + Schreiben/Sprechen yazılı yanıtları. Lesen yanıtları bilinçli olarak rapora dahil edilmiyor (sadece tamamlanma durumu). PDF **tarayıcı print-to-PDF** ile (`window.print()` + `@media print` izolasyon deseni) — üçüncü parti kütüphane eklenmedi, framework yasağına sadık kalındı. Kullanıcı serbest metni rapor DOM'una her zaman `textContent` ile yazılıyor (XSS önleme, Playwright ile script-injection denemesiyle doğrulandı). **Yan bulgu:** `js/storage.js`'teki `readAll()` fonksiyonu tanımlıydı ama public API'den dışa açılmamıştı (çağrılınca `TypeError`) — bu turda düzeltildi.
+- ✅ **DTZ Sınav Modu**: `js/study-modes/dtz-sinav-modu.js` (yeni, 7. dashboard kartı) + `js/study-modes/sinav-sayaci-yardimci.js` (yeni, saf deadline/format yardımcısı). Gerçek DTZ formatını taklit eden zamanlı deneme (PRD §17.3): Hören(20/22 seçim, 11 gruba ayrılıp her gruptan 1 + kalan 11'den 9 daha)→Lesen(tüm 25)→Schreiben(rastgele 1 tema)→Sprechen(aynı tema)→Sonuç. **İçerik ön koşulu:** mevcut 22 Lesen sorusunun tamamı `acikUclu`'dan `coktanSecmeli`'ye çevrildi (PRD §15 şema eki) + 3 yeni Lesen sorusu eklendi (toplam 25) — otomatik puanlama için zorunluydu, `dtz-icerik-uzmani`+`almanca-dil-uzmani`+`soru-kontrolcu` turu gerekti. **İlk gerçek zamanlı sayaç:** Hören 25dk/Lesen 45dk, `deadline` timestamp `Storage`'da saklanıyor (bellekte değil) — sayfa yenilense/dashboard'a çıkılıp dönülse bile süre doğru hesaplanıyor, süre dolunca bölüm otomatik ilerliyor (F5 sonrası da zincirleme uygulanır). Puanlama Hören+Lesen/45 üzerinden (A2 altı <20, A2 20-32, B1 ≥33 — PRD Ek bölümündeki resmi eşikler). Schreiben/Sprechen dahil ama **puanlanmıyor** (AI değerlendirme yok, sadece "tamamlandı" işaretlenir) — PRD'deki "genel B1 sonucu" hesabı bu yüzden v3.0'a ertelendi, sonuç ekranında açık bir not var. **Yan etki (kasıtlı):** `SoruHavuzu.collectPool` artık Lesen'i de topluyor — Zayıf Konular Modu, Günlük 15 Dakika ve İstatistik Ekranı otomatik olarak Lesen'i de kapsıyor. **Kritik regresyon düzeltmesi:** `tema-modu.js`'teki `renderLesen` artık `secenekler` varsa çoktan seçmeli render ediyor (aksi halde kullanıcı artık puanlı bir soruyu serbest metinle "cevaplamaya" çalışırdı).
+
+### v3.0 — BAŞLANMADI
+- AI Öğretmen (otomatik Schreiben/Sprechen değerlendirme, AI soru üretimi, AI Koç Modu)
 
 **Önemli:** Şu an tüm sorular **sabit/statik** — JSON dosyalarında elle yazılmış içerik. Dinamik/AI soru üretimi yok (v3.0'a kadar planlanmıyor).
 
@@ -48,14 +52,20 @@ js/
 ├── storage.js                    — LocalStorage katmanı (answers/progress/leitner)
 ├── i18n.js                       — N-dilli i18n çekirdeği: LANGUAGES listesi, BASE_LANG, I18n.t (UI sözlüğü) + I18n.contentField (içerik alanları) + cycleLanguage
 ├── components/
-│   ├── soru-kart.js              — Paylaşılan soru render + ses bağlamı bileşeni
-│   └── redemittel-bank.js        — Redemittel-Bank tam ekran görünüm + Sprechen yardım paneli
+│   ├── soru-kart.js               — Paylaşılan soru render + ses bağlamı bileşeni
+│   ├── redemittel-bank.js         — Redemittel-Bank tam ekran görünüm + Sprechen yardım paneli
+│   ├── istatistik-ekrani.js       — İstatistik Ekranı (state'siz, renderFullView deseni — Study Mode değil)
+│   └── disa-aktarma.js            — Dışa Aktarma ekranı (state'siz, renderFullView deseni — Study Mode değil)
 └── study-modes/
-    ├── soru-havuzu-yardimci.js    — Paylaşılan SoruHavuzu.collectPool (tüm temalardan gramer+hören havuzu, Zayıf Konular + Günlük 15 Dakika arasında ortak)
+    ├── soru-havuzu-yardimci.js    — Paylaşılan SoruHavuzu.collectPool (tüm temalardan gramer+hören havuzu)
+    ├── istatistik-yardimci.js     — Paylaşılan groupByLeitnerStats + byGramerKategori/byTema/bySprachhandlung
+    ├── disa-aktarma-yardimci.js   — Saf rapor üretimi: buildReportData/formatReportText/buildJsonExportPayload
+    ├── sinav-sayaci-yardimci.js   — Saf deadline/kalan süre/format yardımcısı (DTZ Sınav Modu'nun gerçek zamanlı sayacı için)
     ├── tema-modu.js               — 7 adımlı normal çalışma modu (refresh() ile dil değişiminde state korunur)
     ├── zayif-konular-modu.js      — Leitner tabanlı akıllı tekrar modu (refresh() ile dil değişiminde state korunur)
     ├── kamp-21-gun.js             — Sabit 21 günlük müfredat modu, self-paced gün kilidi (refresh() ile dil değişiminde state korunur)
-    └── gunluk-15-dakika.js        — Sabit 10 soruluk hızlı tur (7 tekrar+3 yeni), sınırsız başlatma (refresh() ile dil değişiminde state korunur)
+    ├── gunluk-15-dakika.js        — Sabit 10 soruluk hızlı tur (7 tekrar+3 yeni), sınırsız başlatma (refresh() ile dil değişiminde state korunur)
+    └── dtz-sinav-modu.js          — Gerçek DTZ formatını taklit eden zamanlı deneme sınavı, deadline tabanlı sayaç (refresh() ile dil değişiminde state korunur, interval yeniden başlatılmaz)
 content/temalar/*.json            — 11 tema içeriği (PRD §15 şemasına uygun)
 content/redemittel-bank.json      — Temadan bağımsız konuşma stratejisi ifade bankası (PRD §7.1)
 content/kamp-21-gun.json          — 21 Günlük Kamp müfredatı, referans+özel görev karışımı (PRD §17.1)
@@ -71,10 +81,11 @@ assets/audio/, assets/fotos/      — AI üretimi medya (Magnific/ElevenLabs)
   answers: { [temaId]: { [questionId]: { value, savedAt } } },
   progress: { [temaId]: { completedSteps: [], lastStep, lastStudiedAt } },
   leitner: { [questionId]: { box, dueAt, lastResult, correctCount, incorrectCount, lastReviewedAt } },
-  kamp: { gunIlerleme: { [gunNo]: { tamamlananGorevler: [], tamamlandiMi, tamamlanmaTarihi } } }
+  kamp: { gunIlerleme: { [gunNo]: { tamamlananGorevler: [], tamamlandiMi, tamamlanmaTarihi } } },
+  dtzSinav: null | { startedAt, currentSection, hoerenIds, hoerenDeadline, lesenDeadline, sectionAutoFinished, schreibenSprechenTemaId }
 }
 ```
-`kamp.gunIlerleme` izole bir alandır, `answers/progress/leitner`'a dokunmaz. "Açık gün" ayrı saklanmaz — `Storage.getKampAcikGun()` tamamlanan en yüksek günden türetir (tek doğruluk kaynağı).
+`kamp.gunIlerleme` izole bir alandır, `answers/progress/leitner`'a dokunmaz. "Açık gün" ayrı saklanmaz — `Storage.getKampAcikGun()` tamamlanan en yüksek günden türetir (tek doğruluk kaynağı). `dtzSinav` da izole bir alan — tek bir aktif sınav oturumu (yoksa `null`), `hoerenDeadline`/`lesenDeadline` epoch ms timestamp'leri (bellekte değil kalıcı depoda), süre bunlardan her seferinde `deadline - Date.now()` ile yeniden hesaplanır.
 
 ---
 
@@ -95,10 +106,11 @@ assets/audio/, assets/fotos/      — AI üretimi medya (Magnific/ElevenLabs)
 
 ## 4. Sırada Ne Var (öneri sırası)
 
-**v1.5 TAMAMLANDI** (Zayıf Konular Modu, Redemittel-Bank, TR/EN i18n, 21 Günlük Kamp, Günlük 15 Dakika — hepsi bitti).
+**v1.5 TAMAMLANDI. v2.0 TAMAMLANDI** (İstatistik Ekranı + Dışa Aktarma + DTZ Sınav Modu). Sırada:
 
-1. v2.0: istatistik ekranı, dışa aktarma, DTZ Sınav Modu (PRD §22, §13, §17 — DTZ Sınav Modu `SoruHavuzu.collectPool` benzeri bir havuzlama ihtiyacı duyacak, mevcut yardımcı modülden faydalanabilir)
-2. v3.0: AI entegrasyonu (bu noktada `guvenlik-uzmani` benzeri bir agent ve API anahtarı yönetimi gerekecek)
+1. v3.0: AI entegrasyonu (AI Öğretmen — otomatik Schreiben/Sprechen değerlendirme, AI soru üretimi, AI Koç Modu). Bu noktada `guvenlik-uzmani` benzeri bir agent ve API anahtarı yönetimi gerekecek. DTZ Sınav Modu'nun sonuç ekranındaki "genel B1 sonucu otomatik hesaplanamıyor" notu, Schreiben/Sprechen otomatik değerlendirmesi v3.0'da geldiğinde kaldırılabilir.
+
+Not: v2.0'ın tamamı tek branch'te (`claude/devlog-review-planning-q2xphc`) biriktirildi, kullanıcı tercihine göre v1.5'teki gibi özellik başına ayrı PR açılmadı — v2.0 bitince tek PR açılacak/açıldı (bkz. üstteki Branch durumu notu).
 
 Not: v1.5'in tüm işleri PR #6 (https://github.com/coltranesx/deutsch-dtz-b1-test/pull/6) ile `main`'e merge edildi, GitHub Pages otomatik deploy tetiklendi.
 

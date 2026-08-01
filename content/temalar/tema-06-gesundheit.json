@@ -49,8 +49,9 @@
   "lesen": {
     "metin": "Frau Demir hat seit drei Tagen Fieber und Halsschmerzen. Sie ruft in der Arztpraxis an und bekommt einen Termin für den nächsten Morgen. Der Arzt untersucht sie und sagt, dass sie eine Erkältung hat. Er verschreibt ihr Medikamente und rät ihr, viel zu trinken und sich auszuruhen.",
     "sorular": [
-      { "id": "t06-l001", "soru": "Wie lange hat Frau Demir schon Fieber?", "cevapTipi": "acikUclu" },
-      { "id": "t06-l002", "soru": "Was empfiehlt der Arzt?", "cevapTipi": "acikUclu" }
+      { "id": "t06-l001", "soru": "Wie lange hat Frau Demir schon Fieber?", "cevapTipi": "coktanSecmeli", "secenekler": ["Seit einem Tag", "Seit zwei Tagen", "Seit drei Tagen", "Seit einer Woche"], "dogruCevap": "Seit drei Tagen" },
+      { "id": "t06-l002", "soru": "Was empfiehlt der Arzt?", "cevapTipi": "coktanSecmeli", "secenekler": ["Viel zu trinken und sich auszuruhen", "Sofort ins Krankenhaus zu gehen", "Nur Tabletten ohne Ruhe zu nehmen", "Sport zu treiben"], "dogruCevap": "Viel zu trinken und sich auszuruhen" },
+      { "id": "t06-l003", "soru": "Was diagnostiziert der Arzt bei Frau Demir?", "cevapTipi": "coktanSecmeli", "secenekler": ["Eine Grippe", "Eine Erkältung", "Eine Allergie", "Eine Bronchitis"], "dogruCevap": "Eine Erkältung" }
     ]
   },
   "hoeren": {

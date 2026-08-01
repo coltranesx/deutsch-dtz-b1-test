@@ -164,6 +164,19 @@ Tema + Sprachhandlung + Gramer-taksonomisi bazlı başarı takibi; yanlışlar o
 
 TXT, JSON, PDF olarak indirme; tek tuşla kopyalama.
 
+### 13.1 Dışa Aktarma Formatları (v2.0)
+
+Dışa Aktarma ekranı için ayrı bir content JSON'u YOKTUR. Mevcut `Storage` (`readAll`, `getProgress`, `getTemaAnswers`, `getKampGunIlerleme`), `IstatistikYardimci` (`byTema`/`byGramerKategori`/`bySprachhandlung`, bkz. §22.1) ve `SoruHavuzu.collectPool` orkestre edilerek her açılışta yeniden hesaplanan salt-okunur bir rapordur; ayrı bir dışa aktarma state'i saklanmaz (tek doğruluk kaynağı ilkesi, bkz. §12). Üç format da (JSON/TXT/PDF) ve panoya kopyalama aynı yapılandırılmış rapor verisinden üretilir.
+
+- **JSON zarfı — tam yedek:** `{ exportedAt: <ISO tarih>, appVersion: <sabit sürüm string'i>, data: <Storage.readAll() çıktısının tamamı> }`. Bu format `answers`/`progress`/`leitner`/`kamp` şemasının tamamını (bkz. §11, §12) kayıpsız taşır — cihaz değişimi veya yedekleme senaryosu içindir, geri yükleme mekanizması ayrı bir madde olarak ileride eklenebilir.
+- **TXT/PDF/kopyalama — okunabilir özet rapor:** Aşağıdaki yapılandırılmış bölümleri, ısı haritası gibi görsel bir bileşen OLMADAN sayısal biçimde içerir:
+  1. **Genel özet:** rapor tarihi, kaç Tema'nın 7 adımının (kelime→gramer→lesen→hören→schreiben→sprechen→miniTest) tamamının bittiği (`Storage.getProgress(temaId).completedSteps.length === 7`).
+  2. **İstatistik özeti:** `IstatistikYardimci.byTema/byGramerKategori/bySprachhandlung` çıktısı satır satır ("Tema: Wohnen — %72 (18 soru)" formatında), §22.1'deki aynı "yeterli veri yok" notuyla.
+  3. **21 Günlük Kamp ilerlemesi:** ayrı bir bölüm, "X/21 gün tamamlandı" (`Storage.getKampGunIlerleme` üzerinden sayılır).
+  4. **Tema bazlı detay (11 Tema'nın her biri için):** `completedSteps` (7 adımın kaçı/hangileri tamam), Schreiben yanıtı (varsa serbest metin + her Leitpunkt'in işaretli olup olmadığı), Sprechen yanıtları (varsa Teil 1/Teil 2 Beschreibung/Teil 2 Vergleich/Teil 3).
+- **Lesen kapsam dışı (bilinçli sınır):** Lesen yanıtları rapora dahil edilmez — sadece genel adım listesinde "tamamlandı/tamamlanmadı" durumu görünür. Gerekçe: Lesen soruları (cevap tipinden bağımsız olarak) rapor açısından kısa/taranabilir özet amacının dışında bırakılmıştır; rapor zaten Schreiben/Sprechen'de yeterince uzun serbest metin taşır, Lesen'i de eklemek raporu orantısız şişirir ve tekrar/paylaşım amacına (kısa, taranabilir özet) hizmet etmez. `data.answers[temaId]` içinde Lesen cevapları JSON tam yedeğinde zaten mevcuttur, kayıp yoktur.
+- **PDF yöntemi — tarayıcı print-to-PDF:** Üçüncü parti bir PDF kütüphanesi eklenmez (§2 Framework Yasağı ile uyum); `window.print()` + `@media print` CSS izolasyon deseni kullanılır (rapor alanı dışındaki her şey `visibility: hidden` yapılır). Kullanıcı tarayıcının "PDF olarak kaydet" seçeneğiyle çıktı alır — bu, hem bağımlılık eklemeden hem de her tarayıcıda tutarlı biçimde çalışan tek yoldur.
+
 ## 14. Arayüz ve PWA
 
 Minimal, Dark/Light Mode, responsive, mobil öncelikli, ana ekrana eklenebilir, offline çalışır.
@@ -193,7 +206,7 @@ Minimal, Dark/Light Mode, responsive, mobil öncelikli, ana ekrana eklenebilir, 
       "zorlukSeviyesi": "orta"
     }
   ],
-  "lesen": { "metin": "...", "sorular": [{ "id": "t01-l001", "soru": "...", "cevapTipi": "acikUclu" }] },
+  "lesen": { "metin": "...", "sorular": [{ "id": "t01-l001", "soru": "...", "cevapTipi": "acikUclu" }, { "id": "t01-l002", "soru": "...", "cevapTipi": "coktanSecmeli", "secenekler": ["...", "...", "..."], "dogruCevap": "..." }] },
   "hoeren": { "sesUrl": "assets/audio/t01-h001.mp3", "sesKaynagi": "kayit", "sorular": [{ "id": "t01-h001", "soru": "...", "secenekler": ["...", "..."], "dogruCevap": "..." }] },
   "schreiben": {
     "gorev": "Ihre Wohnung hat einen Wasserschaden. Schreiben Sie eine E-Mail an den Vermieter.",
@@ -221,6 +234,8 @@ Minimal, Dark/Light Mode, responsive, mobil öncelikli, ana ekrana eklenebilir, 
   "miniTest": { "soruIdListesi": ["t01-w001", "t01-g001", "t01-l001", "t01-h001"] }
 }
 ```
+
+**`lesen.sorular[].cevapTipi` — iki geçerli değer (v2.0 eki):** v1.0'da yalnızca `"acikUclu"` (serbest metin, otomatik puanlanamaz) vardı; v2.0 ile birlikte `"coktanSecmeli"` de geçerli bir değer olarak eklendi — bu geriye dönük bir kırılma değildir, iki değer de aynı anda ve aynı `lesen.sorular[]` dizisi içinde bir arada bulunabilir. `cevapTipi:"coktanSecmeli"` olan bir soru ek olarak `secenekler` (dizi, DTZ formatına uygun 3-4 seçenek) ve `dogruCevap` (dizideki doğru seçeneğin metni) alanlarını taşır — bu iki alanın adı ve anlamı `gramer[]`'deki `secenekler`/`dogruCevap` ile birebir aynıdır. `id` formatı her iki `cevapTipi` için de değişmez, mevcut Lesen konvansiyonunu (`t0X-lNNN`) korur. Bu eklemenin amacı DTZ Sınav Modu'nun (§17.3) Lesen bölümünü otomatik puanlayabilmesidir; `"acikUclu"` sorular DTZ Sınav Modu'nun puanlama havuzuna dahil edilmez (bkz. §17.3).
 
 **Temadan bağımsız, sabit dosyalar:** `redemittel-bank.json` (§7), `profil-tanitim.json` (Sprechen Teil 1 şablonu).
 
@@ -314,6 +329,22 @@ Bu mod için ayrı bir content JSON'u YOKTUR. Mevcut 11 Tema'nın `gramer[]` + `
 - Takvim/tarih state'i yoktur — günde istediği kadar başlatılabilir, "bugün yapıldı mı" diye bir kilit yoktur; oturum bitince kullanıcı aynı ekrandan taze bir set ile yeniden başlatabilir.
 - Yeni bir storage alanı gerekmez — mevcut `recordLeitnerResult`/`saveAnswer` (SoruKart üzerinden) yeterlidir.
 
+### 17.3 DTZ Sınav Modu — Seçim Algoritması ve Akış
+
+Bu mod için de ayrı bir content JSON'u YOKTUR. Mevcut 11 Tema'nın `hoeren.sorular[]` havuzu ile (artık bir kısmı `cevapTipi:"coktanSecmeli"` olan, bkz. §15) `lesen.sorular[]` havuzunu orkestre eden, gerçek DTZ formatını (bkz. Ek: Doğrulanmış DTZ Sınav Yapısı) taklit eden zamanlı bir deneme akışıdır.
+
+**Bölüm sırası:** Hören → Lesen → Schreiben → Sprechen → Sonuç.
+
+- **Hören seçimi (22 havuzdan 20 soru):** Havuz `temaId`'ye göre 11 gruba ayrılır (her Tema'nın 2 Hören sorusu bir grup oluşturur). Her gruptan Fisher-Yates karıştırmasıyla 1 soru seçilir — bu adım 11 soru üretir ve her Tema'nın Hören bölümünde en az bir kez temsil edilmesini garanti eder. Kalan 11 "ikinci" sorudan (her gruptan seçilmeyen soru) Fisher-Yates ile 9 tanesi seçilip eklenir; toplam 20 soru elde edilir. Süre: **25 dakika**, gerçek geri sayım.
+- **Lesen seçimi (seçim yok, tüm havuz):** Mevcut 25 soru (22 retrofit `coktanSecmeli` + 3 yeni `coktanSecmeli`, bkz. §15) olduğu gibi kullanılır — herhangi bir örnekleme/seçim yapılmaz, `cevapTipi:"acikUclu"` kalan Lesen soruları (varsa) bu havuza dahil edilmez. Süre: **45 dakika**, gerçek geri sayım.
+- **Süre dolunca:** İlgili bölüm otomatik sona erer, o ana kadar cevaplanmamış sorular boş sayılır, kısa bir bildirim gösterilir ve akış otomatik olarak sıradaki bölüme geçer — kullanıcı süre dolduğunda bölümde kilitli kalmaz.
+- **Sayaç kalıcılığı:** Süre, bellekte tutulan bir sayaçla değil, `Storage`'da saklanan bir `deadline` timestamp'inden hesaplanır. Sayfa yenilense, dashboard'a çıkılıp sınava geri dönülse bile kalan süre `deadline - Date.now()` ile yeniden hesaplanır — gerçek sınav simülasyonunun güvenilirliği (kullanıcının süreyi "durdurup" avantaj sağlayamaması) buna dayanır.
+- **Schreiben:** Rastgele seçilen tek bir Tema'nın Schreiben görevi (3-4 Leitpunkt, bkz. §9) sunulur, kullanıcı serbest metin yazar. AI değerlendirmesi v3.0'a kadar olmadığı için **otomatik puanlanmaz** — yalnızca "tamamlandı/tamamlanmadı" olarak işaretlenir.
+- **Sprechen:** Aynı Tema'nın 3 aşamalı görevi (Teil 1/Teil 2/Teil 3, bkz. §10) sunulur; Schreiben ile aynı şekilde puanlanmadan yalnızca "tamamlandı" olarak işaretlenir.
+- **Puanlama:** Hören + Lesen doğru cevap sayısı, 45 üzerinden hesaplanır (20 Hören + 25 Lesen). Eşikler Ek bölümdeki resmi eşiklerin birebir uygulanmasıdır: **<20/45 → "A2 altı"**, **20-32/45 → "A2"**, **≥33/45 → "B1"**.
+- **Sınırsız tekrar:** Sınav istenildiği kadar yeniden başlatılabilir; her yeni başlatmada Hören için §17.3'teki 22'den-20'ye seçim algoritması yeniden çalışır (farklı bir 20'li set çıkar), Lesen her seferinde sabit 25 soruyla aynı kalır.
+- **Bilinen sınırlama (v3.0'a ertelendi):** Ek bölümdeki resmi "Genel sonuç: Sprechen + en az bir yazılı bölüm B1 ise toplam B1" kuralı otomatik hesaplanamaz, çünkü Schreiben ve Sprechen puanlanmıyor (yalnızca tamamlandı/tamamlanmadı bilgisi tutulur). DTZ Sınav Modu bu nedenle yalnızca Hören+Lesen puanını (A2 altı/A2/B1) gösterir; genel B1 sonucu, AI değerlendirmenin geldiği v3.0'da (bkz. §18) eklenecektir.
+
 ## 18. AI Teacher Mode
 
 Schreiben: resmi 4 kriterli rubrik + Leitpunkt kontrolü. Sprechen: global izlenim + analitik kriter kırılımı (v3.0), gerçek eşli pratik (v4.0). Redemittel-Bank kullanım eksikliğini tespit edip öneri sunma.
@@ -333,6 +364,16 @@ Günlük hedefler, streak, rozetler, seviye puanları, haftalık grafikler, öd�
 ## 22. İstatistik Sistemi
 
 Güçlü/zayıf Temalar, Sprachhandlungen ve Gramer kategorileri (ısı haritası olarak), kelime başarı oranı, yazma gelişimi.
+
+### 22.1 Hesaplama Mantığı (v2.0)
+
+İstatistik Ekranı için ayrı bir content JSON'u YOKTUR. Mevcut Leitner verisi (`Storage.getLeitnerEntry`), 11 Tema'nın `gramer[]` + `hoeren.sorular[]` havuzu (`SoruHavuzu.collectPool` — Zayıf Konular Modu ve Günlük 15 Dakika'nın kullandığı aynı havuz) ve `Storage.getProgress` orkestre edilerek her açılışta yeniden hesaplanan salt-okunur bir rapordur; ayrı bir istatistik state'i saklanmaz (tek doğruluk kaynağı ilkesi, bkz. §12).
+
+- **Tema ısı haritası:** Havuzdaki (gramer+hören) her sorunun `temaId`'sine göre gruplanıp `Storage.getLeitnerEntry` üzerinden `correctCount`/`incorrectCount` toplanarak Tema başına doğruluk oranı hesaplanır.
+- **Gramer kategori ısı haritası:** Aynı hesap, `konu.split(".")[0]` (§8.4'teki 6 ana kategoriden biri: Verb, Nomen, Artikelwörter/Pronomen, Adjektiv, Präposition, Satz) bazında yapılır — Zayıf Konular Modu'nun kategori bazlı başarı hesabıyla aynı mantık, artık paylaşılan bir yardımcı fonksiyon üzerinden.
+- **Sprachhandlung ısı haritası:** Gramer sorularının `sprachhandlung[]` dizisi (§8.2) üzerinden hesaplanır. Bir soru birden fazla Sprachhandlung'a etiketliyse **her birine ayrı ayrı katkı yapar** (çoklu-katkı kuralı) — tek bir sorunun doğru/yanlış sonucu, etiketlendiği tüm Sprachhandlung kategorilerinin sayaçlarına eklenir. `hoeren` sorularında `sprachhandlung` alanı yoktur, bu eksen sadece gramer alt-kümesinden beslenir; bu yüzden veri diğer iki eksene göre daha seyrek olabilir. Toplam örneklem düşükse ("toplam soru sayısı çok azsa") ekranda bir "yeterli veri yok" notu gösterilir.
+- **Kelime ilerlemesi:** Kelime adımında kullanıcı serbest metin girmediği (`tema-modu.js`'te kelime adımı salt-okunur bir liste, `Storage.saveAnswer()` hiç çağrılmaz) için per-kelime doğruluk kaydı yoktur ve v2.0'da eklenmez. Bunun yerine Tema bazında ikili bir sinyal kullanılır: `Storage.getProgress(temaId).completedSteps.includes("kelime")` — kelime adımı tamamlandı mı tamamlanmadı mı. Bu, yukarıdaki üç ısı haritasından (doğruluk oranı kavramından) ayrı, kendi başına bir bölüm olarak gösterilir.
+- **Yazma gelişimi kapsam dışı:** Bu maddedeki "yazma gelişimi" v2.0'da uygulanmaz — Schreiben yanıtları serbest metin olduğu için otomatik doğruluk ölçümü gerektirir, bu da gerçek değerlendirmenin geldiği v3.0'a (AI Teacher Mode, bkz. §18) ertelenmiştir.
 
 ## 23. Bildirim Sistemi
 

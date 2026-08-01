@@ -131,6 +131,24 @@ const App = (() => {
     redemittelCard.addEventListener("click", () => openRedemittelBank(redemittelData));
     app.appendChild(redemittelCard);
 
+    const dtzSinavSession = Storage.getDtzSinavSession();
+    const dtzSinavCard = document.createElement("div");
+    dtzSinavCard.className = "card dtz-sinav-card";
+    dtzSinavCard.innerHTML = `
+      <div style="font-size:1.5rem;">📝</div>
+      <div>
+        <h3 style="margin:0 0 0.25rem;">${I18n.t("dashboard.dtzSinavTitle")}</h3>
+        <p style="margin:0;color:var(--text-muted);font-size:var(--text-sm);">${I18n.t("dashboard.dtzSinavDesc")}</p>
+        ${
+          dtzSinavSession
+            ? `<p style="margin:0.25rem 0 0;color:var(--primary);font-size:var(--text-xs);font-weight:var(--font-medium);">${I18n.t("dashboard.dtzSinavContinueBadge")}</p>`
+            : ""
+        }
+      </div>
+    `;
+    dtzSinavCard.addEventListener("click", () => openDtzSinav(allData));
+    app.appendChild(dtzSinavCard);
+
     if (kampData) {
       let kampTamamlananGun = 0;
       for (let n = 1; n <= 21; n += 1) {
@@ -166,6 +184,30 @@ const App = (() => {
     `;
     gunluk15Card.addEventListener("click", () => openGunluk15(allData));
     app.appendChild(gunluk15Card);
+
+    const istatistikCard = document.createElement("div");
+    istatistikCard.className = "card istatistik-card";
+    istatistikCard.innerHTML = `
+      <div style="font-size:1.5rem;">📊</div>
+      <div>
+        <h3 style="margin:0 0 0.25rem;">${I18n.t("dashboard.istatistikTitle")}</h3>
+        <p style="margin:0;color:var(--text-muted);font-size:var(--text-sm);">${I18n.t("dashboard.istatistikDesc")}</p>
+      </div>
+    `;
+    istatistikCard.addEventListener("click", () => openIstatistik(allData));
+    app.appendChild(istatistikCard);
+
+    const disaAktarmaCard = document.createElement("div");
+    disaAktarmaCard.className = "card disa-aktarma-card";
+    disaAktarmaCard.innerHTML = `
+      <div style="font-size:1.5rem;">📤</div>
+      <div>
+        <h3 style="margin:0 0 0.25rem;">${I18n.t("dashboard.disaAktarmaTitle")}</h3>
+        <p style="margin:0;color:var(--text-muted);font-size:var(--text-sm);">${I18n.t("dashboard.disaAktarmaDesc")}</p>
+      </div>
+    `;
+    disaAktarmaCard.addEventListener("click", () => openDisaAktarma(allData));
+    app.appendChild(disaAktarmaCard);
 
     const h = document.createElement("h2");
     h.textContent = I18n.t("dashboard.temalarHeading");
@@ -215,6 +257,11 @@ const App = (() => {
     RedemittelBank.renderFullView(app, redemittelData, renderDashboard);
   }
 
+  function openDtzSinav(allData) {
+    currentRenderer = DtzSinavModu.refresh;
+    DtzSinavModu.start(app, allData, renderDashboard);
+  }
+
   function openKamp(kampData, allData) {
     currentRenderer = Kamp21GunModu.refresh;
     Kamp21GunModu.start(app, kampData, allData, renderDashboard);
@@ -223,6 +270,16 @@ const App = (() => {
   function openGunluk15(allData) {
     currentRenderer = Gunluk15DakikaModu.refresh;
     Gunluk15DakikaModu.start(app, allData, renderDashboard);
+  }
+
+  function openIstatistik(allData) {
+    currentRenderer = () => IstatistikEkrani.renderFullView(app, allData, renderDashboard);
+    IstatistikEkrani.renderFullView(app, allData, renderDashboard);
+  }
+
+  function openDisaAktarma(allData) {
+    currentRenderer = () => DisaAktarma.renderFullView(app, allData, renderDashboard);
+    DisaAktarma.renderFullView(app, allData, renderDashboard);
   }
 
   function init() {

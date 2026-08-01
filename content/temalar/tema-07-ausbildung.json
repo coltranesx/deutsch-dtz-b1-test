@@ -49,8 +49,8 @@
   "lesen": {
     "metin": "Herr Nowak möchte seine Deutschkenntnisse verbessern und hat sich für einen B1-Kurs angemeldet. Der Kurs findet dreimal pro Woche am Abend statt. Am Ende des Kurses gibt es eine Prüfung, und wer sie besteht, bekommt ein Zeugnis. Herr Nowak hofft, dass das Zeugnis ihm bei der Arbeitssuche hilft.",
     "sorular": [
-      { "id": "t07-l001", "soru": "Wie oft findet der Kurs statt?", "cevapTipi": "acikUclu" },
-      { "id": "t07-l002", "soru": "Warum ist das Zeugnis für Herrn Nowak wichtig?", "cevapTipi": "acikUclu" }
+      { "id": "t07-l001", "soru": "Wie oft findet der Kurs statt?", "cevapTipi": "coktanSecmeli", "secenekler": ["Einmal pro Woche", "Zweimal pro Woche", "Dreimal pro Woche", "Jeden Tag"], "dogruCevap": "Dreimal pro Woche" },
+      { "id": "t07-l002", "soru": "Warum ist das Zeugnis für Herrn Nowak wichtig?", "cevapTipi": "coktanSecmeli", "secenekler": ["Weil es ihm bei der Arbeitssuche helfen soll", "Weil er es für die Einbürgerung braucht", "Weil er es seinem Chef zeigen muss", "Weil er ohne Zeugnis den Kurs wiederholen muss"], "dogruCevap": "Weil es ihm bei der Arbeitssuche helfen soll" }
     ]
   },
   "hoeren": {

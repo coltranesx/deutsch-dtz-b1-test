@@ -149,6 +149,14 @@ const TemaModu = (() => {
     wrap.appendChild(text);
 
     tema.lesen.sorular.forEach((q) => {
+      // v2.0: bazi Lesen sorulari artik coktanSecmeli (bkz. PRD §15) — bu
+      // sorular Gramer/Hören ile ayni SoruKart bilesenini kullanir. acikUclu
+      // sorular eski serbest metin davranisini korur.
+      if (q.secenekler) {
+        wrap.appendChild(renderGradedQuestion(tema, q));
+        return;
+      }
+
       const block = document.createElement("div");
       block.className = "question-block";
       const label = document.createElement("div");

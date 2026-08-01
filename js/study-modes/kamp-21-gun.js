@@ -404,26 +404,20 @@ const Kamp21GunModu = (() => {
       if (Storage.getKampGunIlerleme(n).tamamlandiMi) tamamlananGun += 1;
     }
 
-    const temaBazliBasari = Object.values(state.temaById)
-      .map((tema) => {
-        const sorular = [...(tema.gramer ?? []), ...(tema.hoeren?.sorular ?? [])];
-        let correct = 0;
-        let total = 0;
-        sorular.forEach((q) => {
-          const entry = Storage.getLeitnerEntry(q.id);
-          if (!entry) return;
-          correct += entry.correctCount;
-          total += entry.correctCount + entry.incorrectCount;
-        });
-        return total > 0 ? { baslik: tema.baslik, oran: correct / total } : null;
-      })
-      .filter(Boolean)
-      .sort((a, b) => b.oran - a.oran);
+    // Tema bazli basari hesabi artik istatistik-yardimci.js'teki paylasilan
+    // yardimcida yasiyor (Istatistik Ekrani ile ortak). IstatistikYardimci.byTema
+    // sonucu oran artan siraya gore sirali dondurur (en zayif once, en guclu
+    // sonra) — asagidaki indeks secimi bu sirayla tutarlidir.
+    const pool = SoruHavuzu.collectPool(Object.values(state.temaById));
+    const temaBazliBasari = IstatistikYardimci.byTema(pool).map((s) => ({
+      baslik: state.temaById[s.temaId]?.baslik ?? s.temaId,
+      oran: s.oran,
+    }));
 
     return {
       tamamlananGun,
-      enGucluTema: temaBazliBasari[0]?.baslik ?? null,
-      enZayifTema: temaBazliBasari[temaBazliBasari.length - 1]?.baslik ?? null,
+      enGucluTema: temaBazliBasari[temaBazliBasari.length - 1]?.baslik ?? null,
+      enZayifTema: temaBazliBasari[0]?.baslik ?? null,
     };
   }
 
