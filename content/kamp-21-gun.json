@@ -1,0 +1,891 @@
+{
+  "kampId": "kamp-21-gun",
+  "baslik": "21 Günlük Kamp",
+  "gunler": [
+    {
+      "gunNo": 1,
+      "baslik": "Gün 1 — Wohnen'e Giriş",
+      "odakTemalar": ["tema-01-wohnen"],
+      "gorevler": [
+        { "id": "kamp-g01-ref-001", "tur": "referans", "adimTipi": "kelime", "temaId": "tema-01-wohnen", "soruId": "t01-w001" },
+        { "id": "kamp-g01-ref-002", "tur": "referans", "adimTipi": "kelime", "temaId": "tema-01-wohnen", "soruId": "t01-w002" },
+        { "id": "kamp-g01-ref-003", "tur": "referans", "adimTipi": "gramer", "temaId": "tema-01-wohnen", "soruId": "t01-g001" },
+        { "id": "kamp-g01-ref-004", "tur": "referans", "adimTipi": "lesen", "temaId": "tema-01-wohnen", "soruId": "t01-l001" },
+        { "id": "kamp-g01-ref-005", "tur": "referans", "adimTipi": "hoeren", "temaId": "tema-01-wohnen", "soruId": "t01-h001" },
+        {
+          "id": "kamp-g01-oz-001",
+          "tur": "ozel",
+          "adimTipi": "gramer",
+          "konu": "Artikelwörter/Pronomen.DefiniterArtikel",
+          "sprachhandlung": ["Informationsaustausch"],
+          "soru": "___ Miete für die Wohnung ist pünktlich zu zahlen.",
+          "secenekler": ["Der", "Die", "Das", "Den"],
+          "dogruCevap": "Die",
+          "aciklama": "'die Miete' dişildir; cümlede özne (Nominativ) olduğu için bestimmter Artikel 'Die' kullanılır.",
+          "aciklamaEn": "'die Miete' is feminine; as the subject (Nominative) of the sentence, the definite article 'Die' is used.",
+          "zorlukSeviyesi": "leicht"
+        },
+        {
+          "id": "kamp-g01-oz-002",
+          "tur": "ozel",
+          "adimTipi": "gramer",
+          "konu": "Nomen.Genus",
+          "sprachhandlung": ["Informationsaustausch"],
+          "soru": "Welcher Artikel passt zu 'Vertrag'?",
+          "secenekler": ["der Vertrag", "die Vertrag", "das Vertrag", "die Verträge"],
+          "dogruCevap": "der Vertrag",
+          "aciklama": "'Vertrag' eril bir isimdir, tekilde artikel her zaman 'der' olur: 'der Vertrag'.",
+          "aciklamaEn": "'Vertrag' is a masculine noun; in the singular it always takes the article 'der': 'der Vertrag'.",
+          "zorlukSeviyesi": "leicht"
+        }
+      ]
+    },
+    {
+      "gunNo": 2,
+      "baslik": "Gün 2 — Arbeit'e Giriş",
+      "odakTemalar": ["tema-02-arbeit"],
+      "gorevler": [
+        { "id": "kamp-g02-ref-001", "tur": "referans", "adimTipi": "tekrar", "temaId": "tema-01-wohnen", "soruId": "t01-w001" },
+        { "id": "kamp-g02-ref-002", "tur": "referans", "adimTipi": "kelime", "temaId": "tema-02-arbeit", "soruId": "t02-w001" },
+        { "id": "kamp-g02-ref-003", "tur": "referans", "adimTipi": "kelime", "temaId": "tema-02-arbeit", "soruId": "t02-w002" },
+        { "id": "kamp-g02-ref-004", "tur": "referans", "adimTipi": "gramer", "temaId": "tema-02-arbeit", "soruId": "t02-g001" },
+        { "id": "kamp-g02-ref-005", "tur": "referans", "adimTipi": "lesen", "temaId": "tema-02-arbeit", "soruId": "t02-l001" },
+        { "id": "kamp-g02-ref-006", "tur": "referans", "adimTipi": "hoeren", "temaId": "tema-02-arbeit", "soruId": "t02-h001" },
+        {
+          "id": "kamp-g02-oz-001",
+          "tur": "ozel",
+          "adimTipi": "gramer",
+          "konu": "Verb.Verbvalenz",
+          "sprachhandlung": ["Handlungsregulierung"],
+          "soru": "Meine Kollegin hilft ___ neuen Mitarbeiter bei der Einarbeitung.",
+          "secenekler": ["der", "den", "dem", "des"],
+          "dogruCevap": "dem",
+          "aciklama": "'helfen' fiili Dativ ister (Verbvalenz); 'der Mitarbeiter' eril, Dativ'de 'dem Mitarbeiter' olur.",
+          "aciklamaEn": "The verb 'helfen' governs the Dative case (Verbvalenz); 'der Mitarbeiter' is masculine, so in the Dative it becomes 'dem Mitarbeiter'.",
+          "zorlukSeviyesi": "orta"
+        },
+        {
+          "id": "kamp-g02-oz-002",
+          "tur": "ozel",
+          "adimTipi": "gramer",
+          "konu": "Satz.Nebensatz.dass",
+          "sprachhandlung": ["Informationsaustausch"],
+          "soru": "Der Chef sagt, ___ das Projekt bis Freitag fertig sein muss.",
+          "secenekler": ["dass", "weil", "ob", "wenn"],
+          "dogruCevap": "dass",
+          "aciklama": "Bir bildirimi/açıklamayı aktarırken 'dass' bağlacı kullanılır; fiil cümle sonuna gider.",
+          "aciklamaEn": "The conjunction 'dass' is used to report a statement; the conjugated verb moves to the end of the clause.",
+          "zorlukSeviyesi": "orta"
+        }
+      ]
+    },
+    {
+      "gunNo": 3,
+      "baslik": "Gün 3 — Arbeitssuche'ye Giriş",
+      "odakTemalar": ["tema-03-arbeitssuche"],
+      "gorevler": [
+        { "id": "kamp-g03-ref-001", "tur": "referans", "adimTipi": "tekrar", "temaId": "tema-02-arbeit", "soruId": "t02-w001" },
+        { "id": "kamp-g03-ref-002", "tur": "referans", "adimTipi": "kelime", "temaId": "tema-03-arbeitssuche", "soruId": "t03-w001" },
+        { "id": "kamp-g03-ref-003", "tur": "referans", "adimTipi": "kelime", "temaId": "tema-03-arbeitssuche", "soruId": "t03-w002" },
+        { "id": "kamp-g03-ref-004", "tur": "referans", "adimTipi": "gramer", "temaId": "tema-03-arbeitssuche", "soruId": "t03-g001" },
+        { "id": "kamp-g03-ref-005", "tur": "referans", "adimTipi": "lesen", "temaId": "tema-03-arbeitssuche", "soruId": "t03-l001" },
+        { "id": "kamp-g03-ref-006", "tur": "referans", "adimTipi": "hoeren", "temaId": "tema-03-arbeitssuche", "soruId": "t03-h001" },
+        {
+          "id": "kamp-g03-oz-001",
+          "tur": "ozel",
+          "adimTipi": "gramer",
+          "konu": "Verb.Modus.KonjunktivII",
+          "sprachhandlung": ["Handlungsregulierung", "Gestaltung sozialer Kontakte"],
+          "soru": "___ Sie mir bitte sagen, wann das Vorstellungsgespräch beginnt?",
+          "secenekler": ["Könnten", "Können", "Konnten", "Kann"],
+          "dogruCevap": "Könnten",
+          "aciklama": "Nazik bir rica için Konjunktiv II kullanılır: 'könnten' (können fiilinin Konjunktiv II hali).",
+          "aciklamaEn": "Konjunktiv II is used for a polite request: 'könnten' is the Konjunktiv II form of 'können'.",
+          "zorlukSeviyesi": "orta"
+        },
+        {
+          "id": "kamp-g03-oz-002",
+          "tur": "ozel",
+          "adimTipi": "gramer",
+          "konu": "Artikelwörter/Pronomen.Personalpronomen",
+          "sprachhandlung": ["Informationsaustausch"],
+          "soru": "Ich habe der Personalchefin eine E-Mail geschrieben. ___ hat noch nicht geantwortet.",
+          "secenekler": ["Sie", "Ihr", "Ihn", "Er"],
+          "dogruCevap": "Sie",
+          "aciklama": "'die Personalchefin' dişildir; yerine geçen kişi zamiri Nominativ'de 'sie' olur.",
+          "aciklamaEn": "'die Personalchefin' is feminine; the personal pronoun replacing it in the Nominative is 'sie'.",
+          "zorlukSeviyesi": "leicht"
+        }
+      ]
+    },
+    {
+      "gunNo": 4,
+      "baslik": "Gün 4 — Mediennutzung'a Giriş",
+      "odakTemalar": ["tema-04-mediennutzung"],
+      "gorevler": [
+        { "id": "kamp-g04-ref-001", "tur": "referans", "adimTipi": "tekrar", "temaId": "tema-03-arbeitssuche", "soruId": "t03-w001" },
+        { "id": "kamp-g04-ref-002", "tur": "referans", "adimTipi": "kelime", "temaId": "tema-04-mediennutzung", "soruId": "t04-w001" },
+        { "id": "kamp-g04-ref-003", "tur": "referans", "adimTipi": "kelime", "temaId": "tema-04-mediennutzung", "soruId": "t04-w002" },
+        { "id": "kamp-g04-ref-004", "tur": "referans", "adimTipi": "gramer", "temaId": "tema-04-mediennutzung", "soruId": "t04-g001" },
+        { "id": "kamp-g04-ref-005", "tur": "referans", "adimTipi": "lesen", "temaId": "tema-04-mediennutzung", "soruId": "t04-l001" },
+        { "id": "kamp-g04-ref-006", "tur": "referans", "adimTipi": "hoeren", "temaId": "tema-04-mediennutzung", "soruId": "t04-h001" },
+        {
+          "id": "kamp-g04-oz-001",
+          "tur": "ozel",
+          "adimTipi": "gramer",
+          "konu": "Nomen.Numerus",
+          "sprachhandlung": ["Informationsaustausch"],
+          "soru": "Ich habe schon drei ___ von meinem Chef bekommen.",
+          "secenekler": ["E-Mail", "E-Mails", "E-Mailen", "E-Maile"],
+          "dogruCevap": "E-Mails",
+          "aciklama": "'die E-Mail' çoğulda '-s' eki alır: 'die E-Mails'; sayı belirtildiğinde çoğul kullanılır.",
+          "aciklamaEn": "'die E-Mail' takes the plural suffix '-s': 'die E-Mails'; the plural is used when a number is stated.",
+          "zorlukSeviyesi": "leicht"
+        },
+        {
+          "id": "kamp-g04-oz-002",
+          "tur": "ozel",
+          "adimTipi": "gramer",
+          "konu": "Adjektiv.adverbial",
+          "sprachhandlung": ["Realisierung von Gefühlen/Haltungen/Meinungen"],
+          "soru": "Mein Computer funktioniert seit dem Update ___.",
+          "secenekler": ["langsam", "langsame", "langsamer", "langsames"],
+          "dogruCevap": "langsam",
+          "aciklama": "Bir fiili niteleyen (adverbial) sıfat çekim eki almaz: 'funktioniert langsam'.",
+          "aciklamaEn": "An adjective used adverbially (modifying a verb) takes no ending: 'funktioniert langsam'.",
+          "zorlukSeviyesi": "orta"
+        }
+      ]
+    },
+    {
+      "gunNo": 5,
+      "baslik": "Gün 5 — Mobilität'e Giriş",
+      "odakTemalar": ["tema-05-mobilitaet"],
+      "gorevler": [
+        { "id": "kamp-g05-ref-001", "tur": "referans", "adimTipi": "tekrar", "temaId": "tema-04-mediennutzung", "soruId": "t04-w001" },
+        { "id": "kamp-g05-ref-002", "tur": "referans", "adimTipi": "kelime", "temaId": "tema-05-mobilitaet", "soruId": "t05-w001" },
+        { "id": "kamp-g05-ref-003", "tur": "referans", "adimTipi": "kelime", "temaId": "tema-05-mobilitaet", "soruId": "t05-w002" },
+        { "id": "kamp-g05-ref-004", "tur": "referans", "adimTipi": "gramer", "temaId": "tema-05-mobilitaet", "soruId": "t05-g001" },
+        { "id": "kamp-g05-ref-005", "tur": "referans", "adimTipi": "lesen", "temaId": "tema-05-mobilitaet", "soruId": "t05-l001" },
+        { "id": "kamp-g05-ref-006", "tur": "referans", "adimTipi": "hoeren", "temaId": "tema-05-mobilitaet", "soruId": "t05-h001" },
+        {
+          "id": "kamp-g05-oz-001",
+          "tur": "ozel",
+          "adimTipi": "gramer",
+          "konu": "Präposition.weitere",
+          "sprachhandlung": ["Informationsaustausch"],
+          "soru": "___ des Streiks fahren heute keine Busse.",
+          "secenekler": ["Wegen", "Trotz", "Während", "Ohne"],
+          "dogruCevap": "Wegen",
+          "aciklama": "'wegen' + Genitiv, bir nedeni belirtmek için kullanılır: 'wegen des Streiks'.",
+          "aciklamaEn": "'wegen' + Genitive is used to state a reason: 'wegen des Streiks'.",
+          "zorlukSeviyesi": "orta"
+        },
+        {
+          "id": "kamp-g05-oz-002",
+          "tur": "ozel",
+          "adimTipi": "gramer",
+          "konu": "Satz.Nebensatz.wenn",
+          "sprachhandlung": ["Informationsaustausch"],
+          "soru": "___ der Zug Verspätung hat, nehme ich den Bus.",
+          "secenekler": ["Wenn", "Als", "Ob", "Damit"],
+          "dogruCevap": "Wenn",
+          "aciklama": "Tekrarlanan/genel bir koşulu belirtirken 'wenn' kullanılır; fiil cümle sonuna gider.",
+          "aciklamaEn": "'wenn' is used for a repeated/general condition; the conjugated verb moves to the end of the clause.",
+          "zorlukSeviyesi": "leicht"
+        }
+      ]
+    },
+    {
+      "gunNo": 6,
+      "baslik": "Gün 6 — Gesundheit'e Giriş",
+      "odakTemalar": ["tema-06-gesundheit"],
+      "gorevler": [
+        { "id": "kamp-g06-ref-001", "tur": "referans", "adimTipi": "tekrar", "temaId": "tema-05-mobilitaet", "soruId": "t05-w001" },
+        { "id": "kamp-g06-ref-002", "tur": "referans", "adimTipi": "kelime", "temaId": "tema-06-gesundheit", "soruId": "t06-w001" },
+        { "id": "kamp-g06-ref-003", "tur": "referans", "adimTipi": "kelime", "temaId": "tema-06-gesundheit", "soruId": "t06-w002" },
+        { "id": "kamp-g06-ref-004", "tur": "referans", "adimTipi": "gramer", "temaId": "tema-06-gesundheit", "soruId": "t06-g001" },
+        { "id": "kamp-g06-ref-005", "tur": "referans", "adimTipi": "lesen", "temaId": "tema-06-gesundheit", "soruId": "t06-l001" },
+        { "id": "kamp-g06-ref-006", "tur": "referans", "adimTipi": "hoeren", "temaId": "tema-06-gesundheit", "soruId": "t06-h001" },
+        {
+          "id": "kamp-g06-oz-001",
+          "tur": "ozel",
+          "adimTipi": "gramer",
+          "konu": "Verb.Tempus.Praeteritum",
+          "sprachhandlung": ["Informationsaustausch"],
+          "soru": "Früher ___ ich oft krank, aber jetzt bin ich gesund.",
+          "secenekler": ["war", "bin", "wäre", "gewesen"],
+          "dogruCevap": "war",
+          "aciklama": "'sein' fiilinin Präteritum hali 'war'; geçmişteki bir durumu anlatırken kullanılır.",
+          "aciklamaEn": "'war' is the Präteritum form of 'sein'; it is used to describe a past state.",
+          "zorlukSeviyesi": "leicht"
+        },
+        {
+          "id": "kamp-g06-oz-002",
+          "tur": "ozel",
+          "adimTipi": "gramer",
+          "konu": "Satz.Negation",
+          "sprachhandlung": ["Informationsaustausch"],
+          "soru": "Ich habe heute ___ Termin beim Arzt, ich bin gesund.",
+          "secenekler": ["keinen", "nicht", "kein", "keine"],
+          "dogruCevap": "keinen",
+          "aciklama": "Belirsiz nesneleri (der Termin, eril, Akkusativ) olumsuzlarken 'kein' kullanılır: 'keinen Termin'.",
+          "aciklamaEn": "Indefinite objects (der Termin, masculine, Accusative) are negated with 'kein': 'keinen Termin'.",
+          "zorlukSeviyesi": "orta"
+        }
+      ]
+    },
+    {
+      "gunNo": 7,
+      "baslik": "Gün 7 — Aus- und Weiterbildung'a Giriş",
+      "odakTemalar": ["tema-07-ausbildung"],
+      "gorevler": [
+        { "id": "kamp-g07-ref-001", "tur": "referans", "adimTipi": "tekrar", "temaId": "tema-06-gesundheit", "soruId": "t06-w001" },
+        { "id": "kamp-g07-ref-002", "tur": "referans", "adimTipi": "kelime", "temaId": "tema-07-ausbildung", "soruId": "t07-w001" },
+        { "id": "kamp-g07-ref-003", "tur": "referans", "adimTipi": "kelime", "temaId": "tema-07-ausbildung", "soruId": "t07-w002" },
+        { "id": "kamp-g07-ref-004", "tur": "referans", "adimTipi": "gramer", "temaId": "tema-07-ausbildung", "soruId": "t07-g001" },
+        { "id": "kamp-g07-ref-005", "tur": "referans", "adimTipi": "lesen", "temaId": "tema-07-ausbildung", "soruId": "t07-l001" },
+        { "id": "kamp-g07-ref-006", "tur": "referans", "adimTipi": "hoeren", "temaId": "tema-07-ausbildung", "soruId": "t07-h001" },
+        {
+          "id": "kamp-g07-oz-001",
+          "tur": "ozel",
+          "adimTipi": "gramer",
+          "konu": "Nomen.Kasus.Nominativ",
+          "sprachhandlung": ["Informationsaustausch"],
+          "soru": "___ Kurs beginnt nächste Woche.",
+          "secenekler": ["Der", "Den", "Dem", "Des"],
+          "dogruCevap": "Der",
+          "aciklama": "'der Kurs' cümlenin öznesidir, bu yüzden Nominativ 'der' kullanılır.",
+          "aciklamaEn": "'der Kurs' is the subject of the sentence, so the Nominative form 'der' is used.",
+          "zorlukSeviyesi": "leicht"
+        },
+        {
+          "id": "kamp-g07-oz-002",
+          "tur": "ozel",
+          "adimTipi": "gramer",
+          "konu": "Artikelwörter/Pronomen.Praepositionalpronomen",
+          "sprachhandlung": ["Informationsaustausch"],
+          "soru": "Ich habe mich für den Kurs beworben. Ich warte jetzt ___.",
+          "secenekler": ["darauf", "dafür", "damit", "davon"],
+          "dogruCevap": "darauf",
+          "aciklama": "'warten auf etwas' fiili cansız bir nesneye işaret ederken 'da-' bileşik zamiri ile 'darauf warten' olur.",
+          "aciklamaEn": "The verb 'warten auf etwas' uses the 'da-' compound pronoun 'darauf' when referring to a non-personal object.",
+          "zorlukSeviyesi": "schwer"
+        }
+      ]
+    },
+    {
+      "gunNo": 8,
+      "baslik": "Gün 8 — Betreuung und Ausbildung der Kinder'e Giriş",
+      "odakTemalar": ["tema-08-kinderbetreuung"],
+      "gorevler": [
+        { "id": "kamp-g08-ref-001", "tur": "referans", "adimTipi": "tekrar", "temaId": "tema-07-ausbildung", "soruId": "t07-w001" },
+        { "id": "kamp-g08-ref-002", "tur": "referans", "adimTipi": "kelime", "temaId": "tema-08-kinderbetreuung", "soruId": "t08-w001" },
+        { "id": "kamp-g08-ref-003", "tur": "referans", "adimTipi": "kelime", "temaId": "tema-08-kinderbetreuung", "soruId": "t08-w002" },
+        { "id": "kamp-g08-ref-004", "tur": "referans", "adimTipi": "gramer", "temaId": "tema-08-kinderbetreuung", "soruId": "t08-g001" },
+        { "id": "kamp-g08-ref-005", "tur": "referans", "adimTipi": "lesen", "temaId": "tema-08-kinderbetreuung", "soruId": "t08-l001" },
+        { "id": "kamp-g08-ref-006", "tur": "referans", "adimTipi": "hoeren", "temaId": "tema-08-kinderbetreuung", "soruId": "t08-h001" },
+        {
+          "id": "kamp-g08-oz-001",
+          "tur": "ozel",
+          "adimTipi": "gramer",
+          "konu": "Verb.Modus.Passiv",
+          "sprachhandlung": ["Informationsaustausch"],
+          "soru": "Die Hausaufgaben ___ von der Lehrerin kontrolliert.",
+          "secenekler": ["werden", "wurden", "sind", "haben"],
+          "dogruCevap": "werden",
+          "aciklama": "Edilgen (Passiv) Präsens çoğul özneyle: 'werden' + Partizip II — 'werden kontrolliert'.",
+          "aciklamaEn": "Present passive with a plural subject: 'werden' + past participle — 'werden kontrolliert'.",
+          "zorlukSeviyesi": "orta"
+        },
+        {
+          "id": "kamp-g08-oz-002",
+          "tur": "ozel",
+          "adimTipi": "gramer",
+          "konu": "Satz.Doppelkonjunktionen",
+          "sprachhandlung": ["Realisierung von Gefühlen/Haltungen/Meinungen"],
+          "soru": "Mein Sohn mag ___ Fußball ___ Schwimmen.",
+          "secenekler": ["sowohl ... als auch", "weder ... noch", "entweder ... oder", "je ... desto"],
+          "dogruCevap": "sowohl ... als auch",
+          "aciklama": "İki şeyin de geçerli olduğunu belirtmek için 'sowohl ... als auch' kullanılır.",
+          "aciklamaEn": "'sowohl ... als auch' (both ... and) is used to state that both things apply.",
+          "zorlukSeviyesi": "orta"
+        }
+      ]
+    },
+    {
+      "gunNo": 9,
+      "baslik": "Gün 9 — Einkaufen'e Giriş",
+      "odakTemalar": ["tema-09-einkaufen"],
+      "gorevler": [
+        { "id": "kamp-g09-ref-001", "tur": "referans", "adimTipi": "tekrar", "temaId": "tema-08-kinderbetreuung", "soruId": "t08-w001" },
+        { "id": "kamp-g09-ref-002", "tur": "referans", "adimTipi": "kelime", "temaId": "tema-09-einkaufen", "soruId": "t09-w001" },
+        { "id": "kamp-g09-ref-003", "tur": "referans", "adimTipi": "kelime", "temaId": "tema-09-einkaufen", "soruId": "t09-w002" },
+        { "id": "kamp-g09-ref-004", "tur": "referans", "adimTipi": "gramer", "temaId": "tema-09-einkaufen", "soruId": "t09-g001" },
+        { "id": "kamp-g09-ref-005", "tur": "referans", "adimTipi": "lesen", "temaId": "tema-09-einkaufen", "soruId": "t09-l001" },
+        { "id": "kamp-g09-ref-006", "tur": "referans", "adimTipi": "hoeren", "temaId": "tema-09-einkaufen", "soruId": "t09-h001" },
+        {
+          "id": "kamp-g09-oz-001",
+          "tur": "ozel",
+          "adimTipi": "gramer",
+          "konu": "Nomen.Komposita",
+          "sprachhandlung": ["Informationsaustausch"],
+          "soru": "Welcher Artikel passt zu 'Einkaufswagen'?",
+          "secenekler": ["der Einkaufswagen", "die Einkaufswagen", "das Einkaufswagen", "die Einkaufswägen"],
+          "dogruCevap": "der Einkaufswagen",
+          "aciklama": "Bileşik isimlerde (Komposita) artikel son parçadan (Grundwort) belirlenir: 'der Wagen' -> 'der Einkaufswagen'.",
+          "aciklamaEn": "In compound nouns (Komposita), the article is determined by the last part (Grundwort): 'der Wagen' -> 'der Einkaufswagen'.",
+          "zorlukSeviyesi": "orta"
+        },
+        {
+          "id": "kamp-g09-oz-002",
+          "tur": "ozel",
+          "adimTipi": "gramer",
+          "konu": "Satz.Fragesatz",
+          "sprachhandlung": ["Informationsaustausch"],
+          "soru": "___ kostet dieser Pullover?",
+          "secenekler": ["Was", "Wie viel", "Wie", "Wo"],
+          "dogruCevap": "Wie viel",
+          "aciklama": "Fiyat sorarken 'Wie viel kostet...?' W-Frage kalıbı kullanılır.",
+          "aciklamaEn": "'Wie viel kostet...?' is the standard W-question pattern used to ask about price.",
+          "zorlukSeviyesi": "leicht"
+        }
+      ]
+    },
+    {
+      "gunNo": 10,
+      "baslik": "Gün 10 — Ämter und Behörden'e Giriş",
+      "odakTemalar": ["tema-10-behoerden"],
+      "gorevler": [
+        { "id": "kamp-g10-ref-001", "tur": "referans", "adimTipi": "tekrar", "temaId": "tema-09-einkaufen", "soruId": "t09-w001" },
+        { "id": "kamp-g10-ref-002", "tur": "referans", "adimTipi": "kelime", "temaId": "tema-10-behoerden", "soruId": "t10-w001" },
+        { "id": "kamp-g10-ref-003", "tur": "referans", "adimTipi": "kelime", "temaId": "tema-10-behoerden", "soruId": "t10-w002" },
+        { "id": "kamp-g10-ref-004", "tur": "referans", "adimTipi": "gramer", "temaId": "tema-10-behoerden", "soruId": "t10-g001" },
+        { "id": "kamp-g10-ref-005", "tur": "referans", "adimTipi": "lesen", "temaId": "tema-10-behoerden", "soruId": "t10-l001" },
+        { "id": "kamp-g10-ref-006", "tur": "referans", "adimTipi": "hoeren", "temaId": "tema-10-behoerden", "soruId": "t10-h001" },
+        {
+          "id": "kamp-g10-oz-001",
+          "tur": "ozel",
+          "adimTipi": "gramer",
+          "konu": "Satz.Satzklammer",
+          "sprachhandlung": ["Handlungsregulierung"],
+          "soru": "Ich muss den Antrag bis Freitag ___.",
+          "secenekler": ["abgeben", "abgibt", "abgegeben habe", "gebe ab"],
+          "dogruCevap": "abgeben",
+          "aciklama": "Modal fiil ('muss') + infinitiv yapısında, ayrılabilir fiil ('abgeben') Satzklammer kuralına göre cümle sonuna gider.",
+          "aciklamaEn": "In a modal verb ('muss') + infinitive structure, the separable verb ('abgeben') goes to the end of the clause according to the Satzklammer rule.",
+          "zorlukSeviyesi": "orta"
+        },
+        {
+          "id": "kamp-g10-oz-002",
+          "tur": "ozel",
+          "adimTipi": "gramer",
+          "konu": "Nomen.Kasus.n-Deklination",
+          "sprachhandlung": ["Informationsaustausch"],
+          "soru": "Ich spreche mit dem ___ über den Antrag.",
+          "secenekler": ["Kunde", "Kunden", "Kundem", "Kundes"],
+          "dogruCevap": "Kunden",
+          "aciklama": "'der Kunde' n-Deklination'a aittir; Dativ/Akkusativ/Genitiv'de '-n' eki alır: 'dem Kunden'.",
+          "aciklamaEn": "'der Kunde' belongs to the n-Deklination group; it takes the ending '-n' in Dative/Accusative/Genitive: 'dem Kunden'.",
+          "zorlukSeviyesi": "schwer"
+        }
+      ]
+    },
+    {
+      "gunNo": 11,
+      "baslik": "Gün 11 — Banken und Versicherungen'e Giriş",
+      "odakTemalar": ["tema-11-banken"],
+      "gorevler": [
+        { "id": "kamp-g11-ref-001", "tur": "referans", "adimTipi": "tekrar", "temaId": "tema-10-behoerden", "soruId": "t10-w001" },
+        { "id": "kamp-g11-ref-002", "tur": "referans", "adimTipi": "kelime", "temaId": "tema-11-banken", "soruId": "t11-w001" },
+        { "id": "kamp-g11-ref-003", "tur": "referans", "adimTipi": "kelime", "temaId": "tema-11-banken", "soruId": "t11-w002" },
+        { "id": "kamp-g11-ref-004", "tur": "referans", "adimTipi": "gramer", "temaId": "tema-11-banken", "soruId": "t11-g001" },
+        { "id": "kamp-g11-ref-005", "tur": "referans", "adimTipi": "lesen", "temaId": "tema-11-banken", "soruId": "t11-l001" },
+        { "id": "kamp-g11-ref-006", "tur": "referans", "adimTipi": "hoeren", "temaId": "tema-11-banken", "soruId": "t11-h001" },
+        {
+          "id": "kamp-g11-oz-001",
+          "tur": "ozel",
+          "adimTipi": "gramer",
+          "konu": "Verb.Verbvalenz",
+          "sprachhandlung": ["Informationsaustausch"],
+          "soru": "Für die Kontoeröffnung brauche ich ___ Ausweis.",
+          "secenekler": ["der", "den", "dem", "des"],
+          "dogruCevap": "den",
+          "aciklama": "'brauchen' fiili Akkusativ ister (Verbvalenz); 'der Ausweis' eril, Akkusativ'de 'den Ausweis' olur.",
+          "aciklamaEn": "The verb 'brauchen' governs the Accusative case (Verbvalenz); 'der Ausweis' is masculine, so in the Accusative it becomes 'den Ausweis'.",
+          "zorlukSeviyesi": "orta"
+        },
+        {
+          "id": "kamp-g11-oz-002",
+          "tur": "ozel",
+          "adimTipi": "gramer",
+          "konu": "Adjektiv.Wortbildung",
+          "sprachhandlung": ["Informationsaustausch"],
+          "soru": "Ein Konto ohne monatliche Kosten nennt man ein ___ Konto.",
+          "secenekler": ["gebührenfreies", "gebührenfrei", "gebührenfreier", "gebührenfreien"],
+          "dogruCevap": "gebührenfreies",
+          "aciklama": "'-frei' eki ile isimlerden sıfat türetilir (Wortbildung): 'die Gebühr' + '-frei' -> 'gebührenfrei' (ücretsiz); nötr isim önünde belirsiz artikelle '-es' eki alır.",
+          "aciklamaEn": "The suffix '-frei' derives adjectives from nouns (word formation): 'die Gebühr' + '-frei' -> 'gebührenfrei' (fee-free); before a neuter noun with an indefinite article it takes the ending '-es'.",
+          "zorlukSeviyesi": "schwer"
+        }
+      ]
+    },
+    {
+      "gunNo": 12,
+      "baslik": "Gün 12 — Wohnen & Arbeit: Çapraz Pekiştirme",
+      "odakTemalar": ["tema-01-wohnen", "tema-02-arbeit"],
+      "gorevler": [
+        { "id": "kamp-g12-ref-001", "tur": "referans", "adimTipi": "tekrar", "temaId": "tema-11-banken", "soruId": "t11-w001" },
+        { "id": "kamp-g12-ref-002", "tur": "referans", "adimTipi": "kelime", "temaId": "tema-02-arbeit", "soruId": "t02-w003" },
+        {
+          "id": "kamp-g12-oz-001",
+          "tur": "ozel",
+          "adimTipi": "gramer",
+          "konu": "Artikelwörter/Pronomen.Reziprokpronomen",
+          "sprachhandlung": ["Gestaltung sozialer Kontakte"],
+          "soru": "Der Vermieter und der Mieter schreiben ___ regelmäßig E-Mails, um Missverständnisse zu vermeiden.",
+          "secenekler": ["einander", "ihm", "ihr", "sich selbst"],
+          "dogruCevap": "einander",
+          "aciklama": "Karşılıklı bir eylemi belirtmek için (birbirine) 'einander' (Reziprokpronomen) kullanılır.",
+          "aciklamaEn": "'einander' (each other) is the reciprocal pronoun used to express a mutual action.",
+          "zorlukSeviyesi": "orta"
+        },
+        {
+          "id": "kamp-g12-oz-002",
+          "tur": "ozel",
+          "adimTipi": "gramer",
+          "konu": "Satz.Nebensatz.obwohl",
+          "sprachhandlung": ["Realisierung von Gefühlen/Haltungen/Meinungen"],
+          "soru": "Herr Aydın übernimmt die neue Aufgabe, ___ sie mehr Stress bedeutet.",
+          "secenekler": ["obwohl", "weil", "damit", "wenn"],
+          "dogruCevap": "obwohl",
+          "aciklama": "Bir karşıtlığı/zıtlığı belirtmek için 'obwohl' (rağmen) kullanılır; fiil cümle sonuna gider.",
+          "aciklamaEn": "'obwohl' (although) is used to express contrast; the conjugated verb moves to the end of the clause.",
+          "zorlukSeviyesi": "orta"
+        },
+        {
+          "id": "kamp-g12-oz-003",
+          "tur": "ozel",
+          "adimTipi": "kelime",
+          "de": "der Umzug",
+          "tr": "taşınma",
+          "en": "move / relocation",
+          "beispiel": "Der Umzug in die neue Wohnung war stressig, aber die Kollegen haben geholfen.",
+          "kategori": "Nomen",
+          "zorlukSeviyesi": "orta"
+        }
+      ]
+    },
+    {
+      "gunNo": 13,
+      "baslik": "Gün 13 — Arbeitssuche & Mediennutzung: Çapraz Pekiştirme",
+      "odakTemalar": ["tema-03-arbeitssuche", "tema-04-mediennutzung"],
+      "gorevler": [
+        { "id": "kamp-g13-ref-001", "tur": "referans", "adimTipi": "tekrar", "temaId": "tema-02-arbeit", "soruId": "t02-w003" },
+        { "id": "kamp-g13-ref-002", "tur": "referans", "adimTipi": "kelime", "temaId": "tema-03-arbeitssuche", "soruId": "t03-w003" },
+        {
+          "id": "kamp-g13-oz-001",
+          "tur": "ozel",
+          "adimTipi": "gramer",
+          "konu": "Verb.Modus.KonjunktivII",
+          "sprachhandlung": ["Informationsaustausch"],
+          "soru": "Ich ___ gern wissen, ob meine Bewerbung angekommen ist.",
+          "secenekler": ["würde", "werde", "wurde", "würdest"],
+          "dogruCevap": "würde",
+          "aciklama": "'würde' + Infinitiv, nazik bir istek/dilek belirtmek için Konjunktiv II yapısıdır: 'ich würde gern wissen'.",
+          "aciklamaEn": "'würde' + infinitive is the Konjunktiv II construction used to express a polite wish: 'ich würde gern wissen'.",
+          "zorlukSeviyesi": "orta"
+        },
+        {
+          "id": "kamp-g13-oz-002",
+          "tur": "ozel",
+          "adimTipi": "gramer",
+          "konu": "Nomen.Genus",
+          "sprachhandlung": ["Informationsaustausch"],
+          "soru": "Welcher Artikel passt zu 'Passwort'?",
+          "secenekler": ["der Passwort", "die Passwort", "das Passwort", "die Passwörter"],
+          "dogruCevap": "das Passwort",
+          "aciklama": "'Passwort' nötr bir isimdir, tekilde artikel her zaman 'das' olur: 'das Passwort'.",
+          "aciklamaEn": "'Passwort' is a neuter noun; in the singular it always takes the article 'das': 'das Passwort'.",
+          "zorlukSeviyesi": "leicht"
+        },
+        {
+          "id": "kamp-g13-oz-003",
+          "tur": "ozel",
+          "adimTipi": "kelime",
+          "de": "die Absage",
+          "tr": "ret cevabı",
+          "en": "rejection (letter)",
+          "beispiel": "Ich habe heute eine Absage per E-Mail bekommen.",
+          "kategori": "Nomen",
+          "zorlukSeviyesi": "schwer"
+        }
+      ]
+    },
+    {
+      "gunNo": 14,
+      "baslik": "Gün 14 — Mobilität & Gesundheit: Çapraz Pekiştirme",
+      "odakTemalar": ["tema-05-mobilitaet", "tema-06-gesundheit"],
+      "gorevler": [
+        { "id": "kamp-g14-ref-001", "tur": "referans", "adimTipi": "tekrar", "temaId": "tema-03-arbeitssuche", "soruId": "t03-w003" },
+        { "id": "kamp-g14-ref-002", "tur": "referans", "adimTipi": "kelime", "temaId": "tema-06-gesundheit", "soruId": "t06-w001" },
+        {
+          "id": "kamp-g14-oz-001",
+          "tur": "ozel",
+          "adimTipi": "gramer",
+          "konu": "Präposition.weitere",
+          "sprachhandlung": ["Realisierung von Gefühlen/Haltungen/Meinungen"],
+          "soru": "___ der Erkältung bin ich trotzdem zur Arbeit gegangen.",
+          "secenekler": ["Trotz", "Wegen", "Während", "Statt"],
+          "dogruCevap": "Trotz",
+          "aciklama": "'trotz' + Genitiv, bir karşıtlığı/rağmen anlamını belirtir: 'trotz der Erkältung'.",
+          "aciklamaEn": "'trotz' + Genitive expresses a contrast/concession ('despite'): 'trotz der Erkältung'.",
+          "zorlukSeviyesi": "orta"
+        },
+        {
+          "id": "kamp-g14-oz-002",
+          "tur": "ozel",
+          "adimTipi": "gramer",
+          "konu": "Verb.Verbvalenz",
+          "sprachhandlung": ["Informationsaustausch"],
+          "soru": "Der Fahrgast wartet ___ den verspäteten Zug.",
+          "secenekler": ["auf", "für", "an", "bei"],
+          "dogruCevap": "auf",
+          "aciklama": "'warten auf + Akkusativ' sabit bir fiil-edat birleşimidir (Verbvalenz).",
+          "aciklamaEn": "'warten auf + Accusative' is a fixed verb-preposition combination (Verbvalenz).",
+          "zorlukSeviyesi": "orta"
+        },
+        {
+          "id": "kamp-g14-oz-003",
+          "tur": "ozel",
+          "adimTipi": "kelime",
+          "de": "der Krankenwagen",
+          "tr": "ambulans",
+          "en": "ambulance",
+          "beispiel": "Bei einem Notfall ruft man sofort den Krankenwagen.",
+          "kategori": "Nomen",
+          "zorlukSeviyesi": "schwer"
+        }
+      ]
+    },
+    {
+      "gunNo": 15,
+      "baslik": "Gün 15 — Aus- und Weiterbildung & Kinderbetreuung: Çapraz Pekiştirme",
+      "odakTemalar": ["tema-07-ausbildung", "tema-08-kinderbetreuung"],
+      "gorevler": [
+        { "id": "kamp-g15-ref-001", "tur": "referans", "adimTipi": "tekrar", "temaId": "tema-06-gesundheit", "soruId": "t06-w001" },
+        { "id": "kamp-g15-ref-002", "tur": "referans", "adimTipi": "kelime", "temaId": "tema-08-kinderbetreuung", "soruId": "t08-w003" },
+        {
+          "id": "kamp-g15-oz-001",
+          "tur": "ozel",
+          "adimTipi": "gramer",
+          "konu": "Satz.Satzklammer",
+          "sprachhandlung": ["Informationsaustausch"],
+          "soru": "Die Lehrerin hat die Prüfung schon ___.",
+          "secenekler": ["korrigiert", "korrigieren", "korrigiert habe", "zu korrigieren"],
+          "dogruCevap": "korrigiert",
+          "aciklama": "Perfekt yapısında ('hat ... schon') Partizip II Satzklammer kuralına göre cümle sonuna gider: 'hat korrigiert'.",
+          "aciklamaEn": "In the Perfekt construction ('hat ... schon'), the past participle goes to the end of the clause according to the Satzklammer rule: 'hat korrigiert'.",
+          "zorlukSeviyesi": "orta"
+        },
+        {
+          "id": "kamp-g15-oz-002",
+          "tur": "ozel",
+          "adimTipi": "gramer",
+          "konu": "Adjektiv.adverbial",
+          "sprachhandlung": ["Informationsaustausch"],
+          "soru": "Mein Sohn spielt im Kindergarten sehr ___ mit den anderen Kindern.",
+          "secenekler": ["ruhig", "ruhige", "ruhiger", "ruhiges"],
+          "dogruCevap": "ruhig",
+          "aciklama": "Bir fiili niteleyen (adverbial) sıfat çekim eki almaz: 'spielt ruhig'.",
+          "aciklamaEn": "An adjective used adverbially (modifying a verb) takes no ending: 'spielt ruhig'.",
+          "zorlukSeviyesi": "orta"
+        },
+        {
+          "id": "kamp-g15-oz-003",
+          "tur": "ozel",
+          "adimTipi": "kelime",
+          "de": "die Nachhilfe",
+          "tr": "özel ders / takviye dersi",
+          "en": "tutoring",
+          "beispiel": "Mein Sohn bekommt zweimal pro Woche Nachhilfe in Mathe.",
+          "kategori": "Nomen",
+          "zorlukSeviyesi": "orta"
+        }
+      ]
+    },
+    {
+      "gunNo": 16,
+      "baslik": "Gün 16 — Einkaufen & Ämter und Behörden: Çapraz Pekiştirme",
+      "odakTemalar": ["tema-09-einkaufen", "tema-10-behoerden"],
+      "gorevler": [
+        { "id": "kamp-g16-ref-001", "tur": "referans", "adimTipi": "tekrar", "temaId": "tema-08-kinderbetreuung", "soruId": "t08-w003" },
+        { "id": "kamp-g16-ref-002", "tur": "referans", "adimTipi": "kelime", "temaId": "tema-10-behoerden", "soruId": "t10-w003" },
+        {
+          "id": "kamp-g16-oz-001",
+          "tur": "ozel",
+          "adimTipi": "gramer",
+          "konu": "Nomen.Komposita",
+          "sprachhandlung": ["Informationsaustausch"],
+          "soru": "Welcher Artikel passt zu 'Einwohnermeldeamt'?",
+          "secenekler": ["der Einwohnermeldeamt", "die Einwohnermeldeamt", "das Einwohnermeldeamt", "die Einwohnermeldeämter"],
+          "dogruCevap": "das Einwohnermeldeamt",
+          "aciklama": "Bileşik isimlerde artikel son parçadan (Grundwort) belirlenir: 'das Amt' -> 'das Einwohnermeldeamt'.",
+          "aciklamaEn": "In compound nouns, the article is determined by the last part (Grundwort): 'das Amt' -> 'das Einwohnermeldeamt'.",
+          "zorlukSeviyesi": "schwer"
+        },
+        {
+          "id": "kamp-g16-oz-002",
+          "tur": "ozel",
+          "adimTipi": "gramer",
+          "konu": "Satz.Doppelkonjunktionen",
+          "sprachhandlung": ["Informationsaustausch"],
+          "soru": "Ich kaufe ___ Obst ___ Gemüse für die ganze Woche.",
+          "secenekler": ["sowohl ... als auch", "weder ... noch", "je ... desto", "zwar ... aber"],
+          "dogruCevap": "sowohl ... als auch",
+          "aciklama": "İki şeyin de geçerli olduğunu belirtmek için 'sowohl ... als auch' kullanılır.",
+          "aciklamaEn": "'sowohl ... als auch' (both ... and) is used to state that both things apply.",
+          "zorlukSeviyesi": "orta"
+        },
+        {
+          "id": "kamp-g16-oz-003",
+          "tur": "ozel",
+          "adimTipi": "kelime",
+          "de": "die Unterlagen (Pl.)",
+          "tr": "belgeler / evraklar",
+          "en": "documents",
+          "beispiel": "Bringen Sie bitte alle Unterlagen zum Amt mit.",
+          "kategori": "Nomen",
+          "zorlukSeviyesi": "orta"
+        }
+      ]
+    },
+    {
+      "gunNo": 17,
+      "baslik": "Gün 17 — Banken und Versicherungen & Genel Tekrar",
+      "odakTemalar": ["tema-11-banken"],
+      "gorevler": [
+        { "id": "kamp-g17-ref-001", "tur": "referans", "adimTipi": "tekrar", "temaId": "tema-10-behoerden", "soruId": "t10-w003" },
+        { "id": "kamp-g17-ref-002", "tur": "referans", "adimTipi": "kelime", "temaId": "tema-11-banken", "soruId": "t11-w003" },
+        {
+          "id": "kamp-g17-oz-001",
+          "tur": "ozel",
+          "adimTipi": "gramer",
+          "konu": "Artikelwörter/Pronomen.Praepositionalpronomen",
+          "sprachhandlung": ["Handlungsregulierung"],
+          "soru": "Ich habe eine Frage zur Kontoeröffnung. Können Sie mir ___ helfen?",
+          "secenekler": ["dabei", "damit", "dazu", "davon"],
+          "dogruCevap": "dabei",
+          "aciklama": "'helfen bei etwas' fiili cansız bir nesneye işaret ederken 'da-' bileşik zamiri ile 'dabei helfen' olur.",
+          "aciklamaEn": "The verb 'helfen bei etwas' uses the 'da-' compound pronoun 'dabei' when referring to a non-personal object.",
+          "zorlukSeviyesi": "orta"
+        },
+        {
+          "id": "kamp-g17-oz-002",
+          "tur": "ozel",
+          "adimTipi": "gramer",
+          "konu": "Verb.Tempus.Futur",
+          "sprachhandlung": ["Informationsaustausch"],
+          "soru": "Nächsten Monat ___ ich ein neues Konto eröffnen.",
+          "secenekler": ["werde", "wurde", "würde", "bin"],
+          "dogruCevap": "werde",
+          "aciklama": "Futur I: 'werden' + Infinitiv — gelecekteki bir planı belirtmek için kullanılır: 'werde eröffnen'.",
+          "aciklamaEn": "Futur I: 'werden' + infinitive — used to express a future plan: 'werde eröffnen'.",
+          "zorlukSeviyesi": "orta"
+        },
+        {
+          "id": "kamp-g17-oz-003",
+          "tur": "ozel",
+          "adimTipi": "kelime",
+          "de": "der Kontoauszug",
+          "tr": "hesap özeti / ekstre",
+          "en": "bank statement",
+          "beispiel": "Ich prüfe jeden Monat meinen Kontoauszug.",
+          "kategori": "Nomen",
+          "zorlukSeviyesi": "schwer"
+        }
+      ]
+    },
+    {
+      "gunNo": 18,
+      "baslik": "Gün 18 — Serbest Karma Tekrar (Tüm Temalar)",
+      "odakTemalar": [
+        "tema-01-wohnen", "tema-02-arbeit", "tema-03-arbeitssuche", "tema-04-mediennutzung",
+        "tema-05-mobilitaet", "tema-06-gesundheit", "tema-07-ausbildung", "tema-08-kinderbetreuung",
+        "tema-09-einkaufen", "tema-10-behoerden", "tema-11-banken"
+      ],
+      "gorevler": [
+        { "id": "kamp-g18-ref-001", "tur": "referans", "adimTipi": "tekrar", "temaId": "tema-11-banken", "soruId": "t11-w003" },
+        { "id": "kamp-g18-ref-002", "tur": "referans", "adimTipi": "kelime", "temaId": "tema-05-mobilitaet", "soruId": "t05-w004" },
+        {
+          "id": "kamp-g18-oz-001",
+          "tur": "ozel",
+          "adimTipi": "gramer",
+          "konu": "Artikelwörter/Pronomen.IndefiniterArtikel",
+          "sprachhandlung": ["Informationsaustausch"],
+          "soru": "Ich brauche ___ neue Wohnung, meine jetzige ist zu klein.",
+          "secenekler": ["eine", "einen", "ein", "einem"],
+          "dogruCevap": "eine",
+          "aciklama": "'brauchen' Akkusativ ister; 'die Wohnung' dişil, belirsiz artikel Akkusativ'de değişmez: 'eine Wohnung'.",
+          "aciklamaEn": "'brauchen' requires the Accusative; 'die Wohnung' is feminine, and the indefinite article stays 'eine' in the Accusative.",
+          "zorlukSeviyesi": "leicht"
+        },
+        {
+          "id": "kamp-g18-oz-002",
+          "tur": "ozel",
+          "adimTipi": "gramer",
+          "konu": "Adjektiv.Wortbildung",
+          "sprachhandlung": ["Informationsaustausch"],
+          "soru": "Der Brief vom Amt war leider nicht ___ geschrieben.",
+          "secenekler": ["verständlich", "verstehen", "Verständnis", "verstanden"],
+          "dogruCevap": "verständlich",
+          "aciklama": "'-lich' eki fiil köklerinden sıfat türetir (Wortbildung): 'verstehen' -> 'verständlich' (anlaşılır).",
+          "aciklamaEn": "The suffix '-lich' derives adjectives from verb stems (word formation): 'verstehen' -> 'verständlich' (understandable).",
+          "zorlukSeviyesi": "orta"
+        },
+        { "id": "kamp-g18-oz-003", "tur": "ozel", "adimTipi": "schreiben", "PLACEHOLDER": true }
+      ]
+    },
+    {
+      "gunNo": 19,
+      "baslik": "Gün 19 — Kamp Mini Sınav 1 (Gramer + Hören)",
+      "odakTemalar": ["tema-05-mobilitaet", "tema-10-behoerden"],
+      "gorevler": [
+        { "id": "kamp-g19-ref-001", "tur": "referans", "adimTipi": "tekrar", "temaId": "tema-05-mobilitaet", "soruId": "t05-w004" },
+        { "id": "kamp-g19-ref-002", "tur": "referans", "adimTipi": "hoeren", "temaId": "tema-05-mobilitaet", "soruId": "t05-h002" },
+        { "id": "kamp-g19-ref-003", "tur": "referans", "adimTipi": "hoeren", "temaId": "tema-10-behoerden", "soruId": "t10-h001" },
+        {
+          "id": "kamp-g19-oz-001",
+          "tur": "ozel",
+          "adimTipi": "gramer",
+          "konu": "Verb.Tempus.Futur",
+          "sprachhandlung": ["Informationsaustausch"],
+          "soru": "Am Samstag ___ wir zusammen einkaufen gehen.",
+          "secenekler": ["werden", "wurden", "würden", "sind"],
+          "dogruCevap": "werden",
+          "aciklama": "Futur I: 'werden' + Infinitiv, gelecekteki bir planı belirtir: 'werden gehen'.",
+          "aciklamaEn": "Futur I: 'werden' + infinitive expresses a future plan: 'werden gehen'.",
+          "zorlukSeviyesi": "orta"
+        },
+        {
+          "id": "kamp-g19-oz-002",
+          "tur": "ozel",
+          "adimTipi": "gramer",
+          "konu": "Nomen.Kasus.n-Deklination",
+          "sprachhandlung": ["Informationsaustausch"],
+          "soru": "Ich habe gestern mit einem ___ aus meinem Kurs gesprochen.",
+          "secenekler": ["Kollege", "Kollegen", "Kollegem", "Kolleges"],
+          "dogruCevap": "Kollegen",
+          "aciklama": "'der Kollege' n-Deklination'a aittir; Dativ/Akkusativ/Genitiv'de '-n' eki alır: 'mit einem Kollegen'.",
+          "aciklamaEn": "'der Kollege' belongs to the n-Deklination group; it takes the ending '-n' in Dative/Accusative/Genitive: 'mit einem Kollegen'.",
+          "zorlukSeviyesi": "schwer"
+        },
+        {
+          "id": "kamp-g19-oz-003",
+          "tur": "ozel",
+          "adimTipi": "gramer",
+          "konu": "Artikelwörter/Pronomen.IndefiniterArtikel",
+          "sprachhandlung": ["Informationsaustausch"],
+          "soru": "Ich habe ___ Frage zu meinem Vertrag.",
+          "secenekler": ["eine", "einen", "ein", "einer"],
+          "dogruCevap": "eine",
+          "aciklama": "'haben' Akkusativ ister; 'die Frage' dişil, belirsiz artikel Akkusativ'de 'eine' olarak kalır.",
+          "aciklamaEn": "'haben' requires the Accusative; 'die Frage' is feminine, and the indefinite article remains 'eine' in the Accusative.",
+          "zorlukSeviyesi": "leicht"
+        },
+        {
+          "id": "kamp-g19-oz-004",
+          "tur": "ozel",
+          "adimTipi": "gramer",
+          "konu": "Adjektiv.adverbial",
+          "sprachhandlung": ["Informationsaustausch"],
+          "soru": "Die Sachbearbeiterin hat mir die Regeln sehr ___ erklärt.",
+          "secenekler": ["genau", "genaue", "genauer", "genaues"],
+          "dogruCevap": "genau",
+          "aciklama": "Bir fiili niteleyen (adverbial) sıfat çekim eki almaz: 'erklärt genau'.",
+          "aciklamaEn": "An adjective used adverbially takes no ending: 'erklärt genau'.",
+          "zorlukSeviyesi": "orta"
+        },
+        {
+          "id": "kamp-g19-oz-005",
+          "tur": "ozel",
+          "adimTipi": "gramer",
+          "konu": "Präposition.weitere",
+          "sprachhandlung": ["Informationsaustausch"],
+          "soru": "___ des schlechten Wetters findet das Fest im Saal statt.",
+          "secenekler": ["Wegen", "Trotz", "Außer", "Statt"],
+          "dogruCevap": "Wegen",
+          "aciklama": "'wegen' + Genitiv, bir nedeni belirtir: 'wegen des Wetters'.",
+          "aciklamaEn": "'wegen' + Genitive states a reason: 'wegen des Wetters'.",
+          "zorlukSeviyesi": "orta"
+        },
+        {
+          "id": "kamp-g19-oz-006",
+          "tur": "ozel",
+          "adimTipi": "gramer",
+          "konu": "Satz.Fragesatz",
+          "sprachhandlung": ["Informationsaustausch"],
+          "soru": "___ haben Sie sich für diese Stelle beworben?",
+          "secenekler": ["Warum", "Wie viel", "Wessen", "Worüber"],
+          "dogruCevap": "Warum",
+          "aciklama": "Bir nedeni sormak için W-Frage 'Warum' kullanılır.",
+          "aciklamaEn": "The W-question word 'Warum' (why) is used to ask for a reason.",
+          "zorlukSeviyesi": "leicht"
+        }
+      ]
+    },
+    {
+      "gunNo": 20,
+      "baslik": "Gün 20 — Kamp Mini Sınav 2 (Lesen + Schreiben + Sprechen)",
+      "odakTemalar": ["tema-07-ausbildung", "tema-11-banken"],
+      "gorevler": [
+        { "id": "kamp-g20-ref-001", "tur": "referans", "adimTipi": "tekrar", "temaId": "tema-05-mobilitaet", "soruId": "t05-h002" },
+        { "id": "kamp-g20-ref-002", "tur": "referans", "adimTipi": "lesen", "temaId": "tema-07-ausbildung", "soruId": "t07-l001" },
+        { "id": "kamp-g20-ref-003", "tur": "referans", "adimTipi": "lesen", "temaId": "tema-11-banken", "soruId": "t11-l002" },
+        {
+          "id": "kamp-g20-oz-001",
+          "tur": "ozel",
+          "adimTipi": "gramer",
+          "konu": "Nomen.Kasus.Nominativ",
+          "sprachhandlung": ["Informationsaustausch"],
+          "soru": "___ Antrag liegt schon seit drei Wochen beim Amt.",
+          "secenekler": ["Der", "Den", "Dem", "Des"],
+          "dogruCevap": "Der",
+          "aciklama": "'der Antrag' cümlenin öznesidir (Nominativ).",
+          "aciklamaEn": "'der Antrag' is the subject of the sentence (Nominative).",
+          "zorlukSeviyesi": "leicht"
+        },
+        {
+          "id": "kamp-g20-oz-002",
+          "tur": "ozel",
+          "adimTipi": "gramer",
+          "konu": "Satz.Negation",
+          "sprachhandlung": ["Informationsaustausch"],
+          "soru": "Ich habe die Unterlagen noch ___ bekommen.",
+          "secenekler": ["nicht", "kein", "keine", "keinen"],
+          "dogruCevap": "nicht",
+          "aciklama": "Fiili veya cümlenin tamamını olumsuzlarken 'nicht' kullanılır, burada 'bekommen' fiilini olumsuzluyor.",
+          "aciklamaEn": "'nicht' is used to negate a verb or the whole sentence; here it negates 'bekommen'.",
+          "zorlukSeviyesi": "orta"
+        },
+        { "id": "kamp-g20-oz-003", "tur": "ozel", "adimTipi": "schreiben", "PLACEHOLDER": true },
+        { "id": "kamp-g20-oz-004", "tur": "ozel", "adimTipi": "sprechen", "PLACEHOLDER": true }
+      ]
+    },
+    {
+      "gunNo": 21,
+      "baslik": "Gün 21 — Mezuniyet Günü",
+      "odakTemalar": [],
+      "gorevler": [
+        {
+          "id": "kamp-g21-oz-001",
+          "tur": "ozel",
+          "adimTipi": "mezuniyet",
+          "baslik": "Herzlichen Glückwunsch! Sie haben den 21-Tage-Kurs abgeschlossen.",
+          "aciklama": "Bu adım yeni bir soru içermez; kampın özet istatistiklerini ve tebrik ekranını gösterir.",
+          "aciklamaEn": "This step contains no new question; it displays the camp's summary statistics and a congratulations screen."
+        }
+      ]
+    }
+  ]
+}
