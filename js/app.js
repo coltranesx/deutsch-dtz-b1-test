@@ -81,6 +81,18 @@ const App = (() => {
     }
   }
 
+  async function loadKamp() {
+    if (cache.kamp) return cache.kamp;
+    try {
+      const res = await fetch("content/kamp-21-gun.json");
+      const data = await res.json();
+      cache.kamp = data;
+      return data;
+    } catch {
+      return null;
+    }
+  }
+
   function stepCount() {
     return 7;
   }
@@ -89,9 +101,10 @@ const App = (() => {
     currentRenderer = renderDashboard;
     app.innerHTML = "";
 
-    const [allData, redemittelData] = await Promise.all([
+    const [allData, redemittelData, kampData] = await Promise.all([
       Promise.all(TEMALAR.map(loadTema)),
       loadRedemittelBank(),
+      loadKamp(),
     ]);
 
     const zayifCard = document.createElement("div");
@@ -117,6 +130,30 @@ const App = (() => {
     `;
     redemittelCard.addEventListener("click", () => openRedemittelBank(redemittelData));
     app.appendChild(redemittelCard);
+
+    if (kampData) {
+      let kampTamamlananGun = 0;
+      for (let n = 1; n <= 21; n += 1) {
+        if (Storage.getKampGunIlerleme(n).tamamlandiMi) kampTamamlananGun += 1;
+      }
+      const kampAcikGun = Storage.getKampAcikGun();
+      const kampPct = Math.round((kampTamamlananGun / 21) * 100);
+
+      const kampCard = document.createElement("div");
+      kampCard.className = "card tema-card kamp-card";
+      kampCard.innerHTML = `
+        <div>
+          <h3>📅 ${I18n.t("dashboard.kampTitle")}</h3>
+          <p>${I18n.t("dashboard.kampDesc")}</p>
+          <div class="progress-bar"><div class="progress-bar-fill" style="width:${kampPct}%"></div></div>
+        </div>
+        <div class="tema-card-side">
+          <span>${I18n.t("kamp.gunOfTotal", { gunNo: kampAcikGun })}</span>
+        </div>
+      `;
+      kampCard.addEventListener("click", () => openKamp(kampData, allData));
+      app.appendChild(kampCard);
+    }
 
     const h = document.createElement("h2");
     h.textContent = I18n.t("dashboard.temalarHeading");
@@ -164,6 +201,11 @@ const App = (() => {
   function openRedemittelBank(redemittelData) {
     currentRenderer = () => RedemittelBank.renderFullView(app, redemittelData, renderDashboard);
     RedemittelBank.renderFullView(app, redemittelData, renderDashboard);
+  }
+
+  function openKamp(kampData, allData) {
+    currentRenderer = Kamp21GunModu.refresh;
+    Kamp21GunModu.start(app, kampData, allData, renderDashboard);
   }
 
   function init() {
