@@ -40,6 +40,11 @@ const Storage = (() => {
     return data.answers[temaId]?.[questionId]?.value ?? null;
   }
 
+  function getAnswerEntry(temaId, questionId) {
+    const data = readAll();
+    return data.answers[temaId]?.[questionId] ?? null;
+  }
+
   function getTemaAnswers(temaId) {
     const data = readAll();
     return data.answers[temaId] ?? {};
@@ -177,6 +182,7 @@ const Storage = (() => {
     readAll,
     saveAnswer,
     getAnswer,
+    getAnswerEntry,
     getTemaAnswers,
     saveProgress,
     getProgress,

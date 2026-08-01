@@ -1,6 +1,18 @@
 const SoruKart = (() => {
   function renderMultipleChoice(temaId, q, options = {}) {
-    const { onAnswer } = options;
+    const { onAnswer, freshSince } = options;
+
+    // freshSince verilmisse, bu zaman damgasindan ONCE kaydedilmis bir cevap
+    // "yokmus gibi" davranilir (Zayif Konular, Gunluk 15 Dakika, Kamp, DTZ
+    // Sinav Modu icin "aralikli tekrar" amaci korunur). freshSince verilmezse
+    // (Tema Modu) her zaman guncel/gercek cevap donulur — davranis degismez.
+    function currentAnswerValue() {
+      const entry = Storage.getAnswerEntry(temaId, q.id);
+      if (!entry) return null;
+      if (freshSince && entry.savedAt < freshSince) return null;
+      return entry.value;
+    }
+
     const block = document.createElement("div");
     block.className = "question-block";
 
@@ -12,7 +24,7 @@ const SoruKart = (() => {
     const optionsWrap = document.createElement("div");
     optionsWrap.className = "options";
 
-    const savedAnswer = Storage.getAnswer(temaId, q.id);
+    const savedAnswer = currentAnswerValue();
     const feedback = document.createElement("div");
     feedback.className = "feedback";
 
@@ -45,7 +57,7 @@ const SoruKart = (() => {
     block.appendChild(feedback);
 
     function applyFeedback() {
-      const current = Storage.getAnswer(temaId, q.id);
+      const current = currentAnswerValue();
       [...optionsWrap.children].forEach((label) => {
         const val = label.querySelector("input").value;
         label.classList.remove("correct", "incorrect");
