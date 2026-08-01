@@ -32,7 +32,7 @@ Bu dosya, projenin güncel durumunu ve önemli kararları/öğrenmeleri özetler
 
 ### v2.0 — KISMEN TAMAMLANDI
 - ✅ **İstatistik Ekranı**: `js/components/istatistik-ekrani.js` (yeni, `renderFullView` — Study Mode değil, state'siz salt-okunur rapor, `redemittel-bank.js` deseninde). Yeni içerik şeması YOK — mevcut Leitner verisi + `SoruHavuzu.collectPool` (gramer+hören) + `Storage.getProgress` orkestre edilir (PRD §22.1). Üç ısı haritası: Tema, Gramer kategorisi (§8.4), Sprachhandlung (§8.2, çoklu-etiket kuralı — bir soru birden fazla Sprachhandlung'a katkı yapar, sadece gramer sorularından beslenir çünkü hoeren'de bu alan yok, düşük örneklemde uyarı notu gösterilir). Ayrı bir **Kelime İlerlemesi** bölümü: doğruluk kavramı yok (kelime adımı serbest metin/soru içermiyor), Tema bazında ikili sinyal (`Storage.getProgress(temaId).completedSteps.includes("kelime")`). **"Yazma gelişimi" bilinçli olarak v2.0 kapsamı dışında bırakıldı** — otomatik değerlendirme olmadan (AI Teacher Mode v3.0) anlamlı bir metrik yok. `js/study-modes/istatistik-yardimci.js` (yeni, paylaşılan `groupByLeitnerStats` + 3 sarmalayıcı) — Zayıf Konular Modu'nun `computeWeakStats`'ı ve 21 Günlük Kamp'ın `computeKampOzet`'i artık buna delege ediyor (saf refactor, davranış birebir korundu, DRY: üçüncü kullanım noktası eşiği aşınca ortak modüle çıkarıldı — `SoruHavuzu` ile aynı prensip).
-- ❌ Dışa aktarma (PRD §13: TXT/JSON/PDF, kopyalama) — henüz yok
+- ✅ **Dışa Aktarma**: `js/components/disa-aktarma.js` (yeni, `renderFullView`) + `js/study-modes/disa-aktarma-yardimci.js` (yeni, saf rapor üretimi). Yeni content şeması yok (PRD §13.1). **JSON** = `Storage.readAll()`'ın `{exportedAt, appVersion, data}` zarfıyla tam yedeği. **TXT/PDF/kopyalama** = aynı yapılandırılmış veriden üretilen okunabilir özet rapor: genel özet, İstatistik Ekranı'ndaki üç ısı haritasının sayısal dökümü (`IstatistikYardimci` yeniden kullanıldı), 21 Günlük Kamp ilerlemesi, her Tema için tamamlanan adımlar + Schreiben/Sprechen yazılı yanıtları. Lesen yanıtları bilinçli olarak rapora dahil edilmiyor (sadece tamamlanma durumu). PDF **tarayıcı print-to-PDF** ile (`window.print()` + `@media print` izolasyon deseni) — üçüncü parti kütüphane eklenmedi, framework yasağına sadık kalındı. Kullanıcı serbest metni rapor DOM'una her zaman `textContent` ile yazılıyor (XSS önleme, Playwright ile script-injection denemesiyle doğrulandı). **Yan bulgu:** `js/storage.js`'teki `readAll()` fonksiyonu tanımlıydı ama public API'den dışa açılmamıştı (çağrılınca `TypeError`) — bu turda düzeltildi.
 - ❌ DTZ Sınav Modu (PRD §17: tüm Temalardan derlenen, gerçek formatı taklit eden zamanlı deneme) — henüz yok
 
 ### v3.0 — BAŞLANMADI
@@ -54,10 +54,12 @@ js/
 ├── components/
 │   ├── soru-kart.js               — Paylaşılan soru render + ses bağlamı bileşeni
 │   ├── redemittel-bank.js         — Redemittel-Bank tam ekran görünüm + Sprechen yardım paneli
-│   └── istatistik-ekrani.js       — İstatistik Ekranı (state'siz, renderFullView deseni — Study Mode değil)
+│   ├── istatistik-ekrani.js       — İstatistik Ekranı (state'siz, renderFullView deseni — Study Mode değil)
+│   └── disa-aktarma.js            — Dışa Aktarma ekranı (state'siz, renderFullView deseni — Study Mode değil)
 └── study-modes/
     ├── soru-havuzu-yardimci.js    — Paylaşılan SoruHavuzu.collectPool (tüm temalardan gramer+hören havuzu)
     ├── istatistik-yardimci.js     — Paylaşılan groupByLeitnerStats + byGramerKategori/byTema/bySprachhandlung
+    ├── disa-aktarma-yardimci.js   — Saf rapor üretimi: buildReportData/formatReportText/buildJsonExportPayload
     ├── tema-modu.js               — 7 adımlı normal çalışma modu (refresh() ile dil değişiminde state korunur)
     ├── zayif-konular-modu.js      — Leitner tabanlı akıllı tekrar modu (refresh() ile dil değişiminde state korunur)
     ├── kamp-21-gun.js             — Sabit 21 günlük müfredat modu, self-paced gün kilidi (refresh() ile dil değişiminde state korunur)
@@ -101,11 +103,12 @@ assets/audio/, assets/fotos/      — AI üretimi medya (Magnific/ElevenLabs)
 
 ## 4. Sırada Ne Var (öneri sırası)
 
-**v1.5 TAMAMLANDI.** v2.0'da İstatistik Ekranı bitti, sırada:
+**v1.5 TAMAMLANDI.** v2.0'da İstatistik Ekranı + Dışa Aktarma bitti, sırada:
 
-1. Dışa aktarma (PRD §13: TXT/JSON/PDF, kopyalama) — PDF üretimi için "framework/bundle yok" kuralıyla nasıl uzlaştırılacağı netleşmeli (hafif bir client-side PDF kütüphanesi mi, yoksa print-to-PDF/TXT+JSON'la mı sınırlı kalınacak).
-2. DTZ Sınav Modu (PRD §17: tüm Temalardan derlenen, gerçek formatı taklit eden zamanlı deneme) — `SoruHavuzu.collectPool` benzeri bir havuzlama ihtiyacı duyacak, mevcut yardımcı modülden faydalanabilir; gerçek DTZ sınav yapısı (bölüm sayısı/süre/puanlama) netleştirilmeli.
-3. v3.0: AI entegrasyonu (bu noktada `guvenlik-uzmani` benzeri bir agent ve API anahtarı yönetimi gerekecek)
+1. DTZ Sınav Modu (PRD §17: tüm Temalardan derlenen, gerçek formatı taklit eden zamanlı deneme) — `SoruHavuzu.collectPool` benzeri bir havuzlama ihtiyacı duyacak, mevcut yardımcı modülden faydalanabilir; gerçek DTZ sınav yapısı (bölüm sayısı/süre/puanlama) netleştirilmeli. v2.0'ın son kalemi — bu bitince v2.0 TAMAMLANDI.
+2. v3.0: AI entegrasyonu (bu noktada `guvenlik-uzmani` benzeri bir agent ve API anahtarı yönetimi gerekecek)
+
+Not: Kullanıcı tercihi — v2.0'ın tamamı tek branch'te (`claude/devlog-review-planning-q2xphc`) biriktirilip sonda tek PR açılacak, v1.5'teki gibi özellik başına ayrı PR açılmıyor.
 
 Not: v1.5'in tüm işleri PR #6 (https://github.com/coltranesx/deutsch-dtz-b1-test/pull/6) ile `main`'e merge edildi, GitHub Pages otomatik deploy tetiklendi.
 
