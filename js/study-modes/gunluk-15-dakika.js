@@ -5,16 +5,6 @@ const Gunluk15DakikaModu = (() => {
 
   let state = null; // { container, temalar, pool, session, index, correctInSession, onExit }
 
-  // Fisher-Yates: yerinde karıştırmaz, kopya döndürür.
-  function shuffle(arr) {
-    const copy = [...arr];
-    for (let i = copy.length - 1; i > 0; i -= 1) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [copy[i], copy[j]] = [copy[j], copy[i]];
-    }
-    return copy;
-  }
-
   function pickSession(pool) {
     const now = Date.now();
     const tekrarAday = [];
@@ -31,7 +21,7 @@ const Gunluk15DakikaModu = (() => {
 
     tekrarAday.sort((a, b) => a.box - b.box || a.dueAt - b.dueAt);
     const tekrarSirali = tekrarAday.map((s) => s.q);
-    const yeniKarisik = shuffle(yeniAday);
+    const yeniKarisik = KaristirmaYardimci.shuffle(yeniAday);
 
     let tekrarSecim = tekrarSirali.slice(0, TEKRAR_HEDEF);
     let yeniSecim = yeniKarisik.slice(0, YENI_HEDEF);

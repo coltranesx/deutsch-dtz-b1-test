@@ -30,7 +30,11 @@ const SoruKart = (() => {
 
     let locked = false;
 
-    q.secenekler.forEach((opt) => {
+    // Render icin lokal karistirilmis kopya kullanilir (q.secenekler'e
+    // dokunulmaz) — sik sirasi onyargisini onlemek icin (bkz. dogruCevap
+    // karsilastirmasi asagida DEGERE gore yapiliyor, pozisyona gore degil).
+    const shuffledSecenekler = KaristirmaYardimci.shuffle(q.secenekler);
+    shuffledSecenekler.forEach((opt) => {
       const label = document.createElement("label");
       label.className = "option-label";
       const radio = document.createElement("input");
