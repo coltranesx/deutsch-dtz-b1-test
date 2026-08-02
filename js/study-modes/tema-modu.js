@@ -28,6 +28,7 @@ const TemaModu = (() => {
     const progress = Storage.getProgress(tema.temaId);
 
     container.innerHTML = "";
+    window.scrollTo(0, 0);
 
     const backBtn = document.createElement("button");
     backBtn.className = "btn secondary";

@@ -645,6 +645,7 @@ const DtzSinavModu = (() => {
   function render() {
     buildDom();
     restartTimer();
+    window.scrollTo(0, 0);
   }
 
   // Dil değişimi için: sadece DOM yeniden çizilir, mevcut interval'e

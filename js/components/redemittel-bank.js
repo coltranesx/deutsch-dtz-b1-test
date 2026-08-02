@@ -17,6 +17,7 @@ const RedemittelBank = (() => {
 
   function renderFullView(container, data, onExit) {
     container.innerHTML = "";
+    window.scrollTo(0, 0);
 
     const backBtn = document.createElement("button");
     backBtn.className = "btn secondary";

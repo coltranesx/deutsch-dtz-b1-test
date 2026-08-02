@@ -25,6 +25,7 @@ const Kamp21GunModu = (() => {
   function render() {
     const { container, kampData, selectedGun } = state;
     container.innerHTML = "";
+    window.scrollTo(0, 0);
 
     const backBtn = document.createElement("button");
     backBtn.className = "btn secondary";
