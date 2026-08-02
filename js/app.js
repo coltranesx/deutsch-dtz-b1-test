@@ -97,6 +97,52 @@ const App = (() => {
     return 7;
   }
 
+  // En son çalışılan Tema'yı (varsa) `Storage.getProgress`'in lastStudiedAt
+  // alanına göre bulur. Hiçbir Tema'da ilerleme yoksa null döner (dashboard
+  // "Kaldığın yerden devam et" bloğu bu durumda hiç gösterilmez).
+  function findLastStudiedTema(allData) {
+    let latest = null;
+    TEMALAR.forEach((entry, i) => {
+      const progress = Storage.getProgress(entry.id);
+      if (progress.lastStudiedAt && (!latest || progress.lastStudiedAt > latest.progress.lastStudiedAt)) {
+        latest = { entry, data: allData[i], progress };
+      }
+    });
+    return latest;
+  }
+
+  function renderContinueCard(allData, redemittelData) {
+    const latest = findLastStudiedTema(allData);
+    if (!latest) return;
+
+    const card = document.createElement("div");
+    card.className = "card continue-card";
+    card.innerHTML = `
+      <div style="font-size:1.5rem;">📍</div>
+      <div>
+        <p class="continue-card-eyebrow">${I18n.t("dashboard.continueTitle")}</p>
+        <h3 style="margin:0 0 0.25rem;">${latest.data.temaNo}. ${latest.data.baslik}</h3>
+        <p style="margin:0;color:var(--text-muted);font-size:var(--text-sm);">${I18n.t("dashboard.continueDesc", { step: I18n.t(`step.${latest.progress.lastStep}`) })}</p>
+      </div>
+    `;
+    card.addEventListener("click", () => openTema(latest.entry, latest.data, redemittelData));
+    app.appendChild(card);
+  }
+
+  function buildToolCard(className, icon, title, desc, badge) {
+    const card = document.createElement("div");
+    card.className = `card ${className}`;
+    card.innerHTML = `
+      <div style="font-size:1.5rem;">${icon}</div>
+      <div>
+        <h3 style="margin:0 0 0.25rem;">${title}</h3>
+        <p style="margin:0;color:var(--text-muted);font-size:var(--text-sm);">${desc}</p>
+        ${badge ? `<p style="margin:0.25rem 0 0;color:var(--primary);font-size:var(--text-xs);font-weight:var(--font-medium);">${badge}</p>` : ""}
+      </div>
+    `;
+    return card;
+  }
+
   async function renderDashboard() {
     currentRenderer = renderDashboard;
     app.innerHTML = "";
@@ -108,105 +154,18 @@ const App = (() => {
       loadKamp(),
     ]);
 
-    const zayifCard = document.createElement("div");
-    zayifCard.className = "card zayif-konular-card";
-    zayifCard.innerHTML = `
-      <div style="font-size:1.5rem;">🎯</div>
-      <div>
-        <h3 style="margin:0 0 0.25rem;">${I18n.t("dashboard.zayifKonularTitle")}</h3>
-        <p style="margin:0;color:var(--text-muted);font-size:var(--text-sm);">${I18n.t("dashboard.zayifKonularDesc")}</p>
-      </div>
-    `;
-    zayifCard.addEventListener("click", () => openZayifKonular(allData));
-    app.appendChild(zayifCard);
+    renderContinueCard(allData, redemittelData);
 
-    const redemittelCard = document.createElement("div");
-    redemittelCard.className = "card redemittel-bank-card";
-    redemittelCard.innerHTML = `
-      <div style="font-size:1.5rem;">💬</div>
-      <div>
-        <h3 style="margin:0 0 0.25rem;">${I18n.t("dashboard.redemittelTitle")}</h3>
-        <p style="margin:0;color:var(--text-muted);font-size:var(--text-sm);">${I18n.t("dashboard.redemittelDesc")}</p>
-      </div>
-    `;
-    redemittelCard.addEventListener("click", () => openRedemittelBank(redemittelData));
-    app.appendChild(redemittelCard);
+    const pratikHeading = document.createElement("h2");
+    pratikHeading.textContent = I18n.t("dashboard.pratikModlariHeading");
+    app.appendChild(pratikHeading);
 
-    const dtzSinavSession = Storage.getDtzSinavSession();
-    const dtzSinavCard = document.createElement("div");
-    dtzSinavCard.className = "card dtz-sinav-card";
-    dtzSinavCard.innerHTML = `
-      <div style="font-size:1.5rem;">📝</div>
-      <div>
-        <h3 style="margin:0 0 0.25rem;">${I18n.t("dashboard.dtzSinavTitle")}</h3>
-        <p style="margin:0;color:var(--text-muted);font-size:var(--text-sm);">${I18n.t("dashboard.dtzSinavDesc")}</p>
-        ${
-          dtzSinavSession
-            ? `<p style="margin:0.25rem 0 0;color:var(--primary);font-size:var(--text-xs);font-weight:var(--font-medium);">${I18n.t("dashboard.dtzSinavContinueBadge")}</p>`
-            : ""
-        }
-      </div>
-    `;
-    dtzSinavCard.addEventListener("click", () => openDtzSinav(allData));
-    app.appendChild(dtzSinavCard);
+    const temalarHeading = document.createElement("h3");
+    temalarHeading.textContent = I18n.t("dashboard.temalarHeading");
+    app.appendChild(temalarHeading);
 
-    if (kampData) {
-      const kampAcikGun = Storage.getKampAcikGun();
-
-      const kampCard = document.createElement("div");
-      kampCard.className = "card kamp-card";
-      kampCard.innerHTML = `
-        <div style="font-size:1.5rem;">📅</div>
-        <div>
-          <h3 style="margin:0 0 0.25rem;">${I18n.t("dashboard.kampTitle")}</h3>
-          <p style="margin:0;color:var(--text-muted);font-size:var(--text-sm);">${I18n.t("dashboard.kampDesc")}</p>
-          <p style="margin:0.25rem 0 0;color:var(--primary);font-size:var(--text-xs);font-weight:var(--font-medium);">${I18n.t("kamp.gunOfTotal", { gunNo: kampAcikGun })}</p>
-        </div>
-      `;
-      kampCard.addEventListener("click", () => openKamp(kampData, allData));
-      app.appendChild(kampCard);
-    }
-
-    const gunluk15Card = document.createElement("div");
-    gunluk15Card.className = "card gunluk15-card";
-    gunluk15Card.innerHTML = `
-      <div style="font-size:1.5rem;">🔥</div>
-      <div>
-        <h3 style="margin:0 0 0.25rem;">${I18n.t("dashboard.gunluk15Title")}</h3>
-        <p style="margin:0;color:var(--text-muted);font-size:var(--text-sm);">${I18n.t("dashboard.gunluk15Desc")}</p>
-      </div>
-    `;
-    gunluk15Card.addEventListener("click", () => openGunluk15(allData));
-    app.appendChild(gunluk15Card);
-
-    const istatistikCard = document.createElement("div");
-    istatistikCard.className = "card istatistik-card";
-    istatistikCard.innerHTML = `
-      <div style="font-size:1.5rem;">📊</div>
-      <div>
-        <h3 style="margin:0 0 0.25rem;">${I18n.t("dashboard.istatistikTitle")}</h3>
-        <p style="margin:0;color:var(--text-muted);font-size:var(--text-sm);">${I18n.t("dashboard.istatistikDesc")}</p>
-      </div>
-    `;
-    istatistikCard.addEventListener("click", () => openIstatistik(allData));
-    app.appendChild(istatistikCard);
-
-    const disaAktarmaCard = document.createElement("div");
-    disaAktarmaCard.className = "card disa-aktarma-card";
-    disaAktarmaCard.innerHTML = `
-      <div style="font-size:1.5rem;">📤</div>
-      <div>
-        <h3 style="margin:0 0 0.25rem;">${I18n.t("dashboard.disaAktarmaTitle")}</h3>
-        <p style="margin:0;color:var(--text-muted);font-size:var(--text-sm);">${I18n.t("dashboard.disaAktarmaDesc")}</p>
-      </div>
-    `;
-    disaAktarmaCard.addEventListener("click", () => openDisaAktarma(allData));
-    app.appendChild(disaAktarmaCard);
-
-    const h = document.createElement("h2");
-    h.textContent = I18n.t("dashboard.temalarHeading");
-    app.appendChild(h);
-
+    const temaGrid = document.createElement("div");
+    temaGrid.className = "card-grid tema-grid";
     TEMALAR.forEach((entry, i) => {
       const data = allData[i];
       const progress = Storage.getProgress(entry.id);
@@ -232,8 +191,97 @@ const App = (() => {
         Storage.resetTemaProgress(entry.id);
         renderDashboard();
       });
-      app.appendChild(card);
+      temaGrid.appendChild(card);
     });
+    app.appendChild(temaGrid);
+
+    const pratikGrid = document.createElement("div");
+    pratikGrid.className = "card-grid pratik-grid";
+
+    const hasLeitnerData = Object.keys(Storage.readAll().leitner).length > 0;
+    const zayifCard = buildToolCard(
+      "zayif-konular-card",
+      "🎯",
+      I18n.t("dashboard.zayifKonularTitle"),
+      hasLeitnerData ? I18n.t("dashboard.zayifKonularDesc") : I18n.t("dashboard.zayifKonularEmptyDesc")
+    );
+    if (hasLeitnerData) {
+      zayifCard.addEventListener("click", () => openZayifKonular(allData));
+    } else {
+      zayifCard.classList.add("locked");
+    }
+    pratikGrid.appendChild(zayifCard);
+
+    if (kampData) {
+      const kampAcikGun = Storage.getKampAcikGun();
+      const kampCard = buildToolCard(
+        "kamp-card",
+        "📅",
+        I18n.t("dashboard.kampTitle"),
+        I18n.t("dashboard.kampDesc"),
+        I18n.t("kamp.gunOfTotal", { gunNo: kampAcikGun })
+      );
+      kampCard.addEventListener("click", () => openKamp(kampData, allData));
+      pratikGrid.appendChild(kampCard);
+    }
+
+    const gunluk15Card = buildToolCard(
+      "gunluk15-card",
+      "🔥",
+      I18n.t("dashboard.gunluk15Title"),
+      I18n.t("dashboard.gunluk15Desc")
+    );
+    gunluk15Card.addEventListener("click", () => openGunluk15(allData));
+    pratikGrid.appendChild(gunluk15Card);
+
+    const dtzSinavSession = Storage.getDtzSinavSession();
+    const dtzSinavCard = buildToolCard(
+      "dtz-sinav-card",
+      "📝",
+      I18n.t("dashboard.dtzSinavTitle"),
+      I18n.t("dashboard.dtzSinavDesc"),
+      dtzSinavSession ? I18n.t("dashboard.dtzSinavContinueBadge") : null
+    );
+    dtzSinavCard.addEventListener("click", () => openDtzSinav(allData));
+    pratikGrid.appendChild(dtzSinavCard);
+
+    app.appendChild(pratikGrid);
+
+    const araclarHeading = document.createElement("h2");
+    araclarHeading.textContent = I18n.t("dashboard.araclarRaporlarHeading");
+    app.appendChild(araclarHeading);
+
+    const araclarGrid = document.createElement("div");
+    araclarGrid.className = "card-grid araclar-grid";
+
+    const redemittelCard = buildToolCard(
+      "redemittel-bank-card card-flat",
+      "💬",
+      I18n.t("dashboard.redemittelTitle"),
+      I18n.t("dashboard.redemittelDesc")
+    );
+    redemittelCard.addEventListener("click", () => openRedemittelBank(redemittelData));
+    araclarGrid.appendChild(redemittelCard);
+
+    const istatistikCard = buildToolCard(
+      "istatistik-card card-flat",
+      "📊",
+      I18n.t("dashboard.istatistikTitle"),
+      I18n.t("dashboard.istatistikDesc")
+    );
+    istatistikCard.addEventListener("click", () => openIstatistik(allData));
+    araclarGrid.appendChild(istatistikCard);
+
+    const disaAktarmaCard = buildToolCard(
+      "disa-aktarma-card card-flat",
+      "📤",
+      I18n.t("dashboard.disaAktarmaTitle"),
+      I18n.t("dashboard.disaAktarmaDesc")
+    );
+    disaAktarmaCard.addEventListener("click", () => openDisaAktarma(allData));
+    araclarGrid.appendChild(disaAktarmaCard);
+
+    app.appendChild(araclarGrid);
   }
 
   function openTema(entry, data, redemittelData) {
@@ -252,6 +300,7 @@ const App = (() => {
   }
 
   function openDtzSinav(allData) {
+    if (!Storage.getDtzSinavSession() && !confirm(I18n.t("dtzSinav.startConfirm"))) return;
     currentRenderer = DtzSinavModu.refresh;
     DtzSinavModu.start(app, allData, renderDashboard);
   }

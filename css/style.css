@@ -805,6 +805,60 @@ textarea {
   margin: 0;
 }
 
+.continue-card {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  cursor: pointer;
+  border-color: var(--primary);
+  background: var(--primary-soft);
+}
+
+.continue-card:hover {
+  box-shadow: var(--shadow-md);
+}
+
+.continue-card-eyebrow {
+  margin: 0 0 var(--space-1);
+  color: var(--primary);
+  font-size: var(--text-xs);
+  font-weight: var(--font-semibold);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+/* İkinci öncelikli "araç/rapor" kartları için daha hafif görsel ağırlık —
+   iki class'lı seçici (.card.card-flat) kasıtlı olarak tek class'lı
+   .redemittel-bank-card/.istatistik-card/.disa-aktarma-card kurallarından
+   (ve onların :hover halinden) daha yüksek özgüllüğe sahip, böylece dosya
+   içindeki sıralamadan bağımsız olarak geçerli olur. */
+.card.card-flat {
+  box-shadow: none;
+  border-color: var(--border);
+}
+
+.card.card-flat:hover {
+  border-color: var(--border-strong);
+  box-shadow: var(--shadow-sm);
+}
+
+@media (min-width: 960px) {
+  .app-main {
+    max-width: 960px;
+  }
+
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-4);
+    align-items: start;
+  }
+
+  .card-grid .card {
+    margin-bottom: 0;
+  }
+}
+
 @media print {
   body * {
     visibility: hidden;

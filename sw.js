@@ -1,4 +1,4 @@
-const CACHE_NAME = "dtz-b1-trainer-v13";
+const CACHE_NAME = "dtz-b1-trainer-v14";
 const APP_SHELL = [
   "./",
   "./index.html",
