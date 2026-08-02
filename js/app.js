@@ -100,6 +100,7 @@ const App = (() => {
   async function renderDashboard() {
     currentRenderer = renderDashboard;
     app.innerHTML = "";
+    window.scrollTo(0, 0);
 
     const [allData, redemittelData, kampData] = await Promise.all([
       Promise.all(TEMALAR.map(loadTema)),

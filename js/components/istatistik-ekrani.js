@@ -109,6 +109,7 @@ const IstatistikEkrani = (() => {
   // ile ayni renderFullView(container, data, onExit) deseni).
   function renderFullView(container, allTemaData, onExit) {
     container.innerHTML = "";
+    window.scrollTo(0, 0);
 
     const backBtn = document.createElement("button");
     backBtn.className = "btn secondary";

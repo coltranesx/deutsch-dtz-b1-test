@@ -62,6 +62,7 @@ const Gunluk15DakikaModu = (() => {
   function render() {
     const { container, session, index } = state;
     container.innerHTML = "";
+    window.scrollTo(0, 0);
 
     const backBtn = document.createElement("button");
     backBtn.className = "btn secondary";

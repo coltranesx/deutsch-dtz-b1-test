@@ -111,6 +111,10 @@ Bu projede `.claude/agents/` altında **7 uzman sub-agent** tanımlıdır.
 **Ne zaman çağır:** 3 veya daha fazla dosyayı etkileyen değişiklik planlanıyorsa (örn. yeni Study Mode, istatistik sistemi, IndexedDB geçişi), mevcut mimarinin bir soruna neden olduğu düşünülüyorsa.
 **Araçlar:** Read, Glob, Grep, Bash (sadece okur ve analiz eder — **uygulama yapmaz**)
 
+### 🎨 `ui-ux-tasarim-uzmani`
+**Ne zaman çağır:** Yeni bir Study Mode/ekran eklendikten sonra tasarım diliyle (spacing/renk/tipografi/navigasyon) tutarlılık kontrolü gerekiyorsa, bir navigasyon/etkileşim şikayeti geldiğinde kök nedeni görsel olarak doğrulamak gerekiyorsa, uygulamanın tamamı veya bir bölümü için uçtan uca bir UX denetimi isteniyorsa, mobil/masaüstü ya da dark/light mode arası görsel tutarlılık şüphesi varsa.
+**Araçlar:** Read, Glob, Grep, Bash (yerel sunucu + Playwright ile gerçek ekran görüntüsü alır — **sadece denetler, kod yazmaz**; uygulama `pwa-vanilla-js-uzmani`'ye devredilir)
+
 ---
 
 ## 6. MİMARİ HARİTA (v1.0)

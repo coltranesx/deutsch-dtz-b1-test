@@ -25,6 +25,7 @@ const Kamp21GunModu = (() => {
   function render() {
     const { container, kampData, selectedGun } = state;
     container.innerHTML = "";
+    window.scrollTo(0, 0);
 
     const backBtn = document.createElement("button");
     backBtn.className = "btn secondary";
@@ -118,8 +119,7 @@ const Kamp21GunModu = (() => {
     btn.disabled = ilerleme.tamamlandiMi;
     btn.addEventListener("click", () => {
       Storage.saveKampGunTamamlandi(gunData.gunNo);
-      state.acikGun = Storage.getKampAcikGun();
-      render();
+      state.onExit();
     });
     row.appendChild(btn);
     return row;
