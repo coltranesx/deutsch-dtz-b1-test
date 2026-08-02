@@ -648,6 +648,8 @@ textarea {
   background: var(--primary-soft);
   border-radius: var(--radius-md);
   font-weight: var(--font-semibold);
+  position: sticky;
+  z-index: 5;
 }
 
 .dtz-sinav-timer-value {

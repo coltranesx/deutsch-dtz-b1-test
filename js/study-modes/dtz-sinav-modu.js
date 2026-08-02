@@ -16,16 +16,6 @@ const DtzSinavModu = (() => {
   //          lesenPool, intervalId, timerValueEl, timerLockEl, activeTimerSection, cardEl }
   let state = null;
 
-  // Fisher-Yates: yerinde karıştırmaz, kopya döndürür (bkz. gunluk-15-dakika.js).
-  function shuffle(arr) {
-    const copy = [...arr];
-    for (let i = copy.length - 1; i > 0; i -= 1) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [copy[i], copy[j]] = [copy[j], copy[i]];
-    }
-    return copy;
-  }
-
   // 22 Hören sorusundan 20'sini seçer: her Tema'nın (grubun) Fisher-Yates ile
   // 1 sorusu garanti edilir (11 soru), kalan 11'den 9'u yine Fisher-Yates ile
   // eklenir (bkz. PRD §17.3).
@@ -39,12 +29,12 @@ const DtzSinavModu = (() => {
     const firstPicks = [];
     const secondPool = [];
     Object.values(byTema).forEach((group) => {
-      const shuffled = shuffle(group);
+      const shuffled = KaristirmaYardimci.shuffle(group);
       firstPicks.push(shuffled[0]);
       secondPool.push(...shuffled.slice(1));
     });
 
-    const secondPicks = shuffle(secondPool).slice(0, HOEREN_SECOND_PICK);
+    const secondPicks = KaristirmaYardimci.shuffle(secondPool).slice(0, HOEREN_SECOND_PICK);
     return [...firstPicks, ...secondPicks].map((q) => q.id);
   }
 
@@ -266,15 +256,34 @@ const DtzSinavModu = (() => {
     return wrap;
   }
 
-  function renderTimerBar() {
+  // Global site header (`.app-header`, `#app`'in disinda) zaten kendi
+  // sticky'sine sahip (top: 0; z-index: 10) — bu bar onun ALTINA sabitlenir,
+  // bu yuzden top degeri hardcode edilmez, gercek header yuksekligi olculur.
+  // sectionKey her zaman gosterilir (Hoeren/Lesen/Schreiben/Sprechen/Sonuc);
+  // showTimer sadece Hoeren/Lesen'de true olup sayaç degerini de ekler.
+  function renderStickyBar(sectionKey, showTimer) {
     const bar = document.createElement("div");
     bar.className = "dtz-sinav-timer";
-    const label = document.createElement("span");
-    label.textContent = I18n.t("dtzSinav.timeRemaining");
-    const value = document.createElement("span");
-    value.className = "dtz-sinav-timer-value";
-    bar.appendChild(label);
-    bar.appendChild(value);
+    const headerHeight = document.querySelector(".app-header")?.offsetHeight ?? 0;
+    bar.style.top = `${headerHeight}px`;
+
+    const sectionLabel = document.createElement("span");
+    sectionLabel.textContent = sectionPillLabel(sectionKey);
+    bar.appendChild(sectionLabel);
+
+    let value = null;
+    if (showTimer) {
+      const timerGroup = document.createElement("span");
+      const timerLabel = document.createElement("span");
+      timerLabel.textContent = I18n.t("dtzSinav.timeRemaining");
+      value = document.createElement("span");
+      value.className = "dtz-sinav-timer-value";
+      timerGroup.appendChild(timerLabel);
+      timerGroup.appendChild(document.createTextNode(" "));
+      timerGroup.appendChild(value);
+      bar.appendChild(timerGroup);
+    }
+
     return { bar, value };
   }
 
@@ -310,7 +319,7 @@ const DtzSinavModu = (() => {
     h.textContent = I18n.t("step.hoeren");
     wrap.appendChild(h);
 
-    const timer = renderTimerBar();
+    const timer = renderStickyBar("hoeren", true);
     wrap.appendChild(timer.bar);
 
     const questionsWrap = document.createElement("div");
@@ -336,7 +345,7 @@ const DtzSinavModu = (() => {
     h.textContent = I18n.t("step.lesen");
     wrap.appendChild(h);
 
-    const timer = renderTimerBar();
+    const timer = renderStickyBar("lesen", true);
     wrap.appendChild(timer.bar);
 
     const questionsWrap = document.createElement("div");
@@ -385,6 +394,7 @@ const DtzSinavModu = (() => {
     const h = document.createElement("h2");
     h.textContent = I18n.t("step.schreiben");
     wrap.appendChild(h);
+    wrap.appendChild(renderStickyBar("schreiben", false).bar);
     wrap.appendChild(renderNotGradedNote());
 
     const task = tema.schreiben;
@@ -454,6 +464,7 @@ const DtzSinavModu = (() => {
     const h = document.createElement("h2");
     h.textContent = I18n.t("step.sprechen");
     wrap.appendChild(h);
+    wrap.appendChild(renderStickyBar("sprechen", false).bar);
     wrap.appendChild(renderNotGradedNote());
 
     wrap.appendChild(renderSprechenTeil(tema, "teil1", s.teil1FollowUp.frage));
@@ -528,6 +539,7 @@ const DtzSinavModu = (() => {
     const h = document.createElement("h2");
     h.textContent = I18n.t("dtzSinav.sonucTitle");
     wrap.appendChild(h);
+    wrap.appendChild(renderStickyBar("sonuc", false).bar);
 
     const hoerenQuestions = resolveQuestionsByIds(hoerenPool, session.hoerenIds);
     const hoerenDogru = hoerenQuestions.filter(
