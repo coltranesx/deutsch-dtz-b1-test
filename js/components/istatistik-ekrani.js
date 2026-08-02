@@ -135,9 +135,13 @@ const IstatistikEkrani = (() => {
     const hasLeitnerData = pool.some((q) => Storage.getLeitnerEntry(q.id));
 
     if (!hasLeitnerData) {
+      const emptyCard = document.createElement("div");
+      emptyCard.className = "card";
       const empty = document.createElement("p");
+      empty.style.margin = "0";
       empty.textContent = I18n.t("istatistik.emptyState");
-      container.appendChild(empty);
+      emptyCard.appendChild(empty);
+      container.appendChild(emptyCard);
     } else {
       renderTemaHeatMap(container, pool, temaById);
       renderGramerHeatMap(container, pool);

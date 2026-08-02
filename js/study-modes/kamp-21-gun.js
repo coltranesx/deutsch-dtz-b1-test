@@ -2,6 +2,18 @@ const Kamp21GunModu = (() => {
   const TOPLAM_GUN = 21;
   const KAMP_NAMESPACE = "kamp-21-gun";
 
+  // Görev tipi rozeti (bkz. renderGorev) — sadece bu haritada tanımlı tipler
+  // için rozet gösterilir ("tekrar"/"mezuniyet" gibi adimTipi degerleri
+  // kasitli olarak disaridadir, onlar ayri sekilde ele alinir).
+  const GOREV_TIPI_EMOJI = {
+    kelime: "📚",
+    gramer: "✏️",
+    lesen: "📖",
+    hoeren: "🎧",
+    schreiben: "✍️",
+    sprechen: "🗣️",
+  };
+
   let state = null; // { container, kampData, temaById, onExit, acikGun, selectedGun }
 
   function start(container, kampData, allTemaData, onExit) {
@@ -57,7 +69,7 @@ const Kamp21GunModu = (() => {
     }
 
     container.appendChild(card);
-    container.appendChild(renderGunTamamlaButonu(gunData));
+    container.appendChild(renderGunTamamlaButonu(gunData, isMezuniyetGunu));
   }
 
   function renderGunPiller() {
@@ -107,7 +119,7 @@ const Kamp21GunModu = (() => {
     return wrap;
   }
 
-  function renderGunTamamlaButonu(gunData) {
+  function renderGunTamamlaButonu(gunData, isMezuniyetGunu) {
     const row = document.createElement("div");
     row.className = "btn-row";
     row.style.justifyContent = "flex-end";
@@ -115,7 +127,8 @@ const Kamp21GunModu = (() => {
     const ilerleme = Storage.getKampGunIlerleme(gunData.gunNo);
     const btn = document.createElement("button");
     btn.className = "btn";
-    btn.textContent = ilerleme.tamamlandiMi ? I18n.t("kamp.gunTamamlandi") : I18n.t("kamp.completeGun");
+    const activeLabel = isMezuniyetGunu ? I18n.t("kamp.finishCamp") : I18n.t("kamp.completeGun");
+    btn.textContent = ilerleme.tamamlandiMi ? I18n.t("kamp.gunTamamlandi") : activeLabel;
     btn.disabled = ilerleme.tamamlandiMi;
     btn.addEventListener("click", () => {
       Storage.saveKampGunTamamlandi(gunData.gunNo);
@@ -127,9 +140,29 @@ const Kamp21GunModu = (() => {
 
   // --- Görev dispatch ---------------------------------------------------
 
+  // tur:"referans" görevlerde tipi resolveReferansIcerik'in döndürdüğü
+  // type'tan (kelime/gramer/lesen/hoeren), tur:"ozel" görevlerde
+  // gorev.adimTipi'nden okunur — bkz. GOREV_TIPI_EMOJI.
+  function resolveGorevTipi(gorev) {
+    if (gorev.tur === "referans") {
+      const tema = state.temaById[gorev.temaId];
+      const resolved = resolveReferansIcerik(tema, gorev.soruId);
+      return resolved?.type ?? null;
+    }
+    return gorev.adimTipi ?? null;
+  }
+
   function renderGorev(gunNo, gorev) {
     const wrap = document.createElement("div");
     wrap.className = "kamp-gorev";
+
+    const gorevTipi = resolveGorevTipi(gorev);
+    if (gorevTipi && GOREV_TIPI_EMOJI[gorevTipi]) {
+      const tipBadge = document.createElement("span");
+      tipBadge.className = "gorev-tipi-badge";
+      tipBadge.textContent = `${GOREV_TIPI_EMOJI[gorevTipi]} ${I18n.t(`step.${gorevTipi}`)}`;
+      wrap.appendChild(tipBadge);
+    }
 
     if (gorev.adimTipi === "tekrar") {
       const badge = document.createElement("span");
