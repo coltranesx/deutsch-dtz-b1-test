@@ -728,6 +728,28 @@ textarea {
   pointer-events: none;
 }
 
+/* Dashboard'daki kilitli araç kartları (örn. veri yokken Zayıf Konular Modu)
+   için özel override: genel .locked kuralındaki pointer-events:none, eklenen
+   title/aria-label tooltip'inin native hover'da hiç tetiklenmemesine neden
+   oluyordu. Tıklama zaten JS tarafında guard'lı (kilitliyken click listener
+   hiç eklenmiyor), bu yüzden kart bağlamında pointer-events'i güvenle geri
+   açıp sadece cursor/hover görünümünü "etkileşimsiz" tutuyoruz — iki class'lı
+   seçici (.card.locked) .card-flat'teki gibi kasıtlı olarak tek class'lı kart
+   kurallarından (ve :hover halinden) daha yüksek özgüllüğe sahip. .gun-pill.locked
+   ve DTZ Sınav'ın süre-dolunca-kilitleme senaryosu (lockSection) bu override'ın
+   dışında kalır, onlar genel .locked davranışını (pointer-events:none) korur —
+   orada hover'ın da engellenmesi kasıtlı (soru satırlarının "tıklanabilir
+   görünmesi" istenmiyor). */
+.card.locked {
+  pointer-events: auto;
+  cursor: not-allowed;
+}
+
+.card.locked:hover {
+  border-color: var(--primary-soft);
+  box-shadow: var(--shadow-sm);
+}
+
 .disa-aktarma-card {
   display: flex;
   align-items: center;
