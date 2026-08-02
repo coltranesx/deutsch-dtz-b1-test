@@ -5,7 +5,7 @@ Bu dosya, projenin güncel durumunu ve önemli kararları/öğrenmeleri özetler
 **Son güncelleme:** 2026-08-02
 **Canlı adres:** https://coltranesx.github.io/deutsch-dtz-b1-test/
 **Repo:** coltranesx/deutsch-dtz-b1-test (public, GitHub Pages ile otomatik deploy)
-**Branch durumu:** v2.0 (PR #7), eski cevap sızıntısı bugfix'i (PR #8), DTZ Sınav Modu UX düzeltmeleri (PR #9), navigasyon düzeltmeleri + yeni `ui-ux-tasarim-uzmani` agent'ı (PR #10), UX denetim bulgularının tamamının düzeltilmesi + kalıcı UX onay süreci (PR #11), Tema Modu'na tema başlığı eklenmesi (PR #12) ve dashboard bilgi mimarisinin yeniden düzenlenmesi (PR #13) `main`'e merge edildi (`main` @ `8003e6f`). Bu turda kilitli dashboard kartlarındaki tooltip düzeltmesi yapıldı (`claude/devlog-review-planning-q2xphc` @ `bd06776`, `ui-ux-tasarim-uzmani` onayladı, PR henüz açılmadı/merge edilmedi).
+**Branch durumu:** v2.0 (PR #7), eski cevap sızıntısı bugfix'i (PR #8), DTZ Sınav Modu UX düzeltmeleri (PR #9), navigasyon düzeltmeleri + yeni `ui-ux-tasarim-uzmani` agent'ı (PR #10), UX denetim bulgularının tamamının düzeltilmesi + kalıcı UX onay süreci (PR #11), Tema Modu'na tema başlığı eklenmesi (PR #12), dashboard bilgi mimarisinin yeniden düzenlenmesi (PR #13) ve kilitli dashboard kartlarındaki tooltip düzeltmesi (PR #14) `main`'e merge edildi (`main` @ `34cac1a`) — bekleyen PR veya push yok, yeni sohbet `main`'in en güncel hali üzerinden devam edebilir.
 
 ---
 
@@ -113,7 +113,7 @@ assets/audio/, assets/fotos/      — AI üretimi medya (Magnific/ElevenLabs)
 
 ## 4. Sırada Ne Var (öneri sırası)
 
-**v1.5 TAMAMLANDI. v2.0 TAMAMLANDI** (İstatistik Ekranı + Dışa Aktarma + DTZ Sınav Modu). **UX denetim bulguları TAMAMLANDI** (bkz. §3 madde 6). **Dashboard bilgi mimarisi yeniden düzenlemesi TAMAMLANDI** (bkz. §3 madde 8). **Kilitli kart tooltip düzeltmesi TAMAMLANDI** (bkz. §3 madde 9 — `ui-ux-tasarim-uzmani` onayladı; henüz PR açılmadı). Sırada:
+**v1.5 TAMAMLANDI. v2.0 TAMAMLANDI** (İstatistik Ekranı + Dışa Aktarma + DTZ Sınav Modu). **UX denetim bulguları TAMAMLANDI** (bkz. §3 madde 6). **Dashboard bilgi mimarisi yeniden düzenlemesi TAMAMLANDI** (bkz. §3 madde 8). **Kilitli kart tooltip düzeltmesi TAMAMLANDI** (bkz. §3 madde 9). Şu anda kritik/acil bir öncelik yok. Sırada:
 
 1. **Birikmiş düşük öncelikli takip maddeleri (acil değil):**
    - Masaüstünde içerik genişliğinin (artık 960px, önceden 640px) hâlâ sınırlı olması — muhtemelen kasıtlı mobil-öncelikli tasarım kararı.
