@@ -119,8 +119,7 @@ const Kamp21GunModu = (() => {
     btn.disabled = ilerleme.tamamlandiMi;
     btn.addEventListener("click", () => {
       Storage.saveKampGunTamamlandi(gunData.gunNo);
-      state.acikGun = Storage.getKampAcikGun();
-      render();
+      state.onExit();
     });
     row.appendChild(btn);
     return row;
