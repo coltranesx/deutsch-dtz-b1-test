@@ -5,7 +5,7 @@ Bu dosya, projenin güncel durumunu ve önemli kararları/öğrenmeleri özetler
 **Son güncelleme:** 2026-08-02
 **Canlı adres:** https://coltranesx.github.io/deutsch-dtz-b1-test/
 **Repo:** coltranesx/deutsch-dtz-b1-test (public, GitHub Pages ile otomatik deploy)
-**Branch durumu:** v2.0 (PR #7), eski cevap sızıntısı bugfix'i (PR #8), DTZ Sınav Modu UX düzeltmeleri (PR #9) ve navigasyon düzeltmeleri + yeni `ui-ux-tasarim-uzmani` agent'ı (PR #10) `main`'e merge edildi. Bu turda: CLAUDE.md §7'ye kalıcı "UX onayı" iş akışı kuralı eklendi + tam uygulama UX denetiminin 8 bulgusunun tamamı düzeltildi ve `ui-ux-tasarim-uzmani` tarafından bağımsız onaylandı (`claude/devlog-review-planning-q2xphc` @ `41bdc50`, henüz PR açılmadı/merge edilmedi). **Not:** `ui-ux-tasarim-uzmani` artık oturum içi agent listesinde kullanılabilir durumda (önceki sınırlama giderildi).
+**Branch durumu:** v2.0 (PR #7), eski cevap sızıntısı bugfix'i (PR #8), DTZ Sınav Modu UX düzeltmeleri (PR #9), navigasyon düzeltmeleri + yeni `ui-ux-tasarim-uzmani` agent'ı (PR #10) ve UX denetim bulgularının tamamının düzeltilmesi + kalıcı UX onay süreci (PR #11) `main`'e merge edildi (`main` @ `edb617b`) — bekleyen PR veya push yok, yeni sohbet `main`'in en güncel hali üzerinden devam edebilir.
 
 ---
 
