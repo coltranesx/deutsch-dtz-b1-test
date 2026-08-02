@@ -79,7 +79,7 @@ const SoruKart = (() => {
 
   function renderAudioContext(sesUrl, transkript) {
     const wrap = document.createElement("div");
-    wrap.style.marginBottom = "1rem";
+    wrap.className = "soru-kart-audio-wrap";
 
     const missingNote = document.createElement("p");
     missingNote.className = "feedback";
@@ -89,7 +89,6 @@ const SoruKart = (() => {
     if (sesUrl) {
       const audio = document.createElement("audio");
       audio.controls = true;
-      audio.style.width = "100%";
       audio.addEventListener("error", () => {
         audio.remove();
         missingNote.style.display = "block";

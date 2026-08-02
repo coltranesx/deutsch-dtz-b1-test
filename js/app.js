@@ -151,23 +151,16 @@ const App = (() => {
     app.appendChild(dtzSinavCard);
 
     if (kampData) {
-      let kampTamamlananGun = 0;
-      for (let n = 1; n <= 21; n += 1) {
-        if (Storage.getKampGunIlerleme(n).tamamlandiMi) kampTamamlananGun += 1;
-      }
       const kampAcikGun = Storage.getKampAcikGun();
-      const kampPct = Math.round((kampTamamlananGun / 21) * 100);
 
       const kampCard = document.createElement("div");
-      kampCard.className = "card tema-card kamp-card";
+      kampCard.className = "card kamp-card";
       kampCard.innerHTML = `
+        <div style="font-size:1.5rem;">📅</div>
         <div>
-          <h3>📅 ${I18n.t("dashboard.kampTitle")}</h3>
-          <p>${I18n.t("dashboard.kampDesc")}</p>
-          <div class="progress-bar"><div class="progress-bar-fill" style="width:${kampPct}%"></div></div>
-        </div>
-        <div class="tema-card-side">
-          <span>${I18n.t("kamp.gunOfTotal", { gunNo: kampAcikGun })}</span>
+          <h3 style="margin:0 0 0.25rem;">${I18n.t("dashboard.kampTitle")}</h3>
+          <p style="margin:0;color:var(--text-muted);font-size:var(--text-sm);">${I18n.t("dashboard.kampDesc")}</p>
+          <p style="margin:0.25rem 0 0;color:var(--primary);font-size:var(--text-xs);font-weight:var(--font-medium);">${I18n.t("kamp.gunOfTotal", { gunNo: kampAcikGun })}</p>
         </div>
       `;
       kampCard.addEventListener("click", () => openKamp(kampData, allData));

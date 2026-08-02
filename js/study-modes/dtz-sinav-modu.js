@@ -310,6 +310,13 @@ const DtzSinavModu = (() => {
     });
   }
 
+  function renderQuestionProgress(current, total) {
+    const p = document.createElement("p");
+    p.className = "feedback";
+    p.textContent = I18n.t("zayif.questionProgress", { current, total });
+    return p;
+  }
+
   // --- Hören / Lesen bölümleri ---------------------------------------------
 
   function renderHoerenSection() {
@@ -324,7 +331,9 @@ const DtzSinavModu = (() => {
 
     const questionsWrap = document.createElement("div");
     questionsWrap.className = "dtz-sinav-questions";
-    resolveQuestionsByIds(hoerenPool, session.hoerenIds).forEach((q) => {
+    const hoerenQuestions = resolveQuestionsByIds(hoerenPool, session.hoerenIds);
+    hoerenQuestions.forEach((q, i) => {
+      questionsWrap.appendChild(renderQuestionProgress(i + 1, hoerenQuestions.length));
       questionsWrap.appendChild(SoruKart.renderAudioContext(q.sesUrl, q.transkript));
       questionsWrap.appendChild(renderGradedQuestion(q));
     });
@@ -357,6 +366,7 @@ const DtzSinavModu = (() => {
       byTema[q.temaId].push(q);
     });
 
+    let questionCounter = 0;
     Object.keys(byTema).forEach((temaId) => {
       const tema = temaById[temaId];
       const block = document.createElement("div");
@@ -366,7 +376,11 @@ const DtzSinavModu = (() => {
         p.textContent = tema.lesen.metin;
         block.appendChild(p);
       }
-      byTema[temaId].forEach((q) => block.appendChild(renderGradedQuestion(q)));
+      byTema[temaId].forEach((q) => {
+        questionCounter += 1;
+        block.appendChild(renderQuestionProgress(questionCounter, lesenPool.length));
+        block.appendChild(renderGradedQuestion(q));
+      });
       questionsWrap.appendChild(block);
     });
     wrap.appendChild(questionsWrap);

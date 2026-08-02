@@ -115,7 +115,7 @@ const DisaAktarma = (() => {
   }
 
   function renderReportDom(reportData) {
-    const area = el("div", "disa-aktarma-print-area");
+    const area = el("div", "disa-aktarma-print-area card");
 
     const title = document.createElement("h2");
     title.textContent = I18n.t("export.reportTitle");
