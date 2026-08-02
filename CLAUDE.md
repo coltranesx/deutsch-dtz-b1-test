@@ -151,4 +151,5 @@ dtz-b1-trainer/
 2. **Şemaya sadık kal** — Tema JSON'ları PRD §15'e uymadan commit etme.
 3. **Sub-agent koordinasyonu** — Birden fazla uzmanlık alanı kapsayan iş varsa ilgili agent'ları çağır.
 4. **Tarayıcıda test** — Build adımı olmadığı için tek doğrulama yolu tarayıcıda manuel/otomatize (Playwright) testtir.
-5. **Dil** — Kullanıcıyla iletişim her zaman **Türkçe**. Almanca gramer terimleri (Konjunktiv, Genitiv, Handlungsfeld...) çevrilmez.
+5. **UX onayı** — Yeni bir Study Mode/ekran eklendiğinde veya mevcut bir ekranın görsel/etkileşim tasarımı değiştiğinde, üretime almadan önce `ui-ux-tasarim-uzmani` ile denetlenir (tutarlılık, navigasyon, erişilebilirlik, mobil/masaüstü ve dark/light parite). Sadece içerik/veri değişikliği (örn. yeni Tema JSON'u, mevcut bir ekranın davranışını değiştirmeyen bug fix) bu adımı gerektirmez.
+6. **Dil** — Kullanıcıyla iletişim her zaman **Türkçe**. Almanca gramer terimleri (Konjunktiv, Genitiv, Handlungsfeld...) çevrilmez.
