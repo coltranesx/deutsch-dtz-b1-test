@@ -827,6 +827,17 @@ textarea {
   letter-spacing: 0.02em;
 }
 
+/* Bölüm başlığı (h2, örn. "Pratik Modları") ile kart başlıkları (çıplak h3,
+   tarayıcı varsayılanıyla bold) arasında bir ara kademe: dashboard alt-
+   başlıkları (örn. "Temalar") h2'den daha hafif punto/kalınlıkta olmalı ki
+   hiyerarşi (h2 > alt-başlık) tersine dönmesin. */
+.dashboard-subheading {
+  margin: 0 0 var(--space-3);
+  font-size: var(--text-lg);
+  font-weight: var(--font-medium);
+  color: var(--text-muted);
+}
+
 /* İkinci öncelikli "araç/rapor" kartları için daha hafif görsel ağırlık —
    iki class'lı seçici (.card.card-flat) kasıtlı olarak tek class'lı
    .redemittel-bank-card/.istatistik-card/.disa-aktarma-card kurallarından
@@ -851,7 +862,6 @@ textarea {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: var(--space-4);
-    align-items: start;
   }
 
   .card-grid .card {

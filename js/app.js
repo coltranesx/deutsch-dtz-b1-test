@@ -161,6 +161,7 @@ const App = (() => {
     app.appendChild(pratikHeading);
 
     const temalarHeading = document.createElement("h3");
+    temalarHeading.className = "dashboard-subheading";
     temalarHeading.textContent = I18n.t("dashboard.temalarHeading");
     app.appendChild(temalarHeading);
 
@@ -209,6 +210,8 @@ const App = (() => {
       zayifCard.addEventListener("click", () => openZayifKonular(allData));
     } else {
       zayifCard.classList.add("locked");
+      zayifCard.title = I18n.t("dashboard.zayifKonularEmptyDesc");
+      zayifCard.setAttribute("aria-label", I18n.t("dashboard.zayifKonularEmptyDesc"));
     }
     pratikGrid.appendChild(zayifCard);
 
