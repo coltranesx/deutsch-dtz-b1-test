@@ -37,6 +37,11 @@ const TemaModu = (() => {
     backBtn.addEventListener("click", () => state.onExit());
     container.appendChild(backBtn);
 
+    const h = document.createElement("h2");
+    h.className = "tema-modu-baslik";
+    h.textContent = `${tema.temaNo}. ${tema.baslik}`;
+    container.appendChild(h);
+
     const nav = document.createElement("div");
     nav.className = "step-nav";
     STEPS.forEach((s, i) => {

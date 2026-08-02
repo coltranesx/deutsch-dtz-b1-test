@@ -249,6 +249,10 @@ h2 {
   transition: width var(--transition-base);
 }
 
+.tema-modu-baslik {
+  margin-bottom: var(--space-4);
+}
+
 .step-nav {
   display: flex;
   gap: var(--space-2);
