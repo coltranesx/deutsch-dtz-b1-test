@@ -5,7 +5,7 @@ Bu dosya, projenin güncel durumunu ve önemli kararları/öğrenmeleri özetler
 **Son güncelleme:** 2026-08-02
 **Canlı adres:** https://coltranesx.github.io/deutsch-dtz-b1-test/
 **Repo:** coltranesx/deutsch-dtz-b1-test (public, GitHub Pages ile otomatik deploy)
-**Branch durumu:** v2.0 (PR #7), eski cevap sızıntısı bugfix'i (PR #8), DTZ Sınav Modu UX düzeltmeleri (PR #9), navigasyon düzeltmeleri + yeni `ui-ux-tasarim-uzmani` agent'ı (PR #10), UX denetim bulgularının tamamının düzeltilmesi + kalıcı UX onay süreci (PR #11) ve Tema Modu'na tema başlığı eklenmesi (PR #12) `main`'e merge edildi (`main` @ `a370633`). Bu turda dashboard bilgi mimarisi yeniden düzenlendi (`claude/devlog-review-planning-q2xphc` @ `1c8b513`, `ui-ux-tasarim-uzmani` tam onay verdi, PR henüz açılmadı/merge edilmedi).
+**Branch durumu:** v2.0 (PR #7), eski cevap sızıntısı bugfix'i (PR #8), DTZ Sınav Modu UX düzeltmeleri (PR #9), navigasyon düzeltmeleri + yeni `ui-ux-tasarim-uzmani` agent'ı (PR #10), UX denetim bulgularının tamamının düzeltilmesi + kalıcı UX onay süreci (PR #11), Tema Modu'na tema başlığı eklenmesi (PR #12) ve dashboard bilgi mimarisinin yeniden düzenlenmesi (PR #13) `main`'e merge edildi (`main` @ `8003e6f`) — bekleyen PR veya push yok, yeni sohbet `main`'in en güncel hali üzerinden devam edebilir.
 
 ---
 
