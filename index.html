@@ -12,6 +12,19 @@
   <header class="app-header">
     <h1>DTZ B1 Trainer</h1>
     <div class="header-actions">
+      <button id="navZayifKonular" class="icon-btn" type="button" aria-label="Zayıf Konular Modu" title="Zayıf Konular Modu">🎯</button>
+      <button id="navGunluk15" class="icon-btn" type="button" aria-label="Günlük 15 Dakika" title="Günlük 15 Dakika">🔥</button>
+      <button id="navKamp" class="icon-btn" type="button" aria-label="21 Günlük Kamp" title="21 Günlük Kamp">📅</button>
+      <button id="navDtzSinav" class="icon-btn" type="button" aria-label="DTZ Sınav Modu" title="DTZ Sınav Modu">📝</button>
+      <div class="header-actions-divider"></div>
+      <div class="header-dropdown">
+        <button id="navAraclarToggle" class="icon-btn" type="button" aria-haspopup="menu" aria-expanded="false" aria-controls="navAraclarMenu" aria-label="Araçlar &amp; Raporlar" title="Araçlar &amp; Raporlar">🧰</button>
+        <div id="navAraclarMenu" class="header-dropdown-menu" role="menu" hidden>
+          <button type="button" class="header-dropdown-item" role="menuitem" data-action="istatistik">📊 <span>İstatistikler</span></button>
+          <button type="button" class="header-dropdown-item" role="menuitem" data-action="disaAktarma">📤 <span>Dışa Aktar</span></button>
+          <button type="button" class="header-dropdown-item" role="menuitem" data-action="redemittel">💬 <span>Redemittel-Bank</span></button>
+        </div>
+      </div>
       <button id="langToggle" class="icon-btn" aria-label="Dil değiştir" title="Türkçe/İngilizce">EN</button>
       <button id="themeToggle" class="icon-btn" aria-label="Tema değiştir" title="Karanlık/Aydınlık mod">&#9789;</button>
     </div>

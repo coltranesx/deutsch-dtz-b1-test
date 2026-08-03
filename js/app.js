@@ -17,8 +17,38 @@ const App = (() => {
   const themeToggle = document.getElementById("themeToggle");
   const langToggle = document.getElementById("langToggle");
   const footerText = document.getElementById("footerText");
+  const navZayifKonular = document.getElementById("navZayifKonular");
+  const navGunluk15 = document.getElementById("navGunluk15");
+  const navKamp = document.getElementById("navKamp");
+  const navDtzSinav = document.getElementById("navDtzSinav");
+  const navAraclarToggle = document.getElementById("navAraclarToggle");
+  const navAraclarMenu = document.getElementById("navAraclarMenu");
   const cache = {};
   let currentRenderer = renderDashboard;
+  // DTZ Sınav Modu'nun sayaç `setInterval`'ını tutan aktif modun temizleme
+  // fonksiyonu. Header artık her ekranda göründüğü için kullanıcı DTZ Sınav
+  // Modu'nun ortasındayken header'dan başka bir moda geçebilir; bu değişken
+  // olmadan eski interval arka planda temizlenmeden çalışmaya devam eder.
+  // `switchTo` her yeni mod açılışından önce bunu çağırıp null'lar.
+  let currentCleanup = null;
+
+  // Header ikonları (ve dashboard kartları) ile yeni bir moda geçmeden HEMEN
+  // ÖNCE varsa önceki modun cleanup'ını (bkz. `currentCleanup`) çalıştırır.
+  // `openFn` async olabilir (header ikonları veri yüklemesini kendi içinde
+  // yapar). Header artık her ekranda göründüğü için, hangi moda geçilirse
+  // geçilsin sonunda `refreshHeaderNav()` çağrılır — aksi halde örn. DTZ
+  // Sınav'dan header üzerinden başka bir moda geçilince "devam eden sınav"
+  // rozeti (veya kilit/rozet durumları) sadece dashboard'a dönülünce ya da
+  // dil değişince güncellenir, o ekrana kadar bayat kalırdı.
+  async function switchTo(openFn) {
+    if (currentCleanup) {
+      currentCleanup();
+      currentCleanup = null;
+    }
+    const result = await openFn();
+    refreshHeaderNav();
+    return result;
+  }
 
   function applyTheme(theme) {
     document.documentElement.setAttribute("data-theme", theme);
@@ -49,6 +79,7 @@ const App = (() => {
     themeToggle.setAttribute("aria-label", I18n.t("theme.ariaLabel"));
     themeToggle.setAttribute("title", I18n.t("theme.title"));
     footerText.textContent = I18n.t("footer.text");
+    refreshHeaderNav();
   }
 
   function initLanguage() {
@@ -97,6 +128,149 @@ const App = (() => {
     return 7;
   }
 
+  // --- Header dropdown ("Araçlar & Raporlar") -------------------------------
+
+  const ARAC_MENU_ITEMS = [
+    { action: "istatistik", key: "dashboard.istatistikTitle" },
+    { action: "disaAktarma", key: "dashboard.disaAktarmaTitle" },
+    { action: "redemittel", key: "dashboard.redemittelTitle" },
+  ];
+
+  function closeAraclarMenu() {
+    navAraclarMenu.hidden = true;
+    navAraclarToggle.setAttribute("aria-expanded", "false");
+  }
+
+  function openAraclarMenu() {
+    navAraclarMenu.hidden = false;
+    navAraclarToggle.setAttribute("aria-expanded", "true");
+  }
+
+  // Header ikonlarının kilit/rozet/i18n durumunu günceller. Bu durum
+  // runtime'da değişebildiği için (kullanıcı bir Tema bitirince Leitner
+  // verisi oluşur, bir DTZ Sınavı başlatılır/bitirilir...) hem dil
+  // değişiminde (applyLanguage) hem dashboard her render edildiğinde
+  // (renderDashboard) çağrılır.
+  function refreshHeaderNav() {
+    const hasLeitnerData = Object.keys(Storage.readAll().leitner).length > 0;
+    const zayifLabel = hasLeitnerData
+      ? I18n.t("dashboard.zayifKonularTitle")
+      : I18n.t("dashboard.zayifKonularEmptyDesc");
+    navZayifKonular.setAttribute("aria-disabled", hasLeitnerData ? "false" : "true");
+    navZayifKonular.setAttribute("aria-label", zayifLabel);
+    navZayifKonular.setAttribute("title", zayifLabel);
+
+    navGunluk15.setAttribute("aria-label", I18n.t("dashboard.gunluk15Title"));
+    navGunluk15.setAttribute("title", I18n.t("dashboard.gunluk15Title"));
+
+    const kampAcikGun = Storage.getKampAcikGun();
+    const kampLabel = `${I18n.t("dashboard.kampTitle")} — ${I18n.t("kamp.gunOfTotal", { gunNo: kampAcikGun })}`;
+    navKamp.setAttribute("aria-label", kampLabel);
+    navKamp.setAttribute("title", kampLabel);
+
+    const dtzSinavSession = Storage.getDtzSinavSession();
+    const dtzLabel = dtzSinavSession
+      ? `${I18n.t("dashboard.dtzSinavTitle")} — ${I18n.t("dashboard.dtzSinavContinueBadge")}`
+      : I18n.t("dashboard.dtzSinavTitle");
+    navDtzSinav.setAttribute("aria-label", dtzLabel);
+    navDtzSinav.setAttribute("title", dtzLabel);
+    navDtzSinav.querySelector(".icon-btn-dot")?.remove();
+    if (dtzSinavSession) {
+      const dot = document.createElement("span");
+      dot.className = "icon-btn-dot";
+      navDtzSinav.appendChild(dot);
+    }
+
+    navAraclarToggle.setAttribute("aria-label", I18n.t("dashboard.araclarRaporlarHeading"));
+    navAraclarToggle.setAttribute("title", I18n.t("dashboard.araclarRaporlarHeading"));
+
+    ARAC_MENU_ITEMS.forEach(({ action, key }) => {
+      const item = navAraclarMenu.querySelector(`[data-action="${action}"]`);
+      const span = item?.querySelector("span");
+      if (span) span.textContent = I18n.t(key);
+    });
+  }
+
+  function initHeaderNav() {
+    // Kamp icerigi (content/kamp-21-gun.json) yuklenemezse (bkz. loadKamp'in
+    // catch'i), ikon eskiden dashboard kartinin hic gosterilmemesiyle ayni
+    // parite icin gizlenir.
+    loadKamp().then((data) => {
+      navKamp.hidden = !data;
+    });
+
+    navZayifKonular.addEventListener("click", async () => {
+      if (navZayifKonular.getAttribute("aria-disabled") === "true") return;
+      await switchTo(async () => {
+        const allData = await Promise.all(TEMALAR.map(loadTema));
+        openZayifKonular(allData);
+      });
+    });
+
+    navGunluk15.addEventListener("click", async () => {
+      await switchTo(async () => {
+        const allData = await Promise.all(TEMALAR.map(loadTema));
+        openGunluk15(allData);
+      });
+    });
+
+    navKamp.addEventListener("click", async () => {
+      await switchTo(async () => {
+        const [allData, kampData] = await Promise.all([
+          Promise.all(TEMALAR.map(loadTema)),
+          loadKamp(),
+        ]);
+        if (!kampData) return;
+        openKamp(kampData, allData);
+      });
+    });
+
+    navDtzSinav.addEventListener("click", async () => {
+      await switchTo(async () => {
+        const allData = await Promise.all(TEMALAR.map(loadTema));
+        openDtzSinav(allData);
+      });
+    });
+
+    navAraclarToggle.addEventListener("click", () => {
+      const isOpen = navAraclarToggle.getAttribute("aria-expanded") === "true";
+      if (isOpen) closeAraclarMenu();
+      else openAraclarMenu();
+    });
+
+    navAraclarMenu.addEventListener("click", async (e) => {
+      const item = e.target.closest(".header-dropdown-item");
+      if (!item) return;
+      closeAraclarMenu();
+      const action = item.getAttribute("data-action");
+      await switchTo(async () => {
+        if (action === "istatistik") {
+          const allData = await Promise.all(TEMALAR.map(loadTema));
+          openIstatistik(allData);
+        } else if (action === "disaAktarma") {
+          const allData = await Promise.all(TEMALAR.map(loadTema));
+          openDisaAktarma(allData);
+        } else if (action === "redemittel") {
+          const redemittelData = await loadRedemittelBank();
+          openRedemittelBank(redemittelData);
+        }
+      });
+    });
+
+    document.addEventListener("click", (e) => {
+      if (navAraclarToggle.getAttribute("aria-expanded") !== "true") return;
+      if (navAraclarToggle.contains(e.target) || navAraclarMenu.contains(e.target)) return;
+      closeAraclarMenu();
+    });
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key !== "Escape") return;
+      if (navAraclarToggle.getAttribute("aria-expanded") !== "true") return;
+      closeAraclarMenu();
+      navAraclarToggle.focus();
+    });
+  }
+
   // En son çalışılan Tema'yı (varsa) `Storage.getProgress`'in lastStudiedAt
   // alanına göre bulur. Hiçbir Tema'da ilerleme yoksa null döner (dashboard
   // "Kaldığın yerden devam et" bloğu bu durumda hiç gösterilmez).
@@ -126,43 +300,24 @@ const App = (() => {
         <p style="margin:0;color:var(--text-muted);font-size:var(--text-sm);">${I18n.t("dashboard.continueDesc", { step: I18n.t(`step.${latest.progress.lastStep}`) })}</p>
       </div>
     `;
-    card.addEventListener("click", () => openTema(latest.entry, latest.data, redemittelData));
+    card.addEventListener("click", () => switchTo(() => openTema(latest.entry, latest.data, redemittelData)));
     app.appendChild(card);
-  }
-
-  function buildToolCard(className, icon, title, desc, badge) {
-    const card = document.createElement("div");
-    card.className = `card ${className}`;
-    card.innerHTML = `
-      <div style="font-size:1.5rem;">${icon}</div>
-      <div>
-        <h3 style="margin:0 0 0.25rem;">${title}</h3>
-        <p style="margin:0;color:var(--text-muted);font-size:var(--text-sm);">${desc}</p>
-        ${badge ? `<p style="margin:0.25rem 0 0;color:var(--primary);font-size:var(--text-xs);font-weight:var(--font-medium);">${badge}</p>` : ""}
-      </div>
-    `;
-    return card;
   }
 
   async function renderDashboard() {
     currentRenderer = renderDashboard;
+    currentCleanup = null;
     app.innerHTML = "";
     window.scrollTo(0, 0);
 
-    const [allData, redemittelData, kampData] = await Promise.all([
+    const [allData, redemittelData] = await Promise.all([
       Promise.all(TEMALAR.map(loadTema)),
       loadRedemittelBank(),
-      loadKamp(),
     ]);
 
     renderContinueCard(allData, redemittelData);
 
-    const pratikHeading = document.createElement("h2");
-    pratikHeading.textContent = I18n.t("dashboard.pratikModlariHeading");
-    app.appendChild(pratikHeading);
-
-    const temalarHeading = document.createElement("h3");
-    temalarHeading.className = "dashboard-subheading";
+    const temalarHeading = document.createElement("h2");
     temalarHeading.textContent = I18n.t("dashboard.temalarHeading");
     app.appendChild(temalarHeading);
 
@@ -186,7 +341,7 @@ const App = (() => {
           <span>${pct}%</span>
         </div>
       `;
-      card.addEventListener("click", () => openTema(entry, data, redemittelData));
+      card.addEventListener("click", () => switchTo(() => openTema(entry, data, redemittelData)));
       card.querySelector(".tema-reset-btn").addEventListener("click", (e) => {
         e.stopPropagation();
         if (!confirm(I18n.t("dashboard.resetConfirm", { baslik: data.baslik }))) return;
@@ -197,108 +352,23 @@ const App = (() => {
     });
     app.appendChild(temaGrid);
 
-    const pratikGrid = document.createElement("div");
-    pratikGrid.className = "card-grid pratik-grid";
-
-    const hasLeitnerData = Object.keys(Storage.readAll().leitner).length > 0;
-    const zayifCard = buildToolCard(
-      "zayif-konular-card",
-      "🎯",
-      I18n.t("dashboard.zayifKonularTitle"),
-      hasLeitnerData ? I18n.t("dashboard.zayifKonularDesc") : I18n.t("dashboard.zayifKonularEmptyDesc")
-    );
-    if (hasLeitnerData) {
-      zayifCard.addEventListener("click", () => openZayifKonular(allData));
-    } else {
-      zayifCard.classList.add("locked");
-      zayifCard.title = I18n.t("dashboard.zayifKonularEmptyDesc");
-      zayifCard.setAttribute("aria-label", I18n.t("dashboard.zayifKonularEmptyDesc"));
-    }
-    pratikGrid.appendChild(zayifCard);
-
-    if (kampData) {
-      const kampAcikGun = Storage.getKampAcikGun();
-      const kampCard = buildToolCard(
-        "kamp-card",
-        "📅",
-        I18n.t("dashboard.kampTitle"),
-        I18n.t("dashboard.kampDesc"),
-        I18n.t("kamp.gunOfTotal", { gunNo: kampAcikGun })
-      );
-      kampCard.addEventListener("click", () => openKamp(kampData, allData));
-      pratikGrid.appendChild(kampCard);
-    }
-
-    const gunluk15Card = buildToolCard(
-      "gunluk15-card",
-      "🔥",
-      I18n.t("dashboard.gunluk15Title"),
-      I18n.t("dashboard.gunluk15Desc")
-    );
-    gunluk15Card.addEventListener("click", () => openGunluk15(allData));
-    pratikGrid.appendChild(gunluk15Card);
-
-    const dtzSinavSession = Storage.getDtzSinavSession();
-    const dtzSinavCard = buildToolCard(
-      "dtz-sinav-card",
-      "📝",
-      I18n.t("dashboard.dtzSinavTitle"),
-      I18n.t("dashboard.dtzSinavDesc"),
-      dtzSinavSession ? I18n.t("dashboard.dtzSinavContinueBadge") : null
-    );
-    dtzSinavCard.addEventListener("click", () => openDtzSinav(allData));
-    pratikGrid.appendChild(dtzSinavCard);
-
-    app.appendChild(pratikGrid);
-
-    const araclarHeading = document.createElement("h2");
-    araclarHeading.textContent = I18n.t("dashboard.araclarRaporlarHeading");
-    app.appendChild(araclarHeading);
-
-    const araclarGrid = document.createElement("div");
-    araclarGrid.className = "card-grid araclar-grid";
-
-    const redemittelCard = buildToolCard(
-      "redemittel-bank-card card-flat",
-      "💬",
-      I18n.t("dashboard.redemittelTitle"),
-      I18n.t("dashboard.redemittelDesc")
-    );
-    redemittelCard.addEventListener("click", () => openRedemittelBank(redemittelData));
-    araclarGrid.appendChild(redemittelCard);
-
-    const istatistikCard = buildToolCard(
-      "istatistik-card card-flat",
-      "📊",
-      I18n.t("dashboard.istatistikTitle"),
-      I18n.t("dashboard.istatistikDesc")
-    );
-    istatistikCard.addEventListener("click", () => openIstatistik(allData));
-    araclarGrid.appendChild(istatistikCard);
-
-    const disaAktarmaCard = buildToolCard(
-      "disa-aktarma-card card-flat",
-      "📤",
-      I18n.t("dashboard.disaAktarmaTitle"),
-      I18n.t("dashboard.disaAktarmaDesc")
-    );
-    disaAktarmaCard.addEventListener("click", () => openDisaAktarma(allData));
-    araclarGrid.appendChild(disaAktarmaCard);
-
-    app.appendChild(araclarGrid);
+    refreshHeaderNav();
   }
 
   function openTema(entry, data, redemittelData) {
+    currentCleanup = null;
     currentRenderer = TemaModu.refresh;
     TemaModu.start(app, data, renderDashboard, redemittelData);
   }
 
   function openZayifKonular(allData) {
+    currentCleanup = null;
     currentRenderer = ZayifKonularModu.refresh;
     ZayifKonularModu.start(app, allData, renderDashboard);
   }
 
   function openRedemittelBank(redemittelData) {
+    currentCleanup = null;
     currentRenderer = () => RedemittelBank.renderFullView(app, redemittelData, renderDashboard);
     RedemittelBank.renderFullView(app, redemittelData, renderDashboard);
   }
@@ -307,30 +377,36 @@ const App = (() => {
     if (!Storage.getDtzSinavSession() && !confirm(I18n.t("dtzSinav.startConfirm"))) return;
     currentRenderer = DtzSinavModu.refresh;
     DtzSinavModu.start(app, allData, renderDashboard);
+    currentCleanup = DtzSinavModu.stop;
   }
 
   function openKamp(kampData, allData) {
+    currentCleanup = null;
     currentRenderer = Kamp21GunModu.refresh;
     Kamp21GunModu.start(app, kampData, allData, renderDashboard);
   }
 
   function openGunluk15(allData) {
+    currentCleanup = null;
     currentRenderer = Gunluk15DakikaModu.refresh;
     Gunluk15DakikaModu.start(app, allData, renderDashboard);
   }
 
   function openIstatistik(allData) {
+    currentCleanup = null;
     currentRenderer = () => IstatistikEkrani.renderFullView(app, allData, renderDashboard);
     IstatistikEkrani.renderFullView(app, allData, renderDashboard);
   }
 
   function openDisaAktarma(allData) {
+    currentCleanup = null;
     currentRenderer = () => DisaAktarma.renderFullView(app, allData, renderDashboard);
     DisaAktarma.renderFullView(app, allData, renderDashboard);
   }
 
   function init() {
     initTheme();
+    initHeaderNav();
     initLanguage();
     renderDashboard();
   }

@@ -124,12 +124,26 @@ a, button, input, textarea, [tabindex] {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: wrap;
+  row-gap: var(--space-2);
   padding: var(--space-4) var(--space-5);
   background: var(--surface);
   border-bottom: 1px solid var(--border);
   position: sticky;
   top: 0;
   z-index: 10;
+}
+
+@media (max-width: 420px) {
+  .icon-btn {
+    width: 2rem;
+    height: 2rem;
+    font-size: 0.9rem;
+  }
+
+  .header-actions {
+    gap: var(--space-1);
+  }
 }
 
 .app-header h1 {
@@ -141,10 +155,14 @@ a, button, input, textarea, [tabindex] {
 .header-actions {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
+  justify-content: flex-end;
   gap: var(--space-2);
+  row-gap: var(--space-2);
 }
 
 .icon-btn {
+  position: relative;
   background: none;
   border: 1px solid var(--border);
   border-radius: var(--radius-full);
@@ -159,6 +177,79 @@ a, button, input, textarea, [tabindex] {
 .icon-btn:hover {
   background: var(--surface-hover);
   border-color: var(--border-strong);
+}
+
+/* Zayıf Konular Modu gibi henüz veri yokken kilitli olan header ikonları için:
+   native `disabled` veya `pointer-events:none` KULLANILMAZ, çünkü ikisi de
+   title/aria-label tooltip'inin native hover'da tetiklenmesini engelliyor
+   (bkz. DEVLOG.md §3 madde 9). pointer-events kasıtlı olarak auto kalır,
+   click handler'daki `aria-disabled` guard'ı tıklamayı engeller. */
+.icon-btn[aria-disabled="true"] {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.icon-btn-dot {
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--primary);
+}
+
+.header-actions-divider {
+  width: 1px;
+  height: 1.5rem;
+  background: var(--border);
+}
+
+.header-dropdown {
+  position: relative;
+}
+
+.header-dropdown-menu {
+  position: absolute;
+  top: calc(100% + var(--space-2));
+  right: 0;
+  min-width: 200px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+  padding: var(--space-2);
+  z-index: 20;
+  display: grid;
+  gap: var(--space-1);
+}
+
+/* `display: grid` yukarıda her zaman geçerli olduğu için tarayıcının
+   `[hidden]` özniteliğine varsayılan olarak uyguladığı `display:none` kuralı
+   (author CSS UA stylesheet'ini specificity'den bağımsız ezdiği için) devre
+   dışı kalırdı — JS'in `navAraclarMenu.hidden = true` ile menüyü kapatması
+   bu override olmadan görsel olarak hiçbir şey değiştirmezdi. */
+.header-dropdown-menu[hidden] {
+  display: none;
+}
+
+.header-dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  background: none;
+  border: none;
+  text-align: left;
+  width: 100%;
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  color: var(--text);
+  font-size: var(--text-sm);
+}
+
+.header-dropdown-item:hover {
+  background: var(--surface-hover);
 }
 
 #langToggle {
@@ -484,71 +575,6 @@ textarea {
   margin-bottom: var(--space-1);
 }
 
-.zayif-konular-card {
-  display: flex;
-  align-items: center;
-  gap: var(--space-3);
-  cursor: pointer;
-  border-color: var(--primary-soft);
-}
-
-.zayif-konular-card:hover {
-  border-color: var(--primary);
-  box-shadow: var(--shadow-md);
-}
-
-.redemittel-bank-card {
-  display: flex;
-  align-items: center;
-  gap: var(--space-3);
-  cursor: pointer;
-  border-color: var(--primary-soft);
-}
-
-.redemittel-bank-card:hover {
-  border-color: var(--primary);
-  box-shadow: var(--shadow-md);
-}
-
-.kamp-card {
-  display: flex;
-  align-items: center;
-  gap: var(--space-3);
-  cursor: pointer;
-  border-color: var(--primary-soft);
-}
-
-.kamp-card:hover {
-  border-color: var(--primary);
-  box-shadow: var(--shadow-md);
-}
-
-.gunluk15-card {
-  display: flex;
-  align-items: center;
-  gap: var(--space-3);
-  cursor: pointer;
-  border-color: var(--primary-soft);
-}
-
-.gunluk15-card:hover {
-  border-color: var(--primary);
-  box-shadow: var(--shadow-md);
-}
-
-.istatistik-card {
-  display: flex;
-  align-items: center;
-  gap: var(--space-3);
-  cursor: pointer;
-  border-color: var(--primary-soft);
-}
-
-.istatistik-card:hover {
-  border-color: var(--primary);
-  box-shadow: var(--shadow-md);
-}
-
 .progress-bar-fill.heat-good {
   background: var(--success);
 }
@@ -666,19 +692,6 @@ textarea {
   margin-top: 0.15rem;
 }
 
-.dtz-sinav-card {
-  display: flex;
-  align-items: center;
-  gap: var(--space-3);
-  cursor: pointer;
-  border-color: var(--primary-soft);
-}
-
-.dtz-sinav-card:hover {
-  border-color: var(--primary);
-  box-shadow: var(--shadow-md);
-}
-
 .dtz-sinav-timer {
   display: flex;
   justify-content: space-between;
@@ -726,41 +739,6 @@ textarea {
 .locked {
   opacity: 0.55;
   pointer-events: none;
-}
-
-/* Dashboard'daki kilitli araç kartları (örn. veri yokken Zayıf Konular Modu)
-   için özel override: genel .locked kuralındaki pointer-events:none, eklenen
-   title/aria-label tooltip'inin native hover'da hiç tetiklenmemesine neden
-   oluyordu. Tıklama zaten JS tarafında guard'lı (kilitliyken click listener
-   hiç eklenmiyor), bu yüzden kart bağlamında pointer-events'i güvenle geri
-   açıp sadece cursor/hover görünümünü "etkileşimsiz" tutuyoruz — iki class'lı
-   seçici (.card.locked) .card-flat'teki gibi kasıtlı olarak tek class'lı kart
-   kurallarından (ve :hover halinden) daha yüksek özgüllüğe sahip. .gun-pill.locked
-   ve DTZ Sınav'ın süre-dolunca-kilitleme senaryosu (lockSection) bu override'ın
-   dışında kalır, onlar genel .locked davranışını (pointer-events:none) korur —
-   orada hover'ın da engellenmesi kasıtlı (soru satırlarının "tıklanabilir
-   görünmesi" istenmiyor). */
-.card.locked {
-  pointer-events: auto;
-  cursor: not-allowed;
-}
-
-.card.locked:hover {
-  border-color: var(--primary-soft);
-  box-shadow: var(--shadow-sm);
-}
-
-.disa-aktarma-card {
-  display: flex;
-  align-items: center;
-  gap: var(--space-3);
-  cursor: pointer;
-  border-color: var(--primary-soft);
-}
-
-.disa-aktarma-card:hover {
-  border-color: var(--primary);
-  box-shadow: var(--shadow-md);
 }
 
 .disa-aktarma-btn-row {
@@ -847,32 +825,6 @@ textarea {
   font-weight: var(--font-semibold);
   text-transform: uppercase;
   letter-spacing: 0.02em;
-}
-
-/* Bölüm başlığı (h2, örn. "Pratik Modları") ile kart başlıkları (çıplak h3,
-   tarayıcı varsayılanıyla bold) arasında bir ara kademe: dashboard alt-
-   başlıkları (örn. "Temalar") h2'den daha hafif punto/kalınlıkta olmalı ki
-   hiyerarşi (h2 > alt-başlık) tersine dönmesin. */
-.dashboard-subheading {
-  margin: 0 0 var(--space-3);
-  font-size: var(--text-lg);
-  font-weight: var(--font-medium);
-  color: var(--text-muted);
-}
-
-/* İkinci öncelikli "araç/rapor" kartları için daha hafif görsel ağırlık —
-   iki class'lı seçici (.card.card-flat) kasıtlı olarak tek class'lı
-   .redemittel-bank-card/.istatistik-card/.disa-aktarma-card kurallarından
-   (ve onların :hover halinden) daha yüksek özgüllüğe sahip, böylece dosya
-   içindeki sıralamadan bağımsız olarak geçerli olur. */
-.card.card-flat {
-  box-shadow: none;
-  border-color: var(--border);
-}
-
-.card.card-flat:hover {
-  border-color: var(--border-strong);
-  box-shadow: var(--shadow-sm);
 }
 
 @media (min-width: 960px) {
