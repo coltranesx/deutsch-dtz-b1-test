@@ -16,6 +16,7 @@ const App = (() => {
   const app = document.getElementById("app");
   const themeToggle = document.getElementById("themeToggle");
   const langToggle = document.getElementById("langToggle");
+  const langToggleLabel = document.getElementById("langToggleLabel");
   const footerText = document.getElementById("footerText");
   const navZayifKonular = document.getElementById("navZayifKonular");
   const navGunluk15 = document.getElementById("navGunluk15");
@@ -54,7 +55,6 @@ const App = (() => {
 
   function applyTheme(theme) {
     document.documentElement.setAttribute("data-theme", theme);
-    themeToggle.textContent = theme === "dark" ? "☀" : "☽";
   }
 
   function initTheme() {
@@ -75,7 +75,7 @@ const App = (() => {
     const next = languages[(currentIndex + 1) % languages.length];
 
     document.documentElement.setAttribute("lang", lang);
-    langToggle.textContent = next.label;
+    langToggleLabel.textContent = next.label;
     langToggle.setAttribute("aria-label", I18n.t("lang.ariaLabel"));
     langToggle.setAttribute("title", I18n.t("lang.title"));
     themeToggle.setAttribute("aria-label", I18n.t("theme.ariaLabel"));

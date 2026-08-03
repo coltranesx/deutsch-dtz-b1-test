@@ -1,9 +1,20 @@
-const CACHE_NAME = "dtz-b1-trainer-v16";
+const CACHE_NAME = "dtz-b1-trainer-v17";
 const APP_SHELL = [
   "./",
   "./index.html",
   "./manifest.json",
   "./css/style.css",
+  "./assets/icons/zayif-konular.png",
+  "./assets/icons/gunluk-15-dakika.png",
+  "./assets/icons/kamp-21-gun.png",
+  "./assets/icons/dtz-sinav.png",
+  "./assets/icons/araclar-raporlar.png",
+  "./assets/icons/istatistik.png",
+  "./assets/icons/disa-aktarma.png",
+  "./assets/icons/redemittel-bank.png",
+  "./assets/icons/dil-degistir.png",
+  "./assets/icons/tema-degistir.png",
+  "./assets/icons/ana-sayfa.png",
   "./js/app.js",
   "./js/storage.js",
   "./js/i18n.js",

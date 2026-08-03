@@ -141,6 +141,9 @@ a, button, input, textarea, [tabindex] {
 }
 
 .app-header-home-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
   background: none;
   border: none;
   padding: 0;
@@ -160,6 +163,10 @@ a, button, input, textarea, [tabindex] {
 
 .icon-btn {
   position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
   background: none;
   border: 1px solid var(--border);
   border-radius: var(--radius-full);
@@ -170,6 +177,39 @@ a, button, input, textarea, [tabindex] {
   color: var(--text);
   transition: background var(--transition-fast), border-color var(--transition-fast);
 }
+
+/* Header ikonları artık Magnific ile üretilmiş, arka planı kaldırılmış PNG'ler
+   (assets/icons/) — ama ham dosya olarak değil, CSS `mask-image` ile
+   kullanılıyor: dosya sadece şekil/alfa bilgisi sağlıyor, GÖRÜNEN renk
+   `currentColor` üzerinden geliyor. Bu sayede dark/light temada (ve kilitli
+   `aria-disabled` durumunda) ayrı bir görsel üretmeye gerek kalmadan renk
+   otomatik doğru gelir — `.icon-btn`'in zaten sahip olduğu `color:var(--text)`
+   miras alınır. */
+.icon-mask {
+  display: inline-block;
+  flex-shrink: 0;
+  width: 1.1rem;
+  height: 1.1rem;
+  background-color: currentColor;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+}
+
+.icon-zayif-konular { -webkit-mask-image: url("../assets/icons/zayif-konular.png"); mask-image: url("../assets/icons/zayif-konular.png"); }
+.icon-gunluk-15-dakika { -webkit-mask-image: url("../assets/icons/gunluk-15-dakika.png"); mask-image: url("../assets/icons/gunluk-15-dakika.png"); }
+.icon-kamp-21-gun { -webkit-mask-image: url("../assets/icons/kamp-21-gun.png"); mask-image: url("../assets/icons/kamp-21-gun.png"); }
+.icon-dtz-sinav { -webkit-mask-image: url("../assets/icons/dtz-sinav.png"); mask-image: url("../assets/icons/dtz-sinav.png"); }
+.icon-araclar-raporlar { -webkit-mask-image: url("../assets/icons/araclar-raporlar.png"); mask-image: url("../assets/icons/araclar-raporlar.png"); }
+.icon-istatistik { -webkit-mask-image: url("../assets/icons/istatistik.png"); mask-image: url("../assets/icons/istatistik.png"); }
+.icon-disa-aktarma { -webkit-mask-image: url("../assets/icons/disa-aktarma.png"); mask-image: url("../assets/icons/disa-aktarma.png"); }
+.icon-redemittel-bank { -webkit-mask-image: url("../assets/icons/redemittel-bank.png"); mask-image: url("../assets/icons/redemittel-bank.png"); }
+.icon-dil-degistir { -webkit-mask-image: url("../assets/icons/dil-degistir.png"); mask-image: url("../assets/icons/dil-degistir.png"); }
+.icon-tema-degistir { -webkit-mask-image: url("../assets/icons/tema-degistir.png"); mask-image: url("../assets/icons/tema-degistir.png"); }
+.icon-ana-sayfa { -webkit-mask-image: url("../assets/icons/ana-sayfa.png"); mask-image: url("../assets/icons/ana-sayfa.png"); }
 
 .icon-btn:hover {
   background: var(--surface-hover);
@@ -302,7 +342,13 @@ a, button, input, textarea, [tabindex] {
   }
 }
 
+/* Diğer .icon-btn'lerin aksine ikon+metin (EN/TR) birlikte gösteriyor,
+   bu yüzden sabit dairesel genişlik yerine içeriğe göre genişleyen bir
+   "hap" (pill) şekli kullanır. ID seçici .icon-btn'in (ve dar ekran media
+   query'sindeki) width kuralını özgüllük sayesinde her koşulda ezer. */
 #langToggle {
+  width: auto;
+  padding: 0 var(--space-3);
   font-size: var(--text-xs);
   font-weight: var(--font-semibold);
 }
