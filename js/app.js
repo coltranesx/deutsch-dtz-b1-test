@@ -23,6 +23,8 @@ const App = (() => {
   const navDtzSinav = document.getElementById("navDtzSinav");
   const navAraclarToggle = document.getElementById("navAraclarToggle");
   const navAraclarMenu = document.getElementById("navAraclarMenu");
+  const navHome = document.getElementById("navHome");
+  const navToast = document.getElementById("navToast");
   const cache = {};
   let currentRenderer = renderDashboard;
   // DTZ Sınav Modu'nun sayaç `setInterval`'ını tutan aktif modun temizleme
@@ -146,6 +148,31 @@ const App = (() => {
     navAraclarToggle.setAttribute("aria-expanded", "true");
   }
 
+  // Kilitli bir header ikonuna (örn. veri yokken Zayıf Konular Modu)
+  // tıklanınca kısa süreli görünen mesaj. title/aria-label tooltip'i sadece
+  // mouse hover ile tetiklendiği için dokunmatik cihazda tıklama hiçbir geri
+  // bildirim vermezdi (bkz. ui-ux-tasarim-uzmani denetim bulgusu #2).
+  let navToastTimeoutId = null;
+  function showNavToast(message) {
+    navToast.textContent = message;
+    navToast.hidden = false;
+    if (navToastTimeoutId) clearTimeout(navToastTimeoutId);
+    navToastTimeoutId = setTimeout(() => {
+      navToast.hidden = true;
+      navToastTimeoutId = null;
+    }, 3000);
+  }
+
+  // Aktif bir DTZ Sınav oturumu ortasında header'daki DİĞER bir ikona
+  // (kazara) dokunulursa zamanlayıcı kullanıcı farkında olmadan işlemeye
+  // devam eder (bkz. ui-ux-tasarim-uzmani denetim bulgusu #3). `currentCleanup
+  // === DtzSinavModu.stop` şu an DTZ Sınav Modu'nun İÇİNDE olduğumuzu güvenilir
+  // şekilde gösterir (sadece openDtzSinav bu değeri atar).
+  function confirmLeaveActiveExam() {
+    if (currentCleanup !== DtzSinavModu.stop) return true;
+    return confirm(I18n.t("dtzSinav.leaveConfirm"));
+  }
+
   // Header ikonlarının kilit/rozet/i18n durumunu günceller. Bu durum
   // runtime'da değişebildiği için (kullanıcı bir Tema bitirince Leitner
   // verisi oluşur, bir DTZ Sınavı başlatılır/bitirilir...) hem dil
@@ -167,6 +194,14 @@ const App = (() => {
     const kampLabel = `${I18n.t("dashboard.kampTitle")} — ${I18n.t("kamp.gunOfTotal", { gunNo: kampAcikGun })}`;
     navKamp.setAttribute("aria-label", kampLabel);
     navKamp.setAttribute("title", kampLabel);
+    // Gün sayısı title/aria-label'a (hover-only) ek olarak her zaman görünür
+    // küçük bir rozette de gösterilir — dokunmatik cihazda hover olmadığı
+    // için tooltip'e hiç erişilemez (bkz. ui-ux-tasarim-uzmani bulgu #1).
+    navKamp.querySelector(".icon-btn-badge")?.remove();
+    const kampBadge = document.createElement("span");
+    kampBadge.className = "icon-btn-badge";
+    kampBadge.textContent = String(kampAcikGun);
+    navKamp.appendChild(kampBadge);
 
     const dtzSinavSession = Storage.getDtzSinavSession();
     const dtzLabel = dtzSinavSession
@@ -199,8 +234,16 @@ const App = (() => {
       navKamp.hidden = !data;
     });
 
+    navHome.addEventListener("click", async () => {
+      await switchTo(() => renderDashboard());
+    });
+
     navZayifKonular.addEventListener("click", async () => {
-      if (navZayifKonular.getAttribute("aria-disabled") === "true") return;
+      if (navZayifKonular.getAttribute("aria-disabled") === "true") {
+        showNavToast(navZayifKonular.getAttribute("title"));
+        return;
+      }
+      if (!confirmLeaveActiveExam()) return;
       await switchTo(async () => {
         const allData = await Promise.all(TEMALAR.map(loadTema));
         openZayifKonular(allData);
@@ -208,6 +251,7 @@ const App = (() => {
     });
 
     navGunluk15.addEventListener("click", async () => {
+      if (!confirmLeaveActiveExam()) return;
       await switchTo(async () => {
         const allData = await Promise.all(TEMALAR.map(loadTema));
         openGunluk15(allData);
@@ -215,6 +259,7 @@ const App = (() => {
     });
 
     navKamp.addEventListener("click", async () => {
+      if (!confirmLeaveActiveExam()) return;
       await switchTo(async () => {
         const [allData, kampData] = await Promise.all([
           Promise.all(TEMALAR.map(loadTema)),
@@ -242,6 +287,7 @@ const App = (() => {
       const item = e.target.closest(".header-dropdown-item");
       if (!item) return;
       closeAraclarMenu();
+      if (!confirmLeaveActiveExam()) return;
       const action = item.getAttribute("data-action");
       await switchTo(async () => {
         if (action === "istatistik") {

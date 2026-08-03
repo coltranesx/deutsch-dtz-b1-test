@@ -134,22 +134,19 @@ a, button, input, textarea, [tabindex] {
   z-index: 10;
 }
 
-@media (max-width: 420px) {
-  .icon-btn {
-    width: 2rem;
-    height: 2rem;
-    font-size: 0.9rem;
-  }
-
-  .header-actions {
-    gap: var(--space-1);
-  }
-}
-
 .app-header h1 {
   font-size: var(--text-lg);
   font-weight: var(--font-semibold);
   margin: 0;
+}
+
+.app-header-home-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
 }
 
 .header-actions {
@@ -197,6 +194,25 @@ a, button, input, textarea, [tabindex] {
   height: 8px;
   border-radius: 50%;
   background: var(--primary);
+}
+
+/* Kamp'ın "Gün X/21" bilgisi gibi kısa dinamik metinler icin — sadece
+   title/aria-label'a (hover-only, dokunmatik cihazda hic erisilemez)
+   guvenmek yerine ikon uzerinde her zaman gorunur kucuk bir rozet. */
+.icon-btn-badge {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  min-width: 1rem;
+  height: 1rem;
+  padding: 0 0.2rem;
+  border-radius: var(--radius-full);
+  background: var(--primary);
+  color: #fff;
+  font-size: 0.6rem;
+  font-weight: var(--font-semibold);
+  line-height: 1rem;
+  text-align: center;
 }
 
 .header-actions-divider {
@@ -250,6 +266,40 @@ a, button, input, textarea, [tabindex] {
 
 .header-dropdown-item:hover {
   background: var(--surface-hover);
+}
+
+/* Kilitli bir header ikonuna (örn. Zayıf Konular Modu, veri yokken)
+   dokunmatik cihazda tıklanınca kısa süreli görünen mesaj — title/aria-label
+   tooltip'i sadece mouse hover ile tetiklendiği için dokunmatik kullanıcı
+   aksi halde hiçbir geri bildirim almaz. */
+.header-toast {
+  position: absolute;
+  top: calc(100% + var(--space-2));
+  right: var(--space-5);
+  max-width: calc(100% - var(--space-8));
+  background: var(--text);
+  color: var(--surface);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+  padding: var(--space-2) var(--space-3);
+  font-size: var(--text-sm);
+  z-index: 20;
+}
+
+/* Ikonlarin bu genislikte 2. (hatta 3.) satira sarmasi ihtimalini azaltir
+   (bkz. .app-header/.header-actions{flex-wrap}) — .icon-btn/.header-actions
+   TABAN kurallarindan (yukarida) SONRA gelmesi sarttir, aksi halde esit
+   ozguzlukte sonraki kaynak sirasi kazanir ve bu kural hic uygulanmaz. */
+@media (max-width: 420px) {
+  .icon-btn {
+    width: 2rem;
+    height: 2rem;
+    font-size: 0.9rem;
+  }
+
+  .header-actions {
+    gap: var(--space-1);
+  }
 }
 
 #langToggle {

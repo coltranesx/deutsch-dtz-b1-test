@@ -10,7 +10,7 @@
 </head>
 <body>
   <header class="app-header">
-    <h1>DTZ B1 Trainer</h1>
+    <h1><button type="button" id="navHome" class="app-header-home-btn" aria-label="Ana sayfaya dön" title="Ana sayfaya dön">DTZ B1 Trainer</button></h1>
     <div class="header-actions">
       <button id="navZayifKonular" class="icon-btn" type="button" aria-label="Zayıf Konular Modu" title="Zayıf Konular Modu">🎯</button>
       <button id="navGunluk15" class="icon-btn" type="button" aria-label="Günlük 15 Dakika" title="Günlük 15 Dakika">🔥</button>
@@ -28,6 +28,7 @@
       <button id="langToggle" class="icon-btn" aria-label="Dil değiştir" title="Türkçe/İngilizce">EN</button>
       <button id="themeToggle" class="icon-btn" aria-label="Tema değiştir" title="Karanlık/Aydınlık mod">&#9789;</button>
     </div>
+    <div id="navToast" class="header-toast" role="status" aria-live="polite" hidden></div>
   </header>
 
   <main id="app" class="app-main"></main>
