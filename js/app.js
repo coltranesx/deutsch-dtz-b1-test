@@ -104,6 +104,7 @@ const App = (() => {
     let latest = null;
     TEMALAR.forEach((entry, i) => {
       const progress = Storage.getProgress(entry.id);
+      if (progress.completedSteps.length >= stepCount()) return;
       if (progress.lastStudiedAt && (!latest || progress.lastStudiedAt > latest.progress.lastStudiedAt)) {
         latest = { entry, data: allData[i], progress };
       }

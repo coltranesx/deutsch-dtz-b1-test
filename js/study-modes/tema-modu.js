@@ -27,6 +27,16 @@ const TemaModu = (() => {
     const step = STEPS[stepIndex];
     const progress = Storage.getProgress(tema.temaId);
 
+    if (step === "miniTest" && state.miniTestFreshSince === undefined) {
+      // Mini Test, Gramer/Hören adimlarinda kullanilan AYNI soru ID'lerini
+      // tekrar eder (bkz. content semasi). freshSince olmadan bu sorular
+      // o adimlarda verilen cevapla "zaten cevaplanmis" gorunurdu — ilk
+      // goruntulenme anindan itibaren fresh sayilarak gercek bir tekrar testi
+      // olmasi saglanir (diger modlarin ayni ID'yi tekrarlarken kullandigi
+      // freshSince deseniyle tutarli).
+      state.miniTestFreshSince = Date.now();
+    }
+
     container.innerHTML = "";
     window.scrollTo(0, 0);
 
@@ -104,7 +114,7 @@ const TemaModu = (() => {
       case "sprechen":
         return renderSprechen(tema, state.redemittel);
       case "miniTest":
-        return renderMiniTest(tema);
+        return renderMiniTest(tema, state.miniTestFreshSince);
       default:
         return document.createTextNode("");
     }
@@ -129,9 +139,13 @@ const TemaModu = (() => {
     return wrap;
   }
 
-  function renderGradedQuestion(tema, q) {
+  function renderGradedQuestion(tema, q, freshSince, onAnswerExtra) {
     return SoruKart.renderMultipleChoice(tema.temaId, q, {
-      onAnswer: (correct) => Storage.recordLeitnerResult(q.id, correct),
+      onAnswer: (correct) => {
+        Storage.recordLeitnerResult(q.id, correct);
+        onAnswerExtra?.();
+      },
+      freshSince,
     });
   }
 
@@ -310,7 +324,7 @@ const TemaModu = (() => {
     return wrap;
   }
 
-  function renderMiniTest(tema) {
+  function renderMiniTest(tema, freshSince) {
     const wrap = document.createElement("div");
     const h = document.createElement("h2");
     h.textContent = I18n.t("step.miniTest");
@@ -327,17 +341,30 @@ const TemaModu = (() => {
       return wrap;
     }
 
-    allQuestions.forEach((q) => wrap.appendChild(renderGradedQuestion(tema, q)));
-
-    const answered = allQuestions.filter((q) => Storage.getAnswer(tema.temaId, q.id) !== null);
-    const correct = allQuestions.filter((q) => Storage.getAnswer(tema.temaId, q.id) === q.dogruCevap);
+    // Mini Test'e girmeden ONCE (Gramer/Hoeren adimlarinda) kaydedilmis
+    // cevaplar burada da "yokmus gibi" sayilir — ayni ID'nin SoruKart'taki
+    // gorsel durumuyla (bkz. freshSince) tutarli bir skor icin.
+    const freshAnswer = (q) => {
+      const entry = Storage.getAnswerEntry(tema.temaId, q.id);
+      if (!entry || (freshSince && entry.savedAt < freshSince)) return null;
+      return entry.value;
+    };
 
     const summary = document.createElement("div");
     summary.className = "result-summary";
-    summary.innerHTML = `
-      <div class="result-score">${correct.length}/${allQuestions.length}</div>
-      <p>${I18n.t("miniTest.answeredCount", { answered: answered.length, total: allQuestions.length })}</p>
-    `;
+
+    function updateSummary() {
+      const answered = allQuestions.filter((q) => freshAnswer(q) !== null);
+      const correct = allQuestions.filter((q) => freshAnswer(q) === q.dogruCevap);
+      summary.innerHTML = `
+        <div class="result-score">${correct.length}/${allQuestions.length}</div>
+        <p>${I18n.t("miniTest.answeredCount", { answered: answered.length, total: allQuestions.length })}</p>
+      `;
+    }
+
+    allQuestions.forEach((q) => wrap.appendChild(renderGradedQuestion(tema, q, freshSince, updateSummary)));
+
+    updateSummary();
     wrap.appendChild(summary);
     return wrap;
   }
