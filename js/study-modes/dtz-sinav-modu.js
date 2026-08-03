@@ -672,5 +672,5 @@ const DtzSinavModu = (() => {
     if (state.activeTimerSection) tick();
   }
 
-  return { start, refresh };
+  return { start, refresh, stop: stopTimer };
 })();
