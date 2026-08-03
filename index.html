@@ -10,23 +10,23 @@
 </head>
 <body>
   <header class="app-header">
-    <h1><button type="button" id="navHome" class="app-header-home-btn" aria-label="Ana sayfaya dön" title="Ana sayfaya dön">DTZ B1 Trainer</button></h1>
+    <h1><button type="button" id="navHome" class="app-header-home-btn" aria-label="Ana sayfaya dön" title="Ana sayfaya dön"><span class="icon-mask icon-ana-sayfa" aria-hidden="true"></span>DTZ B1 Trainer</button></h1>
     <div class="header-actions">
-      <button id="navZayifKonular" class="icon-btn" type="button" aria-label="Zayıf Konular Modu" title="Zayıf Konular Modu">🎯</button>
-      <button id="navGunluk15" class="icon-btn" type="button" aria-label="Günlük 15 Dakika" title="Günlük 15 Dakika">🔥</button>
-      <button id="navKamp" class="icon-btn" type="button" aria-label="21 Günlük Kamp" title="21 Günlük Kamp">📅</button>
-      <button id="navDtzSinav" class="icon-btn" type="button" aria-label="DTZ Sınav Modu" title="DTZ Sınav Modu">📝</button>
+      <button id="navZayifKonular" class="icon-btn" type="button" aria-label="Zayıf Konular Modu" title="Zayıf Konular Modu"><span class="icon-mask icon-zayif-konular" aria-hidden="true"></span></button>
+      <button id="navGunluk15" class="icon-btn" type="button" aria-label="Günlük 15 Dakika" title="Günlük 15 Dakika"><span class="icon-mask icon-gunluk-15-dakika" aria-hidden="true"></span></button>
+      <button id="navKamp" class="icon-btn" type="button" aria-label="21 Günlük Kamp" title="21 Günlük Kamp"><span class="icon-mask icon-kamp-21-gun" aria-hidden="true"></span></button>
+      <button id="navDtzSinav" class="icon-btn" type="button" aria-label="DTZ Sınav Modu" title="DTZ Sınav Modu"><span class="icon-mask icon-dtz-sinav" aria-hidden="true"></span></button>
       <div class="header-actions-divider"></div>
       <div class="header-dropdown">
-        <button id="navAraclarToggle" class="icon-btn" type="button" aria-haspopup="menu" aria-expanded="false" aria-controls="navAraclarMenu" aria-label="Araçlar &amp; Raporlar" title="Araçlar &amp; Raporlar">🧰</button>
+        <button id="navAraclarToggle" class="icon-btn" type="button" aria-haspopup="menu" aria-expanded="false" aria-controls="navAraclarMenu" aria-label="Araçlar &amp; Raporlar" title="Araçlar &amp; Raporlar"><span class="icon-mask icon-araclar-raporlar" aria-hidden="true"></span></button>
         <div id="navAraclarMenu" class="header-dropdown-menu" role="menu" hidden>
-          <button type="button" class="header-dropdown-item" role="menuitem" data-action="istatistik">📊 <span>İstatistikler</span></button>
-          <button type="button" class="header-dropdown-item" role="menuitem" data-action="disaAktarma">📤 <span>Dışa Aktar</span></button>
-          <button type="button" class="header-dropdown-item" role="menuitem" data-action="redemittel">💬 <span>Redemittel-Bank</span></button>
+          <button type="button" class="header-dropdown-item" role="menuitem" data-action="istatistik"><span class="icon-mask icon-istatistik" aria-hidden="true"></span> <span>İstatistikler</span></button>
+          <button type="button" class="header-dropdown-item" role="menuitem" data-action="disaAktarma"><span class="icon-mask icon-disa-aktarma" aria-hidden="true"></span> <span>Dışa Aktar</span></button>
+          <button type="button" class="header-dropdown-item" role="menuitem" data-action="redemittel"><span class="icon-mask icon-redemittel-bank" aria-hidden="true"></span> <span>Redemittel-Bank</span></button>
         </div>
       </div>
-      <button id="langToggle" class="icon-btn" aria-label="Dil değiştir" title="Türkçe/İngilizce">EN</button>
-      <button id="themeToggle" class="icon-btn" aria-label="Tema değiştir" title="Karanlık/Aydınlık mod">&#9789;</button>
+      <button id="langToggle" class="icon-btn" aria-label="Dil değiştir" title="Türkçe/İngilizce"><span class="icon-mask icon-dil-degistir" aria-hidden="true"></span><span id="langToggleLabel">EN</span></button>
+      <button id="themeToggle" class="icon-btn" aria-label="Tema değiştir" title="Karanlık/Aydınlık mod"><span class="icon-mask icon-tema-degistir" aria-hidden="true"></span></button>
     </div>
     <div id="navToast" class="header-toast" role="status" aria-live="polite" hidden></div>
   </header>
